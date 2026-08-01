@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { Button } from '../../../components/ui/Button';
-import { LavenderVaseArt } from '../../../assets/LavenderVaseArt';
 import { Mail, Phone, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { submitContactInquiry } from '../../../api/contact';
 
@@ -27,12 +26,12 @@ export const ContactChapter: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full bg-warm-lavender/40 text-near-black py-24 md:py-36 border-t border-muted-lavender/50">
+    <section className="relative w-full bg-warm-lavender/40 text-near-black py-20 md:py-28 border-t border-muted-lavender/50">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Narrative Column */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="space-y-4">
+          <div className="lg:col-span-5 space-y-6">
+            <div className="space-y-3">
               <span className="text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                 LET'S MAKE IT REAL
               </span>
@@ -42,37 +41,39 @@ export const ContactChapter: React.FC = () => {
                   We'll handle the rest.
                 </span>
               </h2>
-              <p className="text-base sm:text-lg text-neutral-slate leading-relaxed">
+              <p className="text-sm sm:text-base text-neutral-slate leading-relaxed">
                 Whether you have a clear plan or just an idea, we'd love to hear about it.
               </p>
             </div>
 
-            {/* Lavender Vase Artwork & Contact Cards */}
-            <div className="space-y-6 pt-2">
-              <LavenderVaseArt className="max-w-xs mx-auto lg:mx-0" />
+            {/* Lavender Vase 3D Image Asset & Contact Cards */}
+            <div className="space-y-4 pt-2">
+              <div className="rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 max-w-xs group hover:scale-[1.01] transition-transform duration-500">
+                <img src="/media/contact_lavender_vase.jpg" alt="3D Lavender Vase" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-                <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
-                    <Mail className="w-5 h-5" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+                <div className="bg-soft-white rounded-2xl p-5 border border-muted-lavender/60 shadow-xs flex items-center gap-4 hover:-translate-y-1 hover:shadow-md transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+                    <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <a href="mailto:hello@zenova.studio" className="text-base font-editorial font-bold text-near-black hover:text-deep-violet transition-colors">
+                    <a href="mailto:hello@zenova.studio" className="text-sm font-editorial font-bold text-near-black hover:text-deep-violet transition-colors">
                       hello@zenova.studio
                     </a>
-                    <p className="text-xs text-neutral-slate/70">We usually reply within 1 business day</p>
+                    <p className="text-[10px] text-neutral-slate/70">We usually reply within 1 business day</p>
                   </div>
                 </div>
 
-                <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
-                    <Phone className="w-5 h-5" />
+                <div className="bg-soft-white rounded-2xl p-5 border border-muted-lavender/60 shadow-xs flex items-center gap-4 hover:-translate-y-1 hover:shadow-md transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+                    <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <a href="tel:+919876543210" className="text-base font-editorial font-bold text-near-black hover:text-deep-violet transition-colors">
+                    <a href="tel:+919876543210" className="text-sm font-editorial font-bold text-near-black hover:text-deep-violet transition-colors">
                       +91 98765 43210
                     </a>
-                    <p className="text-xs text-neutral-slate/70">Mon – Fri, 10 AM – 7 PM IST</p>
+                    <p className="text-[10px] text-neutral-slate/70">Mon – Fri, 10 AM – 7 PM IST</p>
                   </div>
                 </div>
               </div>
@@ -81,7 +82,7 @@ export const ContactChapter: React.FC = () => {
 
           {/* Right Glassmorphic Contact Form Column */}
           <div className="lg:col-span-7">
-            <div className="bg-soft-white/95 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-muted-lavender/80 shadow-xl space-y-6">
+            <div className="bg-soft-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
                   <div className="w-16 h-16 rounded-full bg-warm-lavender text-deep-violet mx-auto flex items-center justify-center">
@@ -96,39 +97,39 @@ export const ContactChapter: React.FC = () => {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-xs font-mono uppercase text-near-black font-semibold">Your Name *</label>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-mono uppercase text-near-black font-semibold">Your Name *</label>
                       <input
                         type="text"
                         required
                         placeholder="Your Name"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-sm text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all"
                       />
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-xs font-mono uppercase text-near-black font-semibold">Your Email *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-mono uppercase text-near-black font-semibold">Your Email *</label>
                       <input
                         type="email"
                         required
                         placeholder="Your Email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-sm text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-mono uppercase text-near-black font-semibold">What do you need help with? *</label>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-mono uppercase text-near-black font-semibold">What do you need help with? *</label>
                     <select
                       value={formData.serviceInterest}
                       onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-sm text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all"
                     >
                       <option value="web-development">Web Development</option>
                       <option value="video-editing">Video Editing</option>
@@ -138,19 +139,19 @@ export const ContactChapter: React.FC = () => {
                     </select>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-mono uppercase text-near-black font-semibold">Tell us a little more about your project *</label>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-mono uppercase text-near-black font-semibold">Tell us a little more about your project *</label>
                     <textarea
                       required
                       rows={4}
                       placeholder="Tell us a little more about your project"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-sm text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all resize-none"
                     />
                   </div>
 
-                  <Button type="submit" variant="primary" size="lg" disabled={loading} className="w-full justify-center gap-2 py-4 shadow-md">
+                  <Button type="submit" variant="primary" size="lg" disabled={loading} className="w-full justify-center gap-2 py-3.5 rounded-full shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all">
                     {loading ? 'Sending Message...' : 'Send Message'} <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </form>
