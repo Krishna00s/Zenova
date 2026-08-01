@@ -18,39 +18,39 @@ export const WorkingTogetherChapter: React.FC = () => {
       step: '01',
       title: 'Understand',
       description: 'We learn about your business, audience, and what success looks like for you.',
-      art: 'bg-gradient-to-b from-purple-900/20 to-warm-lavender',
+      image: '/media/photo_understand_dev.jpg',
     },
     {
       step: '02',
       title: 'Plan Together',
       description: 'We shape the right strategy and map out a simple, focused plan that makes sense.',
-      art: 'bg-gradient-to-b from-purple-800/20 to-warm-lavender',
+      image: '/media/photo_sketch_wireframe.jpg',
     },
     {
       step: '03',
       title: 'Create',
       description: 'We design, build, and bring ideas to life with care and attention to every little detail.',
-      art: 'bg-gradient-to-b from-deep-violet/30 to-warm-lavender',
+      image: '/media/photo_create_ui.jpg',
     },
     {
       step: '04',
       title: 'Launch',
       description: "We test everything thoroughly and launch only when it's ready to make an impact.",
-      art: 'bg-gradient-to-b from-purple-900/20 to-warm-lavender',
+      image: '/media/photo_launch_review.jpg',
     },
     {
       step: '05',
       title: 'Evolve',
       description: 'We stay with you, improving, optimizing, and helping you grow over time.',
-      art: 'bg-gradient-to-b from-purple-950/30 to-warm-lavender',
+      image: '/media/photo_evolve_plant.jpg',
     },
   ];
 
   return (
-    <section ref={containerRef} id="process" className="relative w-full bg-soft-white text-near-black py-24 md:py-36">
+    <section ref={containerRef} id="process" className="relative w-full bg-soft-white text-near-black py-20 md:py-28">
       <Container>
         {/* Header Narrative */}
-        <div className="max-w-3xl mb-16 space-y-4">
+        <div className="max-w-3xl mb-12 space-y-3">
           <span className="text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
             OUR APPROACH
           </span>
@@ -60,7 +60,7 @@ export const WorkingTogetherChapter: React.FC = () => {
               Thoughtful outcomes.
             </span>
           </h2>
-          <p className="text-base sm:text-lg text-neutral-slate font-sans leading-relaxed max-w-xl">
+          <p className="text-sm sm:text-base text-neutral-slate font-sans leading-relaxed max-w-xl">
             We keep the process clear and collaborative so you always know what's happening, and why it matters.
           </p>
         </div>
@@ -70,19 +70,24 @@ export const WorkingTogetherChapter: React.FC = () => {
           {steps.map((item, index) => (
             <div
               key={index}
-              className="approach-card group bg-soft-white rounded-3xl p-5 border border-muted-lavender/60 shadow-xs hover:shadow-lg hover:border-deep-violet/30 transition-all duration-500 flex flex-col justify-between"
+              className="approach-card group bg-soft-white rounded-3xl p-4 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 flex flex-col justify-between"
             >
               <div className="space-y-4">
                 {/* Photo Thumbnail Container with Top Pill Badge */}
-                <div className={`w-full aspect-[4/5] rounded-2xl ${item.art} relative overflow-hidden flex items-end justify-center pb-4`}>
-                  <div className="w-10 h-10 rounded-full bg-soft-white/90 backdrop-blur-md shadow-sm flex items-center justify-center font-mono text-xs font-bold text-deep-violet border border-muted-lavender/50">
+                <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden relative group">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute top-3 left-3 w-8 h-8 rounded-full bg-soft-white/90 backdrop-blur-md shadow-sm flex items-center justify-center font-mono text-xs font-bold text-deep-violet border border-muted-lavender/50">
                     {item.step}
                   </div>
                 </div>
 
                 {/* Title & Description */}
-                <div className="space-y-2 pt-2 text-center sm:text-left">
-                  <h3 className="text-xl font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors">
+                <div className="space-y-1.5 pt-1 text-center sm:text-left">
+                  <h3 className="text-lg font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs text-neutral-slate leading-relaxed">
