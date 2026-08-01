@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-soft-white: #FAF9F6;
+  --color-warm-lavender: #F3EEF8;
+  --color-deep-violet: #3B1F52;
+  --color-muted-lavender: #E2D7ED;
+  --color-near-black: #121113;
+  --color-neutral-slate: #5C5862;
+  
+  --font-editorial: var(--font-family-editorial, 'Cormorant Garamond', Georgia, serif);
+  --font-sans: var(--font-family-sans, 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif);
+  --font-mono: var(--font-family-mono, 'JetBrains Mono', monospace);
+}
+
+:root {
+  --font-family-editorial: 'Cormorant Garamond', Georgia, serif;
+  --font-family-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+  
+  --bg-primary: #FAF9F6;
+  --bg-secondary: #F3EEF8;
+  --text-primary: #121113;
+  --text-muted: #5C5862;
+  --accent-violet: #3B1F52;
+  --accent-lavender: #E2D7ED;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
