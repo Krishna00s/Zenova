@@ -1,0 +1,39 @@
+# Platform Behavior
+
+Zenova should behave like a complete digital platform, not a static portfolio.
+
+Every interactive element should have a meaningful destination or purpose.
+
+Buttons should never exist only for visual balance.
+
+If a user expects something to happen, something should happen.
+
+Whenever a new feature is added, think about where it naturally connects inside the platform.
+
+Examples:
+
+• "View Projects" opens the dedicated service page.
+• "View All Projects" opens a searchable project archive for that service.
+• Project cards open individual case studies.
+• Contact buttons open the contact experience.
+• Login opens the authentication system.
+• Client Dashboard opens after authentication.
+• Admin Dashboard is available only to authenticated Zenova team members.
+
+If a page introduces a concept, there should be a logical continuation.
+
+Every page should lead naturally into another.
+
+Avoid dead ends.
+
+The platform should always encourage exploration.
+
+Navigation should feel intuitive rather than forced.
+
+As the platform grows, new functionality should integrate with the existing structure instead of creating isolated pages.
+
+When functionality is missing, propose a scalable implementation instead of leaving placeholders.
+
+Think like a product designer.
+
+Not just a frontend developer.
