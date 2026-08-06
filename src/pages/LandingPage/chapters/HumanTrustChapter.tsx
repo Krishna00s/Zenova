@@ -27,10 +27,15 @@ export const HumanTrustChapter: React.FC = () => {
 
         {/* Asymmetric Editorial Grid matching V2 Reference */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6">
-          {/* Card 1 (Left Column Top) */}
+          {/* Card 1 (Left Column Top - Personalized User Photo in Left Profile Workspace Pose) */}
           <div className="lg:col-span-4 bg-soft-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all duration-300 space-y-4 flex flex-col justify-between">
-            <div className="w-full aspect-[16/10] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-warm-lavender/80 border border-muted-lavender/40 relative">
-              <img src="/media/photo_understand_dev.jpg" alt="Team Collaboration" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div className="w-full aspect-[16/10] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-warm-lavender/80 border border-muted-lavender/40 relative group">
+              <img
+                src="/media/photo_user_real_conversations.jpg"
+                alt="Real Conversations with Founder"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
             </div>
             <div className="space-y-1">
               <h3 className="text-xl sm:text-2xl font-editorial font-bold text-near-black">
@@ -54,8 +59,13 @@ export const HumanTrustChapter: React.FC = () => {
                 We build things that are easy to grow, easy to manage, and built to last.
               </p>
             </div>
-            <div className="w-full aspect-[16/10] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-muted-lavender/40 border border-muted-lavender/40 relative">
-              <img src="/media/photo_create_ui.jpg" alt="Scalable Systems" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div className="w-full aspect-[16/10] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-muted-lavender/40 border border-muted-lavender/40 relative group">
+              <img
+                src="/media/photo_create_natural.jpg"
+                alt="Scalable Digital Systems"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
             </div>
           </div>
 
