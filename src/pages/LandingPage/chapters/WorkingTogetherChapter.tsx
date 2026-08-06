@@ -60,7 +60,7 @@ export const WorkingTogetherChapter: React.FC = () => {
               Thoughtful outcomes.
             </span>
           </h2>
-          <p className="text-sm sm:text-base text-neutral-slate font-sans leading-relaxed max-w-xl">
+          <p className="card-body-text max-w-xl">
             We keep the process clear and collaborative so you always know what's happening, and why it matters.
           </p>
         </div>
@@ -90,7 +90,7 @@ export const WorkingTogetherChapter: React.FC = () => {
                   <h3 className="text-lg font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-neutral-slate leading-relaxed">
+                  <p className="card-body-text text-xs">
                     {item.description}
                   </p>
                 </div>

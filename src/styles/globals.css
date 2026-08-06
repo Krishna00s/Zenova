@@ -31,6 +31,9 @@ body {
   color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .font-editorial {
@@ -43,4 +46,21 @@ body {
 
 .font-mono {
   font-family: var(--font-mono);
+}
+
+/* Modern Card Paragraph Typography Utility */
+.card-body-text {
+  font-family: var(--font-sans);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.625;
+  color: rgba(92, 88, 98, 0.9);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 640px) {
+  .card-body-text {
+    font-size: 0.8125rem; /* 13px */
+    line-height: 1.55;
+  }
 }

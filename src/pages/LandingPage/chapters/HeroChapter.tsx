@@ -43,7 +43,7 @@ export const HeroChapter: React.FC = () => {
 
             <p
               ref={subheadRef}
-              className="text-sm sm:text-base text-neutral-slate max-w-lg leading-relaxed pt-1"
+              className="card-body-text max-w-lg pt-1"
             >
               We help ambitious businesses transform ideas into digital products, content, and growth systems that create real impact.
             </p>
@@ -69,13 +69,13 @@ export const HeroChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column 3D Lavender & Coins Artwork */}
+          {/* Right Column 3D Digital Agency Workspace Asset */}
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-muted-lavender/60 group hover:scale-[1.01] transition-transform duration-500">
               <img
-                src="/media/hero_lavender_landscape.jpg"
-                alt="3D Lavender Field with Metallic Coins"
-                className="w-full h-auto object-cover min-h-[340px] md:min-h-[420px]"
+                src="/media/hero_digital_agency_3d.jpg"
+                alt="3D Digital Agency Workspace"
+                className="w-full h-auto object-cover min-h-[340px] md:min-h-[420px] group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-near-black/20 via-transparent to-transparent pointer-events-none" />
             </div>

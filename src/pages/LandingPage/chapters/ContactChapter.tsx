@@ -41,15 +41,15 @@ export const ContactChapter: React.FC = () => {
                   We'll handle the rest.
                 </span>
               </h2>
-              <p className="text-sm sm:text-base text-neutral-slate leading-relaxed">
+              <p className="card-body-text">
                 Whether you have a clear plan or just an idea, we'd love to hear about it.
               </p>
             </div>
 
-            {/* Lavender Vase 3D Image Asset & Contact Cards */}
+            {/* 3D Tech Agency Studio Reception Asset & Contact Cards */}
             <div className="space-y-4 pt-2">
               <div className="rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 max-w-xs group hover:scale-[1.01] transition-transform duration-500">
-                <img src="/media/contact_lavender_vase.jpg" alt="3D Lavender Vase" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img src="/media/contact_agency_studio.jpg" alt="3D Agency Studio Architecture" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
@@ -61,7 +61,7 @@ export const ContactChapter: React.FC = () => {
                     <a href="mailto:hello@zenova.studio" className="text-sm font-editorial font-bold text-near-black hover:text-deep-violet transition-colors">
                       hello@zenova.studio
                     </a>
-                    <p className="text-[10px] text-neutral-slate/70">We usually reply within 1 business day</p>
+                    <p className="card-body-text text-[10px]">We usually reply within 1 business day</p>
                   </div>
                 </div>
 
@@ -73,7 +73,7 @@ export const ContactChapter: React.FC = () => {
                     <a href="tel:+919876543210" className="text-sm font-editorial font-bold text-near-black hover:text-deep-violet transition-colors">
                       +91 98765 43210
                     </a>
-                    <p className="text-[10px] text-neutral-slate/70">Mon – Fri, 10 AM – 7 PM IST</p>
+                    <p className="card-body-text text-[10px]">Mon – Fri, 10 AM – 7 PM IST</p>
                   </div>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export const ContactChapter: React.FC = () => {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-3xl font-editorial font-bold text-near-black">Thank You!</h3>
-                  <p className="text-base text-neutral-slate max-w-md mx-auto">
+                  <p className="card-body-text max-w-md mx-auto">
                     We received your message. A senior member of our team will review your project and get back to you shortly.
                   </p>
                   <Button variant="outline" onClick={() => setSubmitted(false)}>
@@ -107,7 +107,7 @@ export const ContactChapter: React.FC = () => {
                         placeholder="Your Name"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all font-sans"
                       />
                     </div>
 
@@ -119,7 +119,7 @@ export const ContactChapter: React.FC = () => {
                         placeholder="Your Email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all font-sans"
                       />
                     </div>
                   </div>
@@ -129,7 +129,7 @@ export const ContactChapter: React.FC = () => {
                     <select
                       value={formData.serviceInterest}
                       onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all font-sans"
                     >
                       <option value="web-development">Web Development</option>
                       <option value="video-editing">Video Editing</option>
@@ -147,7 +147,7 @@ export const ContactChapter: React.FC = () => {
                       placeholder="Tell us a little more about your project"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all resize-none font-sans"
                     />
                   </div>
 
