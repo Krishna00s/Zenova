@@ -266,11 +266,11 @@ export const WebDevelopmentPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH LOCKED CENTER TITLE & BOTTOM MIDDLE BUTTONS */}
+      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH DUAL ARROWS & BALANCED BLUR VISIBILITY */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           {/* Monumental Screen-Spanning Cardbox */}
-          <div className="w-full bg-soft-white rounded-3xl p-6 sm:p-12 lg:p-16 border border-muted-lavender/80 shadow-2xl space-y-10 relative overflow-hidden text-center">
+          <div className="w-full bg-soft-white rounded-3xl p-6 sm:p-12 lg:p-16 border border-muted-lavender/80 shadow-2xl space-y-8 relative overflow-hidden text-center">
             {/* Background Ambient Glow */}
             <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-deep-violet/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
@@ -284,33 +284,54 @@ export const WebDevelopmentPage: React.FC = () => {
               </h2>
             </div>
 
-            {/* 3D INFINITE HORIZONTAL CAROUSEL STAGE (LOCKED CENTER POSITION) */}
-            <div className="w-full max-w-4xl mx-auto py-2 overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
-              <div className="flex items-center justify-center gap-2 sm:gap-4 py-2 w-full">
-                {[-2, -1, 0, 1, 2].map((offset) => {
-                  const projectIdx = (activeIndex + offset + totalProjects * 100) % totalProjects;
-                  const proj = webProjects[projectIdx];
+            {/* 3D INFINITE CAROUSEL STAGE WITH BALANCED VISIBILITY & FLOATING SIDE ARROWS */}
+            <div className="relative w-full max-w-5xl mx-auto py-2">
+              {/* Floating Left Side Arrow */}
+              <button
+                onClick={handlePrev}
+                className="absolute left-0 sm:-left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-soft-white/95 border border-muted-lavender/80 shadow-xl flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30 active:scale-95"
+                aria-label="Previous Project Left"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
 
-                  const isCenter = offset === 0;
-                  const isAdjacent = Math.abs(offset) === 1;
+              {/* Stage Items Container */}
+              <div className="w-full overflow-hidden px-8 sm:px-12 [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]">
+                <div className="flex items-center justify-center gap-2.5 sm:gap-4 py-2 w-full">
+                  {[-2, -1, 0, 1, 2].map((offset) => {
+                    const projectIdx = (activeIndex + offset + totalProjects * 100) % totalProjects;
+                    const proj = webProjects[projectIdx];
 
-                  return (
-                    <button
-                      key={`${proj.id}-${offset}`}
-                      onClick={() => setActiveIndex(projectIdx)}
-                      className={`transition-all duration-500 rounded-full font-semibold text-xs whitespace-nowrap px-4 sm:px-6 py-2.5 shadow-sm border ${
-                        isCenter
-                          ? 'bg-deep-violet text-soft-white border-deep-violet scale-105 z-20 shadow-xl opacity-100'
-                          : isAdjacent
-                          ? 'bg-warm-lavender/70 text-near-black border-muted-lavender/80 scale-95 z-10 opacity-70 hover:opacity-90'
-                          : 'bg-warm-lavender/30 text-near-black/50 border-muted-lavender/40 scale-85 z-0 opacity-25 blur-[1px] pointer-events-none'
-                      }`}
-                    >
-                      {proj.category}
-                    </button>
-                  );
-                })}
+                    const isCenter = offset === 0;
+                    const isAdjacent = Math.abs(offset) === 1;
+
+                    return (
+                      <button
+                        key={`${proj.id}-${offset}`}
+                        onClick={() => setActiveIndex(projectIdx)}
+                        className={`transition-all duration-500 rounded-full font-semibold text-xs whitespace-nowrap px-4 sm:px-6 py-2.5 shadow-sm border ${
+                          isCenter
+                            ? 'bg-deep-violet text-soft-white border-deep-violet scale-105 z-20 shadow-xl opacity-100'
+                            : isAdjacent
+                            ? 'bg-warm-lavender/80 text-near-black border-muted-lavender scale-95 z-10 opacity-80 hover:opacity-100 hover:scale-100'
+                            : 'bg-warm-lavender/50 text-near-black/70 border-muted-lavender/60 scale-90 z-0 opacity-45 blur-[0.5px] hover:opacity-75'
+                        }`}
+                      >
+                        {proj.category}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
+
+              {/* Floating Right Side Arrow */}
+              <button
+                onClick={handleNext}
+                className="absolute right-0 sm:-right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-soft-white/95 border border-muted-lavender/80 shadow-xl flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30 active:scale-95"
+                aria-label="Next Project Right"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
 
             {/* ACTIVE PROJECT DISPLAY */}
@@ -383,7 +404,7 @@ export const WebDevelopmentPage: React.FC = () => {
                 <button
                   onClick={handlePrev}
                   className="w-11 h-11 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-md active:scale-95"
-                  aria-label="Previous Project"
+                  aria-label="Previous Project Bottom"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
@@ -395,7 +416,7 @@ export const WebDevelopmentPage: React.FC = () => {
                 <button
                   onClick={handleNext}
                   className="w-11 h-11 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-md active:scale-95"
-                  aria-label="Next Project"
+                  aria-label="Next Project Bottom"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
