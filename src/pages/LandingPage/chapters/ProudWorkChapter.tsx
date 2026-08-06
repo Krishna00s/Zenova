@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../constants/routes';
 import { ArrowUpRight, Check, Play, ChevronLeft, ChevronRight, Instagram, Facebook } from 'lucide-react';
+import { useGSAP } from '@gsap/react';
+import { scrollRevealCards } from '../../../animations/reveal';
 
 export const ProudWorkChapter: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const cards = containerRef.current?.querySelectorAll('.showcase-card');
+    if (cards && cards.length > 0 && containerRef.current) {
+      scrollRevealCards(cards, containerRef.current, { stagger: 0.15, duration: 1.0 });
+    }
+  }, { scope: containerRef });
+
   return (
-    <section className="relative w-full bg-soft-white text-near-black py-16 sm:py-20 md:py-28 space-y-16 sm:space-y-20 md:space-y-24">
+    <section ref={containerRef} className="relative w-full bg-soft-white text-near-black py-16 sm:py-20 md:py-28 space-y-16 sm:space-y-20 md:space-y-24">
       {/* 01 WEB DEVELOPMENT SHOWCASE */}
       <Container>
-        <div className="bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-xl hover:border-deep-violet/30 transition-all duration-500">
+        <div className="showcase-card bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Left Narrative Column */}
             <div className="lg:col-span-6 space-y-4 sm:space-y-5">
               <div className="space-y-1">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-                  01 / WEB DEVELOPMENT
+                  01 / WEB ENGINEERING
                 </span>
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-editorial font-bold text-near-black leading-tight">
                   Websites That Work.{' '}
@@ -49,26 +60,26 @@ export const ProudWorkChapter: React.FC = () => {
 
               <div className="pt-2">
                 <Link to={ROUTES.SERVICES.WEB_DEV}>
-                  <Button variant="primary" size="md" className="gap-2 px-6 py-2.5 rounded-full hover:-translate-y-0.5 transition-transform">
-                    View All Projects <ArrowUpRight className="w-4 h-4" />
+                  <Button variant="primary" size="md" className="gap-2 px-6 py-3 rounded-full hover:-translate-y-0.5 transition-transform">
+                    View Web Engineering <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
             </div>
 
-            {/* Right 3D Tech Artwork & Showcase Cards */}
+            {/* Right Tech Showcase */}
             <div className="lg:col-span-6 space-y-4 sm:space-y-5 w-full">
               <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
-                <img src="/media/cap_web_engineering.jpg" alt="3D Web Engineering Dashboard" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <img src="/media/cap_web_natural.jpg" alt="Web Engineering Showcase" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               </div>
 
               <div className="flex items-center justify-between pt-1">
-                <span className="text-[11px] sm:text-xs font-mono uppercase text-neutral-slate">PREVIOUS PROJECTS</span>
+                <span className="text-[11px] sm:text-xs font-mono uppercase text-neutral-slate">FEATURED SOLUTIONS</span>
                 <div className="flex items-center gap-2">
-                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Previous Project">
+                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Previous">
                     <ChevronLeft className="w-4 h-4" />
                   </button>
-                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Next Project">
+                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Next">
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -82,7 +93,7 @@ export const ProudWorkChapter: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-editorial font-bold">Fintech Platform</h4>
-                    <p className="text-[10px] text-neutral-slate/70">Real-time analytics dashboard</p>
+                    <p className="card-body-text text-soft-white/70 text-[10px]">Real-time analytics dashboard</p>
                   </div>
                 </div>
 
@@ -93,7 +104,7 @@ export const ProudWorkChapter: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-editorial font-bold">E-Commerce Storefront</h4>
-                    <p className="text-[10px] text-neutral-slate">Modern online shopping</p>
+                    <p className="card-body-text text-[10px]">Modern online shopping experience</p>
                   </div>
                 </div>
               </div>
@@ -104,21 +115,21 @@ export const ProudWorkChapter: React.FC = () => {
 
       {/* 03 VIDEO EDITING SHOWCASE */}
       <Container>
-        <div className="bg-soft-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-xl hover:border-deep-violet/30 transition-all duration-500">
+        <div className="showcase-card bg-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
-            {/* Left Column 3D Cinema Camera */}
+            {/* Left Column Video Production */}
             <div className="lg:col-span-6 space-y-4 sm:space-y-5 order-2 lg:order-1 w-full">
               <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
-                <img src="/media/cap_video_editing.jpg" alt="3D Cinema Video Editing Suite" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <img src="/media/cap_video_natural.jpg" alt="Video Production Studio" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               </div>
 
               <div className="flex items-center justify-between pt-1">
-                <span className="text-[11px] sm:text-xs font-mono uppercase text-neutral-slate">PREVIOUS PROJECTS</span>
+                <span className="text-[11px] sm:text-xs font-mono uppercase text-neutral-slate">FEATURED EDITS</span>
                 <div className="flex items-center gap-2">
-                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Previous Project">
+                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Previous">
                     <ChevronLeft className="w-4 h-4" />
                   </button>
-                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Next Project">
+                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Next">
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -133,8 +144,8 @@ export const ProudWorkChapter: React.FC = () => {
                     <p className="text-[10px] font-mono text-muted-lavender">Cinematic Edit</p>
                   </div>
                   <div>
-                    <h4 className="text-xs font-editorial font-bold">Brand Film</h4>
-                    <p className="text-[10px] text-neutral-slate/70">Documentary storytelling</p>
+                    <h4 className="text-xs font-editorial font-bold">Brand Documentary</h4>
+                    <p className="card-body-text text-soft-white/70 text-[10px]">Pacing & Color Grading</p>
                   </div>
                 </div>
 
@@ -146,8 +157,8 @@ export const ProudWorkChapter: React.FC = () => {
                     <p className="text-[10px] font-mono text-deep-violet">Commercial Edit</p>
                   </div>
                   <div>
-                    <h4 className="text-xs font-editorial font-bold">Product Video</h4>
-                    <p className="text-[10px] text-neutral-slate">High-impact short-form video</p>
+                    <h4 className="text-xs font-editorial font-bold">Product Commercial</h4>
+                    <p className="card-body-text text-[10px]">Short-form storytelling</p>
                   </div>
                 </div>
               </div>
@@ -157,7 +168,7 @@ export const ProudWorkChapter: React.FC = () => {
             <div className="lg:col-span-6 space-y-4 sm:space-y-5 order-1 lg:order-2">
               <div className="space-y-1">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-                  03 / VIDEO EDITING
+                  02 / VIDEO PRODUCTION
                 </span>
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-editorial font-bold text-near-black leading-tight">
                   Stories That Engage.{' '}
@@ -188,8 +199,8 @@ export const ProudWorkChapter: React.FC = () => {
 
               <div className="pt-2">
                 <Link to={ROUTES.SERVICES.VIDEO_EDITING}>
-                  <Button variant="primary" size="md" className="gap-2 px-6 py-2.5 rounded-full hover:-translate-y-0.5 transition-transform">
-                    View All Projects <ArrowUpRight className="w-4 h-4" />
+                  <Button variant="primary" size="md" className="gap-2 px-6 py-3 rounded-full hover:-translate-y-0.5 transition-transform">
+                    Explore Video Work <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
@@ -200,13 +211,13 @@ export const ProudWorkChapter: React.FC = () => {
 
       {/* 04 AD CREATION & DISTRIBUTION SHOWCASE */}
       <Container>
-        <div className="bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-xl hover:border-deep-violet/30 transition-all duration-500">
+        <div className="showcase-card bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Left Narrative Column */}
             <div className="lg:col-span-6 space-y-4 sm:space-y-5">
               <div className="space-y-1">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-                  04 / AD CREATION & DISTRIBUTION
+                  03 / AD CREATIVES & DISTRIBUTION
                 </span>
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-editorial font-bold text-near-black leading-tight">
                   Create. Publish. Promote.{' '}
@@ -237,8 +248,8 @@ export const ProudWorkChapter: React.FC = () => {
 
               <div className="pt-2 flex items-center gap-4">
                 <Link to={ROUTES.SERVICES.AD_CREATION}>
-                  <Button variant="primary" size="md" className="gap-2 px-6 py-2.5 rounded-full hover:-translate-y-0.5 transition-transform">
-                    View All Projects <ArrowUpRight className="w-4 h-4" />
+                  <Button variant="primary" size="md" className="gap-2 px-6 py-3 rounded-full hover:-translate-y-0.5 transition-transform">
+                    Explore Ad Solutions <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <div className="flex items-center gap-2 text-deep-violet">
@@ -248,46 +259,10 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Artwork & Analytics Cards */}
+            {/* Right Artwork */}
             <div className="lg:col-span-6 space-y-4 sm:space-y-5 w-full">
               <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
-                <img src="/media/cap_ad_creation.jpg" alt="3D Ad Creation Campaign Dashboard" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="bg-soft-white rounded-2xl p-4 border border-muted-lavender space-y-2 hover:-translate-y-1 hover:shadow-lg transition-all">
-                  <div className="flex items-center justify-between text-xs font-mono text-neutral-slate">
-                    <span>Instagram Campaign</span>
-                    <Instagram className="w-4 h-4 text-deep-violet" />
-                  </div>
-                  <div className="flex justify-between pt-1">
-                    <div>
-                      <span className="text-[10px] text-neutral-slate uppercase">Reach</span>
-                      <p className="text-lg font-editorial font-bold text-near-black">128K</p>
-                    </div>
-                    <div>
-                      <span className="text-[10px] text-neutral-slate uppercase">Conversions</span>
-                      <p className="text-lg font-editorial font-bold text-deep-violet">3.2K</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-soft-white rounded-2xl p-4 border border-muted-lavender space-y-2 hover:-translate-y-1 hover:shadow-lg transition-all">
-                  <div className="flex items-center justify-between text-xs font-mono text-neutral-slate">
-                    <span>Facebook Campaign</span>
-                    <Facebook className="w-4 h-4 text-deep-violet fill-deep-violet stroke-none" />
-                  </div>
-                  <div className="flex justify-between pt-1">
-                    <div>
-                      <span className="text-[10px] text-neutral-slate uppercase">Reach</span>
-                      <p className="text-lg font-editorial font-bold text-near-black">215K</p>
-                    </div>
-                    <div>
-                      <span className="text-[10px] text-neutral-slate uppercase">Conversions</span>
-                      <p className="text-lg font-editorial font-bold text-deep-violet">5.7K</p>
-                    </div>
-                  </div>
-                </div>
+                <img src="/media/cap_ad_natural.jpg" alt="Ad Creatives & Distribution" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               </div>
             </div>
           </div>
@@ -296,26 +271,12 @@ export const ProudWorkChapter: React.FC = () => {
 
       {/* 05 PAID PROMOTIONS & COLLABORATIONS SHOWCASE */}
       <Container>
-        <div className="bg-soft-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-xl hover:border-deep-violet/30 transition-all duration-500">
+        <div className="showcase-card bg-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Left Collab Cards */}
             <div className="lg:col-span-6 space-y-4 sm:space-y-5 order-2 lg:order-1 w-full">
               <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
-                <img src="/media/cap_paid_promotions.jpg" alt="3D Paid Promotions Broadcast Studio" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="bg-warm-lavender rounded-2xl p-4 border border-muted-lavender space-y-1.5 hover:-translate-y-1 hover:shadow-lg transition-all">
-                  <Badge variant="lavender" className="text-[10px]">Instagram Collaboration</Badge>
-                  <h4 className="text-sm font-editorial font-bold text-near-black pt-1">Fashion Brand x Creator</h4>
-                  <p className="card-body-text text-[10px]">Targeted creator outreach & growth</p>
-                </div>
-
-                <div className="bg-warm-lavender rounded-2xl p-4 border border-muted-lavender space-y-1.5 hover:-translate-y-1 hover:shadow-lg transition-all">
-                  <Badge variant="lavender" className="text-[10px]">YouTube Collaboration</Badge>
-                  <h4 className="text-sm font-editorial font-bold text-near-black pt-1">Skincare Brand x Influencer</h4>
-                  <p className="card-body-text text-[10px]">Authentic product integration</p>
-                </div>
+                <img src="/media/cap_promo_natural.jpg" alt="Creator Promotions Studio" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               </div>
             </div>
 
@@ -323,7 +284,7 @@ export const ProudWorkChapter: React.FC = () => {
             <div className="lg:col-span-6 space-y-4 sm:space-y-5 order-1 lg:order-2">
               <div className="space-y-1">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-                  05 / PAID PROMOTIONS & COLLABORATIONS
+                  04 / CREATOR PROMOTIONS
                 </span>
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-editorial font-bold text-near-black leading-tight">
                   Right Creators.{' '}
@@ -354,8 +315,8 @@ export const ProudWorkChapter: React.FC = () => {
 
               <div className="pt-2">
                 <Link to={ROUTES.SERVICES.PAID_PROMOTIONS}>
-                  <Button variant="primary" size="md" className="gap-2 px-6 py-2.5 rounded-full hover:-translate-y-0.5 transition-transform">
-                    View All Campaigns <ArrowUpRight className="w-4 h-4" />
+                  <Button variant="primary" size="md" className="gap-2 px-6 py-3 rounded-full hover:-translate-y-0.5 transition-transform">
+                    Explore Creator Networks <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>

@@ -20,7 +20,7 @@ export const HeroChapter: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative w-full bg-soft-white text-near-black pt-24 sm:pt-28 md:pt-36 pb-12 sm:pb-16 md:pb-24 overflow-hidden">
+    <section ref={containerRef} className="relative w-full bg-soft-white text-near-black pt-28 sm:pt-32 md:pt-40 pb-16 sm:pb-20 md:pb-28 overflow-hidden">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column Narrative */}
@@ -50,7 +50,7 @@ export const HeroChapter: React.FC = () => {
 
             <div ref={actionsRef} className="pt-3 flex flex-wrap items-center gap-3">
               <Link to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
-                <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-6 py-3 rounded-full shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all">
                   Explore Our Work
                   <div className="w-5 h-5 rounded-full bg-soft-white/20 flex items-center justify-center">
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -59,7 +59,7 @@ export const HeroChapter: React.FC = () => {
               </Link>
 
               <Link to={ROUTES.CONTACT} className="w-full sm:w-auto">
-                <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-6 py-3 rounded-full border border-muted-lavender bg-warm-lavender/60 hover:bg-warm-lavender hover:-translate-y-0.5 transition-all">
+                <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60 hover:bg-warm-lavender hover:-translate-y-0.5 transition-all">
                   <div className="w-5 h-5 rounded-full bg-deep-violet text-soft-white flex items-center justify-center">
                     <Play className="w-2.5 h-2.5 fill-soft-white stroke-none ml-0.5" />
                   </div>
@@ -69,12 +69,12 @@ export const HeroChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column 3D Tech Agency Image Container */}
+          {/* Right Column Natural Agency Photography Image Container */}
           <div className="lg:col-span-6 relative w-full">
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-muted-lavender/60 w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] group hover:scale-[1.01] transition-transform duration-500">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-muted-lavender/60 w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] group hover:scale-[1.01] transition-transform duration-500">
               <img
-                src="/media/hero_digital_agency_3d.jpg"
-                alt="3D Digital Agency Workspace"
+                src="/media/hero_natural_agency.jpg"
+                alt="Digital Agency Studio Workspace"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 loading="eager"
               />

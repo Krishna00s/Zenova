@@ -1,15 +1,15 @@
 import React, { useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { useGSAP } from '@gsap/react';
-import { cardReveal } from '../../../animations/reveal';
+import { scrollRevealCards } from '../../../animations/reveal';
 
 export const WorkingTogetherChapter: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const cards = containerRef.current?.querySelectorAll('.approach-card');
-    if (cards && cards.length > 0) {
-      cardReveal(cards, { stagger: 0.1 });
+    if (cards && cards.length > 0 && containerRef.current) {
+      scrollRevealCards(cards, containerRef.current, { stagger: 0.12, duration: 0.9 });
     }
   }, { scope: containerRef });
 
@@ -18,31 +18,31 @@ export const WorkingTogetherChapter: React.FC = () => {
       step: '01',
       title: 'Understand',
       description: 'We learn about your business, audience, and what success looks like for you.',
-      image: '/media/photo_understand_dev.jpg',
+      image: '/media/photo_understand_natural.jpg',
     },
     {
       step: '02',
       title: 'Plan Together',
       description: 'We shape the right strategy and map out a simple, focused plan that makes sense.',
-      image: '/media/photo_sketch_wireframe.jpg',
+      image: '/media/photo_sketch_natural.jpg',
     },
     {
       step: '03',
       title: 'Create',
       description: 'We design, build, and bring ideas to life with care and attention to every little detail.',
-      image: '/media/photo_create_ui.jpg',
+      image: '/media/photo_create_natural.jpg',
     },
     {
       step: '04',
       title: 'Launch',
       description: "We test everything thoroughly and launch only when it's ready to make an impact.",
-      image: '/media/photo_launch_review.jpg',
+      image: '/media/photo_launch_natural.jpg',
     },
     {
       step: '05',
       title: 'Evolve',
       description: 'We stay with you, improving, optimizing, and helping you grow over time.',
-      image: '/media/photo_evolve_plant.jpg',
+      image: '/media/photo_evolve_natural.jpg',
     },
   ];
 
@@ -65,15 +65,15 @@ export const WorkingTogetherChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* 5 Column Cards with Pill Badges */}
+        {/* 5 Column Cards - Scroll-Driven Stagger Reveal & Hover Animation */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
           {steps.map((item, index) => (
             <div
               key={index}
-              className="approach-card group bg-soft-white rounded-2xl sm:rounded-3xl p-4 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 flex flex-col justify-between"
+              className="approach-card group bg-soft-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 flex flex-col justify-between"
             >
               <div className="space-y-3 sm:space-y-4">
-                {/* Distortion-Free Photo Container with Top Pill Badge */}
+                {/* Natural Photography Container with Pill Badge */}
                 <div className="w-full aspect-[4/3] sm:aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden relative group bg-warm-lavender/50">
                   <img
                     src={item.image}
