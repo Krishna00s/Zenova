@@ -18,6 +18,8 @@ import {
   Heart,
   MessageCircle,
   CheckSquare,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -25,7 +27,8 @@ import { submitContactInquiry } from '../../../api/contact';
 
 export const PaidPromotionsPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeCollab, setActiveCollab] = useState<'fashion' | 'beauty'>('fashion');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'fashion' | 'beauty' | 'tech'>('all');
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -53,8 +56,10 @@ export const PaidPromotionsPage: React.FC = () => {
     }
   };
 
-  const collabShowcases = {
-    fashion: {
+  const promoProjects = [
+    {
+      id: 1,
+      category: 'fashion',
       title: 'Fashion Apparel x Creator Network',
       subtitle: 'Instagram & TikTok Creator Collaborations',
       story: 'Coordinated 15 fashion creators for authentic product unboxing reels, styling stories, and creator whitelisting rights for paid Meta ads.',
@@ -62,7 +67,9 @@ export const PaidPromotionsPage: React.FC = () => {
       image: '/media/cap_promo_natural.jpg',
       badge: 'FASHION COLLAB',
     },
-    beauty: {
+    {
+      id: 2,
+      category: 'beauty',
       title: 'Skincare Brand x Beauty Influencers',
       subtitle: 'YouTube & IG Story Product Integrations',
       story: 'Handpicked 10 beauty creators for long-form skincare tutorial integrations and Instagram Story promo discount codes.',
@@ -70,18 +77,41 @@ export const PaidPromotionsPage: React.FC = () => {
       image: '/media/contact_studio_natural.jpg',
       badge: 'BEAUTY COLLAB',
     },
+    {
+      id: 3,
+      category: 'tech',
+      title: 'PULSE Tech x Creator Unboxing Series',
+      subtitle: 'Tech Creator Review & Whitelisting Boost',
+      story: 'Paired a hardware tech brand with top 8 tech review creators for in-depth unboxing videos and whitelisted Instagram Reel boosting.',
+      highlights: ['8 Vetted Tech Reviewers', 'whitelisted Instagram Reel Ad Boost', 'High Engagement Retention'],
+      image: '/media/hero_digital_agency_3d.jpg',
+      badge: 'TECH COLLAB',
+    },
+  ];
+
+  const filteredProjects = activeCategory === 'all'
+    ? promoProjects
+    : promoProjects.filter((p) => p.category === activeCategory);
+
+  const safeIndex = currentProjectIndex % filteredProjects.length;
+  const activeProject = filteredProjects[safeIndex] || promoProjects[0];
+
+  const handleNext = () => {
+    setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentProjectIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
   };
 
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
-      {/* 1. HERO STORY CHAPTER WITH AMBIENT LIGHTING GLOW */}
+      {/* 1. HERO STORY CHAPTER */}
       <section className="relative w-full pb-16 sm:pb-24">
-        {/* Ambient Lighting Gradient Backdrop */}
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-deep-violet/15 via-purple-300/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
                 PAID PROMOTIONS & CREATOR NETWORKS
@@ -110,7 +140,6 @@ export const PaidPromotionsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Creator Social Feed Frame */}
             <div className="lg:col-span-5 w-full">
               <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 shadow-2xl border border-muted-lavender/40 space-y-3 hover:border-deep-violet/40 transition-colors">
                 <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
@@ -209,72 +238,136 @@ export const PaidPromotionsPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 3. VISUAL SHOWCASE */}
+      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH CAROUSEL CONTROL */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          <div className="max-w-3xl mb-10 space-y-2">
-            <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-              THE WORK SPEAKS
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-bold text-near-black">
-              Featured Creator Partnerships
-            </h2>
-          </div>
+          {/* Monumental Screen-Spanning Cardbox */}
+          <div className="w-full bg-soft-white rounded-3xl p-6 sm:p-12 lg:p-16 border border-muted-lavender/80 shadow-2xl space-y-10 relative overflow-hidden">
+            {/* Background Ambient Glow */}
+            <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-deep-violet/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-          <div className="flex flex-wrap gap-3 pb-8 border-b border-muted-lavender/40">
-            <button
-              onClick={() => setActiveCollab('fashion')}
-              className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeCollab === 'fashion'
-                  ? 'bg-deep-violet text-soft-white shadow-md'
-                  : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
-              }`}
-            >
-              Fashion Apparel Network
-            </button>
-            <button
-              onClick={() => setActiveCollab('beauty')}
-              className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeCollab === 'beauty'
-                  ? 'bg-deep-violet text-soft-white shadow-md'
-                  : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
-              }`}
-            >
-              Skincare & Beauty Influencers
-            </button>
-          </div>
+            {/* CENTERED HEADER & ATTRACTIVE FILTER PILLS */}
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold block">
+                THE WORK SPEAKS
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-editorial font-bold text-near-black tracking-tight">
+                Featured Creator Partnerships
+              </h2>
 
-          <div className="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-6 space-y-4">
-              <Badge variant="violet" className="text-[10px]">
-                {collabShowcases[activeCollab].subtitle}
-              </Badge>
-              <h3 className="text-2xl sm:text-3xl font-editorial font-bold text-near-black">
-                {collabShowcases[activeCollab].title}
-              </h3>
-              <p className="card-body-text text-xs sm:text-sm leading-relaxed">
-                {collabShowcases[activeCollab].story}
-              </p>
-
-              <div className="pt-4 space-y-2 border-t border-muted-lavender/40">
-                {collabShowcases[activeCollab].highlights.map((h) => (
-                  <div key={h} className="flex items-center gap-2 text-xs font-semibold text-near-black">
-                    <CheckCircle2 className="w-4 h-4 text-deep-violet shrink-0" />
-                    <span>{h}</span>
-                  </div>
-                ))}
+              {/* Centered Attractive Category Filter Pills */}
+              <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+                <button
+                  onClick={() => { setActiveCategory('all'); setCurrentProjectIndex(0); }}
+                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    activeCategory === 'all'
+                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
+                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
+                  }`}
+                >
+                  All Collaborations
+                </button>
+                <button
+                  onClick={() => { setActiveCategory('fashion'); setCurrentProjectIndex(0); }}
+                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    activeCategory === 'fashion'
+                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
+                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
+                  }`}
+                >
+                  Fashion Apparel Network
+                </button>
+                <button
+                  onClick={() => { setActiveCategory('beauty'); setCurrentProjectIndex(0); }}
+                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    activeCategory === 'beauty'
+                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
+                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
+                  }`}
+                >
+                  Skincare & Beauty Influencers
+                </button>
+                <button
+                  onClick={() => { setActiveCategory('tech'); setCurrentProjectIndex(0); }}
+                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    activeCategory === 'tech'
+                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
+                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
+                  }`}
+                >
+                  Tech Unboxing Series
+                </button>
               </div>
             </div>
 
-            <div className="lg:col-span-6">
-              <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/60 w-full aspect-[16/10] relative group">
-                <img
-                  src={collabShowcases[activeCollab].image}
-                  alt={collabShowcases[activeCollab].title}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-deep-violet/90 backdrop-blur-md text-[10px] font-mono font-bold text-soft-white">
-                  {collabShowcases[activeCollab].badge}
+            {/* ACTIVE PROJECT DISPLAY WITH NEXT / PREV CAROUSEL ARROWS */}
+            <div className="pt-4 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left Project Info */}
+              <div className="lg:col-span-6 space-y-5">
+                <div className="flex items-center justify-between">
+                  <Badge variant="violet" className="text-[10px]">
+                    {activeProject.badge}
+                  </Badge>
+                  <span className="font-mono text-xs text-neutral-slate font-bold">
+                    Collab 0{safeIndex + 1} / 0{filteredProjects.length}
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
+                    {activeProject.title}
+                  </h3>
+                  <p className="text-xs font-mono text-deep-violet font-semibold uppercase tracking-wider">
+                    {activeProject.subtitle}
+                  </p>
+                </div>
+
+                <p className="card-body-text text-xs sm:text-sm leading-relaxed">
+                  {activeProject.story}
+                </p>
+
+                <div className="pt-2 space-y-2.5 border-t border-muted-lavender/40">
+                  {activeProject.highlights.map((h) => (
+                    <div key={h} className="flex items-center gap-2.5 text-xs font-semibold text-near-black">
+                      <CheckCircle2 className="w-4 h-4 text-deep-violet shrink-0" />
+                      <span>{h}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Carousel Navigation Buttons */}
+                <div className="pt-4 flex items-center justify-between border-t border-muted-lavender/40">
+                  <span className="text-[11px] font-mono uppercase text-neutral-slate">BROWSE CREATOR COLLABS</span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={handlePrev}
+                      className="w-10 h-10 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs"
+                      aria-label="Previous Creator Collaboration"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={handleNext}
+                      className="w-10 h-10 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs"
+                      aria-label="Next Creator Collaboration"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Interactive Creator Frame */}
+              <div className="lg:col-span-6">
+                <div className="rounded-2xl overflow-hidden shadow-2xl border border-muted-lavender/60 w-full aspect-[16/10] relative group">
+                  <img
+                    src={activeProject.image}
+                    alt={activeProject.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-deep-violet/90 backdrop-blur-md text-[10px] font-mono font-bold text-soft-white">
+                    {activeProject.badge}
+                  </div>
                 </div>
               </div>
             </div>

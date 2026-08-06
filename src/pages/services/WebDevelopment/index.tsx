@@ -19,6 +19,8 @@ import {
   Cpu,
   Layers,
   Server,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -26,7 +28,8 @@ import { submitContactInquiry } from '../../../api/contact';
 
 export const WebDevelopmentPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeProject, setActiveProject] = useState<'storefront' | 'app' | 'portfolio'>('storefront');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'storefront' | 'app' | 'portfolio'>('all');
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -54,52 +57,80 @@ export const WebDevelopmentPage: React.FC = () => {
     }
   };
 
-  const showcaseProjects = {
-    storefront: {
-      title: 'Aura Atelier Storefront',
-      subtitle: 'Luxury E-Commerce & Shopping Experience',
-      story: 'Designed for a high-end fashion brand. We built a lightning-fast online store with smooth product transitions, intuitive mobile navigation, and instant checkout.',
-      highlights: ['Sub-second Page Load', 'Mobile Shopping First', 'Custom Checkout Engine'],
+  const webProjects = [
+    {
+      id: 1,
+      category: 'storefront',
+      title: 'Aura Atelier Luxury Storefront',
+      subtitle: 'E-Commerce & High-Conversion Shopping Engine',
+      story: 'Designed for a luxury fashion house. We engineered a sub-second e-commerce experience with dynamic cart transitions, fluid mobile navigation, and custom Stripe checkout integration.',
+      highlights: ['Sub-second Page Load Speed', 'Mobile-First Touch Architecture', 'Custom Checkout Engine'],
       image: '/media/cap_web_natural.jpg',
       url: 'auraatelier.com',
-      badge: 'E-COMMERCE',
+      badge: 'LUXURY E-COMMERCE',
     },
-    app: {
+    {
+      id: 2,
+      category: 'app',
       title: 'Lumina Financial Platform',
-      subtitle: 'Real-Time Analytics Dashboard',
-      story: 'Built for a fintech startup. We transformed complex financial data into a clean, modern web dashboard that users love opening every single day.',
-      highlights: ['Real-Time Streaming', 'Dark & Light Mode UI', 'Sub-50ms Render Latency'],
+      subtitle: 'Real-Time Financial Analytics Dashboard',
+      story: 'Engineered for a high-growth fintech startup. We transformed complex real-time market data into a clean, modern web application with dark-mode UI and sub-50ms render latency.',
+      highlights: ['Real-Time Data Streaming', 'Dark & Light Mode Toggle', 'Sub-50ms Render Latency'],
       image: '/media/photo_create_natural.jpg',
       url: 'luminaapp.io',
-      badge: 'WEB APP',
+      badge: 'FINTECH WEB APP',
     },
-    portfolio: {
+    {
+      id: 3,
+      category: 'portfolio',
       title: 'Vanguard Architectural Studio',
-      subtitle: 'Editorial Portfolio & Interactive Gallery',
-      story: 'Crafted for an award-winning architecture studio. We let the high-res photography breathe with fluid scroll animations and quiet editorial typography.',
-      highlights: ['60fps Scroll Motion', 'Editorial Typography', 'Headless CMS Integration'],
+      subtitle: 'Editorial Portfolio & Headless CMS',
+      story: 'Crafted for an international architectural practice. We let high-resolution photography breathe with 60fps fluid scroll transitions and quiet editorial typography.',
+      highlights: ['60fps Smooth Scroll Motion', 'Editorial Typography Triad', 'Headless CMS Integration'],
       image: '/media/photo_launch_natural.jpg',
       url: 'vanguardstudio.arch',
       badge: 'EDITORIAL CMS',
     },
+    {
+      id: 4,
+      category: 'app',
+      title: 'Krona Cloud SaaS Portal',
+      subtitle: 'Enterprise Workspace & User Portal',
+      story: 'Built for an enterprise cloud platform. Features row-level security authentication, multi-tenant workspace management, and responsive dashboard analytics.',
+      highlights: ['Row-Level Security Auth', 'Multi-Tenant Workspaces', 'Responsive Metric Cards'],
+      image: '/media/photo_understand_natural.jpg',
+      url: 'krona.cloud',
+      badge: 'ENTERPRISE SAAS',
+    },
+  ];
+
+  const filteredProjects = activeCategory === 'all'
+    ? webProjects
+    : webProjects.filter((p) => p.category === activeCategory);
+
+  const safeIndex = currentProjectIndex % filteredProjects.length;
+  const activeProject = filteredProjects[safeIndex] || webProjects[0];
+
+  const handleNext = () => {
+    setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentProjectIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
   };
 
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
-      {/* 1. HERO STORY CHAPTER WITH AMBIENT LIGHTING GLOW */}
+      {/* 1. HERO STORY CHAPTER */}
       <section className="relative w-full pb-16 sm:pb-24">
-        {/* Ambient Lighting Gradient Backdrop */}
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-deep-violet/10 via-purple-300/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-5 sm:space-y-6">
-              <div className="flex items-center gap-2">
-                <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
-                  WEB ENGINEERING & DIGITAL ARCHITECTURE
-                </Badge>
-              </div>
+              <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
+                WEB ENGINEERING & DIGITAL ARCHITECTURE
+              </Badge>
 
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-editorial font-bold text-near-black tracking-tight leading-[1.08]">
                 Websites should feel simple. <br />
@@ -124,10 +155,8 @@ export const WebDevelopmentPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Graphic Glassmorphic Browser Frame */}
             <div className="lg:col-span-5 w-full">
               <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl border border-muted-lavender/40 space-y-3.5 hover:border-deep-violet/40 transition-colors">
-                {/* Browser Top Bar */}
                 <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                   <div className="flex items-center gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500/80" />
@@ -141,7 +170,6 @@ export const WebDevelopmentPage: React.FC = () => {
                   <Code className="w-4 h-4 text-deep-violet" />
                 </div>
 
-                {/* Hero Showcase Photo Container */}
                 <div className="rounded-xl overflow-hidden aspect-[4/3] relative group border border-soft-white/10">
                   <img
                     src="/media/cap_web_natural.jpg"
@@ -154,7 +182,6 @@ export const WebDevelopmentPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Simulated Graphic Micro-Code Console */}
                 <div className="bg-soft-white/5 rounded-xl p-3 border border-soft-white/10 font-mono text-[10px] text-soft-white/70 space-y-1">
                   <div className="flex items-center justify-between text-deep-violet">
                     <span>const stack = ['React', 'Next.js', 'Supabase'];</span>
@@ -168,7 +195,7 @@ export const WebDevelopmentPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 2. THE STORY / WHY WE ARE DIFFERENT */}
+      {/* 2. OUR PHILOSOPHY */}
       <section className="py-16 sm:py-24 bg-gradient-to-b from-warm-lavender/40 via-warm-lavender/20 to-soft-white border-y border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -188,7 +215,6 @@ export const WebDevelopmentPage: React.FC = () => {
             </div>
           </div>
 
-          {/* 4 Pillars Grid with Glowing Accents */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
             <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
               <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
@@ -233,99 +259,148 @@ export const WebDevelopmentPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 3. VISUAL SHOWCASE (INTERACTIVE BROWSER PREVIEWS & GRAPHICS) */}
+      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH CAROUSEL CONTROL */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          <div className="max-w-3xl mb-10 space-y-2">
-            <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-              THE WORK SPEAKS
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-bold text-near-black">
-              Websites Crafted For Impact
-            </h2>
-            <p className="card-body-text text-xs sm:text-sm">
-              Click through our recent web projects to see what we build for ambitious brands.
-            </p>
-          </div>
+          {/* Monumental Screen-Spanning Cardbox */}
+          <div className="w-full bg-soft-white rounded-3xl p-6 sm:p-12 lg:p-16 border border-muted-lavender/80 shadow-2xl space-y-10 relative overflow-hidden">
+            {/* Background Ambient Glow */}
+            <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-deep-violet/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-          {/* Selector Tabs */}
-          <div className="flex flex-wrap gap-3 pb-8 border-b border-muted-lavender/40">
-            <button
-              onClick={() => setActiveProject('storefront')}
-              className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeProject === 'storefront'
-                  ? 'bg-deep-violet text-soft-white shadow-md'
-                  : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
-              }`}
-            >
-              Luxury E-Commerce Storefront
-            </button>
-            <button
-              onClick={() => setActiveProject('app')}
-              className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeProject === 'app'
-                  ? 'bg-deep-violet text-soft-white shadow-md'
-                  : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
-              }`}
-            >
-              Fintech Web Application
-            </button>
-            <button
-              onClick={() => setActiveProject('portfolio')}
-              className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeProject === 'portfolio'
-                  ? 'bg-deep-violet text-soft-white shadow-md'
-                  : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
-              }`}
-            >
-              Architectural Studio Portfolio
-            </button>
-          </div>
+            {/* CENTERED HEADER & ATTRACTIVE FILTER PILLS */}
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold block">
+                THE WORK SPEAKS
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-editorial font-bold text-near-black tracking-tight">
+                Featured Web Builds
+              </h2>
 
-          {/* Active Browser Display with Graphic Cards */}
-          <div className="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-6 space-y-4">
-              <Badge variant="violet" className="text-[10px]">
-                {showcaseProjects[activeProject].subtitle}
-              </Badge>
-              <h3 className="text-2xl sm:text-3xl font-editorial font-bold text-near-black">
-                {showcaseProjects[activeProject].title}
-              </h3>
-              <p className="card-body-text text-xs sm:text-sm leading-relaxed">
-                {showcaseProjects[activeProject].story}
-              </p>
-
-              <div className="pt-4 space-y-2.5 border-t border-muted-lavender/40">
-                {showcaseProjects[activeProject].highlights.map((h) => (
-                  <div key={h} className="flex items-center gap-2 text-xs font-semibold text-near-black">
-                    <CheckCircle2 className="w-4 h-4 text-deep-violet shrink-0" />
-                    <span>{h}</span>
-                  </div>
-                ))}
+              {/* Centered Attractive Category Filter Pills */}
+              <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+                <button
+                  onClick={() => { setActiveCategory('all'); setCurrentProjectIndex(0); }}
+                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    activeCategory === 'all'
+                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
+                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
+                  }`}
+                >
+                  All Projects
+                </button>
+                <button
+                  onClick={() => { setActiveCategory('storefront'); setCurrentProjectIndex(0); }}
+                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    activeCategory === 'storefront'
+                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
+                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
+                  }`}
+                >
+                  E-Commerce Storefronts
+                </button>
+                <button
+                  onClick={() => { setActiveCategory('app'); setCurrentProjectIndex(0); }}
+                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    activeCategory === 'app'
+                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
+                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
+                  }`}
+                >
+                  Web Applications
+                </button>
+                <button
+                  onClick={() => { setActiveCategory('portfolio'); setCurrentProjectIndex(0); }}
+                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    activeCategory === 'portfolio'
+                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
+                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
+                  }`}
+                >
+                  Editorial CMS Portfolios
+                </button>
               </div>
             </div>
 
-            <div className="lg:col-span-6">
-              <div className="bg-near-black rounded-2xl p-4 shadow-2xl border border-muted-lavender/60 space-y-3">
-                <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                  </div>
-                  <span className="font-mono text-[10px] text-soft-white/60">
-                    https://{showcaseProjects[activeProject].url}
+            {/* ACTIVE PROJECT DISPLAY WITH NEXT / PREV CAROUSEL ARROWS */}
+            <div className="pt-4 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left Project Info */}
+              <div className="lg:col-span-6 space-y-5">
+                <div className="flex items-center justify-between">
+                  <Badge variant="violet" className="text-[10px]">
+                    {activeProject.badge}
+                  </Badge>
+                  <span className="font-mono text-xs text-neutral-slate font-bold">
+                    Project 0{safeIndex + 1} / 0{filteredProjects.length}
                   </span>
-                  <MousePointerClick className="w-3.5 h-3.5 text-deep-violet" />
                 </div>
-                <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
-                  <img
-                    src={showcaseProjects[activeProject].image}
-                    alt={showcaseProjects[activeProject].title}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-deep-violet/90 backdrop-blur-md text-[10px] font-mono font-bold text-soft-white">
-                    {showcaseProjects[activeProject].badge}
+
+                <div className="space-y-2">
+                  <h3 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
+                    {activeProject.title}
+                  </h3>
+                  <p className="text-xs font-mono text-deep-violet font-semibold uppercase tracking-wider">
+                    {activeProject.subtitle}
+                  </p>
+                </div>
+
+                <p className="card-body-text text-xs sm:text-sm leading-relaxed">
+                  {activeProject.story}
+                </p>
+
+                <div className="pt-2 space-y-2.5 border-t border-muted-lavender/40">
+                  {activeProject.highlights.map((h) => (
+                    <div key={h} className="flex items-center gap-2.5 text-xs font-semibold text-near-black">
+                      <CheckCircle2 className="w-4 h-4 text-deep-violet shrink-0" />
+                      <span>{h}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Carousel Navigation Buttons */}
+                <div className="pt-4 flex items-center justify-between border-t border-muted-lavender/40">
+                  <span className="text-[11px] font-mono uppercase text-neutral-slate">BROWSE PROJECTS</span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={handlePrev}
+                      className="w-10 h-10 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs"
+                      aria-label="Previous Project"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={handleNext}
+                      className="w-10 h-10 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs"
+                      aria-label="Next Project"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Interactive Browser Container */}
+              <div className="lg:col-span-6">
+                <div className="bg-near-black rounded-2xl p-4 shadow-2xl border border-muted-lavender/60 space-y-3">
+                  <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                    </div>
+                    <span className="font-mono text-[10px] text-soft-white/60">
+                      https://{activeProject.url}
+                    </span>
+                    <MousePointerClick className="w-3.5 h-3.5 text-deep-violet" />
+                  </div>
+                  <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
+                    <img
+                      src={activeProject.image}
+                      alt={activeProject.title}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-deep-violet/90 backdrop-blur-md text-[10px] font-mono font-bold text-soft-white">
+                      {activeProject.badge}
+                    </div>
                   </div>
                 </div>
               </div>
