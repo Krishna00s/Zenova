@@ -1,15 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { Container } from '../components/ui/Container';
 import { Badge } from '../components/ui/Badge';
-import { Button } from '../components/ui/Button';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 import {
   ChevronLeft,
   ChevronRight,
-  ArrowUpRight,
   Play,
-  Sparkles,
   Globe,
   Film,
   Megaphone,
