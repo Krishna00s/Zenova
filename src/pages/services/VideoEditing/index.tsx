@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { Badge } from '../../../components/ui/Badge';
-import { Button } from '../../../components/ui/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import { ROUTES } from '../../../constants/routes';
 import {
@@ -131,7 +130,7 @@ export const VideoEditingPage: React.FC = () => {
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             <div className="lg:col-span-6 space-y-5 sm:space-y-6">
-              <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
+              <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs bg-near-black text-soft-white border-transparent">
                 VIDEO EDITING & POST-PRODUCTION
               </Badge>
 
@@ -146,14 +145,14 @@ export const VideoEditingPage: React.FC = () => {
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a href="#video-start-form" className="w-full sm:w-auto">
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                  <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-near-black text-soft-white font-medium text-sm shadow-md hover:bg-slate-800 hover:-translate-y-0.5 transition-all cursor-pointer">
                     Start Your Video Project <ArrowRight className="w-4 h-4" />
-                  </Button>
+                  </button>
                 </a>
                 <RouterLink to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
-                  <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-slate-200 bg-slate-100/80 hover:bg-slate-200 hover:-translate-y-0.5 transition-all">
+                  <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-slate-200 bg-slate-100 text-near-black font-medium text-sm hover:bg-slate-200 hover:-translate-y-0.5 transition-all cursor-pointer">
                     Watch Featured Edits <ArrowUpRight className="w-4 h-4" />
-                  </Button>
+                  </button>
                 </RouterLink>
               </div>
             </div>
@@ -402,7 +401,7 @@ export const VideoEditingPage: React.FC = () => {
             <div key={activeProject.id} className="pt-2 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left animate-fade-in transition-all duration-500">
               <div className="lg:col-span-6 space-y-5">
                 <div className="flex items-center justify-between">
-                  <Badge variant="violet" className="text-[10px]">
+                  <Badge variant="violet" className="text-[10px] bg-near-black text-soft-white border-transparent">
                     {activeProject.badge}
                   </Badge>
                   <span className="font-mono text-xs text-neutral-slate font-bold">
@@ -670,9 +669,13 @@ export const VideoEditingPage: React.FC = () => {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:ring-2 focus:ring-slate-900/20 resize-none"
                 />
-                <Button type="submit" variant="primary" disabled={loading} className="w-full justify-center py-3.5 rounded-full shadow-md">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full justify-center py-3.5 rounded-full bg-near-black text-soft-white font-medium text-sm shadow-md hover:bg-slate-800 transition-all cursor-pointer"
+                >
                   {loading ? 'Sending Inquiry...' : 'Send Video Editing Message'}
-                </Button>
+                </button>
               </form>
             )}
           </div>
