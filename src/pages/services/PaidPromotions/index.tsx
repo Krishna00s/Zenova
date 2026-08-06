@@ -244,15 +244,15 @@ export const PaidPromotionsPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH 3D INFINITE HORIZONTAL STAGE CAROUSEL */}
+      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH LOCKED CENTER TITLE & BOTTOM MIDDLE BUTTONS */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           {/* Monumental Screen-Spanning Cardbox */}
-          <div className="w-full bg-soft-white rounded-3xl p-6 sm:p-12 lg:p-16 border border-muted-lavender/80 shadow-2xl space-y-10 relative overflow-hidden">
+          <div className="w-full bg-soft-white rounded-3xl p-6 sm:p-12 lg:p-16 border border-muted-lavender/80 shadow-2xl space-y-10 relative overflow-hidden text-center">
             {/* Background Ambient Glow */}
             <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-deep-violet/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            {/* CENTERED HEADER */}
+            {/* PERFECTLY CENTERED FIXED TITLE HEADER */}
             <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold block">
                 THE WORK SPEAKS
@@ -262,55 +262,37 @@ export const PaidPromotionsPage: React.FC = () => {
               </h2>
             </div>
 
-            {/* 3D INFINITE HORIZONTAL CAROUSEL STAGE WITH FADE-DISAPPEAR EDGES */}
-            <div className="relative w-full max-w-5xl mx-auto py-4">
-              <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
-                <div className="flex items-center justify-center gap-3 sm:gap-4 py-2 transition-all duration-500">
-                  {[-2, -1, 0, 1, 2].map((offset) => {
-                    const projectIdx = (activeIndex + offset + totalProjects * 100) % totalProjects;
-                    const proj = promoProjects[projectIdx];
+            {/* 3D INFINITE HORIZONTAL CAROUSEL STAGE (LOCKED CENTER POSITION) */}
+            <div className="w-full max-w-4xl mx-auto py-2 overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
+              <div className="flex items-center justify-center gap-2 sm:gap-4 py-2 w-full">
+                {[-2, -1, 0, 1, 2].map((offset) => {
+                  const projectIdx = (activeIndex + offset + totalProjects * 100) % totalProjects;
+                  const proj = promoProjects[projectIdx];
 
-                    const isCenter = offset === 0;
-                    const isAdjacent = Math.abs(offset) === 1;
+                  const isCenter = offset === 0;
+                  const isAdjacent = Math.abs(offset) === 1;
 
-                    return (
-                      <button
-                        key={`${proj.id}-${offset}`}
-                        onClick={() => setActiveIndex(projectIdx)}
-                        className={`transition-all duration-500 rounded-full font-semibold text-xs whitespace-nowrap px-5 py-2.5 shadow-sm border ${
-                          isCenter
-                            ? 'bg-deep-violet text-soft-white border-deep-violet scale-105 z-20 shadow-xl opacity-100'
-                            : isAdjacent
-                            ? 'bg-warm-lavender/70 text-near-black border-muted-lavender/80 scale-95 z-10 opacity-70 hover:opacity-90 hover:scale-100'
-                            : 'bg-warm-lavender/30 text-near-black/50 border-muted-lavender/40 scale-85 z-0 opacity-20 blur-[1.5px] pointer-events-none'
-                        }`}
-                      >
-                        {proj.category}
-                      </button>
-                    );
-                  })}
-                </div>
+                  return (
+                    <button
+                      key={`${proj.id}-${offset}`}
+                      onClick={() => setActiveIndex(projectIdx)}
+                      className={`transition-all duration-500 rounded-full font-semibold text-xs whitespace-nowrap px-4 sm:px-6 py-2.5 shadow-sm border ${
+                        isCenter
+                          ? 'bg-deep-violet text-soft-white border-deep-violet scale-105 z-20 shadow-xl opacity-100'
+                          : isAdjacent
+                          ? 'bg-warm-lavender/70 text-near-black border-muted-lavender/80 scale-95 z-10 opacity-70 hover:opacity-90'
+                          : 'bg-warm-lavender/30 text-near-black/50 border-muted-lavender/40 scale-85 z-0 opacity-25 blur-[1px] pointer-events-none'
+                      }`}
+                    >
+                      {proj.category}
+                    </button>
+                  );
+                })}
               </div>
-
-              {/* Navigation Arrows floating at stage sides */}
-              <button
-                onClick={handlePrev}
-                className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-soft-white/90 border border-muted-lavender/80 shadow-lg flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30"
-                aria-label="Previous Creator Collaboration"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-soft-white/90 border border-muted-lavender/80 shadow-lg flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30"
-                aria-label="Next Creator Collaboration"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
             </div>
 
-            {/* ACTIVE PROJECT DISPLAY (SLIDES WITH ANIMATION) */}
-            <div key={activeProject.id} className="pt-2 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center animate-fade-in transition-all duration-500">
+            {/* ACTIVE PROJECT DISPLAY */}
+            <div key={activeProject.id} className="pt-2 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left animate-fade-in transition-all duration-500">
               {/* Left Project Info */}
               <div className="lg:col-span-6 space-y-5">
                 <div className="flex items-center justify-between">
@@ -357,6 +339,31 @@ export const PaidPromotionsPage: React.FC = () => {
                     {activeProject.badge}
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* BOTTOM MIDDLE CAROUSEL NAVIGATION BUTTONS */}
+            <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 border-t border-muted-lavender/40 w-full text-center">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handlePrev}
+                  className="w-11 h-11 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-md active:scale-95"
+                  aria-label="Previous Creator Collaboration"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                <span className="font-mono text-xs font-bold text-near-black px-4 py-2 rounded-full bg-warm-lavender/50 border border-muted-lavender/60">
+                  Collab 0{activeIndex + 1} / 0{totalProjects}
+                </span>
+
+                <button
+                  onClick={handleNext}
+                  className="w-11 h-11 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-md active:scale-95"
+                  aria-label="Next Creator Collaboration"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
               </div>
             </div>
           </div>
