@@ -9,7 +9,7 @@ export const WorkingTogetherChapter: React.FC = () => {
   useGSAP(() => {
     const cards = containerRef.current?.querySelectorAll('.approach-card');
     if (cards && cards.length > 0 && containerRef.current) {
-      scrollRevealCards(cards, containerRef.current, { stagger: 0.12, duration: 0.9 });
+      scrollRevealCards(cards, containerRef.current, { stagger: 0.06, duration: 0.5 });
     }
   }, { scope: containerRef });
 
@@ -65,7 +65,7 @@ export const WorkingTogetherChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* 5 Column Cards - Scroll-Driven Stagger Reveal & Hover Animation */}
+        {/* 5 Column Cards - Crisp 0.5s Reveal & Snappy Hover */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
           {steps.map((item, index) => (
             <div
@@ -73,7 +73,7 @@ export const WorkingTogetherChapter: React.FC = () => {
               className="approach-card group bg-soft-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 flex flex-col justify-between"
             >
               <div className="space-y-3 sm:space-y-4">
-                {/* Natural Photography Container with Pill Badge */}
+                {/* Photo Container */}
                 <div className="w-full aspect-[4/3] sm:aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden relative group bg-warm-lavender/50">
                   <img
                     src={item.image}
