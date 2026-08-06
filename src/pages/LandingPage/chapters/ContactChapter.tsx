@@ -21,7 +21,7 @@ export const ContactChapter: React.FC = () => {
   useGSAP(() => {
     const elements = containerRef.current?.querySelectorAll('.contact-reveal');
     if (elements && elements.length > 0 && containerRef.current) {
-      scrollRevealCards(elements, containerRef.current, { stagger: 0.08, duration: 0.5 });
+      scrollRevealCards(elements, containerRef.current, { stagger: 0.08, duration: 0.75 });
     }
   }, { scope: containerRef });
 
