@@ -4,7 +4,7 @@ import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
-import { ArrowUpRight, ShieldCheck, Heart, Sparkles, Target, Users } from 'lucide-react';
+import { ArrowUpRight, ShieldCheck, Target, Users } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../animations/reveal';
 
