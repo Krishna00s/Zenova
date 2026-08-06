@@ -5,7 +5,6 @@ import { Button } from '../../../components/ui/Button';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../constants/routes';
 import {
-  Video,
   Film,
   Play,
   Music,
@@ -13,9 +12,9 @@ import {
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
-  Tv,
   Sparkles,
   Scissors,
+  Eye,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -23,7 +22,7 @@ import { submitContactInquiry } from '../../../api/contact';
 
 export const VideoEditingPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeVideo, setActiveVideo] = useState<'brand' | 'product' | 'reel'>('brand');
+  const [activeFormat, setActiveFormat] = useState<'brand' | 'ad' | 'reel'>('brand');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -51,126 +50,146 @@ export const VideoEditingPage: React.FC = () => {
     }
   };
 
-  const videoShowcases = {
+  const formatShowcases = {
     brand: {
       title: 'Echoes of Tomorrow — Brand Documentary Film',
-      tag: 'Cinematic Documentary',
-      description: 'A 4K cinematic documentary edit exploring the artisan craftsmanship behind modern architectural design. Features custom sound design, pacing, and HDR color grading.',
-      specs: ['DaVinci Resolve Studio', '4K DCI Delivery', 'Spatial Audio Mixing'],
+      subtitle: 'Cinematic Documentary & Brand Film',
+      story: 'Crafted for a luxury architectural studio. We wove raw behind-the-scenes footage into an emotional, high-end documentary film with custom audio scoring.',
+      highlights: ['Cinematic Pacing', 'Custom Sound Design', 'Rich Color Grading'],
       image: '/media/cap_video_natural.jpg',
     },
-    product: {
-      title: 'Aura Silk — Luxury Product Commercial',
-      tag: 'Commercial Advertisement',
-      description: 'High-impact 30-second commercial edit designed for broadcast television and digital advertising, emphasizing fluid product motion and color vibrancy.',
-      specs: ['Premiere Pro & After Effects', 'Macro Detail Pacing', 'Custom LUTs'],
+    ad: {
+      title: 'Aura Silk — Commercial Product Video',
+      subtitle: 'Commercial & High-Impact Ad Video',
+      story: 'Created for a premium consumer product launch. Fast-paced visual cuts and color-graded detail shots engineered to capture attention on TV and web.',
+      highlights: ['Attention-Grabbing Hook', 'Vibrant Color Grading', 'Commercial Master Export'],
       image: '/media/photo_sketch_natural.jpg',
     },
     reel: {
-      title: 'PULSE Tech — Short-Form Social Reel Series',
-      tag: 'Instagram Reels & TikTok',
-      description: 'Dynamic 9:16 short-form video edit series crafted for mobile-first engagement with kinetic captions, sound effects, and fast hook cuts.',
-      specs: ['9:16 Vertical Master', 'Kinetic Typography', 'High Retention Pacing'],
+      title: 'PULSE Tech — Short-Form Social Reels',
+      subtitle: '9:16 Vertical Video Reels & Shorts',
+      story: 'Built for high mobile audience retention on Instagram Reels and TikTok. Features dynamic kinetic captions, sound effects, and seamless loop cuts.',
+      highlights: ['9:16 Mobile Format', 'Kinetic Text Captions', 'High Viewer Retention'],
       image: '/media/cap_promo_natural.jpg',
     },
   };
 
-  const editingSuite = [
-    { name: 'DaVinci Resolve Studio', icon: Sliders, desc: 'Color Grading & Mastering' },
-    { name: 'Adobe Premiere Pro', icon: Scissors, desc: 'Non-Linear Timeline Edit' },
-    { name: 'Adobe After Effects', icon: Sparkles, desc: 'Motion Graphics & VFX' },
-    { name: 'Logic Pro X', icon: Music, desc: 'Sound Design & Audio Mix' },
-    { name: 'Cinema 4D Rendering', icon: Film, desc: '3D Titles & Visual Assets' },
-    { name: 'HDR Broadcast Master', icon: Tv, desc: 'Rec.709 & DCI-P3 Output' },
-  ];
-
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28">
-      {/* 1. HERO CHAPTER */}
-      <section className="relative w-full pb-16 sm:pb-20">
+      {/* 1. HERO STORY CHAPTER */}
+      <section className="relative w-full pb-16 sm:pb-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Headline */}
-            <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+            {/* Left Narrative */}
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               <Badge variant="violet" className="px-3.5 py-1 text-xs">
-                SERVICE VERTICAL / 02
+                VIDEO EDITING & POST-PRODUCTION
               </Badge>
+
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-editorial font-bold text-near-black tracking-tight leading-[1.08]">
-                Cinematic Storytelling & <br />
-                <span className="italic font-normal text-deep-violet">High-Impact Post-Production.</span>
+                In a world full of noise, <br />
+                <span className="italic font-normal text-deep-violet">stories move people.</span>
               </h1>
+
               <p className="card-body-text max-w-xl text-xs sm:text-sm md:text-base leading-relaxed">
-                From brand documentaries to high-converting commercial edits and short-form video reels, we craft visuals that connect, inspire, and convert.
+                Great video editing is not just cutting clips—it is about rhythm, emotion, and clarity. We take raw footage and transform it into captivating brand films, commercial ads, and high-retention short-form reels.
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
-                <a href="#video-quote-form" className="w-full sm:w-auto">
+                <a href="#video-start-form" className="w-full sm:w-auto">
                   <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md">
-                    Start Video Project <ArrowRight className="w-4 h-4" />
+                    Start Your Video Project <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
                 <Link to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
                   <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60">
-                    Watch Showreel <ArrowUpRight className="w-4 h-4" />
+                    Watch Featured Edits <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
             </div>
 
-            {/* Right Widescreen Photo Frame */}
+            {/* Right Video Timeline Studio Frame */}
             <div className="lg:col-span-5 w-full">
-              <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-muted-lavender/60 w-full aspect-[4/3] group relative">
-                <img
-                  src="/media/cap_video_natural.jpg"
-                  alt="Video Editing Post-Production Suite"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                />
+              <div className="bg-near-black rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl border border-muted-lavender/40 space-y-3">
+                {/* Timeline Header */}
+                <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-soft-white/10">
+                  <div className="flex items-center gap-2 text-soft-white/80 font-mono text-[10px]">
+                    <Film className="w-3.5 h-3.5 text-deep-violet" />
+                    <span>TIMELINE 01 / 4K MASTER</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-muted-lavender">00:01:24:12</span>
+                </div>
+
+                {/* Video Play Container */}
+                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group">
+                  <img
+                    src="/media/cap_video_natural.jpg"
+                    alt="Video Post Production Studio"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-near-black/40 backdrop-blur-[2px] flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-soft-white/90 shadow-2xl flex items-center justify-center text-deep-violet group-hover:scale-110 transition-transform">
+                      <Play className="w-6 h-6 fill-deep-violet stroke-none ml-1" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Simulated Audio Track Meters */}
+                <div className="space-y-1 pt-1">
+                  <div className="flex items-center justify-between text-[9px] font-mono text-soft-white/50">
+                    <span>AUDIO TRACK 01</span>
+                    <span>-12 dB</span>
+                  </div>
+                  <div className="h-1.5 w-full bg-soft-white/10 rounded-full overflow-hidden flex gap-1">
+                    <div className="h-full bg-deep-violet w-3/4 rounded-full" />
+                    <div className="h-full bg-purple-400 w-1/4 rounded-full" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 2. CORE CAPABILITIES MATRIX */}
+      {/* 2. OUR EDITING PHILOSOPHY */}
       <section className="py-16 sm:py-20 bg-warm-lavender/30 border-y border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-            <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-              POST-PRODUCTION CAPABILITIES
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
-              Crafted Edits for Every Screen
-            </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-5 space-y-3">
+              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
+                POST-PRODUCTION SPECS
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black leading-tight">
+                Crafting Videos That Keep <br />
+                <span className="italic font-normal text-deep-violet">Viewers Watching.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-7 space-y-4">
+              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+                Whether you need a 30-second commercial ad or a full documentary, we structure every video with strong visual hooks, clean transitions, immersive sound design, and vibrant color grading.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
             <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
               <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
-                <Film className="w-5 h-5" />
+                <Eye className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Brand Documentaries</h3>
+              <h3 className="text-lg font-editorial font-bold text-near-black">First 3-Second Hook</h3>
               <p className="card-body-text text-xs">
-                Cinematic story-driven brand films that build deep emotional trust with your audience.
+                We craft immediate visual hooks so viewers stop scrolling and watch until the end.
               </p>
             </div>
 
             <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
               <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
-                <Video className="w-5 h-5" />
+                <Scissors className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Commercial Edits</h3>
+              <h3 className="text-lg font-editorial font-bold text-near-black">Seamless Pacing</h3>
               <p className="card-body-text text-xs">
-                High-converting product videos, commercial ads, and broadcast promotional masters.
-              </p>
-            </div>
-
-            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
-                <Play className="w-5 h-5 fill-deep-violet stroke-none" />
-              </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Short-Form & Reels</h3>
-              <p className="card-body-text text-xs">
-                Fast-paced 9:16 vertical video edits engineered for Instagram Reels, Shorts, & TikTok retention.
+                Rhythmic cutting that keeps the narrative moving forward without feeling rushed.
               </p>
             </div>
 
@@ -178,77 +197,87 @@ export const VideoEditingPage: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
                 <Sliders className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Color & Sound Master</h3>
+              <h3 className="text-lg font-editorial font-bold text-near-black">Color Grading</h3>
               <p className="card-body-text text-xs">
-                Professional DaVinci Resolve color grading, noise reduction, and custom audio mixing.
+                Professional color correction that gives your footage a cinematic, high-budget look.
+              </p>
+            </div>
+
+            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+                <Music className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-editorial font-bold text-near-black">Custom Sound Design</h3>
+              <p className="card-body-text text-xs">
+                Immersive audio mixing, crisp voiceovers, and licensed background music.
               </p>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 3. FEATURED VIDEO SHOWCASES WITH INTERACTIVE TABS */}
+      {/* 3. VISUAL SHOWCASE */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="max-w-3xl mb-10 space-y-2">
             <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-              FEATURED VIDEO PROJECTS
+              THE WORK SPEAKS
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-bold text-near-black">
-              Selected Post-Production Work
+              Featured Video Formats
             </h2>
           </div>
 
           <div className="flex flex-wrap gap-3 pb-8 border-b border-muted-lavender/40">
             <button
-              onClick={() => setActiveVideo('brand')}
+              onClick={() => setActiveFormat('brand')}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeVideo === 'brand'
+                activeFormat === 'brand'
                   ? 'bg-deep-violet text-soft-white shadow-md'
                   : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
               }`}
             >
-              Echoes of Tomorrow (Brand Film)
+              Brand Documentary Film
             </button>
             <button
-              onClick={() => setActiveVideo('product')}
+              onClick={() => setActiveFormat('ad')}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeVideo === 'product'
+                activeFormat === 'ad'
                   ? 'bg-deep-violet text-soft-white shadow-md'
                   : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
               }`}
             >
-              Aura Silk (Commercial Edit)
+              Commercial Ad Video
             </button>
             <button
-              onClick={() => setActiveVideo('reel')}
+              onClick={() => setActiveFormat('reel')}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeVideo === 'reel'
+                activeFormat === 'reel'
                   ? 'bg-deep-violet text-soft-white shadow-md'
                   : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
               }`}
             >
-              PULSE Tech (Social Reel Series)
+              9:16 Social Reels & Shorts
             </button>
           </div>
 
           <div className="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6 space-y-4">
               <Badge variant="violet" className="text-[10px]">
-                {videoShowcases[activeVideo].tag}
+                {formatShowcases[activeFormat].subtitle}
               </Badge>
               <h3 className="text-2xl sm:text-3xl font-editorial font-bold text-near-black">
-                {videoShowcases[activeVideo].title}
+                {formatShowcases[activeFormat].title}
               </h3>
-              <p className="card-body-text text-xs sm:text-sm">
-                {videoShowcases[activeVideo].description}
+              <p className="card-body-text text-xs sm:text-sm leading-relaxed">
+                {formatShowcases[activeFormat].story}
               </p>
 
-              <div className="pt-4 grid grid-cols-3 gap-3 border-t border-muted-lavender/40">
-                {videoShowcases[activeVideo].specs.map((s) => (
-                  <div key={s} className="flex items-center gap-1.5 text-[11px] font-semibold text-near-black">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-deep-violet shrink-0" />
-                    <span>{s}</span>
+              <div className="pt-4 space-y-2 border-t border-muted-lavender/40">
+                {formatShowcases[activeFormat].highlights.map((h) => (
+                  <div key={h} className="flex items-center gap-2 text-xs font-semibold text-near-black">
+                    <CheckCircle2 className="w-4 h-4 text-deep-violet shrink-0" />
+                    <span>{h}</span>
                   </div>
                 ))}
               </div>
@@ -257,8 +286,8 @@ export const VideoEditingPage: React.FC = () => {
             <div className="lg:col-span-6">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/60 w-full aspect-[16/10] relative group">
                 <img
-                  src={videoShowcases[activeVideo].image}
-                  alt={videoShowcases[activeVideo].title}
+                  src={formatShowcases[activeFormat].image}
+                  alt={formatShowcases[activeFormat].title}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-near-black/30 backdrop-blur-[2px] flex items-center justify-center">
@@ -272,56 +301,67 @@ export const VideoEditingPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 4. POST-PRODUCTION SUITE MATRIX */}
-      <section className="py-16 sm:py-20 bg-soft-white border-t border-muted-lavender/40">
+      {/* 4. SIMPLE 3-STEP PROCESS */}
+      <section className="py-16 sm:py-20 bg-warm-lavender/30 border-t border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
             <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-              STUDIO TOOLING
+              SIMPLE 3-STEP PROCESS
             </span>
             <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
-              Professional Editing & Mastering Suite
+              How Video Editing Works
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {editingSuite.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div key={item.name} className="p-4 rounded-2xl bg-warm-lavender/30 border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
-                  <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <h4 className="text-xs font-bold text-near-black font-sans">{item.name}</h4>
-                  <p className="card-body-text text-[10px]">{item.desc}</p>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+              <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
+              <h3 className="text-xl font-editorial font-bold">Share Raw Footage</h3>
+              <p className="card-body-text text-xs">
+                Upload your raw video files or shoot scripts. We review your footage and outline the story rhythm.
+              </p>
+            </div>
+
+            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+              <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
+              <h3 className="text-xl font-editorial font-bold">Craft & Polish Cut</h3>
+              <p className="card-body-text text-xs">
+                We perform precise cuts, add kinetic captions, grade the color, and layer custom background music.
+              </p>
+            </div>
+
+            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+              <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
+              <h3 className="text-xl font-editorial font-bold">Review & Master Export</h3>
+              <p className="card-body-text text-xs">
+                You review the draft online, we incorporate your feedback, and deliver 4K master files ready for posting.
+              </p>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* 5. PROJECT SCOPING FORM */}
-      <section id="video-quote-form" className="py-16 sm:py-24 bg-warm-lavender/40 border-t border-muted-lavender/50">
+      {/* 5. INQUIRY FORM */}
+      <section id="video-start-form" className="py-16 sm:py-24 bg-soft-white border-t border-muted-lavender/50">
         <Container size="large" className="max-w-4xl px-6 sm:px-10">
-          <div className="bg-soft-white rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
+          <div className="bg-warm-lavender/40 rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
             <div className="text-center space-y-2">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                 KICKSTART VIDEO PROJECT
               </span>
               <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
-                Tell Us About Your Video Project
+                Have Raw Footage or a Video Concept?
               </h2>
               <p className="card-body-text text-xs sm:text-sm max-w-lg mx-auto">
-                Fill out this form and our post-production lead will respond within 24 hours.
+                Tell us about your video project. We reply within 24 hours with editing estimates and timeline proposals.
               </p>
             </div>
 
             {submitted ? (
               <div className="py-10 text-center space-y-3">
-                <CheckCircle2 className="w-12 h-12 text-deep-violet mx-auto" />
-                <h3 className="text-xl font-editorial font-bold">Request Received</h3>
-                <p className="card-body-text text-xs">We will review your video assets and send a timeline proposal.</p>
+                <Sparkles className="w-12 h-12 text-deep-violet mx-auto" />
+                <h3 className="text-xl font-editorial font-bold">Inquiry Received</h3>
+                <p className="card-body-text text-xs">We will review your video project details and contact you shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -332,7 +372,7 @@ export const VideoEditingPage: React.FC = () => {
                     placeholder="Your Name *"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                   <input
                     type="email"
@@ -340,19 +380,19 @@ export const VideoEditingPage: React.FC = () => {
                     placeholder="Your Email *"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                 </div>
                 <textarea
                   required
                   rows={4}
-                  placeholder="Describe your video editing or post-production needs *"
+                  placeholder="Describe your video editing needs (brand film, reels, commercial, etc.) *"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
                 />
-                <Button type="submit" variant="primary" disabled={loading} className="w-full justify-center py-3.5 rounded-full">
-                  {loading ? 'Submitting Proposal...' : 'Submit Video Post-Production Inquiry'}
+                <Button type="submit" variant="primary" disabled={loading} className="w-full justify-center py-3.5 rounded-full shadow-md">
+                  {loading ? 'Sending Inquiry...' : 'Send Video Editing Message'}
                 </Button>
               </form>
             )}
