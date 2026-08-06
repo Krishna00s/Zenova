@@ -27,7 +27,7 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              <p className="text-xs sm:text-sm text-neutral-slate leading-relaxed">
+              <p className="card-body-text">
                 We design and develop modern, responsive websites that load fast, rank better, and turn visitors into customers.
               </p>
 
@@ -56,10 +56,10 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* Right 3D Laptop Artwork & Showcase Cards */}
+            {/* Right 3D Tech Artwork & Showcase Cards */}
             <div className="lg:col-span-6 space-y-5">
               <div className="rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500">
-                <img src="/media/cap_web_laptop.jpg" alt="3D Laptop Web Application" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img src="/media/cap_web_engineering.jpg" alt="3D Web Engineering Dashboard" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
 
               <div className="flex items-center justify-between pt-1">
@@ -106,10 +106,10 @@ export const ProudWorkChapter: React.FC = () => {
       <Container>
         <div className="bg-soft-white rounded-3xl p-6 sm:p-10 border border-muted-lavender/60 space-y-10 shadow-xs hover:shadow-xl hover:border-deep-violet/30 transition-all duration-500">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column 3D Camera */}
+            {/* Left Column 3D Cinema Camera */}
             <div className="lg:col-span-6 space-y-5 order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500">
-                <img src="/media/camera_studio_3d.jpg" alt="3D Studio Video Camera" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img src="/media/cap_video_editing.jpg" alt="3D Cinema Video Editing Suite" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
 
               <div className="flex items-center justify-between pt-1">
@@ -167,7 +167,7 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              <p className="text-xs sm:text-sm text-neutral-slate leading-relaxed">
+              <p className="card-body-text">
                 From brand films to short-form content, we craft visuals that connect, inspire, and convert.
               </p>
 
@@ -216,7 +216,7 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              <p className="text-xs sm:text-sm text-neutral-slate leading-relaxed">
+              <p className="card-body-text">
                 We create high-performing ad videos and creatives, then publish and manage them across major platforms to maximize reach and ROI.
               </p>
 
@@ -251,7 +251,7 @@ export const ProudWorkChapter: React.FC = () => {
             {/* Right Artwork & Analytics Cards */}
             <div className="lg:col-span-6 space-y-5">
               <div className="rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500">
-                <img src="/media/cap_ads_phone.jpg" alt="3D Smartphone Ad Creation" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img src="/media/cap_ad_creation.jpg" alt="3D Ad Creation Campaign Dashboard" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -301,20 +301,20 @@ export const ProudWorkChapter: React.FC = () => {
             {/* Left Collab Cards */}
             <div className="lg:col-span-6 space-y-5 order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500">
-                <img src="/media/cap_promo_megaphone.jpg" alt="3D Megaphone Paid Promotions" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img src="/media/cap_paid_promotions.jpg" alt="3D Paid Promotions Broadcast Studio" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-warm-lavender rounded-2xl p-4 border border-muted-lavender space-y-1.5 hover:-translate-y-1 hover:shadow-lg transition-all">
                   <Badge variant="lavender" className="text-[10px]">Instagram Collaboration</Badge>
                   <h4 className="text-sm font-editorial font-bold text-near-black pt-1">Fashion Brand x Creator</h4>
-                  <p className="text-[10px] text-neutral-slate">Targeted creator outreach & growth</p>
+                  <p className="card-body-text text-[10px]">Targeted creator outreach & growth</p>
                 </div>
 
                 <div className="bg-warm-lavender rounded-2xl p-4 border border-muted-lavender space-y-1.5 hover:-translate-y-1 hover:shadow-lg transition-all">
                   <Badge variant="lavender" className="text-[10px]">YouTube Collaboration</Badge>
                   <h4 className="text-sm font-editorial font-bold text-near-black pt-1">Skincare Brand x Influencer</h4>
-                  <p className="text-[10px] text-neutral-slate">Authentic product integration</p>
+                  <p className="card-body-text text-[10px]">Authentic product integration</p>
                 </div>
               </div>
             </div>
@@ -333,7 +333,7 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              <p className="text-xs sm:text-sm text-neutral-slate leading-relaxed">
+              <p className="card-body-text">
                 We connect your brand with the right influencers and creators to promote your products and deliver meaningful results.
               </p>
 

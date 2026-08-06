@@ -23,28 +23,28 @@ export const CapabilitiesChapter: React.FC = () => {
       title: 'Web Development',
       description: 'High-performance websites and web applications that are fast, secure and built for scale.',
       link: ROUTES.SERVICES.WEB_DEV,
-      image: '/media/cap_web_laptop.jpg',
+      image: '/media/cap_web_engineering.jpg',
     },
     {
       icon: Video,
       title: 'Video Editing',
       description: 'Story-driven editing that captures attention and communicates your message powerfully.',
       link: ROUTES.SERVICES.VIDEO_EDITING,
-      image: '/media/camera_studio_3d.jpg',
+      image: '/media/cap_video_editing.jpg',
     },
     {
       icon: Megaphone,
       title: 'Ad Creation & Distribution',
-      description: 'We create ad videos and creatives, then publish and manage them across platforms like Facebook, Instagram, and more.',
+      description: 'We create ad videos and creatives, then publish and manage them across platforms like Meta, Google, & TikTok.',
       link: ROUTES.SERVICES.AD_CREATION,
-      image: '/media/cap_ads_phone.jpg',
+      image: '/media/cap_ad_creation.jpg',
     },
     {
       icon: Share2,
       title: 'Paid Promotions & Collaborations',
       description: 'We connect your brand with the right influencers and creators to promote your products and drive results.',
       link: ROUTES.SERVICES.PAID_PROMOTIONS,
-      image: '/media/cap_promo_megaphone.jpg',
+      image: '/media/cap_paid_promotions.jpg',
     },
   ];
 
@@ -59,7 +59,7 @@ export const CapabilitiesChapter: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-near-black tracking-tight">
             What We Do. <span className="italic font-normal text-deep-violet">How We Do It.</span>
           </h2>
-          <p className="text-sm sm:text-base text-neutral-slate font-sans leading-relaxed">
+          <p className="card-body-text max-w-2xl mx-auto">
             From building digital experiences to driving real-world growth, we craft solutions that deliver measurable impact.
           </p>
         </div>
@@ -84,13 +84,13 @@ export const CapabilitiesChapter: React.FC = () => {
                     <h3 className="text-xl font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-neutral-slate leading-relaxed">
+                    <p className="card-body-text text-xs sm:text-sm">
                       {item.description}
                     </p>
                   </div>
 
-                  {/* High-res 3D Image Asset */}
-                  <div className="pt-2 rounded-2xl overflow-hidden aspect-[4/3] bg-warm-lavender/50">
+                  {/* High-res Professional Tech 3D Asset */}
+                  <div className="pt-2 rounded-2xl overflow-hidden aspect-[4/3] bg-warm-lavender/50 border border-muted-lavender/40">
                     <img
                       src={item.image}
                       alt={item.title}
