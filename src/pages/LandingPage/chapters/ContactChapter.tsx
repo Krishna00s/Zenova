@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { Button } from '../../../components/ui/Button';
 import { Mail, Phone, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { submitContactInquiry } from '../../../api/contact';
+import { useGSAP } from '@gsap/react';
+import { scrollRevealCards } from '../../../animations/reveal';
 
 export const ContactChapter: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -14,6 +17,13 @@ export const ContactChapter: React.FC = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useGSAP(() => {
+    const elements = containerRef.current?.querySelectorAll('.contact-reveal');
+    if (elements && elements.length > 0 && containerRef.current) {
+      scrollRevealCards(elements, containerRef.current, { stagger: 0.15, duration: 1.0 });
+    }
+  }, { scope: containerRef });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,11 +36,11 @@ export const ContactChapter: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full bg-warm-lavender/40 text-near-black py-16 sm:py-20 md:py-28 border-t border-muted-lavender/50">
+    <section ref={containerRef} className="relative w-full bg-warm-lavender/40 text-near-black py-16 sm:py-20 md:py-28 border-t border-muted-lavender/50">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Narrative Column */}
-          <div className="lg:col-span-5 space-y-5">
+          <div className="lg:col-span-5 space-y-5 contact-reveal">
             <div className="space-y-2.5">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                 LET'S MAKE IT REAL
@@ -46,10 +56,10 @@ export const ContactChapter: React.FC = () => {
               </p>
             </div>
 
-            {/* 3D Tech Agency Studio Reception Asset & Contact Cards */}
+            {/* Natural Agency Studio Architecture & Contact Cards */}
             <div className="space-y-4 pt-1 w-full">
               <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] max-w-full lg:max-w-xs group hover:scale-[1.01] transition-transform duration-500 relative">
-                <img src="/media/contact_agency_studio.jpg" alt="3D Agency Studio Architecture" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <img src="/media/contact_studio_natural.jpg" alt="Zenova Agency Studio Architecture" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
@@ -81,7 +91,7 @@ export const ContactChapter: React.FC = () => {
           </div>
 
           {/* Right Glassmorphic Contact Form Column */}
-          <div className="lg:col-span-7 w-full">
+          <div className="lg:col-span-7 w-full contact-reveal">
             <div className="bg-soft-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-muted-lavender/80 shadow-xl space-y-5">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
