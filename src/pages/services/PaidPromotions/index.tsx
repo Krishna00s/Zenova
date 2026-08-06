@@ -67,7 +67,7 @@ export const PaidPromotionsPage: React.FC = () => {
       subtitle: 'Instagram & TikTok Creator Collaborations',
       story: 'Coordinated 15 fashion creators for authentic product unboxing reels, styling stories, and creator whitelisting rights for paid Meta ads.',
       highlights: ['Authentic Creator Reviews', 'Whitelisting Rights For Ads', 'Trackable Creator Links'],
-      image: '/media/cap_promo_natural.jpg',
+      image: '/media/cap_paid_promotions.jpg',
       badge: 'FASHION COLLAB',
     },
     {
@@ -77,7 +77,7 @@ export const PaidPromotionsPage: React.FC = () => {
       subtitle: 'YouTube & IG Story Product Integrations',
       story: 'Handpicked 10 beauty creators for long-form skincare tutorial integrations and Instagram Story promo discount codes.',
       highlights: ['Dedicated Tutorial Videos', 'Trackable Promo Discount Codes', 'Complete Asset Usage Rights'],
-      image: '/media/contact_studio_natural.jpg',
+      image: '/media/contact_lavender_vase.jpg',
       badge: 'BEAUTY COLLAB',
     },
     {
@@ -87,7 +87,7 @@ export const PaidPromotionsPage: React.FC = () => {
       subtitle: 'Tech Creator Review & Whitelisting Boost',
       story: 'Paired a hardware tech brand with top 8 tech review creators for in-depth unboxing videos and whitelisted Instagram Reel boosting.',
       highlights: ['8 Vetted Tech Reviewers', 'Whitelisted Instagram Reel Ad Boost', 'High Engagement Retention'],
-      image: '/media/hero_digital_agency_3d.jpg',
+      image: '/media/hero_natural_agency.jpg',
       badge: 'TECH COLLAB',
     },
     {
@@ -97,7 +97,7 @@ export const PaidPromotionsPage: React.FC = () => {
       subtitle: 'Lifestyle Micro-Influencer Campaign',
       story: 'Activated 20 niche wellness creators for daily lifestyle routine integrations, stories, and trackable affiliate discount codes.',
       highlights: ['20 Active Micro-Creators', 'Daily Routine Integrations', 'Affiliate Discount Tracking'],
-      image: '/media/photo_sketch_natural.jpg',
+      image: '/media/photo_evolve_plant.jpg',
       badge: 'WELLNESS COLLAB',
     },
   ];
@@ -165,7 +165,7 @@ export const PaidPromotionsPage: React.FC = () => {
 
                 <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
                   <img
-                    src="/media/cap_promo_natural.jpg"
+                    src="/media/cap_paid_promotions.jpg"
                     alt="Creator Promotion Broadcast Studio"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
@@ -224,7 +224,6 @@ export const PaidPromotionsPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            {/* Card 1: Vetted Creators Graphic */}
             <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10 text-soft-white">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -245,7 +244,6 @@ export const PaidPromotionsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 2: End-to-End Management Graphic */}
             <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-warm-lavender/60 p-3 flex flex-col justify-between border border-muted-lavender/60">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -265,7 +263,6 @@ export const PaidPromotionsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 3: Quality Review Graphic */}
             <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10 text-soft-white">
                 <div className="flex items-center justify-between text-[9px] font-mono text-green-400 font-bold">
@@ -286,7 +283,6 @@ export const PaidPromotionsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 4: Ad Whitelisting Graphic */}
             <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 flex flex-col justify-between shadow-xs">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -522,7 +518,6 @@ export const PaidPromotionsPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Step 1 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -543,7 +538,6 @@ export const PaidPromotionsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Step 2 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-near-black/95 p-3 space-y-2 text-soft-white relative overflow-hidden border border-soft-white/10 flex flex-col justify-between">
                 <div className="flex items-center justify-between text-[9px] font-mono text-green-400">
@@ -564,7 +558,6 @@ export const PaidPromotionsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Step 3 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">

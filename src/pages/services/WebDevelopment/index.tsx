@@ -71,7 +71,7 @@ export const WebDevelopmentPage: React.FC = () => {
       subtitle: 'E-Commerce & High-Conversion Shopping Engine',
       story: 'Designed for an international luxury fashion house. We engineered a sub-second e-commerce experience with dynamic cart transitions, fluid mobile navigation, and custom Stripe checkout integration.',
       highlights: ['Sub-second Page Load Speed', 'Mobile-First Touch Architecture', 'Custom Checkout Engine'],
-      image: '/media/cap_web_natural.jpg',
+      image: '/media/cap_web_laptop.jpg',
       url: 'auraatelier.com',
       badge: 'LUXURY E-COMMERCE',
       tagline: 'High-Fashion Digital Flagship',
@@ -83,7 +83,7 @@ export const WebDevelopmentPage: React.FC = () => {
       subtitle: 'Real-Time Financial Analytics Dashboard',
       story: 'Engineered for a high-growth fintech startup. We transformed complex real-time market data into a clean, modern web application with dark-mode UI and sub-50ms render latency.',
       highlights: ['Real-Time Data Streaming', 'Dark & Light Mode Toggle', 'Sub-50ms Render Latency'],
-      image: '/media/photo_create_natural.jpg',
+      image: '/media/cap_web_engineering.jpg',
       url: 'luminaapp.io',
       badge: 'FINTECH WEB APP',
       tagline: 'Sub-50ms Financial Terminal',
@@ -95,7 +95,7 @@ export const WebDevelopmentPage: React.FC = () => {
       subtitle: 'Editorial Portfolio & Headless CMS',
       story: 'Crafted for an international architectural practice. We let high-resolution photography breathe with 60fps fluid scroll transitions and quiet editorial typography.',
       highlights: ['60fps Smooth Scroll Motion', 'Editorial Typography Triad', 'Headless CMS Integration'],
-      image: '/media/photo_launch_natural.jpg',
+      image: '/media/photo_launch_review.jpg',
       url: 'vanguardstudio.arch',
       badge: 'EDITORIAL CMS',
       tagline: 'Architectural Storytelling Engine',
@@ -107,7 +107,7 @@ export const WebDevelopmentPage: React.FC = () => {
       subtitle: 'Enterprise Workspace & User Portal',
       story: 'Built for an enterprise cloud platform. Features row-level security authentication, multi-tenant workspace management, and responsive dashboard analytics.',
       highlights: ['Row-Level Security Auth', 'Multi-Tenant Workspaces', 'Responsive Metric Cards'],
-      image: '/media/photo_understand_natural.jpg',
+      image: '/media/photo_create_ui.jpg',
       url: 'krona.cloud',
       badge: 'ENTERPRISE SAAS',
       tagline: 'Multi-Tenant Cloud Workspace',
@@ -119,7 +119,7 @@ export const WebDevelopmentPage: React.FC = () => {
       subtitle: 'Design System & Component Library',
       story: 'Created for a fast-scaling product design team. Includes 50+ reusable React tokens, accessible WCAG contrast compliance, and automated Storybook docs.',
       highlights: ['50+ Reusable Tokens', 'WCAG AAA Accessibility', 'Automated Storybook Hub'],
-      image: '/media/photo_sketch_natural.jpg',
+      image: '/media/photo_sketch_wireframe.jpg',
       url: 'aethel.design',
       badge: 'DESIGN TOKENS',
       tagline: 'Reusable React UI Tokens',
@@ -194,8 +194,8 @@ export const WebDevelopmentPage: React.FC = () => {
 
                 <div className="rounded-xl overflow-hidden aspect-[16/10] relative border border-muted-lavender/40 shadow-inner group">
                   <img
-                    src="/media/cap_web_natural.jpg"
-                    alt="Web Application Showcase Desktop"
+                    src="/media/cap_web_engineering.jpg"
+                    alt="Web Engineering Framework Desktop"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-near-black/60 via-transparent to-transparent flex items-end justify-between p-4">
@@ -211,7 +211,7 @@ export const WebDevelopmentPage: React.FC = () => {
                   <div className="w-10 h-2 bg-soft-white/20 rounded-full mx-auto mb-2" />
                   <div className="rounded-xl overflow-hidden aspect-[9/16] relative border border-soft-white/10">
                     <img
-                      src="/media/photo_sketch_natural.jpg"
+                      src="/media/photo_sketch_wireframe.jpg"
                       alt="Mobile App Responsive UI"
                       className="w-full h-full object-cover"
                     />
@@ -281,9 +281,7 @@ export const WebDevelopmentPage: React.FC = () => {
             </div>
           </div>
 
-          {/* VISUAL GRAPHIC CARDS */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            {/* Card 1: Speed Meter Graphic */}
             <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10">
                 <div className="flex items-center justify-between text-[9px] font-mono text-soft-white/60">
@@ -307,7 +305,6 @@ export const WebDevelopmentPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 2: Mobile Graphic */}
             <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-warm-lavender/60 p-3 flex items-center justify-center border border-muted-lavender/60 relative overflow-hidden">
                 <div className="w-12 h-20 bg-near-black rounded-lg border border-soft-white/20 p-1 flex flex-col justify-between shadow-md">
@@ -330,7 +327,6 @@ export const WebDevelopmentPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 3: SEO Graphic */}
             <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 flex flex-col justify-between shadow-xs">
                 <div className="flex items-center gap-2 text-[10px] text-blue-600 font-sans font-semibold">
@@ -353,7 +349,6 @@ export const WebDevelopmentPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 4: CMS Graphic */}
             <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10 text-soft-white">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet">
@@ -609,7 +604,6 @@ export const WebDevelopmentPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Step 1 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -632,7 +626,6 @@ export const WebDevelopmentPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Step 2 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-near-black/95 p-3 space-y-2 text-soft-white relative overflow-hidden border border-soft-white/10">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet">
@@ -654,7 +647,6 @@ export const WebDevelopmentPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Step 3 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
