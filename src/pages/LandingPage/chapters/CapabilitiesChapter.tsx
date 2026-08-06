@@ -50,7 +50,7 @@ export const CapabilitiesChapter: React.FC = () => {
 
   return (
     <section ref={containerRef} className="relative w-full bg-warm-lavender/30 text-near-black py-16 sm:py-20 md:py-28 border-y border-muted-lavender/40">
-      <Container size="full" className="max-w-[1536px] px-4 sm:px-6 lg:px-8">
+      <Container size="large" className="max-w-7xl px-8 sm:px-12 lg:px-16">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3 px-2">
           <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -64,7 +64,7 @@ export const CapabilitiesChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* Expanded Full-Width Cards Grid */}
+        {/* Balanced Cards Grid with Elegant Outer Margins */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-stretch w-full">
           {capabilities.map((item, index) => {
             const Icon = item.icon;
@@ -89,7 +89,7 @@ export const CapabilitiesChapter: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* Wide Widescreen Photo Frame (Spans Full Card Canvas) */}
+                  {/* Widescreen Photo Frame */}
                   <div className="pt-1 rounded-xl sm:rounded-2xl overflow-hidden w-full aspect-[16/10] bg-warm-lavender/50 border border-muted-lavender/40 relative">
                     <img
                       src={item.image}
