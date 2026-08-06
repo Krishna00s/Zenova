@@ -18,11 +18,11 @@ import { scrollRevealCards } from '../../../animations/reveal';
 export const ProudWorkChapter: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Carousel active indices for each section (5 cards each)
-  const [webIndex, setWebIndex] = useState(0);
-  const [videoIndex, setVideoIndex] = useState(0);
-  const [adIndex, setAdIndex] = useState(0);
-  const [promoIndex, setPromoIndex] = useState(0);
+  // Carousel active indices set to middle card (index 2 of 5) by default!
+  const [webIndex, setWebIndex] = useState(2);
+  const [videoIndex, setVideoIndex] = useState(2);
+  const [adIndex, setAdIndex] = useState(2);
+  const [promoIndex, setPromoIndex] = useState(2);
 
   useGSAP(() => {
     const cards = containerRef.current?.querySelectorAll('.showcase-card');
@@ -208,7 +208,7 @@ export const ProudWorkChapter: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative w-full bg-soft-white text-near-black py-16 sm:py-20 md:py-28 space-y-16 sm:space-y-20 md:space-y-24">
+    <section ref={containerRef} className="relative w-full bg-soft-white text-near-black py-32 sm:py-44 md:py-56 space-y-32 sm:space-y-44 md:space-y-56">
       {/* 01 WEB ENGINEERING SHOWCASE */}
       <Container>
         <div className="showcase-card bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
@@ -304,7 +304,7 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 5-Card Interactive Carousel Grid */}
+            {/* 5-Card Carousel Grid with 25% Subtle Highlight on Middle Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {webCards.map((card, idx) => {
                 const isActive = idx === webIndex;
@@ -313,24 +313,24 @@ export const ProudWorkChapter: React.FC = () => {
                     key={card.id}
                     to={card.link}
                     onClick={() => setWebIndex(idx)}
-                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left ${
+                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left cursor-pointer ${
                       isActive
-                        ? 'bg-near-black text-soft-white border-near-black shadow-xl scale-[1.02] z-10'
-                        : 'bg-soft-white text-near-black border-muted-lavender/80 hover:border-deep-violet/40 hover:-translate-y-1 shadow-xs'
+                        ? 'bg-[#3B1F52]/15 border-deep-violet/40 shadow-md ring-1 ring-deep-violet/30 scale-[1.02] z-10'
+                        : 'bg-soft-white/90 text-near-black border-muted-lavender/70 hover:border-deep-violet/30 hover:-translate-y-0.5 shadow-xs opacity-90'
                     }`}
                   >
                     <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/40">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/90 text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/80 text-soft-white text-[8px] font-mono font-bold">
                           {card.badge}
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className={`text-sm font-editorial font-bold ${isActive ? 'text-soft-white' : 'text-near-black'}`}>
+                        <h4 className="text-sm font-editorial font-bold text-near-black">
                           {card.title}
                         </h4>
-                        <p className={`card-body-text text-[11px] leading-relaxed ${isActive ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
+                        <p className="card-body-text text-[11px] leading-relaxed">
                           {card.desc}
                         </p>
                       </div>
@@ -343,7 +343,7 @@ export const ProudWorkChapter: React.FC = () => {
         </div>
       </Container>
 
-      {/* 02 VIDEO PRODUCTION SHOWCASE (Design Pattern Alternation: Image Left, Text Right) */}
+      {/* 02 VIDEO PRODUCTION SHOWCASE */}
       <Container>
         <div className="showcase-card bg-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
           {/* Top Row: Left Main Image + Right Narrative (Padded & Spacious) */}
@@ -368,7 +368,7 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Narrative Column (Padded from top & spacious) */}
+            {/* Right Narrative Column */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6 order-1 lg:order-2">
               <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -411,7 +411,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row (Full Width / Centered Middle): Featured Edits 5-Card Carousel */}
+          {/* Bottom Row: 5-Card Carousel */}
           <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
             <div className="flex items-center justify-between">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
@@ -437,7 +437,7 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 5-Card Interactive Carousel Grid */}
+            {/* 5-Card Carousel Grid with 25% Subtle Highlight on Middle Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {videoCards.map((card, idx) => {
                 const isActive = idx === videoIndex;
@@ -446,16 +446,16 @@ export const ProudWorkChapter: React.FC = () => {
                     key={card.id}
                     to={card.link}
                     onClick={() => setVideoIndex(idx)}
-                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left ${
+                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left cursor-pointer ${
                       isActive
-                        ? 'bg-near-black text-soft-white border-near-black shadow-xl scale-[1.02] z-10'
-                        : 'bg-warm-lavender/40 text-near-black border-muted-lavender/80 hover:border-deep-violet/40 hover:-translate-y-1 shadow-xs'
+                        ? 'bg-[#3B1F52]/15 border-deep-violet/40 shadow-md ring-1 ring-deep-violet/30 scale-[1.02] z-10'
+                        : 'bg-warm-lavender/40 text-near-black border-muted-lavender/70 hover:border-deep-violet/30 hover:-translate-y-0.5 shadow-xs opacity-90'
                     }`}
                   >
                     <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/40 group">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50 group">
                         <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/90 text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/80 text-soft-white text-[8px] font-mono font-bold">
                           {card.badge}
                         </div>
                         <div className="absolute bottom-2 right-2 w-6 h-6 rounded-full bg-soft-white/90 flex items-center justify-center">
@@ -463,10 +463,10 @@ export const ProudWorkChapter: React.FC = () => {
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className={`text-sm font-editorial font-bold ${isActive ? 'text-soft-white' : 'text-near-black'}`}>
+                        <h4 className="text-sm font-editorial font-bold text-near-black">
                           {card.title}
                         </h4>
-                        <p className={`card-body-text text-[11px] leading-relaxed ${isActive ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
+                        <p className="card-body-text text-[11px] leading-relaxed">
                           {card.desc}
                         </p>
                       </div>
@@ -479,12 +479,11 @@ export const ProudWorkChapter: React.FC = () => {
         </div>
       </Container>
 
-      {/* 03 AD CREATIVES & DISTRIBUTION SHOWCASE (Text Left, Image Right) */}
+      {/* 03 AD CREATIVES & DISTRIBUTION SHOWCASE */}
       <Container>
         <div className="showcase-card bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
-          {/* Top Row: Left Narrative (Padded & Spacious) + Right Main Image */}
+          {/* Top Row: Left Narrative + Right Image */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
-            {/* Left Narrative Column */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -530,7 +529,6 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Main Dedicated Image */}
             <div className="lg:col-span-6 w-full">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img
@@ -551,7 +549,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row (Full Width / Centered Middle): Featured Campaigns 5-Card Carousel */}
+          {/* Bottom Row: 5-Card Carousel */}
           <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
             <div className="flex items-center justify-between">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
@@ -577,7 +575,7 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 5-Card Interactive Carousel Grid */}
+            {/* 5-Card Carousel Grid with 25% Subtle Highlight on Middle Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {adCards.map((card, idx) => {
                 const isActive = idx === adIndex;
@@ -586,24 +584,24 @@ export const ProudWorkChapter: React.FC = () => {
                     key={card.id}
                     to={card.link}
                     onClick={() => setAdIndex(idx)}
-                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left ${
+                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left cursor-pointer ${
                       isActive
-                        ? 'bg-near-black text-soft-white border-near-black shadow-xl scale-[1.02] z-10'
-                        : 'bg-soft-white text-near-black border-muted-lavender/80 hover:border-deep-violet/40 hover:-translate-y-1 shadow-xs'
+                        ? 'bg-[#3B1F52]/15 border-deep-violet/40 shadow-md ring-1 ring-deep-violet/30 scale-[1.02] z-10'
+                        : 'bg-soft-white/90 text-near-black border-muted-lavender/70 hover:border-deep-violet/30 hover:-translate-y-0.5 shadow-xs opacity-90'
                     }`}
                   >
                     <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/40">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/90 text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/80 text-soft-white text-[8px] font-mono font-bold">
                           {card.badge}
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className={`text-sm font-editorial font-bold ${isActive ? 'text-soft-white' : 'text-near-black'}`}>
+                        <h4 className="text-sm font-editorial font-bold text-near-black">
                           {card.title}
                         </h4>
-                        <p className={`card-body-text text-[11px] leading-relaxed ${isActive ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
+                        <p className="card-body-text text-[11px] leading-relaxed">
                           {card.desc}
                         </p>
                       </div>
@@ -616,12 +614,11 @@ export const ProudWorkChapter: React.FC = () => {
         </div>
       </Container>
 
-      {/* 04 CREATOR PROMOTIONS SHOWCASE (Design Pattern Alternation: Image Left, Text Right) */}
+      {/* 04 CREATOR PROMOTIONS SHOWCASE */}
       <Container>
         <div className="showcase-card bg-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
-          {/* Top Row: Left Main Image + Right Narrative (Padded & Spacious) */}
+          {/* Top Row: Left Image + Right Narrative */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
-            {/* Left Main Dedicated Image */}
             <div className="lg:col-span-6 w-full order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img
@@ -636,7 +633,6 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Narrative Column (Padded from top & spacious) */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6 order-1 lg:order-2">
               <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -679,7 +675,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row (Full Width / Centered Middle): Featured Creator Networks 5-Card Carousel */}
+          {/* Bottom Row: 5-Card Carousel */}
           <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
             <div className="flex items-center justify-between">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
@@ -705,7 +701,7 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 5-Card Interactive Carousel Grid */}
+            {/* 5-Card Carousel Grid with 25% Subtle Highlight on Middle Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {promoCards.map((card, idx) => {
                 const isActive = idx === promoIndex;
@@ -714,24 +710,24 @@ export const ProudWorkChapter: React.FC = () => {
                     key={card.id}
                     to={card.link}
                     onClick={() => setPromoIndex(idx)}
-                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left ${
+                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left cursor-pointer ${
                       isActive
-                        ? 'bg-near-black text-soft-white border-near-black shadow-xl scale-[1.02] z-10'
-                        : 'bg-warm-lavender/40 text-near-black border-muted-lavender/80 hover:border-deep-violet/40 hover:-translate-y-1 shadow-xs'
+                        ? 'bg-[#3B1F52]/15 border-deep-violet/40 shadow-md ring-1 ring-deep-violet/30 scale-[1.02] z-10'
+                        : 'bg-warm-lavender/40 text-near-black border-muted-lavender/70 hover:border-deep-violet/30 hover:-translate-y-0.5 shadow-xs opacity-90'
                     }`}
                   >
                     <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/40">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/90 text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/80 text-soft-white text-[8px] font-mono font-bold">
                           {card.badge}
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className={`text-sm font-editorial font-bold ${isActive ? 'text-soft-white' : 'text-near-black'}`}>
+                        <h4 className="text-sm font-editorial font-bold text-near-black">
                           {card.title}
                         </h4>
-                        <p className={`card-body-text text-[11px] leading-relaxed ${isActive ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
+                        <p className="card-body-text text-[11px] leading-relaxed">
                           {card.desc}
                         </p>
                       </div>

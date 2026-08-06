@@ -69,22 +69,22 @@ export const HumanTrustChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 3 (Middle Tall Portrait Column) */}
-          <div className="lg:col-span-4 bg-gradient-to-b from-deep-violet via-purple-900 to-near-black text-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[380px] sm:min-h-[440px]">
+          {/* Card 3 (Middle Dark Purple Craftsmanship Column - High Text Contrast Fix) */}
+          <div className="lg:col-span-4 bg-gradient-to-b from-[#2E1543] via-[#3B1F52] to-[#1C0E2B] text-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[380px] sm:min-h-[440px] border border-white/10">
             <div className="space-y-3 sm:space-y-4">
-              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-muted-lavender">Craftsmanship</span>
-              <h3 className="text-2xl sm:text-3xl font-editorial font-bold leading-tight">
+              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#E2D7ED] font-semibold">Craftsmanship</span>
+              <h3 className="text-2xl sm:text-3xl font-editorial font-bold leading-tight text-white">
                 We sweat <br />
-                <span className="italic font-normal text-muted-lavender">the small stuff.</span>
+                <span className="italic font-normal text-[#E2D7ED]">the small stuff.</span>
               </h3>
-              <p className="card-body-text text-soft-white/80 text-xs">
+              <p className="text-xs sm:text-sm text-[#FAFAFA] font-sans leading-relaxed opacity-95">
                 Because details are what separate good from unforgettable.
               </p>
             </div>
 
-            <div className="pt-6 border-t border-muted-lavender/20 space-y-2">
-              <h4 className="text-xl sm:text-2xl font-editorial font-bold">Clear process. <br /><span className="italic font-normal text-muted-lavender">Peace of mind.</span></h4>
-              <p className="card-body-text text-soft-white/80 text-xs">
+            <div className="pt-6 border-t border-white/20 space-y-2">
+              <h4 className="text-xl sm:text-2xl font-editorial font-bold text-white">Clear process. <br /><span className="italic font-normal text-[#E2D7ED]">Peace of mind.</span></h4>
+              <p className="text-xs sm:text-sm text-[#FAFAFA] font-sans leading-relaxed opacity-95">
                 You'll always know what's happening, what's next, and who's working on it.
               </p>
             </div>
@@ -94,3 +94,5 @@ export const HumanTrustChapter: React.FC = () => {
     </section>
   );
 };
+
+export default HumanTrustChapter;
