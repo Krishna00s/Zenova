@@ -69,7 +69,7 @@ export const Navbar: React.FC = () => {
             About
           </Link>
 
-          {/* Capabilities Hover Dropdown */}
+          {/* Services Hover Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setCapabilitiesDropdown(true)}
@@ -81,7 +81,7 @@ export const Navbar: React.FC = () => {
                 location.pathname.startsWith('/services') ? 'text-deep-violet font-semibold' : 'text-near-black/70 hover:text-deep-violet'
               }`}
             >
-              <span>Capabilities</span>
+              <span>Services</span>
               <ChevronDown className="w-3.5 h-3.5" />
             </Link>
 
@@ -159,9 +159,9 @@ export const Navbar: React.FC = () => {
             About
           </Link>
 
-          {/* Capabilities Submenu on Mobile */}
+          {/* Services Submenu on Mobile */}
           <div className="space-y-2 py-2 border-b border-muted-lavender/40">
-            <span className="text-xs font-mono uppercase text-deep-violet font-semibold">Capabilities</span>
+            <span className="text-xs font-mono uppercase text-deep-violet font-semibold">Services</span>
             <div className="pl-3 space-y-2 pt-1">
               {serviceSubmenu.map((item) => (
                 <Link

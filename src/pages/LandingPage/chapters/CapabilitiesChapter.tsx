@@ -54,7 +54,7 @@ export const CapabilitiesChapter: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3 px-2">
           <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-            CAPABILITIES THROUGH WORK
+            SERVICES THROUGH WORK
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-near-black tracking-tight">
             What We Do. <span className="italic font-normal text-deep-violet">How We Do It.</span>
