@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { Button } from '../../../components/ui/Button';
-import { Mail, Phone, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, ArrowUpRight, CheckCircle2, ChevronDown, Check } from 'lucide-react';
 import { submitContactInquiry } from '../../../api/contact';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -15,6 +15,7 @@ export const ContactChapter: React.FC = () => {
     message: '',
   });
 
+  const [selectOpen, setSelectOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -24,6 +25,17 @@ export const ContactChapter: React.FC = () => {
       scrollRevealCards(elements, containerRef.current, { stagger: 0.08, duration: 0.5 });
     }
   }, { scope: containerRef });
+
+  const serviceOptions = [
+    { value: 'web-development', label: 'Web Development' },
+    { value: 'video-editing', label: 'Video Editing' },
+    { value: 'ad-creation', label: 'Ad Creation & Distribution' },
+    { value: 'paid-promotions', label: 'Paid Promotions & Collaborations' },
+    { value: 'all-services', label: 'Multiple / Full Ecosystem Partnership' },
+  ];
+
+  const currentOptionLabel =
+    serviceOptions.find((opt) => opt.value === formData.serviceInterest)?.label || 'Web Development';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,34 +68,42 @@ export const ContactChapter: React.FC = () => {
               </p>
             </div>
 
-            {/* Natural Agency Studio Architecture & Contact Cards */}
+            {/* Natural Agency Studio Architecture & Friendly Email/Phone Cards */}
             <div className="space-y-4 pt-1 w-full">
               <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] max-w-full lg:max-w-xs group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img src="/media/contact_studio_natural.jpg" alt="Zenova Agency Studio Architecture" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
-                <div className="bg-soft-white rounded-2xl p-4 sm:p-5 border border-muted-lavender/60 shadow-xs flex items-center gap-4 hover:-translate-y-1 hover:shadow-md transition-all">
-                  <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center shrink-0">
+                {/* Email Card with Aesthetic Friendly Typography */}
+                <div className="bg-soft-white/90 rounded-2xl p-4 border border-muted-lavender/70 shadow-xs flex items-center gap-3.5 hover:-translate-y-0.5 hover:shadow-md transition-all">
+                  <div className="w-9 h-9 rounded-full bg-warm-lavender text-deep-violet flex items-center justify-center shrink-0 shadow-xs">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <div>
-                    <a href="mailto:hello@zenova.studio" className="text-sm font-editorial font-bold text-near-black hover:text-deep-violet transition-colors">
+                  <div className="space-y-0.5">
+                    <a
+                      href="mailto:hello@zenova.studio"
+                      className="text-xs sm:text-sm font-sans font-semibold text-near-black hover:text-deep-violet transition-colors inline-block tracking-tight bg-warm-lavender/60 px-2.5 py-0.5 rounded-full border border-muted-lavender/50"
+                    >
                       hello@zenova.studio
                     </a>
-                    <p className="card-body-text text-[10px]">We usually reply within 1 business day</p>
+                    <p className="text-[10px] font-sans text-neutral-slate/80 pl-1">We usually reply within 1 business day</p>
                   </div>
                 </div>
 
-                <div className="bg-soft-white rounded-2xl p-4 sm:p-5 border border-muted-lavender/60 shadow-xs flex items-center gap-4 hover:-translate-y-1 hover:shadow-md transition-all">
-                  <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center shrink-0">
+                {/* Phone Card with Aesthetic Friendly Typography */}
+                <div className="bg-soft-white/90 rounded-2xl p-4 border border-muted-lavender/70 shadow-xs flex items-center gap-3.5 hover:-translate-y-0.5 hover:shadow-md transition-all">
+                  <div className="w-9 h-9 rounded-full bg-warm-lavender text-deep-violet flex items-center justify-center shrink-0 shadow-xs">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <div>
-                    <a href="tel:+919876543210" className="text-sm font-editorial font-bold text-near-black hover:text-deep-violet transition-colors">
+                  <div className="space-y-0.5">
+                    <a
+                      href="tel:+919876543210"
+                      className="text-xs sm:text-sm font-sans font-semibold text-near-black hover:text-deep-violet transition-colors inline-block tracking-tight bg-warm-lavender/60 px-2.5 py-0.5 rounded-full border border-muted-lavender/50"
+                    >
                       +91 98765 43210
                     </a>
-                    <p className="card-body-text text-[10px]">Mon – Fri, 10 AM – 7 PM IST</p>
+                    <p className="text-[10px] font-sans text-neutral-slate/80 pl-1">Mon – Fri, 10 AM – 7 PM IST</p>
                   </div>
                 </div>
               </div>
@@ -134,19 +154,43 @@ export const ContactChapter: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-1.5">
+                  {/* CUSTOM PROFESSIONAL SELECT DROPDOWN */}
+                  <div className="space-y-1.5 relative">
                     <label className="text-[10px] font-mono uppercase text-near-black font-semibold">What do you need help with? *</label>
-                    <select
-                      value={formData.serviceInterest}
-                      onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all font-sans"
+                    <button
+                      type="button"
+                      onClick={() => setSelectOpen(!selectOpen)}
+                      className="w-full px-4 py-3 rounded-xl bg-warm-lavender/40 border border-muted-lavender text-xs text-near-black flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-deep-violet/30 hover:border-deep-violet/40 transition-all font-sans cursor-pointer text-left shadow-xs"
                     >
-                      <option value="web-development">Web Development</option>
-                      <option value="video-editing">Video Editing</option>
-                      <option value="ad-creation">Ad Creation & Distribution</option>
-                      <option value="paid-promotions">Paid Promotions & Collaborations</option>
-                      <option value="all-services">Multiple / Full Ecosystem Partnership</option>
-                    </select>
+                      <span className="font-medium text-near-black">{currentOptionLabel}</span>
+                      <ChevronDown className={`w-4 h-4 text-deep-violet transition-transform duration-300 ${selectOpen ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {selectOpen && (
+                      <div className="absolute top-full left-0 right-0 mt-1 bg-soft-white rounded-2xl border border-muted-lavender shadow-2xl p-2 z-40 space-y-1 animate-fade-in">
+                        {serviceOptions.map((opt) => {
+                          const isSelected = opt.value === formData.serviceInterest;
+                          return (
+                            <button
+                              key={opt.value}
+                              type="button"
+                              onClick={() => {
+                                setFormData({ ...formData, serviceInterest: opt.value });
+                                setSelectOpen(false);
+                              }}
+                              className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs text-left transition-colors font-sans cursor-pointer ${
+                                isSelected
+                                  ? 'bg-deep-violet text-soft-white font-semibold'
+                                  : 'text-near-black hover:bg-warm-lavender/70 font-medium'
+                              }`}
+                            >
+                              <span>{opt.label}</span>
+                              {isSelected && <Check className="w-3.5 h-3.5 text-soft-white" />}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
 
                   <div className="space-y-1.5">
@@ -173,3 +217,5 @@ export const ContactChapter: React.FC = () => {
     </section>
   );
 };
+
+export default ContactChapter;
