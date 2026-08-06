@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { ROUTES } from '../../../constants/routes';
 import {
   Share2,
@@ -21,6 +21,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Award,
+  Package,
+  Check,
+  Send,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -139,11 +142,11 @@ export const PaidPromotionsPage: React.FC = () => {
                     Start Creator Campaign <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
-                <Link to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
+                <RouterLink to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
                   <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60 hover:bg-warm-lavender hover:-translate-y-0.5 transition-all">
                     Explore Collaborations <ArrowUpRight className="w-4 h-4" />
                   </Button>
-                </Link>
+                </RouterLink>
               </div>
             </div>
 
@@ -179,7 +182,6 @@ export const PaidPromotionsPage: React.FC = () => {
                   <span className="font-mono text-[10px] text-muted-lavender font-bold">Authentic Reach</span>
                 </div>
 
-                {/* FLOATING VERIFIED CREATOR BADGE (TOP RIGHT) */}
                 <div className="absolute -top-4 -right-2 sm:-right-4 bg-deep-violet text-soft-white px-4 py-2.5 rounded-2xl shadow-xl border border-soft-white/40 flex items-center gap-2 z-20 animate-pulse-slow">
                   <div className="w-7 h-7 rounded-xl bg-soft-white/20 flex items-center justify-center font-bold font-mono text-xs">
                     <Award className="w-4 h-4 text-yellow-300" />
@@ -190,7 +192,6 @@ export const PaidPromotionsPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* FLOATING PROMO CODE CARD (OVERLAPPING LEFT) */}
                 <div className="absolute -left-3 sm:-left-6 bottom-4 bg-soft-white p-3 rounded-2xl shadow-2xl border border-muted-lavender/80 z-20 space-y-1 text-left max-w-[150px] sm:max-w-[180px]">
                   <span className="text-[9px] font-mono font-bold text-deep-violet uppercase tracking-wider block">Exclusive Code</span>
                   <p className="text-xs font-bold text-near-black font-mono bg-warm-lavender/60 px-2 py-1 rounded text-center border border-muted-lavender/40">SAVE20_AURA</p>
@@ -202,7 +203,7 @@ export const PaidPromotionsPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 2. OUR CREATOR PHILOSOPHY */}
+      {/* 2. OUR CREATOR PHILOSOPHY CARDS WITH DEDICATED VISUAL GRAPHICS */}
       <section className="py-16 sm:py-24 bg-gradient-to-b from-warm-lavender/40 via-warm-lavender/20 to-soft-white border-y border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -223,58 +224,97 @@ export const PaidPromotionsPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <Search className="w-5 h-5" />
+            {/* Card 1: Vetted Creators Graphic */}
+            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10 text-soft-white">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>AUDIENCE AUDIT SCORE</span>
+                  <Search className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge variant="violet" className="text-[9px]">98.4% Real</Badge>
+                  <span className="text-[10px] font-mono text-green-400 font-bold">Active Engagement</span>
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Vetted Creators</h3>
-              <p className="card-body-text text-xs">
-                We audit audience demographics to ensure creators have genuine active followers.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">Vetted Creators</h3>
+                <p className="card-body-text text-xs">
+                  We audit audience demographics to ensure creators have genuine active followers.
+                </p>
+              </div>
             </div>
 
-            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <Users className="w-5 h-5" />
+            {/* Card 2: End-to-End Management Graphic */}
+            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-warm-lavender/60 p-3 flex flex-col justify-between border border-muted-lavender/60">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>SHIPMENT & BRIEFING</span>
+                  <Package className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="text-[10px] font-mono font-bold text-near-black bg-soft-white p-1 rounded border border-muted-lavender/40 text-center">
+                  Product Sample Dispatched
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">End-to-End Management</h3>
-              <p className="card-body-text text-xs">
-                Handling outreach, contracts, product shipping, and briefing guidelines.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">End-to-End Management</h3>
+                <p className="card-body-text text-xs">
+                  Handling outreach, contracts, product shipping, and briefing guidelines.
+                </p>
+              </div>
             </div>
 
-            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <ShieldCheck className="w-5 h-5" />
+            {/* Card 3: Quality Review Graphic */}
+            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10 text-soft-white">
+                <div className="flex items-center justify-between text-[9px] font-mono text-green-400 font-bold">
+                  <span>CONTENT QUALITY CHECK</span>
+                  <ShieldCheck className="w-3.5 h-3.5 text-green-400" />
+                </div>
+                <div className="flex items-center gap-1.5 text-[10px] font-mono">
+                  <Check className="w-3.5 h-3.5 text-green-400" />
+                  <span>Draft Reel Approved</span>
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Content Quality Review</h3>
-              <p className="card-body-text text-xs">
-                Reviewing every draft video before it goes live to maintain your brand standards.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">Content Quality Review</h3>
+                <p className="card-body-text text-xs">
+                  Reviewing every draft video before it goes live to maintain your brand standards.
+                </p>
+              </div>
             </div>
 
-            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <Share2 className="w-5 h-5" />
+            {/* Card 4: Ad Whitelisting Graphic */}
+            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 flex flex-col justify-between shadow-xs">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>CREATOR HANDLE BOOST</span>
+                  <Share2 className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="p-1 rounded bg-warm-lavender/40 border border-muted-lavender/40 text-[9px] font-mono text-center font-bold text-near-black">
+                  Whitelisted Paid Ad
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Ad Whitelisting</h3>
-              <p className="card-body-text text-xs">
-                Running targeted Meta ads directly through creator handles for higher conversion rates.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">Ad Whitelisting</h3>
+                <p className="card-body-text text-xs">
+                  Running targeted Meta ads directly through creator handles for higher conversion rates.
+                </p>
+              </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH DUAL ARROWS & BALANCED BLUR VISIBILITY */}
+      {/* 3. MONUMENTAL SHOWCASE CARDBOX */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          {/* Monumental Screen-Spanning Cardbox */}
           <div className="w-full bg-soft-white rounded-3xl p-6 sm:p-12 lg:p-16 border border-muted-lavender/80 shadow-2xl space-y-8 relative overflow-hidden text-center">
-            {/* Background Ambient Glow */}
             <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-deep-violet/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            {/* PERFECTLY CENTERED FIXED TITLE HEADER */}
             <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold block">
                 THE WORK SPEAKS
@@ -284,9 +324,7 @@ export const PaidPromotionsPage: React.FC = () => {
               </h2>
             </div>
 
-            {/* 3D INFINITE CAROUSEL STAGE WITH BALANCED VISIBILITY & FLOATING SIDE ARROWS */}
             <div className="relative w-full max-w-5xl mx-auto py-2">
-              {/* Floating Left Side Arrow */}
               <button
                 onClick={handlePrev}
                 className="absolute left-0 sm:-left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-soft-white/95 border border-muted-lavender/80 shadow-xl flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30 active:scale-95"
@@ -295,7 +333,6 @@ export const PaidPromotionsPage: React.FC = () => {
                 <ChevronLeft className="w-5 h-5" />
               </button>
 
-              {/* Stage Items Container */}
               <div className="w-full overflow-hidden px-8 sm:px-12 [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]">
                 <div className="flex items-center justify-center gap-2.5 sm:gap-4 py-2 w-full">
                   {[-2, -1, 0, 1, 2].map((offset) => {
@@ -324,7 +361,6 @@ export const PaidPromotionsPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Floating Right Side Arrow */}
               <button
                 onClick={handleNext}
                 className="absolute right-0 sm:-right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-soft-white/95 border border-muted-lavender/80 shadow-xl flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30 active:scale-95"
@@ -334,9 +370,7 @@ export const PaidPromotionsPage: React.FC = () => {
               </button>
             </div>
 
-            {/* ACTIVE PROJECT DISPLAY */}
             <div key={activeProject.id} className="pt-2 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left animate-fade-in transition-all duration-500">
-              {/* Left Project Info */}
               <div className="lg:col-span-6 space-y-5">
                 <div className="flex items-center justify-between">
                   <Badge variant="violet" className="text-[10px]">
@@ -370,7 +404,6 @@ export const PaidPromotionsPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right Interactive Creator Frame */}
               <div className="lg:col-span-6">
                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-muted-lavender/60 w-full aspect-[16/10] relative group">
                   <img
@@ -385,7 +418,6 @@ export const PaidPromotionsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* BOTTOM MIDDLE CAROUSEL NAVIGATION BUTTONS */}
             <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 border-t border-muted-lavender/40 w-full text-center">
               <div className="flex items-center gap-3">
                 <button
@@ -477,7 +509,7 @@ export const PaidPromotionsPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 5. SIMPLE 3-STEP PROCESS */}
+      {/* 5. 3-STEP PROCESS WITH DEDICATED VISUAL GRAPHICS */}
       <section className="py-16 sm:py-20 bg-soft-white border-t border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
@@ -490,28 +522,67 @@ export const PaidPromotionsPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
-              <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
-              <h3 className="text-xl font-editorial font-bold">Handpick Creators</h3>
-              <p className="card-body-text text-xs">
-                We present a vetted list of creators matching your brand aesthetic and target demographics.
-              </p>
+            {/* Step 1 Graphic Card */}
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
+              <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>VETTED CREATOR ROSTER</span>
+                  <Users className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="p-2 rounded bg-warm-lavender/40 border border-muted-lavender/40 text-center font-mono text-[9px] font-bold text-near-black">
+                  15 Handpicked Influencers
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
+                <h3 className="text-xl font-editorial font-bold">Handpick Creators</h3>
+                <p className="card-body-text text-xs">
+                  We present a vetted list of creators matching your brand aesthetic and target demographics.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
-              <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
-              <h3 className="text-xl font-editorial font-bold">Coordinate & Review</h3>
-              <p className="card-body-text text-xs">
-                We handle contracts, ship product samples, brief creators, and review all content drafts.
-              </p>
+            {/* Step 2 Graphic Card */}
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
+              <div className="h-32 w-full rounded-xl bg-near-black/95 p-3 space-y-2 text-soft-white relative overflow-hidden border border-soft-white/10 flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[9px] font-mono text-green-400">
+                  <span>CONTRACTS & DRAFT REVIEW</span>
+                  <ShieldCheck className="w-3.5 h-3.5 text-green-400" />
+                </div>
+                <div className="p-1 rounded bg-soft-white/10 text-center font-mono text-[9px] font-bold text-soft-white">
+                  Samples Shipped & Approved
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
+                <h3 className="text-xl font-editorial font-bold">Coordinate & Review</h3>
+                <p className="card-body-text text-xs">
+                  We handle contracts, ship product samples, brief creators, and review all content drafts.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
-              <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
-              <h3 className="text-xl font-editorial font-bold">Publish & Amplify</h3>
-              <p className="card-body-text text-xs">
-                Creators post live, we track engagement and promo codes, and whitelist high-performing posts for ads.
-              </p>
+            {/* Step 3 Graphic Card */}
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
+              <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>PUBLISH & WHITELIST</span>
+                  <Send className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="p-2 rounded bg-warm-lavender/40 border border-muted-lavender/40 text-center font-mono text-[9px] font-bold text-green-600">
+                  Live Reel + Paid Ad Boost
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
+                <h3 className="text-xl font-editorial font-bold">Publish & Amplify</h3>
+                <p className="card-body-text text-xs">
+                  Creators post live, we track engagement and promo codes, and whitelist high-performing posts for ads.
+                </p>
+              </div>
             </div>
           </div>
         </Container>
