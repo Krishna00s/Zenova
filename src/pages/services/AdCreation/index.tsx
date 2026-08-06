@@ -21,6 +21,7 @@ import {
   MousePointerClick,
   ChevronLeft,
   ChevronRight,
+  DollarSign,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -113,13 +114,13 @@ export const AdCreationPage: React.FC = () => {
 
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
-      {/* 1. HERO STORY CHAPTER */}
+      {/* 1. HERO STORY CHAPTER WITH LAYERED SPONSORED AD MOCKUP */}
       <section className="relative w-full pb-16 sm:pb-24">
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-deep-violet/15 via-purple-300/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
                 AD CREATION & DISTRIBUTION
               </Badge>
@@ -147,20 +148,23 @@ export const AdCreationPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-5 w-full">
-              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 shadow-2xl border border-muted-lavender/40 space-y-3 hover:border-deep-violet/40 transition-colors">
+            {/* 3D MULTI-LAYERED SPONSORED AD CREATIVE SHOWCASE MOCKUP */}
+            <div className="lg:col-span-6 w-full relative">
+              <div className="absolute inset-0 bg-gradient-to-tr from-deep-violet/20 via-purple-300/30 to-transparent rounded-3xl blur-2xl -z-10" />
+
+              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl border border-muted-lavender/40 space-y-3 relative">
                 <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                   <div className="flex items-center gap-2 text-soft-white/80 font-mono text-[10px]">
                     <Megaphone className="w-3.5 h-3.5 text-deep-violet" />
                     <span>SPONSORED AD CAMPAIGN</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-deep-violet">
+                  <div className="flex items-center gap-2">
                     <Facebook className="w-3.5 h-3.5 fill-deep-violet stroke-none" />
-                    <Instagram className="w-3.5 h-3.5" />
+                    <Instagram className="w-3.5 h-3.5 text-deep-violet" />
                   </div>
                 </div>
 
-                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group border border-soft-white/10">
+                <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
                   <img
                     src="/media/cap_ad_natural.jpg"
                     alt="Ad Campaign Performance Analytics"
@@ -172,6 +176,31 @@ export const AdCreationPage: React.FC = () => {
                       <p className="text-soft-white font-sans text-xs font-semibold">High-Converting Direct Response Video</p>
                     </div>
                     <MousePointerClick className="w-4 h-4 text-soft-white/80" />
+                  </div>
+                </div>
+
+                {/* FLOATING ROAS & METRICS BADGE (TOP RIGHT) */}
+                <div className="absolute -top-4 -right-2 sm:-right-4 bg-deep-violet text-soft-white px-4 py-2.5 rounded-2xl shadow-xl border border-soft-white/40 flex items-center gap-2 z-20 animate-pulse-slow">
+                  <div className="w-7 h-7 rounded-xl bg-soft-white/20 flex items-center justify-center font-bold font-mono text-xs">
+                    <DollarSign className="w-4 h-4" />
+                  </div>
+                  <div className="text-left">
+                    <span className="text-[9px] font-mono text-soft-white/70 block uppercase">Campaign ROAS</span>
+                    <span className="text-xs font-bold font-editorial text-green-300">+420% ROI</span>
+                  </div>
+                </div>
+
+                {/* FLOATING TIKTOK MOBILE MOCKUP (OVERLAPPING LEFT) */}
+                <div className="absolute -left-3 sm:-left-6 bottom-4 w-32 sm:w-40 bg-near-black p-2 rounded-2xl shadow-2xl border-2 border-soft-white/80 z-20 animate-bounce-slow">
+                  <div className="rounded-xl overflow-hidden aspect-[9/16] relative border border-soft-white/10">
+                    <img
+                      src="/media/cap_promo_natural.jpg"
+                      alt="TikTok Ad Mobile Feed"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute bottom-2 left-2 right-2 p-1 rounded bg-deep-violet/90 text-[8px] text-soft-white font-mono text-center font-bold">
+                      TikTok Ad Creative
+                    </div>
                   </div>
                 </div>
               </div>

@@ -21,6 +21,11 @@ import {
   Server,
   ChevronLeft,
   ChevronRight,
+  Check,
+  Plus,
+  X,
+  TrendingUp,
+  Layout,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -67,6 +72,7 @@ export const WebDevelopmentPage: React.FC = () => {
       image: '/media/cap_web_natural.jpg',
       url: 'auraatelier.com',
       badge: 'LUXURY E-COMMERCE',
+      tagline: 'High-Fashion Digital Flagship',
     },
     {
       id: 2,
@@ -78,6 +84,7 @@ export const WebDevelopmentPage: React.FC = () => {
       image: '/media/photo_create_natural.jpg',
       url: 'luminaapp.io',
       badge: 'FINTECH WEB APP',
+      tagline: 'Sub-50ms Financial Terminal',
     },
     {
       id: 3,
@@ -89,6 +96,7 @@ export const WebDevelopmentPage: React.FC = () => {
       image: '/media/photo_launch_natural.jpg',
       url: 'vanguardstudio.arch',
       badge: 'EDITORIAL CMS',
+      tagline: 'Architectural Storytelling Engine',
     },
     {
       id: 4,
@@ -100,6 +108,7 @@ export const WebDevelopmentPage: React.FC = () => {
       image: '/media/photo_understand_natural.jpg',
       url: 'krona.cloud',
       badge: 'ENTERPRISE SAAS',
+      tagline: 'Multi-Tenant Cloud Workspace',
     },
     {
       id: 5,
@@ -111,6 +120,7 @@ export const WebDevelopmentPage: React.FC = () => {
       image: '/media/photo_sketch_natural.jpg',
       url: 'aethel.design',
       badge: 'DESIGN TOKENS',
+      tagline: 'Reusable React UI Tokens',
     },
   ];
 
@@ -128,13 +138,13 @@ export const WebDevelopmentPage: React.FC = () => {
 
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
-      {/* 1. HERO STORY CHAPTER */}
+      {/* 1. HERO STORY CHAPTER WITH MULTI-LAYERED 3D UI MOCKUP */}
       <section className="relative w-full pb-16 sm:pb-24">
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-deep-violet/10 via-purple-300/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
                 WEB ENGINEERING & DIGITAL ARCHITECTURE
               </Badge>
@@ -162,39 +172,90 @@ export const WebDevelopmentPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-5 w-full">
-              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl border border-muted-lavender/40 space-y-3.5 hover:border-deep-violet/40 transition-colors">
-                <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
+            {/* 3D MULTI-LAYERED PRODUCT SHOWCASE MOCKUP (DESKTOP + FLOATING MOBILE + UI CARDS) */}
+            <div className="lg:col-span-6 w-full relative">
+              {/* Outer Ambient Glow */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-deep-violet/20 via-purple-300/30 to-transparent rounded-3xl blur-2xl -z-10" />
+
+              {/* Main Desktop Window Background */}
+              <div className="bg-soft-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-2xl border border-muted-lavender/80 relative space-y-3">
+                {/* Browser Address Bar */}
+                <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-warm-lavender/50 border border-muted-lavender/60">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                   </div>
-                  <div className="px-3 py-1 rounded-md bg-soft-white/10 font-mono text-[10px] text-soft-white/70 flex items-center gap-1.5">
+                  <div className="px-4 py-1 rounded-md bg-soft-white font-mono text-[10px] text-near-black/70 flex items-center gap-2 shadow-xs border border-muted-lavender/40 w-1/2 justify-center">
                     <Globe className="w-3 h-3 text-deep-violet" />
-                    <span>zenova.studio/web-dev</span>
+                    <span>zenova.studio/app</span>
                   </div>
-                  <Code className="w-4 h-4 text-deep-violet" />
+                  <Layout className="w-3.5 h-3.5 text-deep-violet" />
                 </div>
 
-                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group border border-soft-white/10">
+                {/* Main Desktop Screen Image */}
+                <div className="rounded-xl overflow-hidden aspect-[16/10] relative border border-muted-lavender/40 shadow-inner group">
                   <img
                     src="/media/cap_web_natural.jpg"
-                    alt="Web Development Studio Workspace"
+                    alt="Web Application Showcase Desktop"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/70 via-transparent to-transparent flex items-end justify-between p-4">
-                    <span className="text-soft-white font-mono text-xs font-semibold">Handcrafted Web Engineering</span>
-                    <span className="px-2.5 py-1 rounded-full bg-deep-violet text-[10px] text-soft-white font-mono font-bold">100/100 LCP</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/60 via-transparent to-transparent flex items-end justify-between p-4">
+                    <div className="text-soft-white space-y-0.5">
+                      <span className="text-[10px] font-mono font-bold text-deep-violet bg-soft-white px-2 py-0.5 rounded">Lighthouse Score</span>
+                      <p className="text-xs font-semibold">Sub-Second Load Time Architecture</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="bg-soft-white/5 rounded-xl p-3 border border-soft-white/10 font-mono text-[10px] text-soft-white/70 space-y-1">
-                  <div className="flex items-center justify-between text-deep-violet">
-                    <span>const stack = ['React', 'Next.js', 'Supabase'];</span>
-                    <Terminal className="w-3 h-3" />
+                {/* FLOATING MOBILE PHONE SCREEN (OVERLAPPING LEFT) */}
+                <div className="absolute -left-3 sm:-left-6 bottom-4 w-36 sm:w-44 bg-near-black p-2 sm:p-2.5 rounded-2xl sm:rounded-3xl shadow-2xl border-2 border-soft-white/80 z-20 animate-bounce-slow">
+                  <div className="w-10 h-2 bg-soft-white/20 rounded-full mx-auto mb-2" />
+                  <div className="rounded-xl overflow-hidden aspect-[9/16] relative border border-soft-white/10">
+                    <img
+                      src="/media/photo_sketch_natural.jpg"
+                      alt="Mobile App Responsive UI"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute bottom-2 left-2 right-2 p-1.5 rounded-lg bg-near-black/90 text-[8px] text-soft-white font-mono flex items-center justify-between">
+                      <span>Mobile First</span>
+                      <span className="text-deep-violet font-bold">60 FPS</span>
+                    </div>
                   </div>
-                  <div className="text-soft-white/50">// Built for sub-second speeds and zero UI friction</div>
+                </div>
+
+                {/* FLOATING UX RED BADGE (TOP RIGHT) */}
+                <div className="absolute -top-4 -right-2 sm:-right-4 bg-deep-violet text-soft-white px-4 py-2.5 rounded-2xl shadow-xl border border-soft-white/40 flex items-center gap-2 z-20 animate-pulse-slow">
+                  <div className="w-7 h-7 rounded-xl bg-soft-white/20 flex items-center justify-center font-bold font-mono text-xs">
+                    UX
+                  </div>
+                  <div className="text-left">
+                    <span className="text-[9px] font-mono text-soft-white/70 block uppercase">Standard</span>
+                    <span className="text-xs font-bold font-editorial">WCAG AAA</span>
+                  </div>
+                </div>
+
+                {/* FLOATING UI CARD COMPONENT (BOTTOM RIGHT) */}
+                <div className="absolute -bottom-5 -right-2 sm:-right-4 bg-soft-white p-3 rounded-2xl shadow-2xl border border-muted-lavender/80 z-20 space-y-1.5 max-w-[170px] sm:max-w-[200px]">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-bold text-near-black font-sans">React 18 Engine</span>
+                    <Zap className="w-3.5 h-3.5 text-deep-violet" />
+                  </div>
+                  <div className="h-1.5 w-full bg-warm-lavender rounded-full overflow-hidden">
+                    <div className="h-full bg-deep-violet w-4/5 rounded-full" />
+                  </div>
+                  <div className="flex items-center gap-1.5 pt-1">
+                    <div className="w-5 h-5 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                      <Check className="w-3 h-3" />
+                    </div>
+                    <div className="w-5 h-5 rounded-full bg-purple-100 text-deep-violet flex items-center justify-center">
+                      <Plus className="w-3 h-3" />
+                    </div>
+                    <div className="w-5 h-5 rounded-full bg-red-100 text-red-500 flex items-center justify-center">
+                      <X className="w-3 h-3" />
+                    </div>
+                    <span className="text-[9px] font-mono text-neutral-slate ml-auto font-semibold">100% Custom</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -266,7 +327,7 @@ export const WebDevelopmentPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH DUAL ARROWS & BALANCED BLUR VISIBILITY */}
+      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH LAYERED MOCKUPS */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           {/* Monumental Screen-Spanning Cardbox */}
@@ -334,7 +395,7 @@ export const WebDevelopmentPage: React.FC = () => {
               </button>
             </div>
 
-            {/* ACTIVE PROJECT DISPLAY */}
+            {/* ACTIVE PROJECT DISPLAY WITH LAYERED FLOATING MOCKUP CARDS */}
             <div key={activeProject.id} className="pt-2 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left animate-fade-in transition-all duration-500">
               {/* Left Project Info */}
               <div className="lg:col-span-6 space-y-5">
@@ -370,9 +431,9 @@ export const WebDevelopmentPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right Interactive Browser Container */}
-              <div className="lg:col-span-6">
-                <div className="bg-near-black rounded-2xl p-4 shadow-2xl border border-muted-lavender/60 space-y-3">
+              {/* Right Interactive Browser Container with Floating Layer Badges */}
+              <div className="lg:col-span-6 relative">
+                <div className="bg-near-black rounded-2xl p-4 shadow-2xl border border-muted-lavender/60 space-y-3 relative overflow-hidden">
                   <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                     <div className="flex items-center gap-1.5">
                       <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
@@ -384,14 +445,21 @@ export const WebDevelopmentPage: React.FC = () => {
                     </span>
                     <MousePointerClick className="w-3.5 h-3.5 text-deep-violet" />
                   </div>
+
                   <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
                     <img
                       src={activeProject.image}
                       alt={activeProject.title}
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-deep-violet/90 backdrop-blur-md text-[10px] font-mono font-bold text-soft-white">
-                      {activeProject.badge}
+                    {/* Layered Badge Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-near-black/80 via-transparent to-transparent flex items-end justify-between p-4">
+                      <span className="px-2.5 py-1 rounded-full bg-deep-violet text-[10px] font-mono font-bold text-soft-white shadow-md">
+                        {activeProject.tagline}
+                      </span>
+                      <span className="text-soft-white text-xs font-mono font-semibold flex items-center gap-1">
+                        <TrendingUp className="w-3.5 h-3.5 text-green-400" /> Active Build
+                      </span>
                     </div>
                   </div>
                 </div>

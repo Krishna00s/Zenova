@@ -20,6 +20,7 @@ import {
   CheckSquare,
   ChevronLeft,
   ChevronRight,
+  Award,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -112,13 +113,13 @@ export const PaidPromotionsPage: React.FC = () => {
 
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
-      {/* 1. HERO STORY CHAPTER */}
+      {/* 1. HERO STORY CHAPTER WITH LAYERED CREATOR PARTNERSHIP MOCKUP */}
       <section className="relative w-full pb-16 sm:pb-24">
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-deep-violet/15 via-purple-300/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
                 PAID PROMOTIONS & CREATOR NETWORKS
               </Badge>
@@ -146,8 +147,11 @@ export const PaidPromotionsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-5 w-full">
-              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 shadow-2xl border border-muted-lavender/40 space-y-3 hover:border-deep-violet/40 transition-colors">
+            {/* 3D MULTI-LAYERED CREATOR COLLABORATION SHOWCASE MOCKUP */}
+            <div className="lg:col-span-6 w-full relative">
+              <div className="absolute inset-0 bg-gradient-to-tr from-deep-violet/20 via-purple-300/30 to-transparent rounded-3xl blur-2xl -z-10" />
+
+              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl border border-muted-lavender/40 space-y-3 relative">
                 <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                   <div className="flex items-center gap-2 text-soft-white/80 font-mono text-[10px]">
                     <Users className="w-3.5 h-3.5 text-deep-violet" />
@@ -156,7 +160,7 @@ export const PaidPromotionsPage: React.FC = () => {
                   <Instagram className="w-4 h-4 text-deep-violet" />
                 </div>
 
-                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group border border-soft-white/10">
+                <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
                   <img
                     src="/media/cap_promo_natural.jpg"
                     alt="Creator Promotion Broadcast Studio"
@@ -173,6 +177,24 @@ export const PaidPromotionsPage: React.FC = () => {
                     <span className="flex items-center gap-1"><MessageCircle className="w-3.5 h-3.5 text-soft-white/70" /> 380</span>
                   </div>
                   <span className="font-mono text-[10px] text-muted-lavender font-bold">Authentic Reach</span>
+                </div>
+
+                {/* FLOATING VERIFIED CREATOR BADGE (TOP RIGHT) */}
+                <div className="absolute -top-4 -right-2 sm:-right-4 bg-deep-violet text-soft-white px-4 py-2.5 rounded-2xl shadow-xl border border-soft-white/40 flex items-center gap-2 z-20 animate-pulse-slow">
+                  <div className="w-7 h-7 rounded-xl bg-soft-white/20 flex items-center justify-center font-bold font-mono text-xs">
+                    <Award className="w-4 h-4 text-yellow-300" />
+                  </div>
+                  <div className="text-left">
+                    <span className="text-[9px] font-mono text-soft-white/70 block uppercase">Vetted Creator</span>
+                    <span className="text-xs font-bold font-editorial">100k+ Active</span>
+                  </div>
+                </div>
+
+                {/* FLOATING PROMO CODE CARD (OVERLAPPING LEFT) */}
+                <div className="absolute -left-3 sm:-left-6 bottom-4 bg-soft-white p-3 rounded-2xl shadow-2xl border border-muted-lavender/80 z-20 space-y-1 text-left max-w-[150px] sm:max-w-[180px]">
+                  <span className="text-[9px] font-mono font-bold text-deep-violet uppercase tracking-wider block">Exclusive Code</span>
+                  <p className="text-xs font-bold text-near-black font-mono bg-warm-lavender/60 px-2 py-1 rounded text-center border border-muted-lavender/40">SAVE20_AURA</p>
+                  <span className="text-[8px] font-mono text-neutral-slate block text-center">Tracked Sales Conversion</span>
                 </div>
               </div>
             </div>
