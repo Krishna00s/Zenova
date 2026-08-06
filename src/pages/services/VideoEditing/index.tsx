@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { ROUTES } from '../../../constants/routes';
 import {
   Film,
@@ -14,12 +14,14 @@ import {
   CheckCircle2,
   Sparkles,
   Scissors,
-  Eye,
   Tv,
   ChevronLeft,
   ChevronRight,
   Volume2,
   Layers,
+  UploadCloud,
+  FileCheck,
+  Activity,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -148,11 +150,11 @@ export const VideoEditingPage: React.FC = () => {
                     Start Your Video Project <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
-                <Link to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
+                <RouterLink to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
                   <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60 hover:bg-warm-lavender hover:-translate-y-0.5 transition-all">
                     Watch Featured Edits <ArrowUpRight className="w-4 h-4" />
                   </Button>
-                </Link>
+                </RouterLink>
               </div>
             </div>
 
@@ -160,9 +162,7 @@ export const VideoEditingPage: React.FC = () => {
             <div className="lg:col-span-6 w-full relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-deep-violet/20 via-purple-400/20 to-transparent rounded-3xl blur-2xl -z-10" />
 
-              {/* Main Studio Frame */}
               <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl border border-muted-lavender/40 space-y-3 relative">
-                {/* Header Timeline Stats */}
                 <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                   <div className="flex items-center gap-2 text-soft-white/80 font-mono text-[10px]">
                     <Film className="w-3.5 h-3.5 text-deep-violet" />
@@ -174,7 +174,6 @@ export const VideoEditingPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Main Video Viewport */}
                 <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
                   <img
                     src="/media/cap_video_natural.jpg"
@@ -188,7 +187,6 @@ export const VideoEditingPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Timeline Audio & Video Track Layers */}
                 <div className="space-y-1.5 pt-1 font-mono text-[9px]">
                   <div className="flex items-center justify-between text-soft-white/60">
                     <span className="flex items-center gap-1"><Layers className="w-3 h-3 text-deep-violet" /> V1: 4K DCI COLOR CUT</span>
@@ -205,7 +203,6 @@ export const VideoEditingPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* FLOATING 9:16 REELS PHONE FRAME (OVERLAPPING LEFT) */}
                 <div className="absolute -left-3 sm:-left-6 bottom-6 w-32 sm:w-40 bg-near-black p-2 rounded-2xl shadow-2xl border-2 border-soft-white/80 z-20 animate-bounce-slow">
                   <div className="rounded-xl overflow-hidden aspect-[9/16] relative border border-soft-white/10">
                     <img
@@ -219,7 +216,6 @@ export const VideoEditingPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* FLOATING COLOR GRADING BADGE (TOP RIGHT) */}
                 <div className="absolute -top-4 -right-2 sm:-right-4 bg-deep-violet text-soft-white px-4 py-2.5 rounded-2xl shadow-xl border border-soft-white/40 flex items-center gap-2 z-20 animate-pulse-slow">
                   <div className="w-7 h-7 rounded-xl bg-soft-white/20 flex items-center justify-center font-bold font-mono text-xs">
                     4K
@@ -235,7 +231,7 @@ export const VideoEditingPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 2. OUR EDITING PHILOSOPHY */}
+      {/* 2. OUR EDITING PHILOSOPHY CARDS WITH DEDICATED VISUAL GRAPHICS */}
       <section className="py-16 sm:py-24 bg-gradient-to-b from-warm-lavender/40 via-warm-lavender/20 to-soft-white border-y border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -256,58 +252,106 @@ export const VideoEditingPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <Eye className="w-5 h-5" />
+            {/* Card 1: 3-Second Hook Graphic */}
+            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10 text-soft-white">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet">
+                  <span>RETENTION GRAPH</span>
+                  <Activity className="w-3.5 h-3.5 text-green-400" />
+                </div>
+                <div className="flex items-end justify-between gap-1 h-10 pt-2">
+                  <div className="w-full h-full bg-deep-violet rounded-t" />
+                  <div className="w-full h-[90%] bg-purple-400 rounded-t" />
+                  <div className="w-full h-[85%] bg-purple-300 rounded-t" />
+                  <div className="w-full h-[82%] bg-purple-200 rounded-t" />
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">First 3-Second Hook</h3>
-              <p className="card-body-text text-xs">
-                We craft immediate visual hooks so viewers stop scrolling and watch until the end.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">First 3-Second Hook</h3>
+                <p className="card-body-text text-xs">
+                  We craft immediate visual hooks so viewers stop scrolling and watch until the end.
+                </p>
+              </div>
             </div>
 
-            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <Scissors className="w-5 h-5" />
+            {/* Card 2: Pacing Graphic */}
+            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-warm-lavender/60 p-3 flex flex-col justify-between border border-muted-lavender/60 relative">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>RHYTHMIC CUT TIMELINE</span>
+                  <Scissors className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="h-6 w-1/3 bg-deep-violet rounded text-[8px] font-mono text-soft-white flex items-center justify-center">Cut A</div>
+                  <div className="h-6 w-1/3 bg-purple-400 rounded text-[8px] font-mono text-soft-white flex items-center justify-center">Cut B</div>
+                  <div className="h-6 w-1/3 bg-purple-300 rounded text-[8px] font-mono text-near-black flex items-center justify-center">Cut C</div>
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Seamless Pacing</h3>
-              <p className="card-body-text text-xs">
-                Rhythmic cutting that keeps the narrative moving forward without feeling rushed.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">Seamless Pacing</h3>
+                <p className="card-body-text text-xs">
+                  Rhythmic cutting that keeps the narrative moving forward without feeling rushed.
+                </p>
+              </div>
             </div>
 
-            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <Sliders className="w-5 h-5" />
+            {/* Card 3: Color Grading Graphic */}
+            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10">
+                <div className="flex items-center justify-between text-[9px] font-mono text-purple-300">
+                  <span>DAVINCI COLOR WHEEL</span>
+                  <Sliders className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="flex items-center justify-around">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-red-500 via-yellow-400 to-green-500 shadow-xs" />
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 shadow-xs" />
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-teal-400 via-emerald-500 to-cyan-500 shadow-xs" />
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Color Grading</h3>
-              <p className="card-body-text text-xs">
-                Professional color correction that gives your footage a cinematic, high-budget look.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">Color Grading</h3>
+                <p className="card-body-text text-xs">
+                  Professional color correction that gives your footage a cinematic, high-budget look.
+                </p>
+              </div>
             </div>
 
-            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <Music className="w-5 h-5" />
+            {/* Card 4: Sound Design Graphic */}
+            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 flex flex-col justify-between shadow-xs">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>STEREO AUDIO EQUALIZER</span>
+                  <Volume2 className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="flex items-end justify-between gap-1 h-10">
+                  <div className="w-2 h-full bg-deep-violet rounded-full" />
+                  <div className="w-2 h-1/2 bg-purple-400 rounded-full" />
+                  <div className="w-2 h-3/4 bg-deep-violet rounded-full" />
+                  <div className="w-2 h-2/3 bg-purple-300 rounded-full" />
+                  <div className="w-2 h-full bg-green-400 rounded-full" />
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Custom Sound Design</h3>
-              <p className="card-body-text text-xs">
-                Immersive audio mixing, crisp voiceovers, and licensed background music.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">Custom Sound Design</h3>
+                <p className="card-body-text text-xs">
+                  Immersive audio mixing, crisp voiceovers, and licensed background music.
+                </p>
+              </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH DUAL ARROWS & BALANCED BLUR VISIBILITY */}
+      {/* 3. MONUMENTAL SHOWCASE CARDBOX */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          {/* Monumental Screen-Spanning Cardbox */}
           <div className="w-full bg-soft-white rounded-3xl p-6 sm:p-12 lg:p-16 border border-muted-lavender/80 shadow-2xl space-y-8 relative overflow-hidden text-center">
-            {/* Background Ambient Glow */}
             <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-deep-violet/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            {/* PERFECTLY CENTERED FIXED TITLE HEADER */}
             <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold block">
                 THE WORK SPEAKS
@@ -317,9 +361,7 @@ export const VideoEditingPage: React.FC = () => {
               </h2>
             </div>
 
-            {/* 3D INFINITE CAROUSEL STAGE WITH BALANCED VISIBILITY & FLOATING SIDE ARROWS */}
             <div className="relative w-full max-w-5xl mx-auto py-2">
-              {/* Floating Left Side Arrow */}
               <button
                 onClick={handlePrev}
                 className="absolute left-0 sm:-left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-soft-white/95 border border-muted-lavender/80 shadow-xl flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30 active:scale-95"
@@ -328,7 +370,6 @@ export const VideoEditingPage: React.FC = () => {
                 <ChevronLeft className="w-5 h-5" />
               </button>
 
-              {/* Stage Items Container */}
               <div className="w-full overflow-hidden px-8 sm:px-12 [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]">
                 <div className="flex items-center justify-center gap-2.5 sm:gap-4 py-2 w-full">
                   {[-2, -1, 0, 1, 2].map((offset) => {
@@ -357,7 +398,6 @@ export const VideoEditingPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Floating Right Side Arrow */}
               <button
                 onClick={handleNext}
                 className="absolute right-0 sm:-right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-soft-white/95 border border-muted-lavender/80 shadow-xl flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30 active:scale-95"
@@ -367,9 +407,7 @@ export const VideoEditingPage: React.FC = () => {
               </button>
             </div>
 
-            {/* ACTIVE PROJECT DISPLAY */}
             <div key={activeProject.id} className="pt-2 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left animate-fade-in transition-all duration-500">
-              {/* Left Project Info */}
               <div className="lg:col-span-6 space-y-5">
                 <div className="flex items-center justify-between">
                   <Badge variant="violet" className="text-[10px]">
@@ -403,7 +441,6 @@ export const VideoEditingPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right Interactive Video Preview Frame */}
               <div className="lg:col-span-6">
                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-muted-lavender/60 w-full aspect-[16/10] relative group">
                   <img
@@ -423,7 +460,6 @@ export const VideoEditingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* BOTTOM MIDDLE CAROUSEL NAVIGATION BUTTONS */}
             <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 border-t border-muted-lavender/40 w-full text-center">
               <div className="flex items-center gap-3">
                 <button
@@ -515,7 +551,7 @@ export const VideoEditingPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 5. SIMPLE 3-STEP PROCESS */}
+      {/* 5. 3-STEP PROCESS WITH DEDICATED VISUAL GRAPHICS */}
       <section className="py-16 sm:py-20 bg-soft-white border-t border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
@@ -528,28 +564,68 @@ export const VideoEditingPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
-              <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
-              <h3 className="text-xl font-editorial font-bold">Share Raw Footage</h3>
-              <p className="card-body-text text-xs">
-                Upload your raw video files or shoot scripts. We review your footage and outline the story rhythm.
-              </p>
+            {/* Step 1 Graphic Card */}
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
+              <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>CLOUD FOOTAGE DROP</span>
+                  <UploadCloud className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="p-2 rounded border border-dashed border-muted-lavender bg-warm-lavender/40 text-center font-mono text-[9px] text-neutral-slate">
+                  Drop RAW 4K ProRes Files
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
+                <h3 className="text-xl font-editorial font-bold">Share Raw Footage</h3>
+                <p className="card-body-text text-xs">
+                  Upload your raw video files or shoot scripts. We review your footage and outline the story rhythm.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
-              <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
-              <h3 className="text-xl font-editorial font-bold">Craft & Polish Cut</h3>
-              <p className="card-body-text text-xs">
-                We perform precise cuts, add kinetic captions, grade the color, and layer custom background music.
-              </p>
+            {/* Step 2 Graphic Card */}
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
+              <div className="h-32 w-full rounded-xl bg-near-black/95 p-3 space-y-2 text-soft-white relative overflow-hidden border border-soft-white/10 flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[9px] font-mono text-purple-300">
+                  <span>TIMELINE COLOR CUT</span>
+                  <Scissors className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="h-2 w-full bg-soft-white/10 rounded-full overflow-hidden flex gap-1 p-0.5">
+                  <div className="h-full bg-deep-violet w-3/4 rounded-full" />
+                  <div className="h-full bg-green-400 w-1/4 rounded-full" />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
+                <h3 className="text-xl font-editorial font-bold">Craft & Polish Cut</h3>
+                <p className="card-body-text text-xs">
+                  We perform precise cuts, add kinetic captions, grade the color, and layer custom background music.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
-              <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
-              <h3 className="text-xl font-editorial font-bold">Review & Master Export</h3>
-              <p className="card-body-text text-xs">
-                You review the draft online, we incorporate your feedback, and deliver 4K master files ready for posting.
-              </p>
+            {/* Step 3 Graphic Card */}
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
+              <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>4K MASTER EXPORT</span>
+                  <FileCheck className="w-3.5 h-3.5 text-green-500" />
+                </div>
+                <div className="p-2 rounded bg-warm-lavender/40 border border-muted-lavender/40 text-center font-mono text-[9px] font-bold text-near-black">
+                  Rec.709 Cinema Ready
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
+                <h3 className="text-xl font-editorial font-bold">Review & Master Export</h3>
+                <p className="card-body-text text-xs">
+                  You review the draft online, we incorporate your feedback, and deliver 4K master files ready for posting.
+                </p>
+              </div>
             </div>
           </div>
         </Container>

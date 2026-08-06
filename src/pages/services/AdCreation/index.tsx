@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { ROUTES } from '../../../constants/routes';
 import {
   Megaphone,
@@ -22,6 +22,9 @@ import {
   ChevronLeft,
   ChevronRight,
   DollarSign,
+  Users,
+  Sliders,
+  Send,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -140,11 +143,11 @@ export const AdCreationPage: React.FC = () => {
                     Launch Your Ad Campaign <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
-                <Link to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
+                <RouterLink to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
                   <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60 hover:bg-warm-lavender hover:-translate-y-0.5 transition-all">
                     See Ad Creatives <ArrowUpRight className="w-4 h-4" />
                   </Button>
-                </Link>
+                </RouterLink>
               </div>
             </div>
 
@@ -179,7 +182,6 @@ export const AdCreationPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* FLOATING ROAS & METRICS BADGE (TOP RIGHT) */}
                 <div className="absolute -top-4 -right-2 sm:-right-4 bg-deep-violet text-soft-white px-4 py-2.5 rounded-2xl shadow-xl border border-soft-white/40 flex items-center gap-2 z-20 animate-pulse-slow">
                   <div className="w-7 h-7 rounded-xl bg-soft-white/20 flex items-center justify-center font-bold font-mono text-xs">
                     <DollarSign className="w-4 h-4" />
@@ -190,7 +192,6 @@ export const AdCreationPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* FLOATING TIKTOK MOBILE MOCKUP (OVERLAPPING LEFT) */}
                 <div className="absolute -left-3 sm:-left-6 bottom-4 w-32 sm:w-40 bg-near-black p-2 rounded-2xl shadow-2xl border-2 border-soft-white/80 z-20 animate-bounce-slow">
                   <div className="rounded-xl overflow-hidden aspect-[9/16] relative border border-soft-white/10">
                     <img
@@ -209,7 +210,7 @@ export const AdCreationPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 2. OUR AD PHILOSOPHY */}
+      {/* 2. OUR AD PHILOSOPHY CARDS WITH DEDICATED VISUAL GRAPHICS */}
       <section className="py-16 sm:py-24 bg-gradient-to-b from-warm-lavender/40 via-warm-lavender/20 to-soft-white border-y border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -230,58 +231,93 @@ export const AdCreationPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <Target className="w-5 h-5" />
+            {/* Card 1: Targeted Audience Graphic */}
+            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10 text-soft-white">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet">
+                  <span>AUDIENCE TARGETING</span>
+                  <Target className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-green-400" />
+                  <span className="font-mono text-xs font-bold">Lookalike 1% Custom</span>
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Targeted Audience</h3>
-              <p className="card-body-text text-xs">
-                Reaching people who are genuinely interested in your product or service.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">Targeted Audience</h3>
+                <p className="card-body-text text-xs">
+                  Reaching people who are genuinely interested in your product or service.
+                </p>
+              </div>
             </div>
 
-            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <Megaphone className="w-5 h-5" />
+            {/* Card 2: High-Impact Video Graphic */}
+            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-warm-lavender/60 p-3 flex flex-col justify-between border border-muted-lavender/60">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>UGC VIDEO HOOK</span>
+                  <Video className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="text-[10px] font-mono font-bold text-near-black bg-soft-white p-1.5 rounded border border-muted-lavender/40 text-center">
+                  Scroll-Stopping Hook 01
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">High-Impact Videos</h3>
-              <p className="card-body-text text-xs">
-                In-house video ad production with strong hooks and clear calls to action.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">High-Impact Videos</h3>
+                <p className="card-body-text text-xs">
+                  In-house video ad production with strong hooks and clear calls to action.
+                </p>
+              </div>
             </div>
 
-            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <Share2 className="w-5 h-5" />
+            {/* Card 3: Multi-Platform Graphic */}
+            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex items-center justify-around border border-soft-white/10 text-soft-white">
+                <Facebook className="w-5 h-5 text-blue-400" />
+                <Instagram className="w-5 h-5 text-pink-400" />
+                <BarChart3 className="w-5 h-5 text-yellow-400" />
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Multi-Platform</h3>
-              <p className="card-body-text text-xs">
-                Publishing and managing ads across Meta (FB & IG), Google, and TikTok.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">Multi-Platform</h3>
+                <p className="card-body-text text-xs">
+                  Publishing and managing ads across Meta (FB & IG), Google, and TikTok.
+                </p>
+              </div>
             </div>
 
-            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
-              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
-                <TrendingUp className="w-5 h-5" />
+            {/* Card 4: A/B Testing Graphic */}
+            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
+              <div className="h-24 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 flex flex-col justify-between shadow-xs">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>A/B HOOK SPLIT TEST</span>
+                  <TrendingUp className="w-3.5 h-3.5 text-green-500" />
+                </div>
+                <div className="flex items-center justify-between font-mono text-[10px]">
+                  <span className="text-near-black">Variant A: +3.8% CTR</span>
+                  <span className="text-green-600 font-bold">WINNER</span>
+                </div>
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">A/B Testing & Scale</h3>
-              <p className="card-body-text text-xs">
-                Constantly testing new hooks, headlines, and angles to scale winning ads.
-              </p>
+
+              <div className="space-y-1">
+                <h3 className="text-lg font-editorial font-bold text-near-black">A/B Testing & Scale</h3>
+                <p className="card-body-text text-xs">
+                  Constantly testing new hooks, headlines, and angles to scale winning ads.
+                </p>
+              </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH DUAL ARROWS & BALANCED BLUR VISIBILITY */}
+      {/* 3. MONUMENTAL SHOWCASE CARDBOX */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          {/* Monumental Screen-Spanning Cardbox */}
           <div className="w-full bg-soft-white rounded-3xl p-6 sm:p-12 lg:p-16 border border-muted-lavender/80 shadow-2xl space-y-8 relative overflow-hidden text-center">
-            {/* Background Ambient Glow */}
             <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-deep-violet/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            {/* PERFECTLY CENTERED FIXED TITLE HEADER */}
             <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold block">
                 THE WORK SPEAKS
@@ -291,9 +327,7 @@ export const AdCreationPage: React.FC = () => {
               </h2>
             </div>
 
-            {/* 3D INFINITE CAROUSEL STAGE WITH BALANCED VISIBILITY & FLOATING SIDE ARROWS */}
             <div className="relative w-full max-w-5xl mx-auto py-2">
-              {/* Floating Left Side Arrow */}
               <button
                 onClick={handlePrev}
                 className="absolute left-0 sm:-left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-soft-white/95 border border-muted-lavender/80 shadow-xl flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30 active:scale-95"
@@ -302,7 +336,6 @@ export const AdCreationPage: React.FC = () => {
                 <ChevronLeft className="w-5 h-5" />
               </button>
 
-              {/* Stage Items Container */}
               <div className="w-full overflow-hidden px-8 sm:px-12 [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]">
                 <div className="flex items-center justify-center gap-2.5 sm:gap-4 py-2 w-full">
                   {[-2, -1, 0, 1, 2].map((offset) => {
@@ -331,7 +364,6 @@ export const AdCreationPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Floating Right Side Arrow */}
               <button
                 onClick={handleNext}
                 className="absolute right-0 sm:-right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-soft-white/95 border border-muted-lavender/80 shadow-xl flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30 active:scale-95"
@@ -341,9 +373,7 @@ export const AdCreationPage: React.FC = () => {
               </button>
             </div>
 
-            {/* ACTIVE PROJECT DISPLAY */}
             <div key={activeProject.id} className="pt-2 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left animate-fade-in transition-all duration-500">
-              {/* Left Project Info */}
               <div className="lg:col-span-6 space-y-5">
                 <div className="flex items-center justify-between">
                   <Badge variant="violet" className="text-[10px]">
@@ -377,7 +407,6 @@ export const AdCreationPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right Interactive Ad Frame */}
               <div className="lg:col-span-6">
                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-muted-lavender/60 w-full aspect-[16/10] relative group">
                   <img
@@ -392,7 +421,6 @@ export const AdCreationPage: React.FC = () => {
               </div>
             </div>
 
-            {/* BOTTOM MIDDLE CAROUSEL NAVIGATION BUTTONS */}
             <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 border-t border-muted-lavender/40 w-full text-center">
               <div className="flex items-center gap-3">
                 <button
@@ -484,7 +512,7 @@ export const AdCreationPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 5. SIMPLE 3-STEP PROCESS */}
+      {/* 5. 3-STEP PROCESS WITH DEDICATED VISUAL GRAPHICS */}
       <section className="py-16 sm:py-20 bg-soft-white border-t border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
@@ -497,28 +525,68 @@ export const AdCreationPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
-              <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
-              <h3 className="text-xl font-editorial font-bold">Produce Ad Videos</h3>
-              <p className="card-body-text text-xs">
-                We craft high-converting ad video collateral and imagery focused on your key selling points.
-              </p>
+            {/* Step 1 Graphic Card */}
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
+              <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>AD VIDEO PRODUCTION</span>
+                  <Video className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="p-2 rounded bg-warm-lavender/40 border border-muted-lavender/40 text-center font-mono text-[9px] font-bold text-near-black">
+                  Scripted Direct-Response Cut
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
+                <h3 className="text-xl font-editorial font-bold">Produce Ad Videos</h3>
+                <p className="card-body-text text-xs">
+                  We craft high-converting ad video collateral and imagery focused on your key selling points.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
-              <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
-              <h3 className="text-xl font-editorial font-bold">Setup & Publish Campaigns</h3>
-              <p className="card-body-text text-xs">
-                We build audience retargeting funnels and publish ad campaigns across Meta, Google, and TikTok.
-              </p>
+            {/* Step 2 Graphic Card */}
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
+              <div className="h-32 w-full rounded-xl bg-near-black/95 p-3 space-y-2 text-soft-white relative overflow-hidden border border-soft-white/10 flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet">
+                  <span>MULTI-PLATFORM PUBLISH</span>
+                  <Send className="w-3.5 h-3.5 text-green-400" />
+                </div>
+                <div className="flex items-center justify-around font-mono text-[10px] text-green-400 font-bold">
+                  <span>Meta LIVE</span>
+                  <span>Google LIVE</span>
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
+                <h3 className="text-xl font-editorial font-bold">Setup & Publish Campaigns</h3>
+                <p className="card-body-text text-xs">
+                  We build audience retargeting funnels and publish ad campaigns across Meta, Google, and TikTok.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
-              <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
-              <h3 className="text-xl font-editorial font-bold">Optimize & Scale</h3>
-              <p className="card-body-text text-xs">
-                We monitor performance daily, test new creative hooks, and scale up winning ad campaigns.
-              </p>
+            {/* Step 3 Graphic Card */}
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
+              <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
+                <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
+                  <span>DAILY BID SCALING</span>
+                  <Sliders className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="p-2 rounded bg-warm-lavender/40 border border-muted-lavender/40 text-center font-mono text-[9px] font-bold text-green-600">
+                  Scaling ROAS to +420%
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
+                <h3 className="text-xl font-editorial font-bold">Optimize & Scale</h3>
+                <p className="card-body-text text-xs">
+                  We monitor performance daily, test new creative hooks, and scale up winning ad campaigns.
+                </p>
+              </div>
             </div>
           </div>
         </Container>
