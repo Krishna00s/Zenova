@@ -121,7 +121,7 @@ export const PaidPromotionsPage: React.FC = () => {
 
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6 promo-reveal">
               <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs bg-near-black text-soft-white border-transparent">
                 PAID PROMOTIONS & CREATOR NETWORKS
               </Badge>

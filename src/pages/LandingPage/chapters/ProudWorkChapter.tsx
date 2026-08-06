@@ -304,7 +304,7 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 5-Card Carousel Grid with 25% Subtle Highlight on Middle Card */}
+            {/* 5-Card Carousel Grid with Purple Lavender Highlight on Active Middle Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {webCards.map((card, idx) => {
                 const isActive = idx === webIndex;
@@ -315,14 +315,14 @@ export const ProudWorkChapter: React.FC = () => {
                     onClick={() => setWebIndex(idx)}
                     className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left cursor-pointer ${
                       isActive
-                        ? 'bg-[#3B1F52]/15 border-deep-violet/40 shadow-md ring-1 ring-deep-violet/30 scale-[1.02] z-10'
+                        ? 'bg-warm-lavender text-near-black border-deep-violet shadow-md ring-2 ring-deep-violet/40 scale-[1.02] z-10'
                         : 'bg-soft-white/90 text-near-black border-muted-lavender/70 hover:border-deep-violet/30 hover:-translate-y-0.5 shadow-xs opacity-90'
                     }`}
                   >
                     <div className="space-y-3">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/80 text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {card.badge}
                         </div>
                       </div>
@@ -346,9 +346,8 @@ export const ProudWorkChapter: React.FC = () => {
       {/* 02 VIDEO PRODUCTION SHOWCASE */}
       <Container>
         <div className="showcase-card bg-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
-          {/* Top Row: Left Main Image + Right Narrative (Padded & Spacious) */}
+          {/* Top Row: Left Main Image + Right Narrative */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
-            {/* Left Main Dedicated Image */}
             <div className="lg:col-span-6 w-full order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img
@@ -368,7 +367,6 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Narrative Column */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6 order-1 lg:order-2">
               <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -418,7 +416,6 @@ export const ProudWorkChapter: React.FC = () => {
                 FEATURED EDITS
               </span>
 
-              {/* Right Mid-Bottom Arrows */}
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setVideoIndex((prev) => (prev - 1 + videoCards.length) % videoCards.length)}
@@ -437,7 +434,6 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 5-Card Carousel Grid with 25% Subtle Highlight on Middle Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {videoCards.map((card, idx) => {
                 const isActive = idx === videoIndex;
@@ -448,14 +444,14 @@ export const ProudWorkChapter: React.FC = () => {
                     onClick={() => setVideoIndex(idx)}
                     className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left cursor-pointer ${
                       isActive
-                        ? 'bg-[#3B1F52]/15 border-deep-violet/40 shadow-md ring-1 ring-deep-violet/30 scale-[1.02] z-10'
-                        : 'bg-warm-lavender/40 text-near-black border-muted-lavender/70 hover:border-deep-violet/30 hover:-translate-y-0.5 shadow-xs opacity-90'
+                        ? 'bg-warm-lavender text-near-black border-deep-violet shadow-md ring-2 ring-deep-violet/40 scale-[1.02] z-10'
+                        : 'bg-warm-lavender/30 text-near-black border-muted-lavender/70 hover:border-deep-violet/30 hover:-translate-y-0.5 shadow-xs opacity-90'
                     }`}
                   >
                     <div className="space-y-3">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50 group">
                         <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/80 text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {card.badge}
                         </div>
                         <div className="absolute bottom-2 right-2 w-6 h-6 rounded-full bg-soft-white/90 flex items-center justify-center">
@@ -482,7 +478,6 @@ export const ProudWorkChapter: React.FC = () => {
       {/* 03 AD CREATIVES & DISTRIBUTION SHOWCASE */}
       <Container>
         <div className="showcase-card bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
-          {/* Top Row: Left Narrative + Right Image */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
             <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               <div className="space-y-2">
@@ -549,14 +544,12 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row: 5-Card Carousel */}
           <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
             <div className="flex items-center justify-between">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
                 FEATURED CAMPAIGNS
               </span>
 
-              {/* Right Mid-Bottom Arrows */}
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setAdIndex((prev) => (prev - 1 + adCards.length) % adCards.length)}
@@ -575,7 +568,6 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 5-Card Carousel Grid with 25% Subtle Highlight on Middle Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {adCards.map((card, idx) => {
                 const isActive = idx === adIndex;
@@ -586,14 +578,14 @@ export const ProudWorkChapter: React.FC = () => {
                     onClick={() => setAdIndex(idx)}
                     className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left cursor-pointer ${
                       isActive
-                        ? 'bg-[#3B1F52]/15 border-deep-violet/40 shadow-md ring-1 ring-deep-violet/30 scale-[1.02] z-10'
+                        ? 'bg-warm-lavender text-near-black border-deep-violet shadow-md ring-2 ring-deep-violet/40 scale-[1.02] z-10'
                         : 'bg-soft-white/90 text-near-black border-muted-lavender/70 hover:border-deep-violet/30 hover:-translate-y-0.5 shadow-xs opacity-90'
                     }`}
                   >
                     <div className="space-y-3">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/80 text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {card.badge}
                         </div>
                       </div>
@@ -617,7 +609,6 @@ export const ProudWorkChapter: React.FC = () => {
       {/* 04 CREATOR PROMOTIONS SHOWCASE */}
       <Container>
         <div className="showcase-card bg-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
-          {/* Top Row: Left Image + Right Narrative */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
             <div className="lg:col-span-6 w-full order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
@@ -675,14 +666,12 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row: 5-Card Carousel */}
           <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
             <div className="flex items-center justify-between">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
                 FEATURED CREATOR NETWORKS
               </span>
 
-              {/* Right Mid-Bottom Arrows */}
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setPromoIndex((prev) => (prev - 1 + promoCards.length) % promoCards.length)}
@@ -701,7 +690,6 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 5-Card Carousel Grid with 25% Subtle Highlight on Middle Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {promoCards.map((card, idx) => {
                 const isActive = idx === promoIndex;
@@ -712,14 +700,14 @@ export const ProudWorkChapter: React.FC = () => {
                     onClick={() => setPromoIndex(idx)}
                     className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left cursor-pointer ${
                       isActive
-                        ? 'bg-[#3B1F52]/15 border-deep-violet/40 shadow-md ring-1 ring-deep-violet/30 scale-[1.02] z-10'
+                        ? 'bg-warm-lavender text-near-black border-deep-violet shadow-md ring-2 ring-deep-violet/40 scale-[1.02] z-10'
                         : 'bg-warm-lavender/40 text-near-black border-muted-lavender/70 hover:border-deep-violet/30 hover:-translate-y-0.5 shadow-xs opacity-90'
                     }`}
                   >
                     <div className="space-y-3">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/80 text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {card.badge}
                         </div>
                       </div>
