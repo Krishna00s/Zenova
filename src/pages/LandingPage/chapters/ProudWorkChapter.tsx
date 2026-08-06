@@ -14,7 +14,7 @@ export const ProudWorkChapter: React.FC = () => {
   useGSAP(() => {
     const cards = containerRef.current?.querySelectorAll('.showcase-card');
     if (cards && cards.length > 0 && containerRef.current) {
-      scrollRevealCards(cards, containerRef.current, { stagger: 0.15, duration: 1.0 });
+      scrollRevealCards(cards, containerRef.current, { stagger: 0.08, duration: 0.5 });
     }
   }, { scope: containerRef });
 

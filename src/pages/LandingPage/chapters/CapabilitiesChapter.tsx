@@ -13,7 +13,7 @@ export const CapabilitiesChapter: React.FC = () => {
   useGSAP(() => {
     const cards = containerRef.current?.querySelectorAll('.capability-card');
     if (cards && cards.length > 0 && containerRef.current) {
-      scrollRevealCards(cards, containerRef.current, { stagger: 0.12, duration: 1.0 });
+      scrollRevealCards(cards, containerRef.current, { stagger: 0.07, duration: 0.5 });
     }
   }, { scope: containerRef });
 
@@ -64,7 +64,7 @@ export const CapabilitiesChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* Balanced Cards Grid with Elegant Outer Margins */}
+        {/* Balanced Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-stretch w-full">
           {capabilities.map((item, index) => {
             const Icon = item.icon;
