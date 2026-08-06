@@ -65,7 +65,7 @@ export const VideoEditingPage: React.FC = () => {
       subtitle: 'Cinematic Brand Storytelling & Documentary Master',
       story: 'Crafted for an international architectural studio. We wove raw behind-the-scenes footage into an emotional 4K documentary film with spatial audio scoring and rich color grading.',
       highlights: ['4K DCI Mastering', 'Custom Spatial Audio Scoring', 'HDR DaVinci Color Grading'],
-      image: '/media/cap_video_natural.jpg',
+      image: '/media/cap_video_editing.jpg',
       badge: '4K BRAND FILM',
     },
     {
@@ -75,7 +75,7 @@ export const VideoEditingPage: React.FC = () => {
       subtitle: 'Commercial Broadcast & High-Impact Ad Video',
       story: 'Created for a luxury consumer launch. Fast-paced visual cuts and color-graded detail macro shots engineered to capture high attention across TV, Web, and Social.',
       highlights: ['Attention-Grabbing Visual Hook', 'Commercial Color Master Export', 'Multi-Ratio Asset Delivery'],
-      image: '/media/photo_sketch_natural.jpg',
+      image: '/media/camera_studio_3d.jpg',
       badge: 'COMMERCIAL AD',
     },
     {
@@ -85,7 +85,7 @@ export const VideoEditingPage: React.FC = () => {
       subtitle: '9:16 Vertical Reels, Shorts & TikTok Series',
       story: 'Built for high mobile audience retention on Instagram Reels and TikTok. Features dynamic kinetic captions, sound effects, and seamless loop cuts.',
       highlights: ['9:16 Vertical Mobile Master', 'Kinetic Text Caption Design', 'High Viewer Retention Rate'],
-      image: '/media/cap_promo_natural.jpg',
+      image: '/media/cap_ads_phone.jpg',
       badge: '9:16 SOCIAL REELS',
     },
     {
@@ -95,7 +95,7 @@ export const VideoEditingPage: React.FC = () => {
       subtitle: 'Editorial Brand Portrait & Artisan Showcase',
       story: 'Documenting the handmade process of custom furniture artisans. Focused on acoustic ambient audio, slow cinematic motion, and tactile color depth.',
       highlights: ['Tactile Color Palette', 'Acoustic Sound Mixing', 'Editorial Narrative Arc'],
-      image: '/media/photo_understand_natural.jpg',
+      image: '/media/contact_agency_studio.jpg',
       badge: 'ARTISAN DOCUMENTARY',
     },
     {
@@ -176,7 +176,7 @@ export const VideoEditingPage: React.FC = () => {
 
                 <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
                   <img
-                    src="/media/cap_video_natural.jpg"
+                    src="/media/cap_video_editing.jpg"
                     alt="Video Post Production Studio"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
@@ -206,7 +206,7 @@ export const VideoEditingPage: React.FC = () => {
                 <div className="absolute -left-3 sm:-left-6 bottom-6 w-32 sm:w-40 bg-near-black p-2 rounded-2xl shadow-2xl border-2 border-soft-white/80 z-20 animate-bounce-slow">
                   <div className="rounded-xl overflow-hidden aspect-[9/16] relative border border-soft-white/10">
                     <img
-                      src="/media/cap_promo_natural.jpg"
+                      src="/media/cap_ads_phone.jpg"
                       alt="9:16 Vertical Reel"
                       className="w-full h-full object-cover"
                     />
@@ -252,7 +252,6 @@ export const VideoEditingPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            {/* Card 1: 3-Second Hook Graphic */}
             <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10 text-soft-white">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet">
@@ -275,7 +274,6 @@ export const VideoEditingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 2: Pacing Graphic */}
             <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-warm-lavender/60 p-3 flex flex-col justify-between border border-muted-lavender/60 relative">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -297,7 +295,6 @@ export const VideoEditingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 3: Color Grading Graphic */}
             <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10">
                 <div className="flex items-center justify-between text-[9px] font-mono text-purple-300">
@@ -319,7 +316,6 @@ export const VideoEditingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 4: Sound Design Graphic */}
             <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 flex flex-col justify-between shadow-xs">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -564,7 +560,6 @@ export const VideoEditingPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Step 1 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -585,7 +580,6 @@ export const VideoEditingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Step 2 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-near-black/95 p-3 space-y-2 text-soft-white relative overflow-hidden border border-soft-white/10 flex flex-col justify-between">
                 <div className="flex items-center justify-between text-[9px] font-mono text-purple-300">
@@ -607,7 +601,6 @@ export const VideoEditingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Step 3 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">

@@ -68,7 +68,7 @@ export const AdCreationPage: React.FC = () => {
       subtitle: 'Multi-Variant Video Ads & Retargeting Funnel',
       story: 'Designed high-converting video ad variants targeting specific buyer personas on Facebook and Instagram, backed by custom audience retargeting funnels.',
       highlights: ['8 Ad Creative Variants', 'Targeted Audience Funnels', 'Continuous A/B Hook Testing'],
-      image: '/media/cap_ad_natural.jpg',
+      image: '/media/cap_ad_creation.jpg',
       badge: 'META ADS',
     },
     {
@@ -78,7 +78,7 @@ export const AdCreationPage: React.FC = () => {
       subtitle: 'Native Mobile 9:16 Video Creatives',
       story: 'Created mobile-native 9:16 ad video content engineered with UGC-style hooks, fast call-to-actions, and daily campaign bid optimization.',
       highlights: ['UGC-Style Video Hooks', '9:16 Mobile Native Format', 'Daily Bid Strategy Tuning'],
-      image: '/media/cap_promo_natural.jpg',
+      image: '/media/cap_ads_phone.jpg',
       badge: 'TIKTOK ADS',
     },
     {
@@ -88,7 +88,7 @@ export const AdCreationPage: React.FC = () => {
       subtitle: 'Search, YouTube & Display Ad Network',
       story: 'Unified Google ad campaign strategy combining search intent keywords, high-res display banners, and YouTube video ad placements.',
       highlights: ['High-Intent Search Terms', 'YouTube Video Placements', 'Automated Performance Max'],
-      image: '/media/contact_agency_natural.jpg',
+      image: '/media/cap_promo_megaphone.jpg',
       badge: 'GOOGLE ADS',
     },
     {
@@ -98,7 +98,7 @@ export const AdCreationPage: React.FC = () => {
       subtitle: 'Dynamic Cart Recovery & Conversion Ads',
       story: 'Automated pixel-tracked retargeting funnel re-engaging window shoppers with customized offer banners and video testimonials.',
       highlights: ['Pixel & Conversion API', 'Dynamic Cart Recovery', 'Custom Video Testimonials'],
-      image: '/media/photo_create_natural.jpg',
+      image: '/media/contact_studio_natural.jpg',
       badge: 'RETARGETING ENGINE',
     },
   ];
@@ -169,7 +169,7 @@ export const AdCreationPage: React.FC = () => {
 
                 <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
                   <img
-                    src="/media/cap_ad_natural.jpg"
+                    src="/media/cap_ad_creation.jpg"
                     alt="Ad Campaign Performance Analytics"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
@@ -195,7 +195,7 @@ export const AdCreationPage: React.FC = () => {
                 <div className="absolute -left-3 sm:-left-6 bottom-4 w-32 sm:w-40 bg-near-black p-2 rounded-2xl shadow-2xl border-2 border-soft-white/80 z-20 animate-bounce-slow">
                   <div className="rounded-xl overflow-hidden aspect-[9/16] relative border border-soft-white/10">
                     <img
-                      src="/media/cap_promo_natural.jpg"
+                      src="/media/cap_ads_phone.jpg"
                       alt="TikTok Ad Mobile Feed"
                       className="w-full h-full object-cover"
                     />
@@ -231,7 +231,6 @@ export const AdCreationPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            {/* Card 1: Targeted Audience Graphic */}
             <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex flex-col justify-between border border-soft-white/10 text-soft-white">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet">
@@ -252,7 +251,6 @@ export const AdCreationPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 2: High-Impact Video Graphic */}
             <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-warm-lavender/60 p-3 flex flex-col justify-between border border-muted-lavender/60">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -272,7 +270,6 @@ export const AdCreationPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 3: Multi-Platform Graphic */}
             <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-near-black/95 p-3 flex items-center justify-around border border-soft-white/10 text-soft-white">
                 <Facebook className="w-5 h-5 text-blue-400" />
@@ -288,7 +285,6 @@ export const AdCreationPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 4: A/B Testing Graphic */}
             <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-4">
               <div className="h-24 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 flex flex-col justify-between shadow-xs">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -525,7 +521,6 @@ export const AdCreationPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Step 1 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
@@ -546,7 +541,6 @@ export const AdCreationPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Step 2 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-near-black/95 p-3 space-y-2 text-soft-white relative overflow-hidden border border-soft-white/10 flex flex-col justify-between">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet">
@@ -568,7 +562,6 @@ export const AdCreationPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Step 3 Graphic Card */}
             <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-4 hover:-translate-y-1 transition-all">
               <div className="h-32 w-full rounded-xl bg-soft-white border border-muted-lavender/60 p-3 space-y-2 relative overflow-hidden flex flex-col justify-between">
                 <div className="flex items-center justify-between text-[9px] font-mono text-deep-violet font-bold">
