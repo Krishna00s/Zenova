@@ -1,15 +1,28 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
-import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../constants/routes';
-import { ArrowUpRight, Check, Play, ChevronLeft, ChevronRight, Instagram, Facebook } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Check,
+  Play,
+  ChevronLeft,
+  ChevronRight,
+  Facebook,
+  Instagram,
+} from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
 
 export const ProudWorkChapter: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Carousel active indices for each section (5 cards each)
+  const [webIndex, setWebIndex] = useState(0);
+  const [videoIndex, setVideoIndex] = useState(0);
+  const [adIndex, setAdIndex] = useState(0);
+  const [promoIndex, setPromoIndex] = useState(0);
 
   useGSAP(() => {
     const cards = containerRef.current?.querySelectorAll('.showcase-card');
@@ -18,19 +31,196 @@ export const ProudWorkChapter: React.FC = () => {
     }
   }, { scope: containerRef });
 
+  // 1. Web Engineering Data (5 Cards)
+  const webCards = [
+    {
+      id: 1,
+      badge: 'FINTECH PLATFORM',
+      title: 'Lumina Financial',
+      desc: 'Real-time analytics dashboard with sub-50ms render speed.',
+      image: '/media/photo_understand_dev.jpg',
+      link: ROUTES.SERVICES.WEB_DEV,
+    },
+    {
+      id: 2,
+      badge: 'LUXURY E-COMMERCE',
+      title: 'Aura Atelier Storefront',
+      desc: 'High-fashion shopping engine with smooth fluid cart.',
+      image: '/media/photo_sketch_wireframe.jpg',
+      link: ROUTES.SERVICES.WEB_DEV,
+    },
+    {
+      id: 3,
+      badge: 'EDITORIAL CMS',
+      title: 'Vanguard Arch Studio',
+      desc: '60fps architectural storytelling and photography portfolio.',
+      image: '/media/photo_launch_review.jpg',
+      link: ROUTES.SERVICES.WEB_DEV,
+    },
+    {
+      id: 4,
+      badge: 'ENTERPRISE SAAS',
+      title: 'Krona Cloud Portal',
+      desc: 'Multi-tenant cloud user workspace with security auth.',
+      image: '/media/photo_create_ui.jpg',
+      link: ROUTES.SERVICES.WEB_DEV,
+    },
+    {
+      id: 5,
+      badge: 'DESIGN TOKENS',
+      title: 'Aethel UI Token System',
+      desc: '50+ reusable React component tokens and WCAG AAA compliance.',
+      image: '/media/cap_web_engineering.jpg',
+      link: ROUTES.SERVICES.WEB_DEV,
+    },
+  ];
+
+  // 2. Video Production Data (5 Cards)
+  const videoCards = [
+    {
+      id: 1,
+      badge: 'BRAND DOCUMENTARY',
+      title: 'Echoes of Tomorrow',
+      desc: '4K DCI mastering with spatial audio scoring.',
+      image: '/media/cap_video_editing.jpg',
+      link: ROUTES.SERVICES.VIDEO_EDITING,
+    },
+    {
+      id: 2,
+      badge: 'COMMERCIAL AD',
+      title: 'Aura Silk Product Ad',
+      desc: 'High-impact commercial video with cinema color grading.',
+      image: '/media/camera_studio_3d.jpg',
+      link: ROUTES.SERVICES.VIDEO_EDITING,
+    },
+    {
+      id: 3,
+      badge: '9:16 REELS & SHORTS',
+      title: 'PULSE Tech Reels',
+      desc: 'Vertical mobile short-form series with kinetic text captions.',
+      image: '/media/cap_ads_phone.jpg',
+      link: ROUTES.SERVICES.VIDEO_EDITING,
+    },
+    {
+      id: 4,
+      badge: 'ARTISAN SHOWCASE',
+      title: 'Horizon Studio Film',
+      desc: 'Tactile color depth and acoustic soundtrack storytelling.',
+      image: '/media/contact_agency_studio.jpg',
+      link: ROUTES.SERVICES.VIDEO_EDITING,
+    },
+    {
+      id: 5,
+      badge: '3D MOTION VFX',
+      title: 'Krona VFX Titles',
+      desc: 'Dynamic 3D kinetic titles and lower-third graphics.',
+      image: '/media/hero_digital_agency_3d.jpg',
+      link: ROUTES.SERVICES.VIDEO_EDITING,
+    },
+  ];
+
+  // 3. Ad Creatives & Distribution Data (5 Cards)
+  const adCards = [
+    {
+      id: 1,
+      badge: 'META FB & IG ADS',
+      title: 'Lumina Meta Campaign',
+      desc: 'Multi-variant video ads backed by custom retargeting funnels.',
+      image: '/media/cap_ad_creation.jpg',
+      link: ROUTES.SERVICES.AD_CREATION,
+    },
+    {
+      id: 2,
+      badge: 'TIKTOK DIRECT RESPONSE',
+      title: 'Zenith Direct Ads',
+      desc: 'Mobile 9:16 video ads with UGC-style hooks and daily bid tuning.',
+      image: '/media/cap_ads_phone.jpg',
+      link: ROUTES.SERVICES.AD_CREATION,
+    },
+    {
+      id: 3,
+      badge: 'GOOGLE PERF MAX',
+      title: 'Vanguard Google Ads',
+      desc: 'Search, display, and YouTube video ad ecosystem scaling.',
+      image: '/media/cap_promo_megaphone.jpg',
+      link: ROUTES.SERVICES.AD_CREATION,
+    },
+    {
+      id: 4,
+      badge: 'RETARGETING ENGINE',
+      title: 'Aura Commerce Retargeting',
+      desc: 'Cart recovery funnels with dynamic offer banners and social proof.',
+      image: '/media/contact_studio_natural.jpg',
+      link: ROUTES.SERVICES.AD_CREATION,
+    },
+    {
+      id: 5,
+      badge: 'OMNICHANNEL SCALE',
+      title: 'Omnichannel Growth Stack',
+      desc: 'Multi-channel ad distribution scaling ROI to +420%.',
+      image: '/media/cap_ad_natural.jpg',
+      link: ROUTES.SERVICES.AD_CREATION,
+    },
+  ];
+
+  // 4. Creator Promotions Data (5 Cards)
+  const promoCards = [
+    {
+      id: 1,
+      badge: 'FASHION COLLAB',
+      title: 'Fashion x Creator Network',
+      desc: '15 fashion creators for authentic unboxing reels & whitelisting.',
+      image: '/media/cap_paid_promotions.jpg',
+      link: ROUTES.SERVICES.PAID_PROMOTIONS,
+    },
+    {
+      id: 2,
+      badge: 'BEAUTY INTEGRATION',
+      title: 'Skincare x Beauty Leads',
+      desc: 'Long-form tutorial integrations and promo code tracking.',
+      image: '/media/photo_user_real_conversations.jpg',
+      link: ROUTES.SERVICES.PAID_PROMOTIONS,
+    },
+    {
+      id: 3,
+      badge: 'TECH UNBOXING',
+      title: 'PULSE x Tech Reviewers',
+      desc: '8 vetted tech reviewers with whitelisted Reel ad boosting.',
+      image: '/media/hero_natural_agency.jpg',
+      link: ROUTES.SERVICES.PAID_PROMOTIONS,
+    },
+    {
+      id: 4,
+      badge: 'WELLNESS MICRO-CREATORS',
+      title: 'Aura Wellness Series',
+      desc: '20 niche wellness creators doing daily routine integrations.',
+      image: '/media/photo_evolve_plant.jpg',
+      link: ROUTES.SERVICES.PAID_PROMOTIONS,
+    },
+    {
+      id: 5,
+      badge: 'CREATOR WHITELISTING',
+      title: 'Global Influencer Network',
+      desc: 'Whitelisted creator handles for high conversion rate Meta ads.',
+      image: '/media/cap_promo_natural.jpg',
+      link: ROUTES.SERVICES.PAID_PROMOTIONS,
+    },
+  ];
+
   return (
     <section ref={containerRef} className="relative w-full bg-soft-white text-near-black py-16 sm:py-20 md:py-28 space-y-16 sm:space-y-20 md:space-y-24">
-      {/* 01 WEB DEVELOPMENT SHOWCASE */}
+      {/* 01 WEB ENGINEERING SHOWCASE */}
       <Container>
         <div className="showcase-card bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
+          {/* Top Row: Left Narrative (With Top Padding & Spacious Layout) + Right Image */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
             {/* Left Narrative Column */}
-            <div className="lg:col-span-6 space-y-4 sm:space-y-5">
-              <div className="space-y-1">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
+              <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                   01 / WEB ENGINEERING
                 </span>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-editorial font-bold text-near-black leading-tight">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-bold text-near-black leading-[1.12]">
                   Websites That Work.{' '}
                   <span className="italic font-normal text-deep-violet block">
                     Experiences That Convert.
@@ -38,12 +228,12 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              <p className="card-body-text text-xs sm:text-sm">
+              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
                 We design and develop modern, responsive websites that load fast, rank better, and turn visitors into customers.
               </p>
 
-              {/* Checklist */}
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-near-black pt-1">
+              {/* Checklist Grid */}
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-near-black pt-2">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-deep-violet stroke-[2.5]" /> Custom Websites
                 </li>
@@ -58,119 +248,133 @@ export const ProudWorkChapter: React.FC = () => {
                 </li>
               </ul>
 
-              <div className="pt-2">
+              <div className="pt-3">
                 <Link to={ROUTES.SERVICES.WEB_DEV}>
-                  <Button variant="primary" size="md" className="gap-2 px-6 py-3 rounded-full hover:-translate-y-0.5 transition-transform">
+                  <Button variant="primary" size="md" className="gap-2 px-7 py-3.5 rounded-full shadow-md hover:-translate-y-0.5 transition-all">
                     View Web Engineering <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
             </div>
 
-            {/* Right Tech Showcase */}
-            <div className="lg:col-span-6 space-y-4 sm:space-y-5 w-full">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
-                <img src="/media/cap_web_natural.jpg" alt="Web Engineering Showcase" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-              </div>
-
-              <div className="flex items-center justify-between pt-1">
-                <span className="text-[11px] sm:text-xs font-mono uppercase text-neutral-slate">FEATURED SOLUTIONS</span>
-                <div className="flex items-center gap-2">
-                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Previous">
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Next">
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
+            {/* Right Main Dedicated Image */}
+            <div className="lg:col-span-6 w-full">
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
+                <img
+                  src="/media/photo_understand_dev.jpg"
+                  alt="Senior Web Developer Workstation"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-near-black/70 via-transparent to-transparent flex items-end justify-between p-4 text-soft-white">
+                  <span className="text-[10px] font-mono font-bold bg-deep-violet px-2.5 py-1 rounded-full border border-soft-white/20">
+                    React 18 & Next.js Engine
+                  </span>
+                  <span className="text-xs font-mono font-semibold text-green-400">
+                    Sub-Second Speed
+                  </span>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="bg-near-black text-soft-white rounded-2xl p-4 space-y-2 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-                  <div className="aspect-[16/10] rounded-xl bg-deep-violet/40 p-3 flex flex-col justify-between">
-                    <Badge variant="violet" className="self-start text-[10px]">Web Application</Badge>
-                    <p className="text-xs font-editorial font-bold">Lumina Financial</p>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-editorial font-bold">Fintech Platform</h4>
-                    <p className="card-body-text text-soft-white/70 text-[10px]">Real-time analytics dashboard</p>
-                  </div>
-                </div>
+          {/* Bottom Row (Full Width / Centered Middle): Featured Solutions 5-Card Carousel */}
+          <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
+                FEATURED SOLUTIONS
+              </span>
 
-                <div className="bg-soft-white text-near-black rounded-2xl p-4 space-y-2 border border-muted-lavender hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-                  <div className="aspect-[16/10] rounded-xl bg-warm-lavender p-3 flex flex-col justify-between">
-                    <Badge variant="lavender" className="self-start text-[10px]">Website Design</Badge>
-                    <p className="text-xs font-editorial font-bold text-near-black">Aura Atelier</p>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-editorial font-bold">E-Commerce Storefront</h4>
-                    <p className="card-body-text text-[10px]">Modern online shopping experience</p>
-                  </div>
-                </div>
+              {/* Right Mid-Bottom Arrows */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setWebIndex((prev) => (prev - 1 + webCards.length) % webCards.length)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  aria-label="Previous Web Card"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setWebIndex((prev) => (prev + 1) % webCards.length)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  aria-label="Next Web Card"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
+            </div>
+
+            {/* 5-Card Interactive Carousel Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {webCards.map((card, idx) => {
+                const isActive = idx === webIndex;
+                return (
+                  <Link
+                    key={card.id}
+                    to={card.link}
+                    onClick={() => setWebIndex(idx)}
+                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left ${
+                      isActive
+                        ? 'bg-near-black text-soft-white border-near-black shadow-xl scale-[1.02] z-10'
+                        : 'bg-soft-white text-near-black border-muted-lavender/80 hover:border-deep-violet/40 hover:-translate-y-1 shadow-xs'
+                    }`}
+                  >
+                    <div className="space-y-3">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/40">
+                        <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/90 text-soft-white text-[8px] font-mono font-bold">
+                          {card.badge}
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className={`text-sm font-editorial font-bold ${isActive ? 'text-soft-white' : 'text-near-black'}`}>
+                          {card.title}
+                        </h4>
+                        <p className={`card-body-text text-[11px] leading-relaxed ${isActive ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
+                          {card.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
       </Container>
 
-      {/* 03 VIDEO EDITING SHOWCASE */}
+      {/* 02 VIDEO PRODUCTION SHOWCASE (Design Pattern Alternation: Image Left, Text Right) */}
       <Container>
         <div className="showcase-card bg-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
-            {/* Left Column Video Production */}
-            <div className="lg:col-span-6 space-y-4 sm:space-y-5 order-2 lg:order-1 w-full">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
-                <img src="/media/cap_video_natural.jpg" alt="Video Production Studio" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-              </div>
-
-              <div className="flex items-center justify-between pt-1">
-                <span className="text-[11px] sm:text-xs font-mono uppercase text-neutral-slate">FEATURED EDITS</span>
-                <div className="flex items-center gap-2">
-                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Previous">
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button className="w-8 h-8 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-colors" aria-label="Next">
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="bg-near-black text-soft-white rounded-2xl p-4 space-y-2 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-                  <div className="aspect-[16/10] rounded-xl bg-deep-violet/30 p-3 flex flex-col justify-between relative overflow-hidden">
-                    <div className="w-7 h-7 rounded-full bg-soft-white/20 backdrop-blur-md flex items-center justify-center self-end">
-                      <Play className="w-3 h-3 fill-soft-white stroke-none" />
-                    </div>
-                    <p className="text-[10px] font-mono text-muted-lavender">Cinematic Edit</p>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-editorial font-bold">Brand Documentary</h4>
-                    <p className="card-body-text text-soft-white/70 text-[10px]">Pacing & Color Grading</p>
+          {/* Top Row: Left Main Image + Right Narrative (Padded & Spacious) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
+            {/* Left Main Dedicated Image */}
+            <div className="lg:col-span-6 w-full order-2 lg:order-1">
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
+                <img
+                  src="/media/cap_video_editing.jpg"
+                  alt="DaVinci Resolve Video Editor Suite"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-near-black/40 backdrop-blur-[1px] flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full bg-soft-white/90 shadow-2xl flex items-center justify-center text-near-black group-hover:scale-110 transition-transform">
+                    <Play className="w-6 h-6 fill-near-black stroke-none ml-1" />
                   </div>
                 </div>
-
-                <div className="bg-warm-lavender text-near-black rounded-2xl p-4 space-y-2 border border-muted-lavender hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-                  <div className="aspect-[16/10] rounded-xl bg-muted-lavender/50 p-3 flex flex-col justify-between relative overflow-hidden">
-                    <div className="w-7 h-7 rounded-full bg-deep-violet text-soft-white flex items-center justify-center self-end">
-                      <Play className="w-3 h-3 fill-soft-white stroke-none" />
-                    </div>
-                    <p className="text-[10px] font-mono text-deep-violet">Commercial Edit</p>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-editorial font-bold">Product Commercial</h4>
-                    <p className="card-body-text text-[10px]">Short-form storytelling</p>
-                  </div>
+                <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-near-black/90 backdrop-blur-md text-[10px] font-mono font-bold text-soft-white border border-soft-white/20">
+                  4K DCI Cinema Grading
                 </div>
               </div>
             </div>
 
-            {/* Right Narrative Column */}
-            <div className="lg:col-span-6 space-y-4 sm:space-y-5 order-1 lg:order-2">
-              <div className="space-y-1">
+            {/* Right Narrative Column (Padded from top & spacious) */}
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6 order-1 lg:order-2">
+              <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                   02 / VIDEO PRODUCTION
                 </span>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-editorial font-bold text-near-black leading-tight">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-bold text-near-black leading-[1.12]">
                   Stories That Engage.{' '}
                   <span className="italic font-normal text-deep-violet block">
                     Edits That Inspire.
@@ -178,11 +382,11 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              <p className="card-body-text text-xs sm:text-sm">
-                From brand films to short-form content, we craft visuals that connect, inspire, and convert.
+              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+                From brand films to short-form content, we craft visuals that connect, inspire, and convert viewers into loyal advocates.
               </p>
 
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-near-black pt-1">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-near-black pt-2">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-deep-violet stroke-[2.5]" /> Cinematic Storytelling
                 </li>
@@ -197,41 +401,108 @@ export const ProudWorkChapter: React.FC = () => {
                 </li>
               </ul>
 
-              <div className="pt-2">
+              <div className="pt-3">
                 <Link to={ROUTES.SERVICES.VIDEO_EDITING}>
-                  <Button variant="primary" size="md" className="gap-2 px-6 py-3 rounded-full hover:-translate-y-0.5 transition-transform">
+                  <Button variant="primary" size="md" className="gap-2 px-7 py-3.5 rounded-full shadow-md hover:-translate-y-0.5 transition-all">
                     Explore Video Work <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
             </div>
           </div>
+
+          {/* Bottom Row (Full Width / Centered Middle): Featured Edits 5-Card Carousel */}
+          <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
+                FEATURED EDITS
+              </span>
+
+              {/* Right Mid-Bottom Arrows */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setVideoIndex((prev) => (prev - 1 + videoCards.length) % videoCards.length)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  aria-label="Previous Video Card"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setVideoIndex((prev) => (prev + 1) % videoCards.length)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  aria-label="Next Video Card"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* 5-Card Interactive Carousel Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {videoCards.map((card, idx) => {
+                const isActive = idx === videoIndex;
+                return (
+                  <Link
+                    key={card.id}
+                    to={card.link}
+                    onClick={() => setVideoIndex(idx)}
+                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left ${
+                      isActive
+                        ? 'bg-near-black text-soft-white border-near-black shadow-xl scale-[1.02] z-10'
+                        : 'bg-warm-lavender/40 text-near-black border-muted-lavender/80 hover:border-deep-violet/40 hover:-translate-y-1 shadow-xs'
+                    }`}
+                  >
+                    <div className="space-y-3">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/40 group">
+                        <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/90 text-soft-white text-[8px] font-mono font-bold">
+                          {card.badge}
+                        </div>
+                        <div className="absolute bottom-2 right-2 w-6 h-6 rounded-full bg-soft-white/90 flex items-center justify-center">
+                          <Play className="w-3 h-3 fill-near-black stroke-none ml-0.5" />
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className={`text-sm font-editorial font-bold ${isActive ? 'text-soft-white' : 'text-near-black'}`}>
+                          {card.title}
+                        </h4>
+                        <p className={`card-body-text text-[11px] leading-relaxed ${isActive ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
+                          {card.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </Container>
 
-      {/* 04 AD CREATION & DISTRIBUTION SHOWCASE */}
+      {/* 03 AD CREATIVES & DISTRIBUTION SHOWCASE (Text Left, Image Right) */}
       <Container>
         <div className="showcase-card bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
+          {/* Top Row: Left Narrative (Padded & Spacious) + Right Main Image */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
             {/* Left Narrative Column */}
-            <div className="lg:col-span-6 space-y-4 sm:space-y-5">
-              <div className="space-y-1">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
+              <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                   03 / AD CREATIVES & DISTRIBUTION
                 </span>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-editorial font-bold text-near-black leading-tight">
-                  Create. Publish. Promote.{' '}
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-bold text-near-black leading-[1.12]">
+                  Create. Publish. Scale.{' '}
                   <span className="italic font-normal text-deep-violet block">
                     All in One Place.
                   </span>
                 </h3>
               </div>
 
-              <p className="card-body-text text-xs sm:text-sm">
-                We create high-performing ad videos and creatives, then publish and manage them across major platforms to maximize reach and ROI.
+              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+                We create high-performing ad videos and collateral, then publish and manage them across Meta, Google, and TikTok to maximize ROI.
               </p>
 
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-near-black pt-1">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-near-black pt-2">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-deep-violet stroke-[2.5]" /> Ad Video Creation
                 </li>
@@ -246,9 +517,9 @@ export const ProudWorkChapter: React.FC = () => {
                 </li>
               </ul>
 
-              <div className="pt-2 flex items-center gap-4">
+              <div className="pt-3 flex items-center gap-4">
                 <Link to={ROUTES.SERVICES.AD_CREATION}>
-                  <Button variant="primary" size="md" className="gap-2 px-6 py-3 rounded-full hover:-translate-y-0.5 transition-transform">
+                  <Button variant="primary" size="md" className="gap-2 px-7 py-3.5 rounded-full shadow-md hover:-translate-y-0.5 transition-all">
                     Explore Ad Solutions <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
@@ -259,34 +530,119 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Artwork */}
-            <div className="lg:col-span-6 space-y-4 sm:space-y-5 w-full">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
-                <img src="/media/cap_ad_natural.jpg" alt="Ad Creatives & Distribution" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            {/* Right Main Dedicated Image */}
+            <div className="lg:col-span-6 w-full">
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
+                <img
+                  src="/media/cap_ad_creation.jpg"
+                  alt="Ad Growth Strategist Monitoring Performance Analytics"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-near-black/70 via-transparent to-transparent flex items-end justify-between p-4 text-soft-white">
+                  <span className="text-[10px] font-mono font-bold bg-deep-violet px-2.5 py-1 rounded-full border border-soft-white/20">
+                    Sponsored Ad Creative
+                  </span>
+                  <span className="text-xs font-mono font-semibold text-green-400">
+                    +420% ROAS
+                  </span>
+                </div>
               </div>
+            </div>
+          </div>
+
+          {/* Bottom Row (Full Width / Centered Middle): Featured Campaigns 5-Card Carousel */}
+          <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
+                FEATURED CAMPAIGNS
+              </span>
+
+              {/* Right Mid-Bottom Arrows */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setAdIndex((prev) => (prev - 1 + adCards.length) % adCards.length)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  aria-label="Previous Ad Card"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setAdIndex((prev) => (prev + 1) % adCards.length)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  aria-label="Next Ad Card"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* 5-Card Interactive Carousel Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {adCards.map((card, idx) => {
+                const isActive = idx === adIndex;
+                return (
+                  <Link
+                    key={card.id}
+                    to={card.link}
+                    onClick={() => setAdIndex(idx)}
+                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left ${
+                      isActive
+                        ? 'bg-near-black text-soft-white border-near-black shadow-xl scale-[1.02] z-10'
+                        : 'bg-soft-white text-near-black border-muted-lavender/80 hover:border-deep-violet/40 hover:-translate-y-1 shadow-xs'
+                    }`}
+                  >
+                    <div className="space-y-3">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/40">
+                        <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/90 text-soft-white text-[8px] font-mono font-bold">
+                          {card.badge}
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className={`text-sm font-editorial font-bold ${isActive ? 'text-soft-white' : 'text-near-black'}`}>
+                          {card.title}
+                        </h4>
+                        <p className={`card-body-text text-[11px] leading-relaxed ${isActive ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
+                          {card.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
       </Container>
 
-      {/* 05 PAID PROMOTIONS & COLLABORATIONS SHOWCASE */}
+      {/* 04 CREATOR PROMOTIONS SHOWCASE (Design Pattern Alternation: Image Left, Text Right) */}
       <Container>
         <div className="showcase-card bg-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
-            {/* Left Collab Cards */}
-            <div className="lg:col-span-6 space-y-4 sm:space-y-5 order-2 lg:order-1 w-full">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
-                <img src="/media/cap_promo_natural.jpg" alt="Creator Promotions Studio" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          {/* Top Row: Left Main Image + Right Narrative (Padded & Spacious) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
+            {/* Left Main Dedicated Image */}
+            <div className="lg:col-span-6 w-full order-2 lg:order-1">
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
+                <img
+                  src="/media/cap_paid_promotions.jpg"
+                  alt="Content Creator Team Filming Campaign"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-soft-white/90 backdrop-blur-md text-near-black font-mono text-[10px] font-bold shadow-md">
+                  Vetted Creator Network
+                </div>
               </div>
             </div>
 
-            {/* Right Narrative Column */}
-            <div className="lg:col-span-6 space-y-4 sm:space-y-5 order-1 lg:order-2">
-              <div className="space-y-1">
+            {/* Right Narrative Column (Padded from top & spacious) */}
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6 order-1 lg:order-2">
+              <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                   04 / CREATOR PROMOTIONS
                 </span>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-editorial font-bold text-near-black leading-tight">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-bold text-near-black leading-[1.12]">
                   Right Creators.{' '}
                   <span className="italic font-normal text-deep-violet block">
                     Real Impact.
@@ -294,11 +650,11 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              <p className="card-body-text text-xs sm:text-sm">
-                We connect your brand with the right influencers and creators to promote your products and deliver meaningful results.
+              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+                We connect your brand with authentic influencers and content creators to promote your products and deliver meaningful growth.
               </p>
 
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-near-black pt-1">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-near-black pt-2">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-deep-violet stroke-[2.5]" /> Influencer Research
                 </li>
@@ -313,13 +669,76 @@ export const ProudWorkChapter: React.FC = () => {
                 </li>
               </ul>
 
-              <div className="pt-2">
+              <div className="pt-3">
                 <Link to={ROUTES.SERVICES.PAID_PROMOTIONS}>
-                  <Button variant="primary" size="md" className="gap-2 px-6 py-3 rounded-full hover:-translate-y-0.5 transition-transform">
+                  <Button variant="primary" size="md" className="gap-2 px-7 py-3.5 rounded-full shadow-md hover:-translate-y-0.5 transition-all">
                     Explore Creator Networks <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
+            </div>
+          </div>
+
+          {/* Bottom Row (Full Width / Centered Middle): Featured Creator Networks 5-Card Carousel */}
+          <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
+                FEATURED CREATOR NETWORKS
+              </span>
+
+              {/* Right Mid-Bottom Arrows */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setPromoIndex((prev) => (prev - 1 + promoCards.length) % promoCards.length)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  aria-label="Previous Promo Card"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setPromoIndex((prev) => (prev + 1) % promoCards.length)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  aria-label="Next Promo Card"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* 5-Card Interactive Carousel Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {promoCards.map((card, idx) => {
+                const isActive = idx === promoIndex;
+                return (
+                  <Link
+                    key={card.id}
+                    to={card.link}
+                    onClick={() => setPromoIndex(idx)}
+                    className={`rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full border text-left ${
+                      isActive
+                        ? 'bg-near-black text-soft-white border-near-black shadow-xl scale-[1.02] z-10'
+                        : 'bg-warm-lavender/40 text-near-black border-muted-lavender/80 hover:border-deep-violet/40 hover:-translate-y-1 shadow-xs'
+                    }`}
+                  >
+                    <div className="space-y-3">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/40">
+                        <img src={card.image} alt={card.title} className="w-full h-full object-cover object-center" />
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-near-black/90 text-soft-white text-[8px] font-mono font-bold">
+                          {card.badge}
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className={`text-sm font-editorial font-bold ${isActive ? 'text-soft-white' : 'text-near-black'}`}>
+                          {card.title}
+                        </h4>
+                        <p className={`card-body-text text-[11px] leading-relaxed ${isActive ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
+                          {card.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -327,3 +746,5 @@ export const ProudWorkChapter: React.FC = () => {
     </section>
   );
 };
+
+export default ProudWorkChapter;
