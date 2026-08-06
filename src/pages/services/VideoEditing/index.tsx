@@ -15,6 +15,7 @@ import {
   Sparkles,
   Scissors,
   Eye,
+  Tv,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -57,6 +58,7 @@ export const VideoEditingPage: React.FC = () => {
       story: 'Crafted for a luxury architectural studio. We wove raw behind-the-scenes footage into an emotional, high-end documentary film with custom audio scoring.',
       highlights: ['Cinematic Pacing', 'Custom Sound Design', 'Rich Color Grading'],
       image: '/media/cap_video_natural.jpg',
+      badge: '4K DOCUMENTARY',
     },
     ad: {
       title: 'Aura Silk — Commercial Product Video',
@@ -64,6 +66,7 @@ export const VideoEditingPage: React.FC = () => {
       story: 'Created for a premium consumer product launch. Fast-paced visual cuts and color-graded detail shots engineered to capture attention on TV and web.',
       highlights: ['Attention-Grabbing Hook', 'Vibrant Color Grading', 'Commercial Master Export'],
       image: '/media/photo_sketch_natural.jpg',
+      badge: 'COMMERCIAL AD',
     },
     reel: {
       title: 'PULSE Tech — Short-Form Social Reels',
@@ -71,18 +74,22 @@ export const VideoEditingPage: React.FC = () => {
       story: 'Built for high mobile audience retention on Instagram Reels and TikTok. Features dynamic kinetic captions, sound effects, and seamless loop cuts.',
       highlights: ['9:16 Mobile Format', 'Kinetic Text Captions', 'High Viewer Retention'],
       image: '/media/cap_promo_natural.jpg',
+      badge: '9:16 REELS',
     },
   };
 
   return (
-    <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28">
-      {/* 1. HERO STORY CHAPTER */}
+    <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
+      {/* 1. HERO STORY CHAPTER WITH CINEMATIC LIGHTING GLOW */}
       <section className="relative w-full pb-16 sm:pb-24">
+        {/* Ambient Lighting Gradient Backdrop */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-deep-violet/15 via-purple-400/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-5 sm:space-y-6">
-              <Badge variant="violet" className="px-3.5 py-1 text-xs">
+              <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
                 VIDEO EDITING & POST-PRODUCTION
               </Badge>
 
@@ -97,32 +104,32 @@ export const VideoEditingPage: React.FC = () => {
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a href="#video-start-form" className="w-full sm:w-auto">
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all">
                     Start Your Video Project <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
                 <Link to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
-                  <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60">
+                  <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60 hover:bg-warm-lavender hover:-translate-y-0.5 transition-all">
                     Watch Featured Edits <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
             </div>
 
-            {/* Right Video Timeline Studio Frame */}
+            {/* Right Graphic Video Studio Timeline Frame */}
             <div className="lg:col-span-5 w-full">
-              <div className="bg-near-black rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl border border-muted-lavender/40 space-y-3">
+              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 shadow-2xl border border-muted-lavender/40 space-y-3 hover:border-deep-violet/40 transition-colors">
                 {/* Timeline Header */}
-                <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-soft-white/10">
+                <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                   <div className="flex items-center gap-2 text-soft-white/80 font-mono text-[10px]">
                     <Film className="w-3.5 h-3.5 text-deep-violet" />
                     <span>TIMELINE 01 / 4K MASTER</span>
                   </div>
-                  <span className="text-[10px] font-mono text-muted-lavender">00:01:24:12</span>
+                  <span className="text-[10px] font-mono text-muted-lavender font-bold">00:01:24:12</span>
                 </div>
 
                 {/* Video Play Container */}
-                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group">
+                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group border border-soft-white/10">
                   <img
                     src="/media/cap_video_natural.jpg"
                     alt="Video Post Production Studio"
@@ -136,12 +143,12 @@ export const VideoEditingPage: React.FC = () => {
                 </div>
 
                 {/* Simulated Audio Track Meters */}
-                <div className="space-y-1 pt-1">
-                  <div className="flex items-center justify-between text-[9px] font-mono text-soft-white/50">
-                    <span>AUDIO TRACK 01</span>
-                    <span>-12 dB</span>
+                <div className="space-y-1.5 pt-1">
+                  <div className="flex items-center justify-between text-[9px] font-mono text-soft-white/60">
+                    <span>AUDIO TRACK 01 / STEREO MIX</span>
+                    <span className="text-deep-violet font-bold">-12 dB</span>
                   </div>
-                  <div className="h-1.5 w-full bg-soft-white/10 rounded-full overflow-hidden flex gap-1">
+                  <div className="h-2 w-full bg-soft-white/10 rounded-full overflow-hidden flex gap-1 p-0.5">
                     <div className="h-full bg-deep-violet w-3/4 rounded-full" />
                     <div className="h-full bg-purple-400 w-1/4 rounded-full" />
                   </div>
@@ -153,7 +160,7 @@ export const VideoEditingPage: React.FC = () => {
       </section>
 
       {/* 2. OUR EDITING PHILOSOPHY */}
-      <section className="py-16 sm:py-20 bg-warm-lavender/30 border-y border-muted-lavender/40">
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-warm-lavender/40 via-warm-lavender/20 to-soft-white border-y border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5 space-y-3">
@@ -173,8 +180,8 @@ export const VideoEditingPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Eye className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">First 3-Second Hook</h3>
@@ -183,8 +190,8 @@ export const VideoEditingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Scissors className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Seamless Pacing</h3>
@@ -193,8 +200,8 @@ export const VideoEditingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Sliders className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Color Grading</h3>
@@ -203,8 +210,8 @@ export const VideoEditingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="video-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Music className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Custom Sound Design</h3>
@@ -295,14 +302,81 @@ export const VideoEditingPage: React.FC = () => {
                     <Play className="w-6 h-6 fill-deep-violet stroke-none ml-1" />
                   </div>
                 </div>
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-deep-violet/90 backdrop-blur-md text-[10px] font-mono font-bold text-soft-white">
+                  {formatShowcases[activeFormat].badge}
+                </div>
               </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 4. SIMPLE 3-STEP PROCESS */}
+      {/* 4. POST-PRODUCTION TOOLING MATRIX */}
       <section className="py-16 sm:py-20 bg-warm-lavender/30 border-t border-muted-lavender/40">
+        <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
+              POST-PRODUCTION SUITE
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
+              Pro Studio Editing Software
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Sliders className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">DaVinci Resolve</h4>
+              <p className="card-body-text text-[10px]">Color & Mastering</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Scissors className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Premiere Pro</h4>
+              <p className="card-body-text text-[10px]">Timeline Cuts</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">After Effects</h4>
+              <p className="card-body-text text-[10px]">Motion VFX</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Music className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Logic Pro X</h4>
+              <p className="card-body-text text-[10px]">Sound Design</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Film className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Cinema 4D</h4>
+              <p className="card-body-text text-[10px]">3D Motion Titles</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Tv className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">4K Broadcast</h4>
+              <p className="card-body-text text-[10px]">Rec.709 Master</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. SIMPLE 3-STEP PROCESS */}
+      <section className="py-16 sm:py-20 bg-soft-white border-t border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
             <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -314,7 +388,7 @@ export const VideoEditingPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
               <h3 className="text-xl font-editorial font-bold">Share Raw Footage</h3>
               <p className="card-body-text text-xs">
@@ -322,7 +396,7 @@ export const VideoEditingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
               <h3 className="text-xl font-editorial font-bold">Craft & Polish Cut</h3>
               <p className="card-body-text text-xs">
@@ -330,7 +404,7 @@ export const VideoEditingPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
               <h3 className="text-xl font-editorial font-bold">Review & Master Export</h3>
               <p className="card-body-text text-xs">
@@ -341,10 +415,10 @@ export const VideoEditingPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 5. INQUIRY FORM */}
-      <section id="video-start-form" className="py-16 sm:py-24 bg-soft-white border-t border-muted-lavender/50">
+      {/* 6. INQUIRY FORM */}
+      <section id="video-start-form" className="py-16 sm:py-24 bg-warm-lavender/40 border-t border-muted-lavender/50">
         <Container size="large" className="max-w-4xl px-6 sm:px-10">
-          <div className="bg-warm-lavender/40 rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
+          <div className="bg-soft-white rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
             <div className="text-center space-y-2">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                 KICKSTART VIDEO PROJECT
@@ -372,7 +446,7 @@ export const VideoEditingPage: React.FC = () => {
                     placeholder="Your Name *"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                   <input
                     type="email"
@@ -380,7 +454,7 @@ export const VideoEditingPage: React.FC = () => {
                     placeholder="Your Email *"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                 </div>
                 <textarea
@@ -389,7 +463,7 @@ export const VideoEditingPage: React.FC = () => {
                   placeholder="Describe your video editing needs (brand film, reels, commercial, etc.) *"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
                 />
                 <Button type="submit" variant="primary" disabled={loading} className="w-full justify-center py-3.5 rounded-full shadow-md">
                   {loading ? 'Sending Inquiry...' : 'Send Video Editing Message'}

@@ -8,6 +8,7 @@ import {
   Share2,
   Users,
   Search,
+  TrendingUp,
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
@@ -16,6 +17,7 @@ import {
   Instagram,
   Heart,
   MessageCircle,
+  CheckSquare,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -58,6 +60,7 @@ export const PaidPromotionsPage: React.FC = () => {
       story: 'Coordinated 15 fashion creators for authentic product unboxing reels, styling stories, and creator whitelisting rights for paid Meta ads.',
       highlights: ['Authentic Creator Reviews', 'Whitelisting Rights For Ads', 'Trackable Creator Links'],
       image: '/media/cap_promo_natural.jpg',
+      badge: 'FASHION COLLAB',
     },
     beauty: {
       title: 'Skincare Brand x Beauty Influencers',
@@ -65,18 +68,22 @@ export const PaidPromotionsPage: React.FC = () => {
       story: 'Handpicked 10 beauty creators for long-form skincare tutorial integrations and Instagram Story promo discount codes.',
       highlights: ['Dedicated Tutorial Videos', 'Trackable Promo Discount Codes', 'Complete Asset Usage Rights'],
       image: '/media/contact_studio_natural.jpg',
+      badge: 'BEAUTY COLLAB',
     },
   };
 
   return (
-    <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28">
-      {/* 1. HERO STORY CHAPTER */}
+    <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
+      {/* 1. HERO STORY CHAPTER WITH AMBIENT LIGHTING GLOW */}
       <section className="relative w-full pb-16 sm:pb-24">
+        {/* Ambient Lighting Gradient Backdrop */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-deep-violet/15 via-purple-300/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-5 sm:space-y-6">
-              <Badge variant="violet" className="px-3.5 py-1 text-xs">
+              <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
                 PAID PROMOTIONS & CREATOR NETWORKS
               </Badge>
 
@@ -91,12 +98,12 @@ export const PaidPromotionsPage: React.FC = () => {
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a href="#promo-start-form" className="w-full sm:w-auto">
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all">
                     Start Creator Campaign <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
                 <Link to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
-                  <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60">
+                  <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60 hover:bg-warm-lavender hover:-translate-y-0.5 transition-all">
                     Explore Collaborations <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
@@ -105,8 +112,8 @@ export const PaidPromotionsPage: React.FC = () => {
 
             {/* Right Creator Social Feed Frame */}
             <div className="lg:col-span-5 w-full">
-              <div className="bg-near-black rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl border border-muted-lavender/40 space-y-3">
-                <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-soft-white/10">
+              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 shadow-2xl border border-muted-lavender/40 space-y-3 hover:border-deep-violet/40 transition-colors">
+                <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                   <div className="flex items-center gap-2 text-soft-white/80 font-mono text-[10px]">
                     <Users className="w-3.5 h-3.5 text-deep-violet" />
                     <span>CREATOR PARTNERSHIP</span>
@@ -114,7 +121,7 @@ export const PaidPromotionsPage: React.FC = () => {
                   <Instagram className="w-4 h-4 text-deep-violet" />
                 </div>
 
-                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group">
+                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group border border-soft-white/10">
                   <img
                     src="/media/cap_promo_natural.jpg"
                     alt="Creator Promotion Broadcast Studio"
@@ -130,7 +137,7 @@ export const PaidPromotionsPage: React.FC = () => {
                     <span className="flex items-center gap-1"><Heart className="w-3.5 h-3.5 text-red-400 fill-red-400" /> 14.2k</span>
                     <span className="flex items-center gap-1"><MessageCircle className="w-3.5 h-3.5 text-soft-white/70" /> 380</span>
                   </div>
-                  <span className="font-mono text-[10px] text-muted-lavender">Authentic Reach</span>
+                  <span className="font-mono text-[10px] text-muted-lavender font-bold">Authentic Reach</span>
                 </div>
               </div>
             </div>
@@ -139,7 +146,7 @@ export const PaidPromotionsPage: React.FC = () => {
       </section>
 
       {/* 2. OUR CREATOR PHILOSOPHY */}
-      <section className="py-16 sm:py-20 bg-warm-lavender/30 border-y border-muted-lavender/40">
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-warm-lavender/40 via-warm-lavender/20 to-soft-white border-y border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5 space-y-3">
@@ -159,8 +166,8 @@ export const PaidPromotionsPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Search className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Vetted Creators</h3>
@@ -169,8 +176,8 @@ export const PaidPromotionsPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Users className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">End-to-End Management</h3>
@@ -179,8 +186,8 @@ export const PaidPromotionsPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Content Quality Review</h3>
@@ -189,8 +196,8 @@ export const PaidPromotionsPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="promo-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Share2 className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Ad Whitelisting</h3>
@@ -266,14 +273,81 @@ export const PaidPromotionsPage: React.FC = () => {
                   alt={collabShowcases[activeCollab].title}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-deep-violet/90 backdrop-blur-md text-[10px] font-mono font-bold text-soft-white">
+                  {collabShowcases[activeCollab].badge}
+                </div>
               </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 4. SIMPLE 3-STEP PROCESS */}
+      {/* 4. CREATOR FRAMEWORK MATRIX */}
       <section className="py-16 sm:py-20 bg-warm-lavender/30 border-t border-muted-lavender/40">
+        <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
+              EXECUTION FRAMEWORK
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
+              How We Manage Creator Outreach
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Search className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Discovery</h4>
+              <p className="card-body-text text-[10px]">Demographic Research</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <ShieldCheck className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Audits</h4>
+              <p className="card-body-text text-[10px]">Audience Check</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <CheckSquare className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Contracts</h4>
+              <p className="card-body-text text-[10px]">Legal & Licensing</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Production</h4>
+              <p className="card-body-text text-[10px]">Draft Approval</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Share2 className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Whitelisting</h4>
+              <p className="card-body-text text-[10px]">Paid Post Boost</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <TrendingUp className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Analytics</h4>
+              <p className="card-body-text text-[10px]">Clicks & ROI</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. SIMPLE 3-STEP PROCESS */}
+      <section className="py-16 sm:py-20 bg-soft-white border-t border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
             <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -285,7 +359,7 @@ export const PaidPromotionsPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
               <h3 className="text-xl font-editorial font-bold">Handpick Creators</h3>
               <p className="card-body-text text-xs">
@@ -293,7 +367,7 @@ export const PaidPromotionsPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
               <h3 className="text-xl font-editorial font-bold">Coordinate & Review</h3>
               <p className="card-body-text text-xs">
@@ -301,7 +375,7 @@ export const PaidPromotionsPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
               <h3 className="text-xl font-editorial font-bold">Publish & Amplify</h3>
               <p className="card-body-text text-xs">
@@ -312,10 +386,10 @@ export const PaidPromotionsPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 5. INQUIRY FORM */}
-      <section id="promo-start-form" className="py-16 sm:py-24 bg-soft-white border-t border-muted-lavender/50">
+      {/* 6. INQUIRY FORM */}
+      <section id="promo-start-form" className="py-16 sm:py-24 bg-warm-lavender/40 border-t border-muted-lavender/50">
         <Container size="large" className="max-w-4xl px-6 sm:px-10">
-          <div className="bg-warm-lavender/40 rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
+          <div className="bg-soft-white rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
             <div className="text-center space-y-2">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                 KICKSTART CREATOR PROMOTIONS
@@ -343,7 +417,7 @@ export const PaidPromotionsPage: React.FC = () => {
                     placeholder="Your Name *"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                   <input
                     type="email"
@@ -351,7 +425,7 @@ export const PaidPromotionsPage: React.FC = () => {
                     placeholder="Your Email *"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                 </div>
                 <textarea
@@ -360,7 +434,7 @@ export const PaidPromotionsPage: React.FC = () => {
                   placeholder="Describe your brand, product line, and target creator audience *"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
                 />
                 <Button type="submit" variant="primary" disabled={loading} className="w-full justify-center py-3.5 rounded-full shadow-md">
                   {loading ? 'Sending Inquiry...' : 'Send Creator Promotion Message'}
