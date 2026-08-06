@@ -64,24 +64,24 @@ export const CapabilitiesChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* 4 Cards Grid - Equalized Heights & Aligned Image Axis */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8 items-stretch">
+        {/* 4 Cards Grid - Expanded Card Widths, Equalized Heights & Aligned Image Axis */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 items-stretch">
           {capabilities.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="capability-card group bg-soft-white rounded-2xl sm:rounded-3xl p-7 sm:p-8 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 flex flex-col justify-between h-full"
+                className="capability-card group bg-soft-white rounded-2xl sm:rounded-3xl p-7 sm:p-9 lg:p-9 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 flex flex-col justify-between h-full min-w-0"
               >
                 <div className="space-y-4">
                   {/* Icon Badge */}
-                  <div className="w-11 h-11 rounded-2xl bg-warm-lavender flex items-center justify-center text-deep-violet group-hover:bg-deep-violet group-hover:text-soft-white transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl bg-warm-lavender flex items-center justify-center text-deep-violet group-hover:bg-deep-violet group-hover:text-soft-white transition-all duration-300">
                     <Icon className="w-5 h-5" />
                   </div>
 
                   {/* Equalized Title & Description Height */}
-                  <div className="space-y-1.5 min-h-[96px] flex flex-col justify-start">
-                    <h3 className="text-xl font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors">
+                  <div className="space-y-1.5 min-h-[90px] flex flex-col justify-start">
+                    <h3 className="text-xl sm:text-2xl font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors">
                       {item.title}
                     </h3>
                     <p className="card-body-text text-xs sm:text-sm line-clamp-3">
@@ -90,7 +90,7 @@ export const CapabilitiesChapter: React.FC = () => {
                   </div>
 
                   {/* Horizontal Axis Aligned Natural Photo Frame */}
-                  <div className="pt-2 rounded-xl sm:rounded-2xl overflow-hidden w-full aspect-[4/3] bg-warm-lavender/50 border border-muted-lavender/40 relative">
+                  <div className="pt-2 rounded-xl sm:rounded-2xl overflow-hidden w-full aspect-[16/10] sm:aspect-[4/3] bg-warm-lavender/50 border border-muted-lavender/40 relative">
                     <img
                       src={item.image}
                       alt={item.title}
