@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-soft-white: #FAFAFA;
-  --color-warm-lavender: #F1F5F9;
-  --color-deep-violet: #0F172A;
-  --color-muted-lavender: #E2E8F0;
-  --color-near-black: #090D16;
-  --color-neutral-slate: #64748B;
+  --color-soft-white: #FAF9F6;
+  --color-warm-lavender: #F3EEF8;
+  --color-deep-violet: #3B1F52;
+  --color-muted-lavender: #E2D7ED;
+  --color-near-black: #121113;
+  --color-neutral-slate: #5C5862;
   
   --font-editorial: var(--font-family-editorial, 'Cormorant Garamond', Georgia, serif);
   --font-sans: var(--font-family-sans, 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif);
@@ -18,12 +18,12 @@
   --font-family-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'JetBrains Mono', monospace;
   
-  --bg-primary: #FAFAFA;
-  --bg-secondary: #F1F5F9;
-  --text-primary: #090D16;
-  --text-muted: #64748B;
-  --accent-violet: #0F172A;
-  --accent-lavender: #E2E8F0;
+  --bg-primary: #FAF9F6;
+  --bg-secondary: #F3EEF8;
+  --text-primary: #121113;
+  --text-muted: #5C5862;
+  --accent-violet: #3B1F52;
+  --accent-lavender: #E2D7ED;
 }
 
 body {
@@ -54,16 +54,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAFAFA;
+  background: #FAF9F6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #E2D7ED;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0F172A;
+  background: #3B1F52;
 }
 
 /* Typography Rules for Readability */
@@ -71,5 +71,5 @@ body {
   font-size: 0.8125rem; /* 13px */
   line-height: 1.6;
   letter-spacing: -0.005em;
-  color: #475569;
+  color: #5C5862;
 }
