@@ -6,16 +6,15 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../constants/routes';
 import {
   Code,
-  Layout,
-  Zap,
-  Layers,
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
-  Server,
-  Cpu,
   Globe,
-  Terminal,
+  Smartphone,
+  Zap,
+  Sparkles,
+  ShieldCheck,
+  MousePointerClick,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -23,7 +22,7 @@ import { submitContactInquiry } from '../../../api/contact';
 
 export const WebDevelopmentPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeTab, setActiveTab] = useState<'lumina' | 'aura' | 'vanguard'>('lumina');
+  const [activeProject, setActiveProject] = useState<'storefront' | 'app' | 'portfolio'>('storefront');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -51,287 +50,327 @@ export const WebDevelopmentPage: React.FC = () => {
     }
   };
 
-  const caseStudies = {
-    lumina: {
-      title: 'Lumina Financial Platform',
-      tag: 'Web Application & Dashboard',
-      description: 'A high-throughput financial analytics web application engineered for real-time data streaming, sub-50ms render latency, and clean dark-mode UI.',
-      stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'Recharts'],
-      metrics: ['0.4s LCP Score', '100/100 Lighthouse Performance', 'Zero UI Lag'],
+  const showcaseProjects = {
+    storefront: {
+      title: 'Aura Atelier Storefront',
+      subtitle: 'Luxury E-Commerce & Shopping Experience',
+      story: 'Designed for a high-end fashion brand. We built a lightning-fast online store with smooth product transitions, intuitive mobile navigation, and instant checkout.',
+      highlights: ['Instant Page Loads', 'Mobile Shopping First', 'Seamless Checkout Integration'],
       image: '/media/cap_web_natural.jpg',
+      url: 'auraatelier.com',
     },
-    aura: {
-      title: 'Aura Atelier Luxury E-Commerce',
-      tag: 'E-Commerce Storefront',
-      description: 'Bespoke luxury fashion storefront featuring dynamic cart drawer transitions, instant image loading, and a custom checkout engine.',
-      stack: ['Next.js', 'TypeScript', 'Stripe', 'Supabase', 'Framer Motion', 'Tailwind CSS'],
-      metrics: ['99.9% Uptime', '3.8x Higher Conversion', 'Sub-second Checkout'],
+    app: {
+      title: 'Lumina Financial App',
+      subtitle: 'Real-Time Analytics Dashboard',
+      story: 'Built for a fintech startup. We transformed complex financial data into a clean, modern web dashboard that users love opening every single day.',
+      highlights: ['Real-Time Charts', 'Dark & Light Mode UI', 'Sub-second Data Updates'],
       image: '/media/photo_create_natural.jpg',
+      url: 'luminaapp.io',
     },
-    vanguard: {
+    portfolio: {
       title: 'Vanguard Architectural Studio',
-      tag: 'Portfolio & Web CMS',
-      description: 'Minimalist editorial architectural web app with dynamic webGL project showcases, headless CMS integration, and fluid page transitions.',
-      stack: ['React', 'TypeScript', 'GSAP', 'Headless CMS', 'Vercel', 'Tailwind CSS'],
-      metrics: ['Smooth 60fps Transitions', 'Global Edge CDN', 'Full SEO Score'],
+      subtitle: 'Editorial Portfolio & Interactive Gallery',
+      story: 'Crafted for an award-winning architecture studio. We let the high-res photography breathe with fluid scroll animations and quiet editorial typography.',
+      highlights: ['Fluid Scroll Motion', 'Editorial Typography', 'High-Res Image Optimization'],
       image: '/media/photo_launch_natural.jpg',
+      url: 'vanguardstudio.arch',
     },
   };
 
-  const techStack = [
-    { name: 'React 18', icon: Code, desc: 'Component Architecture' },
-    { name: 'TypeScript', icon: Terminal, desc: 'Type Safety & Scale' },
-    { name: 'Next.js', icon: Globe, desc: 'SSR & Static Generation' },
-    { name: 'Supabase / Postgres', icon: Server, desc: 'Backend & RLS Security' },
-    { name: 'Tailwind CSS', icon: Layout, desc: 'Editorial Token Systems' },
-    { name: 'Node.js Engine', icon: Cpu, desc: 'High-Speed API Endpoints' },
-  ];
-
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28">
-      {/* 1. HERO CHAPTER */}
-      <section className="relative w-full pb-16 sm:pb-20">
+      {/* 1. HERO STORY CHAPTER */}
+      <section className="relative w-full pb-16 sm:pb-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Headline */}
-            <div className="lg:col-span-7 space-y-4 sm:space-y-6">
-              <Badge variant="violet" className="px-3.5 py-1 text-xs">
-                SERVICE VERTICAL / 01
-              </Badge>
+            {/* Left Narrative */}
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+              <div className="flex items-center gap-2">
+                <Badge variant="violet" className="px-3.5 py-1 text-xs">
+                  WEB DEVELOPMENT & ARCHITECTURE
+                </Badge>
+              </div>
+
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-editorial font-bold text-near-black tracking-tight leading-[1.08]">
-                Bespoke Web Platforms & <br />
-                <span className="italic font-normal text-deep-violet">Digital Architecture.</span>
+                Websites should feel simple. <br />
+                <span className="italic font-normal text-deep-violet">And work effortlessly.</span>
               </h1>
+
               <p className="card-body-text max-w-xl text-xs sm:text-sm md:text-base leading-relaxed">
-                We design and engineer modern, high-performance websites and web applications built with extreme technical precision, fast response times, and clean editorial aesthetics.
+                Your website is often the first conversation someone has with your brand. We build websites and web applications that are clean, fast, easy to navigate, and designed to turn visitors into long-term customers.
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
-                <a href="#quote-form" className="w-full sm:w-auto">
+                <a href="#web-start-form" className="w-full sm:w-auto">
                   <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md">
-                    Discuss Web Project <ArrowRight className="w-4 h-4" />
+                    Start Your Web Project <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
                 <Link to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
                   <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60">
-                    Explore Work <ArrowUpRight className="w-4 h-4" />
+                    Explore Recent Builds <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
             </div>
 
-            {/* Right Widescreen Photo Frame */}
+            {/* Right Interactive Browser Frame */}
             <div className="lg:col-span-5 w-full">
-              <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-muted-lavender/60 w-full aspect-[4/3] group relative">
-                <img
-                  src="/media/cap_web_natural.jpg"
-                  alt="Web Engineering Studio Workspace"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                />
+              <div className="bg-near-black rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl border border-muted-lavender/40 space-y-3">
+                {/* Browser Top Bar */}
+                <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-soft-white/10">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                  </div>
+                  <div className="px-3 py-1 rounded-md bg-soft-white/10 font-mono text-[10px] text-soft-white/70">
+                    zenova.studio/web-dev
+                  </div>
+                  <Code className="w-4 h-4 text-deep-violet" />
+                </div>
+
+                {/* Hero Showcase Photo */}
+                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group">
+                  <img
+                    src="/media/cap_web_natural.jpg"
+                    alt="Web Development Studio Workspace"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/60 via-transparent to-transparent flex items-end p-4">
+                    <span className="text-soft-white font-mono text-xs">Handcrafted Web Engineering</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 2. CORE CAPABILITIES MATRIX */}
+      {/* 2. THE STORY / WHY WE ARE DIFFERENT */}
       <section className="py-16 sm:py-20 bg-warm-lavender/30 border-y border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-            <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-              ENGINEERING SPECS
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
-              What We Build & Engineer
-            </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-5 space-y-3">
+              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
+                OUR PHILOSOPHY
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black leading-tight">
+                No bloated templates. <br />
+                <span className="italic font-normal text-deep-violet">Just clean, custom code.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-7 space-y-4">
+              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+                Many agencies use heavy, slow templates that break easily and look like everyone else. We build custom websites tailored specifically to your goals. Whether you are non-technical or a veteran engineer, you will appreciate how fast, reliable, and easy to update our websites are.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
-                <Code className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Custom Web Apps</h3>
-              <p className="card-body-text text-xs">
-                Complex dashboards, SaaS products, and portal applications built on React and TypeScript.
-              </p>
-            </div>
-
-            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
-                <Layout className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">E-Commerce Platforms</h3>
-              <p className="card-body-text text-xs">
-                High-converting storefronts with custom checkout integrations and lightning-fast search.
-              </p>
-            </div>
-
+          {/* 4 Pillars Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
             <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
               <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
                 <Zap className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Performance & SEO</h3>
+              <h3 className="text-lg font-editorial font-bold text-near-black">Lightning Fast</h3>
               <p className="card-body-text text-xs">
-                Sub-second page loads, 100/100 Core Web Vitals, and semantic HTML5 DOM optimization.
+                Pages load in less than a second so visitors never leave out of frustration.
               </p>
             </div>
 
             <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
               <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
-                <Layers className="w-5 h-5" />
+                <Smartphone className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-editorial font-bold text-near-black">Design Tokens</h3>
+              <h3 className="text-lg font-editorial font-bold text-near-black">Mobile Perfect</h3>
               <p className="card-body-text text-xs">
-                Reusable UI component libraries, micro-animations, and fluid multi-device layouts.
+                Looks and feels like a native mobile app on iPhones, Androids, and tablets.
+              </p>
+            </div>
+
+            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+                <Globe className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-editorial font-bold text-near-black">Search Engine Ready</h3>
+              <p className="card-body-text text-xs">
+                Built with modern SEO structure so Google can index and rank your pages higher.
+              </p>
+            </div>
+
+            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-editorial font-bold text-near-black">Easy to Update</h3>
+              <p className="card-body-text text-xs">
+                Simple admin dashboard so you can update text, images, and projects without coding.
               </p>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 3. FEATURED CASE STUDIES WITH INTERACTIVE TABS */}
+      {/* 3. VISUAL SHOWCASE (INTERACTIVE BROWSER PREVIEWS) */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="max-w-3xl mb-10 space-y-2">
             <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-              FEATURED WEB CASE STUDIES
+              THE WORK SPEAKS
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-bold text-near-black">
-              Proven Platforms in Production
+              Websites Crafted For Impact
             </h2>
+            <p className="card-body-text text-xs sm:text-sm">
+              Click through our recent web projects to see what we build for ambitious brands.
+            </p>
           </div>
 
-          {/* Interactive Case Study Selector Tabs */}
+          {/* Selector Tabs */}
           <div className="flex flex-wrap gap-3 pb-8 border-b border-muted-lavender/40">
             <button
-              onClick={() => setActiveTab('lumina')}
+              onClick={() => setActiveProject('storefront')}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeTab === 'lumina'
+                activeProject === 'storefront'
                   ? 'bg-deep-violet text-soft-white shadow-md'
                   : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
               }`}
             >
-              Lumina Financial Platform
+              Luxury E-Commerce Storefront
             </button>
             <button
-              onClick={() => setActiveTab('aura')}
+              onClick={() => setActiveProject('app')}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeTab === 'aura'
+                activeProject === 'app'
                   ? 'bg-deep-violet text-soft-white shadow-md'
                   : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
               }`}
             >
-              Aura Atelier Luxury E-Commerce
+              Fintech Web Application
             </button>
             <button
-              onClick={() => setActiveTab('vanguard')}
+              onClick={() => setActiveProject('portfolio')}
               className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all ${
-                activeTab === 'vanguard'
+                activeProject === 'portfolio'
                   ? 'bg-deep-violet text-soft-white shadow-md'
                   : 'bg-warm-lavender/60 text-near-black hover:bg-warm-lavender'
               }`}
             >
-              Vanguard Studio Web App
+              Architectural Studio Portfolio
             </button>
           </div>
 
-          {/* Active Tab Panel */}
+          {/* Active Browser Display */}
           <div className="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6 space-y-4">
               <Badge variant="violet" className="text-[10px]">
-                {caseStudies[activeTab].tag}
+                {showcaseProjects[activeProject].subtitle}
               </Badge>
               <h3 className="text-2xl sm:text-3xl font-editorial font-bold text-near-black">
-                {caseStudies[activeTab].title}
+                {showcaseProjects[activeProject].title}
               </h3>
-              <p className="card-body-text text-xs sm:text-sm">
-                {caseStudies[activeTab].description}
+              <p className="card-body-text text-xs sm:text-sm leading-relaxed">
+                {showcaseProjects[activeProject].story}
               </p>
 
-              {/* Tech Badges */}
-              <div className="pt-2 flex flex-wrap gap-2">
-                {caseStudies[activeTab].stack.map((tech) => (
-                  <span key={tech} className="px-3 py-1 rounded-md bg-warm-lavender/60 text-deep-violet font-mono text-[11px] font-medium border border-muted-lavender/40">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Metrics */}
-              <div className="pt-4 grid grid-cols-3 gap-3 border-t border-muted-lavender/40">
-                {caseStudies[activeTab].metrics.map((m) => (
-                  <div key={m} className="flex items-center gap-1.5 text-[11px] font-semibold text-near-black">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-deep-violet shrink-0" />
-                    <span>{m}</span>
+              <div className="pt-4 space-y-2 border-t border-muted-lavender/40">
+                {showcaseProjects[activeProject].highlights.map((h) => (
+                  <div key={h} className="flex items-center gap-2 text-xs font-semibold text-near-black">
+                    <CheckCircle2 className="w-4 h-4 text-deep-violet shrink-0" />
+                    <span>{h}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="lg:col-span-6">
-              <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/60 w-full aspect-[16/10] relative group">
-                <img
-                  src={caseStudies[activeTab].image}
-                  alt={caseStudies[activeTab].title}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                />
+              <div className="bg-near-black rounded-2xl p-3 sm:p-4 shadow-xl border border-muted-lavender/60 space-y-2">
+                <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-soft-white/10">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                  </div>
+                  <span className="font-mono text-[10px] text-soft-white/60">
+                    https://{showcaseProjects[activeProject].url}
+                  </span>
+                  <MousePointerClick className="w-3.5 h-3.5 text-deep-violet" />
+                </div>
+                <div className="rounded-xl overflow-hidden aspect-[16/10] relative group">
+                  <img
+                    src={showcaseProjects[activeProject].image}
+                    alt={showcaseProjects[activeProject].title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 4. TECH STACK MATRIX */}
-      <section className="py-16 sm:py-20 bg-soft-white border-t border-muted-lavender/40">
+      {/* 4. HOW WORKING TOGETHER LOOKS */}
+      <section className="py-16 sm:py-20 bg-warm-lavender/30 border-t border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
             <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-              TECHNOLOGY MATRIX
+              SIMPLE 3-STEP PROCESS
             </span>
             <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
-              Modern Full-Stack Tooling
+              How Working Together Feels
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {techStack.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div key={item.name} className="p-4 rounded-2xl bg-warm-lavender/30 border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
-                  <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <h4 className="text-xs font-bold text-near-black font-sans">{item.name}</h4>
-                  <p className="card-body-text text-[10px]">{item.desc}</p>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+              <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
+              <h3 className="text-xl font-editorial font-bold">Design & Wireframe</h3>
+              <p className="card-body-text text-xs">
+                We learn about your brand and sketch out clean layouts so you see exactly how your site will look before coding.
+              </p>
+            </div>
+
+            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+              <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
+              <h3 className="text-xl font-editorial font-bold">Build & Polish</h3>
+              <p className="card-body-text text-xs">
+                We write clean React code, refine spacing, test on mobile screens, and ensure everything runs lightning fast.
+              </p>
+            </div>
+
+            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+              <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
+              <h3 className="text-xl font-editorial font-bold">Launch & Grow</h3>
+              <p className="card-body-text text-xs">
+                We connect your domain, double check Google analytics, and hand over your easy-to-use admin dashboard.
+              </p>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* 5. PROJECT SCOPING FORM */}
-      <section id="quote-form" className="py-16 sm:py-24 bg-warm-lavender/40 border-t border-muted-lavender/50">
+      {/* 5. SIMPLE INQUIRY FORM */}
+      <section id="web-start-form" className="py-16 sm:py-24 bg-soft-white border-t border-muted-lavender/50">
         <Container size="large" className="max-w-4xl px-6 sm:px-10">
-          <div className="bg-soft-white rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
+          <div className="bg-warm-lavender/40 rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
             <div className="text-center space-y-2">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-                KICKSTART WEB DEVELOPMENT
+                LETS BUILD YOUR WEBSITE
               </span>
               <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
-                Tell Us About Your Web Project
+                Have a Web Project in Mind?
               </h2>
               <p className="card-body-text text-xs sm:text-sm max-w-lg mx-auto">
-                Fill out this quick form and our lead web engineer will respond within 24 hours.
+                Tell us about your business or project idea. We reply within 24 hours with clear next steps.
               </p>
             </div>
 
             {submitted ? (
               <div className="py-10 text-center space-y-3">
-                <CheckCircle2 className="w-12 h-12 text-deep-violet mx-auto" />
-                <h3 className="text-xl font-editorial font-bold">Request Received</h3>
-                <p className="card-body-text text-xs">We will be in touch with a clear scope and timeline proposal.</p>
+                <Sparkles className="w-12 h-12 text-deep-violet mx-auto" />
+                <h3 className="text-xl font-editorial font-bold">Thank You!</h3>
+                <p className="card-body-text text-xs">We received your inquiry and will be in touch shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -342,7 +381,7 @@ export const WebDevelopmentPage: React.FC = () => {
                     placeholder="Your Name *"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                   <input
                     type="email"
@@ -350,19 +389,19 @@ export const WebDevelopmentPage: React.FC = () => {
                     placeholder="Your Email *"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                 </div>
                 <textarea
                   required
                   rows={4}
-                  placeholder="Describe your website or web app requirements *"
+                  placeholder="Tell us a little bit about your website goals *"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
                 />
-                <Button type="submit" variant="primary" disabled={loading} className="w-full justify-center py-3.5 rounded-full">
-                  {loading ? 'Submitting Proposal...' : 'Submit Web Engineering Inquiry'}
+                <Button type="submit" variant="primary" disabled={loading} className="w-full justify-center py-3.5 rounded-full shadow-md">
+                  {loading ? 'Sending Inquiry...' : 'Send Web Project Message'}
                 </Button>
               </form>
             )}
