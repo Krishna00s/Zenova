@@ -35,7 +35,7 @@ export const CapabilitiesChapter: React.FC = () => {
     {
       icon: Megaphone,
       title: 'Ad Creation & Distribution',
-      description: 'We create ad videos and creatives, then publish and manage them across platforms like Meta, Google, & TikTok.',
+      description: 'We create ad videos and creatives, then publish and manage them across Meta, Google, & TikTok.',
       link: ROUTES.SERVICES.AD_CREATION,
       image: '/media/cap_ad_creation.jpg',
     },
@@ -49,39 +49,39 @@ export const CapabilitiesChapter: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative w-full bg-warm-lavender/30 text-near-black py-20 md:py-28 border-y border-muted-lavender/40">
+    <section ref={containerRef} className="relative w-full bg-warm-lavender/30 text-near-black py-16 sm:py-20 md:py-28 border-y border-muted-lavender/40">
       <Container>
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <span className="text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 space-y-2 sm:space-y-3 px-2">
+          <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
             CAPABILITIES THROUGH WORK
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-near-black tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-editorial font-bold text-near-black tracking-tight">
             What We Do. <span className="italic font-normal text-deep-violet">How We Do It.</span>
           </h2>
-          <p className="card-body-text max-w-2xl mx-auto">
+          <p className="card-body-text max-w-2xl mx-auto text-xs sm:text-sm">
             From building digital experiences to driving real-world growth, we craft solutions that deliver measurable impact.
           </p>
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {capabilities.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="capability-card group bg-soft-white rounded-3xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 flex flex-col justify-between"
+                className="capability-card group bg-soft-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 flex flex-col justify-between"
               >
-                <div className="space-y-4">
+                <div className="space-y-3.5">
                   {/* Icon Badge */}
-                  <div className="w-11 h-11 rounded-2xl bg-warm-lavender flex items-center justify-center text-deep-violet group-hover:bg-deep-violet group-hover:text-soft-white transition-all duration-300">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-warm-lavender flex items-center justify-center text-deep-violet group-hover:bg-deep-violet group-hover:text-soft-white transition-all duration-300">
                     <Icon className="w-5 h-5" />
                   </div>
 
                   {/* Title & Description */}
-                  <div className="space-y-1.5">
-                    <h3 className="text-xl font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors">
+                  <div className="space-y-1">
+                    <h3 className="text-lg sm:text-xl font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors">
                       {item.title}
                     </h3>
                     <p className="card-body-text text-xs sm:text-sm">
@@ -89,18 +89,19 @@ export const CapabilitiesChapter: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* High-res Professional Tech 3D Asset */}
-                  <div className="pt-2 rounded-2xl overflow-hidden aspect-[4/3] bg-warm-lavender/50 border border-muted-lavender/40">
+                  {/* Distortion-Free Image Frame */}
+                  <div className="pt-1 rounded-xl sm:rounded-2xl overflow-hidden w-full aspect-[16/10] sm:aspect-[4/3] bg-warm-lavender/50 border border-muted-lavender/40 relative">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
                   </div>
                 </div>
 
                 {/* Pill Button CTA */}
-                <div className="pt-6">
+                <div className="pt-5">
                   <Link to={item.link}>
                     <Button
                       variant="primary"
