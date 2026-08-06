@@ -13,7 +13,7 @@ export const CapabilitiesChapter: React.FC = () => {
   useGSAP(() => {
     const cards = containerRef.current?.querySelectorAll('.capability-card');
     if (cards && cards.length > 0 && containerRef.current) {
-      scrollRevealCards(cards, containerRef.current, { stagger: 0.07, duration: 0.5 });
+      scrollRevealCards(cards, containerRef.current, { stagger: 0.08, duration: 0.75 });
     }
   }, { scope: containerRef });
 

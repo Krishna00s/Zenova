@@ -9,7 +9,7 @@ export const WorkingTogetherChapter: React.FC = () => {
   useGSAP(() => {
     const cards = containerRef.current?.querySelectorAll('.approach-card');
     if (cards && cards.length > 0 && containerRef.current) {
-      scrollRevealCards(cards, containerRef.current, { stagger: 0.06, duration: 0.5 });
+      scrollRevealCards(cards, containerRef.current, { stagger: 0.08, duration: 0.75 });
     }
   }, { scope: containerRef });
 
@@ -65,7 +65,7 @@ export const WorkingTogetherChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* 5 Column Cards - Crisp 0.5s Reveal & Snappy Hover */}
+        {/* 5 Column Cards - 0.75s Reveal */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
           {steps.map((item, index) => (
             <div
