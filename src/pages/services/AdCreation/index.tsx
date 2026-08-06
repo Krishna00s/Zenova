@@ -28,8 +28,7 @@ import { submitContactInquiry } from '../../../api/contact';
 
 export const AdCreationPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeCategory, setActiveCategory] = useState<'all' | 'meta' | 'tiktok' | 'google'>('all');
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -60,7 +59,7 @@ export const AdCreationPage: React.FC = () => {
   const adProjects = [
     {
       id: 1,
-      category: 'meta',
+      category: 'Meta FB & IG Strategy',
       title: 'Lumina Growth — Meta (FB & IG) Campaign',
       subtitle: 'Multi-Variant Video Ads & Retargeting Funnel',
       story: 'Designed high-converting video ad variants targeting specific buyer personas on Facebook and Instagram, backed by custom audience retargeting funnels.',
@@ -70,7 +69,7 @@ export const AdCreationPage: React.FC = () => {
     },
     {
       id: 2,
-      category: 'tiktok',
+      category: 'TikTok Direct Response',
       title: 'Zenith Direct Response — TikTok & Shorts Ads',
       subtitle: 'Native Mobile 9:16 Video Creatives',
       story: 'Created mobile-native 9:16 ad video content engineered with UGC-style hooks, fast call-to-actions, and daily campaign bid optimization.',
@@ -80,7 +79,7 @@ export const AdCreationPage: React.FC = () => {
     },
     {
       id: 3,
-      category: 'google',
+      category: 'Google Performance Max',
       title: 'Vanguard Omnichannel — Google Performance Max',
       subtitle: 'Search, YouTube & Display Ad Network',
       story: 'Unified Google ad campaign strategy combining search intent keywords, high-res display banners, and YouTube video ad placements.',
@@ -88,22 +87,29 @@ export const AdCreationPage: React.FC = () => {
       image: '/media/contact_agency_natural.jpg',
       badge: 'GOOGLE ADS',
     },
+    {
+      id: 4,
+      category: 'Retargeting Funnel Engine',
+      title: 'Aura Commerce Retargeting Engine',
+      subtitle: 'Dynamic Cart Recovery & Conversion Ads',
+      story: 'Automated pixel-tracked retargeting funnel re-engaging window shoppers with customized offer banners and video testimonials.',
+      highlights: ['Pixel & Conversion API', 'Dynamic Cart Recovery', 'Custom Video Testimonials'],
+      image: '/media/photo_create_natural.jpg',
+      badge: 'RETARGETING ENGINE',
+    },
   ];
 
-  const filteredProjects = activeCategory === 'all'
-    ? adProjects
-    : adProjects.filter((p) => p.category === activeCategory);
-
-  const safeIndex = currentProjectIndex % filteredProjects.length;
-  const activeProject = filteredProjects[safeIndex] || adProjects[0];
+  const totalProjects = adProjects.length;
 
   const handleNext = () => {
-    setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length);
+    setActiveIndex((prev) => (prev + 1) % totalProjects);
   };
 
   const handlePrev = () => {
-    setCurrentProjectIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
+    setActiveIndex((prev) => (prev - 1 + totalProjects) % totalProjects);
   };
+
+  const activeProject = adProjects[activeIndex];
 
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
@@ -238,7 +244,7 @@ export const AdCreationPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH CAROUSEL CONTROL */}
+      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH 3D INFINITE HORIZONTAL STAGE CAROUSEL */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           {/* Monumental Screen-Spanning Cardbox */}
@@ -246,62 +252,65 @@ export const AdCreationPage: React.FC = () => {
             {/* Background Ambient Glow */}
             <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-deep-violet/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            {/* CENTERED HEADER & ATTRACTIVE FILTER PILLS */}
-            <div className="text-center max-w-3xl mx-auto space-y-4">
+            {/* CENTERED HEADER */}
+            <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold block">
                 THE WORK SPEAKS
               </span>
               <h2 className="text-3xl sm:text-5xl font-editorial font-bold text-near-black tracking-tight">
                 Featured Ad Campaigns
               </h2>
-
-              {/* Centered Attractive Category Filter Pills */}
-              <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
-                <button
-                  onClick={() => { setActiveCategory('all'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'all'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  All Campaigns
-                </button>
-                <button
-                  onClick={() => { setActiveCategory('meta'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'meta'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  Meta (FB & IG) Strategy
-                </button>
-                <button
-                  onClick={() => { setActiveCategory('tiktok'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'tiktok'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  TikTok Direct Response
-                </button>
-                <button
-                  onClick={() => { setActiveCategory('google'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'google'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  Google Performance Max
-                </button>
-              </div>
             </div>
 
-            {/* ACTIVE PROJECT DISPLAY WITH NEXT / PREV CAROUSEL ARROWS */}
-            <div className="pt-4 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* 3D INFINITE HORIZONTAL CAROUSEL STAGE WITH FADE-DISAPPEAR EDGES */}
+            <div className="relative w-full max-w-5xl mx-auto py-4">
+              <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
+                <div className="flex items-center justify-center gap-3 sm:gap-4 py-2 transition-all duration-500">
+                  {[-2, -1, 0, 1, 2].map((offset) => {
+                    const projectIdx = (activeIndex + offset + totalProjects * 100) % totalProjects;
+                    const proj = adProjects[projectIdx];
+
+                    const isCenter = offset === 0;
+                    const isAdjacent = Math.abs(offset) === 1;
+
+                    return (
+                      <button
+                        key={`${proj.id}-${offset}`}
+                        onClick={() => setActiveIndex(projectIdx)}
+                        className={`transition-all duration-500 rounded-full font-semibold text-xs whitespace-nowrap px-5 py-2.5 shadow-sm border ${
+                          isCenter
+                            ? 'bg-deep-violet text-soft-white border-deep-violet scale-105 z-20 shadow-xl opacity-100'
+                            : isAdjacent
+                            ? 'bg-warm-lavender/70 text-near-black border-muted-lavender/80 scale-95 z-10 opacity-70 hover:opacity-90 hover:scale-100'
+                            : 'bg-warm-lavender/30 text-near-black/50 border-muted-lavender/40 scale-85 z-0 opacity-20 blur-[1.5px] pointer-events-none'
+                        }`}
+                      >
+                        {proj.category}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Navigation Arrows floating at stage sides */}
+              <button
+                onClick={handlePrev}
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-soft-white/90 border border-muted-lavender/80 shadow-lg flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30"
+                aria-label="Previous Campaign"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-soft-white/90 border border-muted-lavender/80 shadow-lg flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30"
+                aria-label="Next Campaign"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* ACTIVE PROJECT DISPLAY (SLIDES WITH ANIMATION) */}
+            <div key={activeProject.id} className="pt-2 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center animate-fade-in transition-all duration-500">
               {/* Left Project Info */}
               <div className="lg:col-span-6 space-y-5">
                 <div className="flex items-center justify-between">
@@ -309,7 +318,7 @@ export const AdCreationPage: React.FC = () => {
                     {activeProject.badge}
                   </Badge>
                   <span className="font-mono text-xs text-neutral-slate font-bold">
-                    Campaign 0{safeIndex + 1} / 0{filteredProjects.length}
+                    Campaign 0{activeIndex + 1} / 0{totalProjects}
                   </span>
                 </div>
 
@@ -333,27 +342,6 @@ export const AdCreationPage: React.FC = () => {
                       <span>{h}</span>
                     </div>
                   ))}
-                </div>
-
-                {/* Carousel Navigation Buttons */}
-                <div className="pt-4 flex items-center justify-between border-t border-muted-lavender/40">
-                  <span className="text-[11px] font-mono uppercase text-neutral-slate">BROWSE AD CAMPAIGNS</span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={handlePrev}
-                      className="w-10 h-10 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs"
-                      aria-label="Previous Campaign"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button
-                      onClick={handleNext}
-                      className="w-10 h-10 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs"
-                      aria-label="Next Campaign"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                  </div>
                 </div>
               </div>
 

@@ -27,8 +27,7 @@ import { submitContactInquiry } from '../../../api/contact';
 
 export const PaidPromotionsPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeCategory, setActiveCategory] = useState<'all' | 'fashion' | 'beauty' | 'tech'>('all');
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -59,7 +58,7 @@ export const PaidPromotionsPage: React.FC = () => {
   const promoProjects = [
     {
       id: 1,
-      category: 'fashion',
+      category: 'Fashion Apparel Network',
       title: 'Fashion Apparel x Creator Network',
       subtitle: 'Instagram & TikTok Creator Collaborations',
       story: 'Coordinated 15 fashion creators for authentic product unboxing reels, styling stories, and creator whitelisting rights for paid Meta ads.',
@@ -69,7 +68,7 @@ export const PaidPromotionsPage: React.FC = () => {
     },
     {
       id: 2,
-      category: 'beauty',
+      category: 'Skincare & Beauty Influencers',
       title: 'Skincare Brand x Beauty Influencers',
       subtitle: 'YouTube & IG Story Product Integrations',
       story: 'Handpicked 10 beauty creators for long-form skincare tutorial integrations and Instagram Story promo discount codes.',
@@ -79,30 +78,37 @@ export const PaidPromotionsPage: React.FC = () => {
     },
     {
       id: 3,
-      category: 'tech',
+      category: 'Tech Unboxing Series',
       title: 'PULSE Tech x Creator Unboxing Series',
       subtitle: 'Tech Creator Review & Whitelisting Boost',
       story: 'Paired a hardware tech brand with top 8 tech review creators for in-depth unboxing videos and whitelisted Instagram Reel boosting.',
-      highlights: ['8 Vetted Tech Reviewers', 'whitelisted Instagram Reel Ad Boost', 'High Engagement Retention'],
+      highlights: ['8 Vetted Tech Reviewers', 'Whitelisted Instagram Reel Ad Boost', 'High Engagement Retention'],
       image: '/media/hero_digital_agency_3d.jpg',
       badge: 'TECH COLLAB',
     },
+    {
+      id: 4,
+      category: 'Wellness & Lifestyle Network',
+      title: 'Aura Wellness x Micro-Creator Series',
+      subtitle: 'Lifestyle Micro-Influencer Campaign',
+      story: 'Activated 20 niche wellness creators for daily lifestyle routine integrations, stories, and trackable affiliate discount codes.',
+      highlights: ['20 Active Micro-Creators', 'Daily Routine Integrations', 'Affiliate Discount Tracking'],
+      image: '/media/photo_sketch_natural.jpg',
+      badge: 'WELLNESS COLLAB',
+    },
   ];
 
-  const filteredProjects = activeCategory === 'all'
-    ? promoProjects
-    : promoProjects.filter((p) => p.category === activeCategory);
-
-  const safeIndex = currentProjectIndex % filteredProjects.length;
-  const activeProject = filteredProjects[safeIndex] || promoProjects[0];
+  const totalProjects = promoProjects.length;
 
   const handleNext = () => {
-    setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length);
+    setActiveIndex((prev) => (prev + 1) % totalProjects);
   };
 
   const handlePrev = () => {
-    setCurrentProjectIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
+    setActiveIndex((prev) => (prev - 1 + totalProjects) % totalProjects);
   };
+
+  const activeProject = promoProjects[activeIndex];
 
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
@@ -238,7 +244,7 @@ export const PaidPromotionsPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH CAROUSEL CONTROL */}
+      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH 3D INFINITE HORIZONTAL STAGE CAROUSEL */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           {/* Monumental Screen-Spanning Cardbox */}
@@ -246,62 +252,65 @@ export const PaidPromotionsPage: React.FC = () => {
             {/* Background Ambient Glow */}
             <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-deep-violet/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            {/* CENTERED HEADER & ATTRACTIVE FILTER PILLS */}
-            <div className="text-center max-w-3xl mx-auto space-y-4">
+            {/* CENTERED HEADER */}
+            <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold block">
                 THE WORK SPEAKS
               </span>
               <h2 className="text-3xl sm:text-5xl font-editorial font-bold text-near-black tracking-tight">
                 Featured Creator Partnerships
               </h2>
-
-              {/* Centered Attractive Category Filter Pills */}
-              <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
-                <button
-                  onClick={() => { setActiveCategory('all'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'all'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  All Collaborations
-                </button>
-                <button
-                  onClick={() => { setActiveCategory('fashion'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'fashion'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  Fashion Apparel Network
-                </button>
-                <button
-                  onClick={() => { setActiveCategory('beauty'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'beauty'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  Skincare & Beauty Influencers
-                </button>
-                <button
-                  onClick={() => { setActiveCategory('tech'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'tech'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  Tech Unboxing Series
-                </button>
-              </div>
             </div>
 
-            {/* ACTIVE PROJECT DISPLAY WITH NEXT / PREV CAROUSEL ARROWS */}
-            <div className="pt-4 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* 3D INFINITE HORIZONTAL CAROUSEL STAGE WITH FADE-DISAPPEAR EDGES */}
+            <div className="relative w-full max-w-5xl mx-auto py-4">
+              <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
+                <div className="flex items-center justify-center gap-3 sm:gap-4 py-2 transition-all duration-500">
+                  {[-2, -1, 0, 1, 2].map((offset) => {
+                    const projectIdx = (activeIndex + offset + totalProjects * 100) % totalProjects;
+                    const proj = promoProjects[projectIdx];
+
+                    const isCenter = offset === 0;
+                    const isAdjacent = Math.abs(offset) === 1;
+
+                    return (
+                      <button
+                        key={`${proj.id}-${offset}`}
+                        onClick={() => setActiveIndex(projectIdx)}
+                        className={`transition-all duration-500 rounded-full font-semibold text-xs whitespace-nowrap px-5 py-2.5 shadow-sm border ${
+                          isCenter
+                            ? 'bg-deep-violet text-soft-white border-deep-violet scale-105 z-20 shadow-xl opacity-100'
+                            : isAdjacent
+                            ? 'bg-warm-lavender/70 text-near-black border-muted-lavender/80 scale-95 z-10 opacity-70 hover:opacity-90 hover:scale-100'
+                            : 'bg-warm-lavender/30 text-near-black/50 border-muted-lavender/40 scale-85 z-0 opacity-20 blur-[1.5px] pointer-events-none'
+                        }`}
+                      >
+                        {proj.category}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Navigation Arrows floating at stage sides */}
+              <button
+                onClick={handlePrev}
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-soft-white/90 border border-muted-lavender/80 shadow-lg flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30"
+                aria-label="Previous Creator Collaboration"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-soft-white/90 border border-muted-lavender/80 shadow-lg flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30"
+                aria-label="Next Creator Collaboration"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* ACTIVE PROJECT DISPLAY (SLIDES WITH ANIMATION) */}
+            <div key={activeProject.id} className="pt-2 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center animate-fade-in transition-all duration-500">
               {/* Left Project Info */}
               <div className="lg:col-span-6 space-y-5">
                 <div className="flex items-center justify-between">
@@ -309,7 +318,7 @@ export const PaidPromotionsPage: React.FC = () => {
                     {activeProject.badge}
                   </Badge>
                   <span className="font-mono text-xs text-neutral-slate font-bold">
-                    Collab 0{safeIndex + 1} / 0{filteredProjects.length}
+                    Collab 0{activeIndex + 1} / 0{totalProjects}
                   </span>
                 </div>
 
@@ -333,27 +342,6 @@ export const PaidPromotionsPage: React.FC = () => {
                       <span>{h}</span>
                     </div>
                   ))}
-                </div>
-
-                {/* Carousel Navigation Buttons */}
-                <div className="pt-4 flex items-center justify-between border-t border-muted-lavender/40">
-                  <span className="text-[11px] font-mono uppercase text-neutral-slate">BROWSE CREATOR COLLABS</span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={handlePrev}
-                      className="w-10 h-10 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs"
-                      aria-label="Previous Creator Collaboration"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button
-                      onClick={handleNext}
-                      className="w-10 h-10 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs"
-                      aria-label="Next Creator Collaboration"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                  </div>
                 </div>
               </div>
 

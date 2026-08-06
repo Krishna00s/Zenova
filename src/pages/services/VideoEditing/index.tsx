@@ -25,8 +25,7 @@ import { submitContactInquiry } from '../../../api/contact';
 
 export const VideoEditingPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeCategory, setActiveCategory] = useState<'all' | 'brand' | 'ad' | 'reel'>('all');
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -57,8 +56,8 @@ export const VideoEditingPage: React.FC = () => {
   const videoProjects = [
     {
       id: 1,
-      category: 'brand',
-      title: 'Echoes of Tomorrow — Brand Documentary Film',
+      category: 'Brand Documentary Film',
+      title: 'Echoes of Tomorrow — Brand Documentary',
       subtitle: 'Cinematic Brand Storytelling & Documentary Master',
       story: 'Crafted for an international architectural studio. We wove raw behind-the-scenes footage into an emotional 4K documentary film with spatial audio scoring and rich color grading.',
       highlights: ['4K DCI Mastering', 'Custom Spatial Audio Scoring', 'HDR DaVinci Color Grading'],
@@ -67,7 +66,7 @@ export const VideoEditingPage: React.FC = () => {
     },
     {
       id: 2,
-      category: 'ad',
+      category: 'Commercial Ad Video',
       title: 'Aura Silk — Commercial Product Video',
       subtitle: 'Commercial Broadcast & High-Impact Ad Video',
       story: 'Created for a luxury consumer launch. Fast-paced visual cuts and color-graded detail macro shots engineered to capture high attention across TV, Web, and Social.',
@@ -77,7 +76,7 @@ export const VideoEditingPage: React.FC = () => {
     },
     {
       id: 3,
-      category: 'reel',
+      category: '9:16 Social Reels & Shorts',
       title: 'PULSE Tech — Short-Form Social Reels',
       subtitle: '9:16 Vertical Reels, Shorts & TikTok Series',
       story: 'Built for high mobile audience retention on Instagram Reels and TikTok. Features dynamic kinetic captions, sound effects, and seamless loop cuts.',
@@ -87,7 +86,7 @@ export const VideoEditingPage: React.FC = () => {
     },
     {
       id: 4,
-      category: 'brand',
+      category: 'Artisan Craftsman Film',
       title: 'Horizon Studio — Artisan Craftsman Film',
       subtitle: 'Editorial Brand Portrait & Artisan Showcase',
       story: 'Documenting the handmade process of custom furniture artisans. Focused on acoustic ambient audio, slow cinematic motion, and tactile color depth.',
@@ -95,22 +94,29 @@ export const VideoEditingPage: React.FC = () => {
       image: '/media/photo_understand_natural.jpg',
       badge: 'ARTISAN DOCUMENTARY',
     },
+    {
+      id: 5,
+      category: 'Motion Graphics Title Suite',
+      title: 'Krona VFX Motion Titles',
+      subtitle: 'Kinetic Motion Graphics & Visual Effects',
+      story: 'Designed high-end 3D motion titles and kinetic broadcast graphics for a tech launch keynote presentation.',
+      highlights: ['3D Kinetic Title Rendering', 'Broadcast VFX Compositing', 'Dynamic Lower Thirds'],
+      image: '/media/hero_digital_agency_3d.jpg',
+      badge: 'VFX MOTION SUITE',
+    },
   ];
 
-  const filteredProjects = activeCategory === 'all'
-    ? videoProjects
-    : videoProjects.filter((p) => p.category === activeCategory);
-
-  const safeIndex = currentProjectIndex % filteredProjects.length;
-  const activeProject = filteredProjects[safeIndex] || videoProjects[0];
+  const totalProjects = videoProjects.length;
 
   const handleNext = () => {
-    setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length);
+    setActiveIndex((prev) => (prev + 1) % totalProjects);
   };
 
   const handlePrev = () => {
-    setCurrentProjectIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
+    setActiveIndex((prev) => (prev - 1 + totalProjects) % totalProjects);
   };
+
+  const activeProject = videoProjects[activeIndex];
 
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
@@ -251,7 +257,7 @@ export const VideoEditingPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH CAROUSEL CONTROL */}
+      {/* 3. MONUMENTAL CENTERED "THE WORK SPEAKS" SHOWCASE CARDBOX WITH 3D INFINITE HORIZONTAL STAGE CAROUSEL */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           {/* Monumental Screen-Spanning Cardbox */}
@@ -259,62 +265,65 @@ export const VideoEditingPage: React.FC = () => {
             {/* Background Ambient Glow */}
             <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-deep-violet/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            {/* CENTERED HEADER & ATTRACTIVE FILTER PILLS */}
-            <div className="text-center max-w-3xl mx-auto space-y-4">
+            {/* CENTERED HEADER */}
+            <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold block">
                 THE WORK SPEAKS
               </span>
               <h2 className="text-3xl sm:text-5xl font-editorial font-bold text-near-black tracking-tight">
                 Featured Video Formats
               </h2>
-
-              {/* Centered Attractive Category Filter Pills */}
-              <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
-                <button
-                  onClick={() => { setActiveCategory('all'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'all'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  All Video Work
-                </button>
-                <button
-                  onClick={() => { setActiveCategory('brand'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'brand'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  Brand Documentary Film
-                </button>
-                <button
-                  onClick={() => { setActiveCategory('ad'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'ad'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  Commercial Ad Video
-                </button>
-                <button
-                  onClick={() => { setActiveCategory('reel'); setCurrentProjectIndex(0); }}
-                  className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                    activeCategory === 'reel'
-                      ? 'bg-deep-violet text-soft-white shadow-md scale-105'
-                      : 'bg-warm-lavender/70 text-near-black hover:bg-warm-lavender'
-                  }`}
-                >
-                  9:16 Social Reels & Shorts
-                </button>
-              </div>
             </div>
 
-            {/* ACTIVE PROJECT DISPLAY WITH NEXT / PREV CAROUSEL ARROWS */}
-            <div className="pt-4 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* 3D INFINITE HORIZONTAL CAROUSEL STAGE WITH FADE-DISAPPEAR EDGES */}
+            <div className="relative w-full max-w-5xl mx-auto py-4">
+              <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]">
+                <div className="flex items-center justify-center gap-3 sm:gap-4 py-2 transition-all duration-500">
+                  {[-2, -1, 0, 1, 2].map((offset) => {
+                    const projectIdx = (activeIndex + offset + totalProjects * 100) % totalProjects;
+                    const proj = videoProjects[projectIdx];
+
+                    const isCenter = offset === 0;
+                    const isAdjacent = Math.abs(offset) === 1;
+
+                    return (
+                      <button
+                        key={`${proj.id}-${offset}`}
+                        onClick={() => setActiveIndex(projectIdx)}
+                        className={`transition-all duration-500 rounded-full font-semibold text-xs whitespace-nowrap px-5 py-2.5 shadow-sm border ${
+                          isCenter
+                            ? 'bg-deep-violet text-soft-white border-deep-violet scale-105 z-20 shadow-xl opacity-100'
+                            : isAdjacent
+                            ? 'bg-warm-lavender/70 text-near-black border-muted-lavender/80 scale-95 z-10 opacity-70 hover:opacity-90 hover:scale-100'
+                            : 'bg-warm-lavender/30 text-near-black/50 border-muted-lavender/40 scale-85 z-0 opacity-20 blur-[1.5px] pointer-events-none'
+                        }`}
+                      >
+                        {proj.category}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Navigation Arrows floating at stage sides */}
+              <button
+                onClick={handlePrev}
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-soft-white/90 border border-muted-lavender/80 shadow-lg flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30"
+                aria-label="Previous Video Project"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-soft-white/90 border border-muted-lavender/80 shadow-lg flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all z-30"
+                aria-label="Next Video Project"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* ACTIVE PROJECT DISPLAY (SLIDES WITH ANIMATION) */}
+            <div key={activeProject.id} className="pt-2 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center animate-fade-in transition-all duration-500">
               {/* Left Project Info */}
               <div className="lg:col-span-6 space-y-5">
                 <div className="flex items-center justify-between">
@@ -322,7 +331,7 @@ export const VideoEditingPage: React.FC = () => {
                     {activeProject.badge}
                   </Badge>
                   <span className="font-mono text-xs text-neutral-slate font-bold">
-                    Project 0{safeIndex + 1} / 0{filteredProjects.length}
+                    Project 0{activeIndex + 1} / 0{totalProjects}
                   </span>
                 </div>
 
@@ -346,27 +355,6 @@ export const VideoEditingPage: React.FC = () => {
                       <span>{h}</span>
                     </div>
                   ))}
-                </div>
-
-                {/* Carousel Navigation Buttons */}
-                <div className="pt-4 flex items-center justify-between border-t border-muted-lavender/40">
-                  <span className="text-[11px] font-mono uppercase text-neutral-slate">BROWSE VIDEO PROJECTS</span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={handlePrev}
-                      className="w-10 h-10 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs"
-                      aria-label="Previous Video Project"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button
-                      onClick={handleNext}
-                      className="w-10 h-10 rounded-full border border-muted-lavender flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs"
-                      aria-label="Next Video Project"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                  </div>
                 </div>
               </div>
 
