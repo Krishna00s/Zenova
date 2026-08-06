@@ -9,13 +9,13 @@ export interface BadgeProps {
 
 export const Badge: React.FC<BadgeProps> = ({
   children,
-  variant = 'lavender',
+  variant = 'violet',
   className,
 }) => {
   const variantStyles = {
-    lavender: 'bg-warm-lavender text-deep-violet border-muted-lavender',
-    violet: 'bg-deep-violet text-soft-white border-transparent',
-    slate: 'bg-soft-white text-neutral-slate border-neutral-slate/20',
+    lavender: 'bg-slate-100 text-slate-900 border-slate-200',
+    violet: 'bg-near-black text-soft-white border-transparent',
+    slate: 'bg-soft-white text-neutral-slate border-slate-200',
     outline: 'bg-transparent text-near-black border-near-black/20',
   };
 
