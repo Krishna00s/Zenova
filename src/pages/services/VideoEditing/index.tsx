@@ -18,6 +18,8 @@ import {
   Tv,
   ChevronLeft,
   ChevronRight,
+  Volume2,
+  Layers,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -120,13 +122,13 @@ export const VideoEditingPage: React.FC = () => {
 
   return (
     <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
-      {/* 1. HERO STORY CHAPTER */}
+      {/* 1. HERO STORY CHAPTER WITH LAYERED 4K TIMELINE STUDIO MOCKUP */}
       <section className="relative w-full pb-16 sm:pb-24">
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-deep-violet/15 via-purple-400/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
                 VIDEO EDITING & POST-PRODUCTION
               </Badge>
@@ -154,37 +156,77 @@ export const VideoEditingPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-5 w-full">
-              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 shadow-2xl border border-muted-lavender/40 space-y-3 hover:border-deep-violet/40 transition-colors">
+            {/* 3D MULTI-LAYERED VIDEO EDITING SUITE MOCKUP */}
+            <div className="lg:col-span-6 w-full relative">
+              <div className="absolute inset-0 bg-gradient-to-tr from-deep-violet/20 via-purple-400/20 to-transparent rounded-3xl blur-2xl -z-10" />
+
+              {/* Main Studio Frame */}
+              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl border border-muted-lavender/40 space-y-3 relative">
+                {/* Header Timeline Stats */}
                 <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                   <div className="flex items-center gap-2 text-soft-white/80 font-mono text-[10px]">
                     <Film className="w-3.5 h-3.5 text-deep-violet" />
                     <span>TIMELINE 01 / 4K MASTER</span>
                   </div>
-                  <span className="text-[10px] font-mono text-muted-lavender font-bold">00:01:24:12</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono text-purple-300 font-bold bg-soft-white/10 px-2 py-0.5 rounded">DaVinci HDR</span>
+                    <span className="text-[10px] font-mono text-soft-white/60">00:01:24:12</span>
+                  </div>
                 </div>
 
-                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group border border-soft-white/10">
+                {/* Main Video Viewport */}
+                <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
                   <img
                     src="/media/cap_video_natural.jpg"
                     alt="Video Post Production Studio"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-near-black/40 backdrop-blur-[2px] flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-soft-white/90 shadow-2xl flex items-center justify-center text-deep-violet group-hover:scale-110 transition-transform">
+                  <div className="absolute inset-0 bg-near-black/30 backdrop-blur-[1px] flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-soft-white/95 shadow-2xl flex items-center justify-center text-deep-violet group-hover:scale-110 transition-transform">
                       <Play className="w-6 h-6 fill-deep-violet stroke-none ml-1" />
                     </div>
                   </div>
                 </div>
 
-                <div className="space-y-1.5 pt-1">
-                  <div className="flex items-center justify-between text-[9px] font-mono text-soft-white/60">
-                    <span>AUDIO TRACK 01 / STEREO MIX</span>
-                    <span className="text-deep-violet font-bold">-12 dB</span>
+                {/* Timeline Audio & Video Track Layers */}
+                <div className="space-y-1.5 pt-1 font-mono text-[9px]">
+                  <div className="flex items-center justify-between text-soft-white/60">
+                    <span className="flex items-center gap-1"><Layers className="w-3 h-3 text-deep-violet" /> V1: 4K DCI COLOR CUT</span>
+                    <span className="text-deep-violet font-bold">24 FPS</span>
                   </div>
-                  <div className="h-2 w-full bg-soft-white/10 rounded-full overflow-hidden flex gap-1 p-0.5">
-                    <div className="h-full bg-deep-violet w-3/4 rounded-full" />
-                    <div className="h-full bg-purple-400 w-1/4 rounded-full" />
+                  <div className="h-2.5 w-full bg-soft-white/10 rounded-full overflow-hidden flex gap-1 p-0.5">
+                    <div className="h-full bg-deep-violet w-2/5 rounded-full" />
+                    <div className="h-full bg-purple-400 w-2/5 rounded-full" />
+                    <div className="h-full bg-purple-200 w-1/5 rounded-full" />
+                  </div>
+                  <div className="flex items-center justify-between text-soft-white/60 pt-0.5">
+                    <span className="flex items-center gap-1"><Volume2 className="w-3 h-3 text-green-400" /> A1: SPATIAL AUDIO MIX</span>
+                    <span className="text-green-400 font-bold">-12 dB</span>
+                  </div>
+                </div>
+
+                {/* FLOATING 9:16 REELS PHONE FRAME (OVERLAPPING LEFT) */}
+                <div className="absolute -left-3 sm:-left-6 bottom-6 w-32 sm:w-40 bg-near-black p-2 rounded-2xl shadow-2xl border-2 border-soft-white/80 z-20 animate-bounce-slow">
+                  <div className="rounded-xl overflow-hidden aspect-[9/16] relative border border-soft-white/10">
+                    <img
+                      src="/media/cap_promo_natural.jpg"
+                      alt="9:16 Vertical Reel"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-deep-violet text-[8px] text-soft-white font-mono font-bold">
+                      9:16 REEL
+                    </div>
+                  </div>
+                </div>
+
+                {/* FLOATING COLOR GRADING BADGE (TOP RIGHT) */}
+                <div className="absolute -top-4 -right-2 sm:-right-4 bg-deep-violet text-soft-white px-4 py-2.5 rounded-2xl shadow-xl border border-soft-white/40 flex items-center gap-2 z-20 animate-pulse-slow">
+                  <div className="w-7 h-7 rounded-xl bg-soft-white/20 flex items-center justify-center font-bold font-mono text-xs">
+                    4K
+                  </div>
+                  <div className="text-left">
+                    <span className="text-[9px] font-mono text-soft-white/70 block uppercase">Rec.709 Master</span>
+                    <span className="text-xs font-bold font-editorial">Cinema DCI</span>
                   </div>
                 </div>
               </div>
