@@ -12,9 +12,13 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Share2,
+  Video,
+  Layers,
   Sparkles,
   Facebook,
   Instagram,
+  BarChart3,
+  MousePointerClick,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -57,6 +61,7 @@ export const AdCreationPage: React.FC = () => {
       story: 'Designed high-converting video ad variants targeting specific buyer personas on Facebook and Instagram, backed by custom audience retargeting funnels.',
       highlights: ['8 Ad Creative Variants', 'Targeted Audience Funnels', 'Continuous A/B Hook Testing'],
       image: '/media/cap_ad_natural.jpg',
+      badge: 'META ADS',
     },
     tiktok: {
       title: 'Zenith Direct Response — TikTok & Shorts Ads',
@@ -64,18 +69,22 @@ export const AdCreationPage: React.FC = () => {
       story: 'Created mobile-native 9:16 ad video content engineered with UGC-style hooks, fast call-to-actions, and daily campaign bid optimization.',
       highlights: ['UGC-Style Video Hooks', '9:16 Mobile Native Format', 'Daily Bid Strategy Tuning'],
       image: '/media/cap_promo_natural.jpg',
+      badge: 'TIKTOK ADS',
     },
   };
 
   return (
-    <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28">
-      {/* 1. HERO STORY CHAPTER */}
+    <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
+      {/* 1. HERO STORY CHAPTER WITH AMBIENT LIGHTING GLOW */}
       <section className="relative w-full pb-16 sm:pb-24">
+        {/* Ambient Lighting Gradient Backdrop */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-deep-violet/15 via-purple-300/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-5 sm:space-y-6">
-              <Badge variant="violet" className="px-3.5 py-1 text-xs">
+              <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
                 AD CREATION & DISTRIBUTION
               </Badge>
 
@@ -90,12 +99,12 @@ export const AdCreationPage: React.FC = () => {
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a href="#ad-start-form" className="w-full sm:w-auto">
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all">
                     Launch Your Ad Campaign <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
                 <Link to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
-                  <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60">
+                  <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60 hover:bg-warm-lavender hover:-translate-y-0.5 transition-all">
                     See Ad Creatives <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
@@ -104,8 +113,8 @@ export const AdCreationPage: React.FC = () => {
 
             {/* Right Ad Feed Mockup Frame */}
             <div className="lg:col-span-5 w-full">
-              <div className="bg-near-black rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl border border-muted-lavender/40 space-y-3">
-                <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-soft-white/10">
+              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 shadow-2xl border border-muted-lavender/40 space-y-3 hover:border-deep-violet/40 transition-colors">
+                <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                   <div className="flex items-center gap-2 text-soft-white/80 font-mono text-[10px]">
                     <Megaphone className="w-3.5 h-3.5 text-deep-violet" />
                     <span>SPONSORED AD CAMPAIGN</span>
@@ -116,17 +125,18 @@ export const AdCreationPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group">
+                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group border border-soft-white/10">
                   <img
                     src="/media/cap_ad_natural.jpg"
                     alt="Ad Campaign Performance Analytics"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/70 via-transparent to-transparent flex items-end p-4">
-                    <div className="space-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/80 via-transparent to-transparent flex items-end justify-between p-4">
+                    <div className="space-y-0.5">
                       <span className="px-2 py-0.5 rounded bg-deep-violet text-[10px] text-soft-white font-mono font-bold">Sponsored Ad Creative</span>
                       <p className="text-soft-white font-sans text-xs font-semibold">High-Converting Direct Response Video</p>
                     </div>
+                    <MousePointerClick className="w-4 h-4 text-soft-white/80" />
                   </div>
                 </div>
               </div>
@@ -136,7 +146,7 @@ export const AdCreationPage: React.FC = () => {
       </section>
 
       {/* 2. OUR AD PHILOSOPHY */}
-      <section className="py-16 sm:py-20 bg-warm-lavender/30 border-y border-muted-lavender/40">
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-warm-lavender/40 via-warm-lavender/20 to-soft-white border-y border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5 space-y-3">
@@ -156,8 +166,8 @@ export const AdCreationPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Target className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Targeted Audience</h3>
@@ -166,8 +176,8 @@ export const AdCreationPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Megaphone className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">High-Impact Videos</h3>
@@ -176,8 +186,8 @@ export const AdCreationPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Share2 className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Multi-Platform</h3>
@@ -186,8 +196,8 @@ export const AdCreationPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="ad-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <TrendingUp className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">A/B Testing & Scale</h3>
@@ -263,14 +273,81 @@ export const AdCreationPage: React.FC = () => {
                   alt={campaignShowcases[activeCampaign].title}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-deep-violet/90 backdrop-blur-md text-[10px] font-mono font-bold text-soft-white">
+                  {campaignShowcases[activeCampaign].badge}
+                </div>
               </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 4. SIMPLE 3-STEP PROCESS */}
+      {/* 4. AD DISTRIBUTION MATRIX */}
       <section className="py-16 sm:py-20 bg-warm-lavender/30 border-t border-muted-lavender/40">
+        <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
+              AD DISTRIBUTION STACK
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
+              Multi-Channel Paid Ecosystem
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Target className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Meta Ads</h4>
+              <p className="card-body-text text-[10px]">FB & IG Campaigns</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <BarChart3 className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Google Ads</h4>
+              <p className="card-body-text text-[10px]">Search & Performance Max</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <TrendingUp className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">TikTok Ads</h4>
+              <p className="card-body-text text-[10px]">Mobile Video Ads</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Layers className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">GA4 Analytics</h4>
+              <p className="card-body-text text-[10px]">Funnel Tracking</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Video className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Studio Production</h4>
+              <p className="card-body-text text-[10px]">Video Ad Collateral</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Share2 className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Omnichannel</h4>
+              <p className="card-body-text text-[10px]">Campaign Scaling</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. SIMPLE 3-STEP PROCESS */}
+      <section className="py-16 sm:py-20 bg-soft-white border-t border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
             <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -282,7 +359,7 @@ export const AdCreationPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
               <h3 className="text-xl font-editorial font-bold">Produce Ad Videos</h3>
               <p className="card-body-text text-xs">
@@ -290,7 +367,7 @@ export const AdCreationPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
               <h3 className="text-xl font-editorial font-bold">Setup & Publish Campaigns</h3>
               <p className="card-body-text text-xs">
@@ -298,7 +375,7 @@ export const AdCreationPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
               <h3 className="text-xl font-editorial font-bold">Optimize & Scale</h3>
               <p className="card-body-text text-xs">
@@ -309,10 +386,10 @@ export const AdCreationPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 5. INQUIRY FORM */}
-      <section id="ad-start-form" className="py-16 sm:py-24 bg-soft-white border-t border-muted-lavender/50">
+      {/* 6. INQUIRY FORM */}
+      <section id="ad-start-form" className="py-16 sm:py-24 bg-warm-lavender/40 border-t border-muted-lavender/50">
         <Container size="large" className="max-w-4xl px-6 sm:px-10">
-          <div className="bg-warm-lavender/40 rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
+          <div className="bg-soft-white rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
             <div className="text-center space-y-2">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                 LAUNCH YOUR AD CAMPAIGN
@@ -340,7 +417,7 @@ export const AdCreationPage: React.FC = () => {
                     placeholder="Your Name *"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                   <input
                     type="email"
@@ -348,7 +425,7 @@ export const AdCreationPage: React.FC = () => {
                     placeholder="Your Email *"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                 </div>
                 <textarea
@@ -357,7 +434,7 @@ export const AdCreationPage: React.FC = () => {
                   placeholder="Describe your product line, target audience, and ad goals *"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
                 />
                 <Button type="submit" variant="primary" disabled={loading} className="w-full justify-center py-3.5 rounded-full shadow-md">
                   {loading ? 'Sending Inquiry...' : 'Send Ad Campaign Message'}

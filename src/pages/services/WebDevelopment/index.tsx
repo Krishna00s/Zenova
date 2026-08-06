@@ -15,6 +15,10 @@ import {
   Sparkles,
   ShieldCheck,
   MousePointerClick,
+  Terminal,
+  Cpu,
+  Layers,
+  Server,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -55,39 +59,45 @@ export const WebDevelopmentPage: React.FC = () => {
       title: 'Aura Atelier Storefront',
       subtitle: 'Luxury E-Commerce & Shopping Experience',
       story: 'Designed for a high-end fashion brand. We built a lightning-fast online store with smooth product transitions, intuitive mobile navigation, and instant checkout.',
-      highlights: ['Instant Page Loads', 'Mobile Shopping First', 'Seamless Checkout Integration'],
+      highlights: ['Sub-second Page Load', 'Mobile Shopping First', 'Custom Checkout Engine'],
       image: '/media/cap_web_natural.jpg',
       url: 'auraatelier.com',
+      badge: 'E-COMMERCE',
     },
     app: {
-      title: 'Lumina Financial App',
+      title: 'Lumina Financial Platform',
       subtitle: 'Real-Time Analytics Dashboard',
       story: 'Built for a fintech startup. We transformed complex financial data into a clean, modern web dashboard that users love opening every single day.',
-      highlights: ['Real-Time Charts', 'Dark & Light Mode UI', 'Sub-second Data Updates'],
+      highlights: ['Real-Time Streaming', 'Dark & Light Mode UI', 'Sub-50ms Render Latency'],
       image: '/media/photo_create_natural.jpg',
       url: 'luminaapp.io',
+      badge: 'WEB APP',
     },
     portfolio: {
       title: 'Vanguard Architectural Studio',
       subtitle: 'Editorial Portfolio & Interactive Gallery',
       story: 'Crafted for an award-winning architecture studio. We let the high-res photography breathe with fluid scroll animations and quiet editorial typography.',
-      highlights: ['Fluid Scroll Motion', 'Editorial Typography', 'High-Res Image Optimization'],
+      highlights: ['60fps Scroll Motion', 'Editorial Typography', 'Headless CMS Integration'],
       image: '/media/photo_launch_natural.jpg',
       url: 'vanguardstudio.arch',
+      badge: 'EDITORIAL CMS',
     },
   };
 
   return (
-    <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28">
-      {/* 1. HERO STORY CHAPTER */}
+    <main ref={containerRef} className="w-full bg-soft-white text-near-black pt-28 sm:pt-32 pb-20 md:pb-28 overflow-hidden">
+      {/* 1. HERO STORY CHAPTER WITH AMBIENT LIGHTING GLOW */}
       <section className="relative w-full pb-16 sm:pb-24">
+        {/* Ambient Lighting Gradient Backdrop */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-deep-violet/10 via-purple-300/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               <div className="flex items-center gap-2">
-                <Badge variant="violet" className="px-3.5 py-1 text-xs">
-                  WEB DEVELOPMENT & ARCHITECTURE
+                <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs">
+                  WEB ENGINEERING & DIGITAL ARCHITECTURE
                 </Badge>
               </div>
 
@@ -102,44 +112,55 @@ export const WebDevelopmentPage: React.FC = () => {
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a href="#web-start-form" className="w-full sm:w-auto">
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto justify-center gap-2.5 px-7 py-3.5 rounded-full shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all">
                     Start Your Web Project <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
                 <Link to={ROUTES.WORK.ROOT} className="w-full sm:w-auto">
-                  <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60">
+                  <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center gap-2 px-7 py-3.5 rounded-full border border-muted-lavender bg-warm-lavender/60 hover:bg-warm-lavender hover:-translate-y-0.5 transition-all">
                     Explore Recent Builds <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
             </div>
 
-            {/* Right Interactive Browser Frame */}
+            {/* Right Graphic Glassmorphic Browser Frame */}
             <div className="lg:col-span-5 w-full">
-              <div className="bg-near-black rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl border border-muted-lavender/40 space-y-3">
+              <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl border border-muted-lavender/40 space-y-3.5 hover:border-deep-violet/40 transition-colors">
                 {/* Browser Top Bar */}
-                <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-soft-white/10">
+                <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                   <div className="flex items-center gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500/80" />
                     <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                     <div className="w-3 h-3 rounded-full bg-green-500/80" />
                   </div>
-                  <div className="px-3 py-1 rounded-md bg-soft-white/10 font-mono text-[10px] text-soft-white/70">
-                    zenova.studio/web-dev
+                  <div className="px-3 py-1 rounded-md bg-soft-white/10 font-mono text-[10px] text-soft-white/70 flex items-center gap-1.5">
+                    <Globe className="w-3 h-3 text-deep-violet" />
+                    <span>zenova.studio/web-dev</span>
                   </div>
                   <Code className="w-4 h-4 text-deep-violet" />
                 </div>
 
-                {/* Hero Showcase Photo */}
-                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group">
+                {/* Hero Showcase Photo Container */}
+                <div className="rounded-xl overflow-hidden aspect-[4/3] relative group border border-soft-white/10">
                   <img
                     src="/media/cap_web_natural.jpg"
                     alt="Web Development Studio Workspace"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/60 via-transparent to-transparent flex items-end p-4">
-                    <span className="text-soft-white font-mono text-xs">Handcrafted Web Engineering</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/70 via-transparent to-transparent flex items-end justify-between p-4">
+                    <span className="text-soft-white font-mono text-xs font-semibold">Handcrafted Web Engineering</span>
+                    <span className="px-2.5 py-1 rounded-full bg-deep-violet text-[10px] text-soft-white font-mono font-bold">100/100 LCP</span>
                   </div>
+                </div>
+
+                {/* Simulated Graphic Micro-Code Console */}
+                <div className="bg-soft-white/5 rounded-xl p-3 border border-soft-white/10 font-mono text-[10px] text-soft-white/70 space-y-1">
+                  <div className="flex items-center justify-between text-deep-violet">
+                    <span>const stack = ['React', 'Next.js', 'Supabase'];</span>
+                    <Terminal className="w-3 h-3" />
+                  </div>
+                  <div className="text-soft-white/50">// Built for sub-second speeds and zero UI friction</div>
                 </div>
               </div>
             </div>
@@ -148,7 +169,7 @@ export const WebDevelopmentPage: React.FC = () => {
       </section>
 
       {/* 2. THE STORY / WHY WE ARE DIFFERENT */}
-      <section className="py-16 sm:py-20 bg-warm-lavender/30 border-y border-muted-lavender/40">
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-warm-lavender/40 via-warm-lavender/20 to-soft-white border-y border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5 space-y-3">
@@ -167,10 +188,10 @@ export const WebDevelopmentPage: React.FC = () => {
             </div>
           </div>
 
-          {/* 4 Pillars Grid */}
+          {/* 4 Pillars Grid with Glowing Accents */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
-            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Zap className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Lightning Fast</h3>
@@ -179,8 +200,8 @@ export const WebDevelopmentPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Smartphone className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Mobile Perfect</h3>
@@ -189,8 +210,8 @@ export const WebDevelopmentPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <Globe className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Search Engine Ready</h3>
@@ -199,8 +220,8 @@ export const WebDevelopmentPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-xl hover:border-deep-violet/40 transition-all space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-warm-lavender text-deep-violet flex items-center justify-center">
+            <div className="web-reveal bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1 transition-all space-y-3">
+              <div className="w-11 h-11 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center shadow-inner">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-editorial font-bold text-near-black">Easy to Update</h3>
@@ -212,7 +233,7 @@ export const WebDevelopmentPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 3. VISUAL SHOWCASE (INTERACTIVE BROWSER PREVIEWS) */}
+      {/* 3. VISUAL SHOWCASE (INTERACTIVE BROWSER PREVIEWS & GRAPHICS) */}
       <section className="py-16 sm:py-24">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="max-w-3xl mb-10 space-y-2">
@@ -261,7 +282,7 @@ export const WebDevelopmentPage: React.FC = () => {
             </button>
           </div>
 
-          {/* Active Browser Display */}
+          {/* Active Browser Display with Graphic Cards */}
           <div className="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6 space-y-4">
               <Badge variant="violet" className="text-[10px]">
@@ -274,7 +295,7 @@ export const WebDevelopmentPage: React.FC = () => {
                 {showcaseProjects[activeProject].story}
               </p>
 
-              <div className="pt-4 space-y-2 border-t border-muted-lavender/40">
+              <div className="pt-4 space-y-2.5 border-t border-muted-lavender/40">
                 {showcaseProjects[activeProject].highlights.map((h) => (
                   <div key={h} className="flex items-center gap-2 text-xs font-semibold text-near-black">
                     <CheckCircle2 className="w-4 h-4 text-deep-violet shrink-0" />
@@ -285,8 +306,8 @@ export const WebDevelopmentPage: React.FC = () => {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="bg-near-black rounded-2xl p-3 sm:p-4 shadow-xl border border-muted-lavender/60 space-y-2">
-                <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-soft-white/10">
+              <div className="bg-near-black rounded-2xl p-4 shadow-2xl border border-muted-lavender/60 space-y-3">
+                <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
                   <div className="flex items-center gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
@@ -297,12 +318,15 @@ export const WebDevelopmentPage: React.FC = () => {
                   </span>
                   <MousePointerClick className="w-3.5 h-3.5 text-deep-violet" />
                 </div>
-                <div className="rounded-xl overflow-hidden aspect-[16/10] relative group">
+                <div className="rounded-xl overflow-hidden aspect-[16/10] relative group border border-soft-white/10">
                   <img
                     src={showcaseProjects[activeProject].image}
                     alt={showcaseProjects[activeProject].title}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-deep-violet/90 backdrop-blur-md text-[10px] font-mono font-bold text-soft-white">
+                    {showcaseProjects[activeProject].badge}
+                  </div>
                 </div>
               </div>
             </div>
@@ -310,8 +334,72 @@ export const WebDevelopmentPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 4. HOW WORKING TOGETHER LOOKS */}
+      {/* 4. GRAPHIC TOOLING & TECH MATRIX */}
       <section className="py-16 sm:py-20 bg-warm-lavender/30 border-t border-muted-lavender/40">
+        <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
+              TECHNOLOGY MATRIX
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-editorial font-bold text-near-black">
+              Built on Modern React Engineering
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Code className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">React 18</h4>
+              <p className="card-body-text text-[10px]">Component Architecture</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Terminal className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">TypeScript</h4>
+              <p className="card-body-text text-[10px]">Type Safety & Scale</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Globe className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Next.js Engine</h4>
+              <p className="card-body-text text-[10px]">SSR & Edge Rendering</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Server className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Supabase / Postgres</h4>
+              <p className="card-body-text text-[10px]">Backend & RLS Security</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Layers className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Tailwind CSS</h4>
+              <p className="card-body-text text-[10px]">Editorial Tokens</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-soft-white border border-muted-lavender/60 text-center space-y-2 hover:-translate-y-1 transition-all">
+              <div className="w-8 h-8 rounded-lg bg-deep-violet text-soft-white mx-auto flex items-center justify-center">
+                <Cpu className="w-4 h-4" />
+              </div>
+              <h4 className="text-xs font-bold text-near-black font-sans">Node API</h4>
+              <p className="card-body-text text-[10px]">Sub-50ms Endpoints</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. HOW WORKING TOGETHER LOOKS */}
+      <section className="py-16 sm:py-20 bg-soft-white border-t border-muted-lavender/40">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
             <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -323,7 +411,7 @@ export const WebDevelopmentPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 01</span>
               <h3 className="text-xl font-editorial font-bold">Design & Wireframe</h3>
               <p className="card-body-text text-xs">
@@ -331,7 +419,7 @@ export const WebDevelopmentPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 02</span>
               <h3 className="text-xl font-editorial font-bold">Build & Polish</h3>
               <p className="card-body-text text-xs">
@@ -339,7 +427,7 @@ export const WebDevelopmentPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-soft-white rounded-2xl p-6 border border-muted-lavender/60 space-y-3">
+            <div className="bg-warm-lavender/30 rounded-2xl p-6 border border-muted-lavender/60 space-y-3 hover:-translate-y-1 transition-all">
               <span className="text-xs font-mono text-deep-violet font-bold">STEP 03</span>
               <h3 className="text-xl font-editorial font-bold">Launch & Grow</h3>
               <p className="card-body-text text-xs">
@@ -350,10 +438,10 @@ export const WebDevelopmentPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 5. SIMPLE INQUIRY FORM */}
-      <section id="web-start-form" className="py-16 sm:py-24 bg-soft-white border-t border-muted-lavender/50">
+      {/* 6. SIMPLE INQUIRY FORM */}
+      <section id="web-start-form" className="py-16 sm:py-24 bg-warm-lavender/40 border-t border-muted-lavender/50">
         <Container size="large" className="max-w-4xl px-6 sm:px-10">
-          <div className="bg-warm-lavender/40 rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
+          <div className="bg-soft-white rounded-3xl p-6 sm:p-10 border border-muted-lavender/80 shadow-xl space-y-6">
             <div className="text-center space-y-2">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                 LETS BUILD YOUR WEBSITE
@@ -381,7 +469,7 @@ export const WebDevelopmentPage: React.FC = () => {
                     placeholder="Your Name *"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                   <input
                     type="email"
@@ -389,7 +477,7 @@ export const WebDevelopmentPage: React.FC = () => {
                     placeholder="Your Email *"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
+                    className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30"
                   />
                 </div>
                 <textarea
@@ -398,7 +486,7 @@ export const WebDevelopmentPage: React.FC = () => {
                   placeholder="Tell us a little bit about your website goals *"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-soft-white border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-warm-lavender/30 border border-muted-lavender text-xs focus:ring-2 focus:ring-deep-violet/30 resize-none"
                 />
                 <Button type="submit" variant="primary" disabled={loading} className="w-full justify-center py-3.5 rounded-full shadow-md">
                   {loading ? 'Sending Inquiry...' : 'Send Web Project Message'}
