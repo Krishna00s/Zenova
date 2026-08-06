@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 import { Button } from '../ui/Button';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X, ChevronDown, Code, Video, Megaphone, Share2 } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [capabilitiesDropdown, setCapabilitiesDropdown] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -21,21 +22,21 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'Home', path: ROUTES.HOME },
-    { label: 'About', path: ROUTES.ABOUT },
-    { label: 'Capabilities', path: ROUTES.SERVICES.WEB_DEV },
-    { label: 'Work', path: ROUTES.WORK.ROOT },
-    { label: 'Process', path: '#process' },
-    { label: 'Contact', path: ROUTES.CONTACT },
+  const serviceSubmenu = [
+    { label: 'Web Engineering', path: ROUTES.SERVICES.WEB_DEV, icon: Code, desc: 'Bespoke web platforms & web apps' },
+    { label: 'Video Production', path: ROUTES.SERVICES.VIDEO_EDITING, icon: Video, desc: 'Cinematic brand films & reels' },
+    { label: 'Ad Creatives & Ads', path: ROUTES.SERVICES.AD_CREATION, icon: Megaphone, desc: 'Meta, Google & TikTok campaigns' },
+    { label: 'Creator Promotions', path: ROUTES.SERVICES.PAID_PROMOTIONS, icon: Share2, desc: 'Influencer whitelisting & networks' },
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-5 px-6 sm:px-12 border-b ${
-      isScrolled
-        ? 'bg-soft-white/95 backdrop-blur-md border-muted-lavender/60 shadow-xs'
-        : 'bg-soft-white/70 backdrop-blur-sm border-muted-lavender/30'
-    }`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-4 sm:py-5 px-6 sm:px-12 border-b ${
+        isScrolled
+          ? 'bg-soft-white/95 backdrop-blur-md border-muted-lavender/60 shadow-xs'
+          : 'bg-soft-white/80 backdrop-blur-sm border-muted-lavender/30'
+      }`}
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Brand Logo with 4-Petal Flower Mark */}
         <Link
@@ -50,22 +51,83 @@ export const Navbar: React.FC = () => {
 
         {/* Center Navigation Links */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => {
-            const isActive = location.pathname === link.path;
-            return (
-              <Link
-                key={link.label}
-                to={link.path}
-                className={`text-sm font-medium transition-colors ${
-                  isActive
-                    ? 'text-deep-violet font-semibold'
-                    : 'text-near-black/70 hover:text-deep-violet'
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+          <Link
+            to={ROUTES.HOME}
+            className={`text-sm font-medium transition-colors ${
+              location.pathname === ROUTES.HOME ? 'text-deep-violet font-semibold' : 'text-near-black/70 hover:text-deep-violet'
+            }`}
+          >
+            Home
+          </Link>
+
+          <Link
+            to={ROUTES.ABOUT}
+            className={`text-sm font-medium transition-colors ${
+              location.pathname === ROUTES.ABOUT ? 'text-deep-violet font-semibold' : 'text-near-black/70 hover:text-deep-violet'
+            }`}
+          >
+            About
+          </Link>
+
+          {/* Capabilities Hover Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setCapabilitiesDropdown(true)}
+            onMouseLeave={() => setCapabilitiesDropdown(false)}
+          >
+            <Link
+              to={ROUTES.SERVICES.WEB_DEV}
+              className={`text-sm font-medium transition-colors flex items-center gap-1 py-1 ${
+                location.pathname.startsWith('/services') ? 'text-deep-violet font-semibold' : 'text-near-black/70 hover:text-deep-violet'
+              }`}
+            >
+              <span>Capabilities</span>
+              <ChevronDown className="w-3.5 h-3.5" />
+            </Link>
+
+            {capabilitiesDropdown && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-72 p-3 bg-soft-white/95 backdrop-blur-xl rounded-2xl border border-muted-lavender/80 shadow-2xl space-y-1 pt-2">
+                {serviceSubmenu.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={item.label}
+                      to={item.path}
+                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-warm-lavender/60 transition-colors group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-warm-lavender text-deep-violet flex items-center justify-center shrink-0 group-hover:bg-deep-violet group-hover:text-soft-white transition-colors">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-near-black group-hover:text-deep-violet transition-colors">
+                          {item.label}
+                        </div>
+                        <p className="card-body-text text-[10px] text-neutral-slate">{item.desc}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          <Link
+            to={ROUTES.WORK.ROOT}
+            className={`text-sm font-medium transition-colors ${
+              location.pathname === ROUTES.WORK.ROOT ? 'text-deep-violet font-semibold' : 'text-near-black/70 hover:text-deep-violet'
+            }`}
+          >
+            Work
+          </Link>
+
+          <Link
+            to={ROUTES.CONTACT}
+            className={`text-sm font-medium transition-colors ${
+              location.pathname === ROUTES.CONTACT ? 'text-deep-violet font-semibold' : 'text-near-black/70 hover:text-deep-violet'
+            }`}
+          >
+            Contact
+          </Link>
         </nav>
 
         {/* Right CTA Button */}
@@ -90,16 +152,36 @@ export const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-4 p-6 bg-soft-white/95 backdrop-blur-xl border border-muted-lavender rounded-2xl shadow-xl flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              to={link.path}
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 text-base font-editorial text-near-black hover:text-deep-violet border-b border-muted-lavender/40"
-            >
-              {link.label}
-            </Link>
-          ))}
+          <Link to={ROUTES.HOME} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial text-near-black border-b border-muted-lavender/40">
+            Home
+          </Link>
+          <Link to={ROUTES.ABOUT} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial text-near-black border-b border-muted-lavender/40">
+            About
+          </Link>
+
+          {/* Capabilities Submenu on Mobile */}
+          <div className="space-y-2 py-2 border-b border-muted-lavender/40">
+            <span className="text-xs font-mono uppercase text-deep-violet font-semibold">Capabilities</span>
+            <div className="pl-3 space-y-2 pt-1">
+              {serviceSubmenu.map((item) => (
+                <Link
+                  key={item.label}
+                  to={item.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-sm font-sans text-near-black hover:text-deep-violet"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link to={ROUTES.WORK.ROOT} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial text-near-black border-b border-muted-lavender/40">
+            Work
+          </Link>
+          <Link to={ROUTES.CONTACT} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial text-near-black border-b border-muted-lavender/40">
+            Contact
+          </Link>
           <div className="pt-2">
             <Link to={ROUTES.CONTACT} onClick={() => setMobileMenuOpen(false)}>
               <Button variant="primary" className="w-full justify-center gap-1.5 py-3">
