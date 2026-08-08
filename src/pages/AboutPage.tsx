@@ -35,7 +35,7 @@ export const AboutPage: React.FC = () => {
               </h1>
 
               <p className="card-body-text max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed">
-                We believe good work is not defined by how complicated it looks or how loud it advertises itself. Good work is remembered because it solves real problems with clarity, emotion, and care.
+                We don't make fake promises or claim to be corporate grandmasters. We are a dedicated team of builders who have completed a solid body of work. We know our craft, we work hard, and we only take on projects we know we can execute well.
               </p>
 
               <div className="pt-2 flex items-center gap-4">
@@ -64,7 +64,7 @@ export const AboutPage: React.FC = () => {
                     <span className="text-[10px] font-mono font-bold bg-deep-violet px-2.5 py-1 rounded-full border border-soft-white/20">
                       Studio HQ
                     </span>
-                    <p className="text-xs font-editorial italic">Where ideas turn into lasting impact.</p>
+                    <p className="text-xs font-editorial italic">Where honest work turns into real results.</p>
                   </div>
                 </div>
               </div>
@@ -90,9 +90,9 @@ export const AboutPage: React.FC = () => {
               <div className="w-12 h-12 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-editorial font-bold text-near-black">Transparency First</h3>
-              <p className="card-body-text text-xs sm:text-sm">
-                No hidden costs, no jargon. We speak plainly and keep you informed every step of the way.
+              <h3 className="text-2xl font-editorial font-bold text-near-black">Honest Scope & Competence</h3>
+              <p className="card-body-text text-xs sm:text-sm leading-relaxed">
+                No fake promises. We only take on jobs we know we can execute with quality. If a project requires a technology we haven't mastered yet, we're transparent and won't accept it until we're properly prepared.
               </p>
             </div>
 
@@ -100,9 +100,9 @@ export const AboutPage: React.FC = () => {
               <div className="w-12 h-12 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center">
                 <Target className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-editorial font-bold text-near-black">Focus on Impact</h3>
-              <p className="card-body-text text-xs sm:text-sm">
-                We measure success by real business results—conversions, retention, and brand loyalty.
+              <h3 className="text-2xl font-editorial font-bold text-near-black">Practical Execution</h3>
+              <p className="card-body-text text-xs sm:text-sm leading-relaxed">
+                We focus on dependable execution—clean code, thoughtful video editing, and structured ad strategy that deliver genuine value for your business.
               </p>
             </div>
 
@@ -110,9 +110,9 @@ export const AboutPage: React.FC = () => {
               <div className="w-12 h-12 rounded-2xl bg-warm-lavender text-deep-violet flex items-center justify-center">
                 <Users className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-editorial font-bold text-near-black">Direct Access</h3>
-              <p className="card-body-text text-xs sm:text-sm">
-                You collaborate directly with the creators and engineers building your digital experience.
+              <h3 className="text-2xl font-editorial font-bold text-near-black">Direct Collaboration</h3>
+              <p className="card-body-text text-xs sm:text-sm leading-relaxed">
+                You work directly with the developers, editors, and creators building your project. No sales fluff, no middle layers, just straightforward communication.
               </p>
             </div>
           </div>

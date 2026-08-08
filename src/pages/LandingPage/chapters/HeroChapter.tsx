@@ -43,9 +43,9 @@ export const HeroChapter: React.FC = () => {
 
             <p
               ref={subheadRef}
-              className="card-body-text max-w-lg pt-1 text-xs sm:text-sm md:text-base"
+              className="card-body-text max-w-lg pt-1 text-xs sm:text-sm md:text-base leading-relaxed"
             >
-              We help ambitious businesses transform ideas into digital products, content, and growth systems that create real impact.
+              We are a dedicated team of digital builders focused on practical execution. From web development and video editing to ad campaigns and creator promotions, we take on work we know how to deliver well.
             </p>
 
             <div ref={actionsRef} className="pt-3 flex flex-wrap items-center gap-3">
