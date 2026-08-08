@@ -95,11 +95,11 @@ export const WorkingTogetherChapter: React.FC = () => {
                 </div>
 
                 {/* Title & Description */}
-                <div className="space-y-0.5 sm:space-y-1 pt-0.5 text-left">
-                  <h3 className="text-xs sm:text-base lg:text-lg font-editorial font-bold text-near-black tracking-tight group-hover:text-deep-violet transition-colors leading-tight sm:leading-snug">
+                <div className="space-y-1 sm:space-y-1.5 pt-0.5 text-left">
+                  <h3 className="text-xs sm:text-base lg:text-xl font-editorial font-bold text-near-black tracking-tight group-hover:text-deep-violet transition-colors leading-tight sm:leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-[10px] sm:text-xs lg:text-xs text-slate-600 font-sans leading-snug sm:leading-relaxed">
+                  <p className="text-[10px] sm:text-xs lg:text-sm text-slate-600 font-sans leading-snug lg:leading-relaxed">
                     {item.description}
                   </p>
                 </div>
