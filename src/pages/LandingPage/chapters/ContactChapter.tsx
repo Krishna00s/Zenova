@@ -65,6 +65,7 @@ export const ContactChapter: React.FC = () => {
   return (
     <section ref={containerRef} id="contact" className="relative w-full bg-soft-white text-near-black py-16 sm:py-20 md:py-28 overflow-hidden">
       <Container>
+        {/* Top Split Layout: Narrative & Studio Photo (Left) + Contact Form (Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Narrative Column */}
           <div className="lg:col-span-5 space-y-6 text-left contact-reveal">
@@ -78,58 +79,20 @@ export const ContactChapter: React.FC = () => {
                   We'll handle the rest.
                 </span>
               </h2>
-              <p className="card-body-text text-xs sm:text-sm">
-                Whether you have a clear plan or just an idea, we'd love to hear about it.
+              <p className="card-body-text text-xs sm:text-sm leading-relaxed">
+                Whether you have a clear plan or just an idea, we'd love to hear about it. Fill out the form or reach out directly below.
               </p>
             </div>
 
-            {/* Natural Agency Studio Architecture & Friendly Email/Phone Cards */}
-            <div className="space-y-4 pt-1 w-full">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] max-w-full lg:max-w-xs group hover:scale-[1.01] transition-transform duration-500 relative">
-                <img src="/media/contact_studio_natural.jpg" alt="Zenova Agency Studio Architecture" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
-                {/* Email Card */}
-                <div className="bg-soft-white/90 rounded-2xl p-4 border border-muted-lavender/70 shadow-xs flex items-center gap-3.5 hover:-translate-y-0.5 hover:shadow-md transition-all">
-                  <div className="w-9 h-9 rounded-full bg-warm-lavender text-deep-violet flex items-center justify-center shrink-0 shadow-xs">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div className="space-y-0.5">
-                    <a
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=krishnaoncreation@gmail.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs sm:text-sm font-sans font-semibold text-near-black hover:text-deep-violet transition-colors inline-block tracking-tight bg-warm-lavender/60 px-2.5 py-0.5 rounded-full border border-muted-lavender/50"
-                    >
-                      krishnaoncreation@gmail.com
-                    </a>
-                    <p className="text-[10px] font-sans text-neutral-slate/80 pl-1">We usually reply within 1 business day</p>
-                  </div>
-                </div>
-
-                {/* Phone Card */}
-                <div className="bg-soft-white/90 rounded-2xl p-4 border border-muted-lavender/70 shadow-xs flex items-center gap-3.5 hover:-translate-y-0.5 hover:shadow-md transition-all">
-                  <div className="w-9 h-9 rounded-full bg-warm-lavender text-deep-violet flex items-center justify-center shrink-0 shadow-xs">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div className="space-y-0.5">
-                    <a
-                      href="tel:+919693821174"
-                      className="text-xs sm:text-sm font-sans font-semibold text-near-black hover:text-deep-violet transition-colors inline-block tracking-tight bg-warm-lavender/60 px-2.5 py-0.5 rounded-full border border-muted-lavender/50"
-                    >
-                      +91 96938 21174
-                    </a>
-                    <p className="text-[10px] font-sans text-neutral-slate/80 pl-1">Mon – Fri, 10 AM – 7 PM IST</p>
-                  </div>
-                </div>
-              </div>
+            {/* Studio Architecture Image */}
+            <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
+              <img src="/media/contact_studio_natural.jpg" alt="Zenova Agency Studio Architecture" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
           </div>
 
           {/* Right Glassmorphic Contact Form Column */}
           <div className="lg:col-span-7 w-full contact-reveal">
-            <div className="bg-soft-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-muted-lavender/80 shadow-xl space-y-5">
+            <div className="bg-soft-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-muted-lavender/80 shadow-xl space-y-5">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
                   <div className="w-16 h-16 rounded-full bg-warm-lavender text-deep-violet mx-auto flex items-center justify-center">
@@ -227,31 +190,73 @@ export const ContactChapter: React.FC = () => {
                   </Button>
                 </form>
               )}
-
-              {/* Sleek WhatsApp Quick Connect Bar directly under the form in a horizontal row */}
-              <div className="pt-3 border-t border-muted-lavender/60">
-                <a
-                  href="https://wa.me/919693821174?text=Hi%20Zenova%20Team,%20I'd%20like%20to%20discuss%20a%20project!"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200/80 rounded-2xl p-3 sm:p-3.5 flex items-center justify-between transition-all group shadow-xs hover:shadow-md cursor-pointer"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-emerald-600 text-soft-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
-                      <WhatsAppIcon className="w-4 h-4 text-soft-white" />
-                    </div>
-                    <div className="text-left space-y-0.5">
-                      <div className="text-xs sm:text-sm font-sans font-bold text-near-black flex items-center gap-1.5">
-                        <span>Prefer WhatsApp? Chat Instantly</span>
-                        <span className="text-[10px] font-mono font-semibold text-emerald-800 bg-emerald-200/70 px-2 py-0.5 rounded-full">Fast Reply</span>
-                      </div>
-                      <p className="text-[11px] font-mono text-emerald-800 font-bold">+91 96938 21174</p>
-                    </div>
-                  </div>
-                  <ArrowUpRight className="w-4 h-4 text-emerald-700 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
-                </a>
-              </div>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom Unified Horizontal Row: All 3 Contact Cards (Gmail, WhatsApp, Phone) */}
+        <div className="mt-10 sm:mt-12 pt-8 border-t border-muted-lavender/60 contact-reveal">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+            {/* 1. Gmail Themed Card */}
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=krishnaoncreation@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-red-50/80 hover:bg-red-100/90 border border-red-200/80 rounded-2xl p-4 flex items-center justify-between transition-all group shadow-xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer text-left"
+            >
+              <div className="flex items-center gap-3.5 min-w-0">
+                <div className="w-10 h-10 rounded-full bg-red-600 text-soft-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                  <Mail className="w-4 h-4 text-soft-white" />
+                </div>
+                <div className="space-y-0.5 min-w-0">
+                  <span className="text-xs sm:text-sm font-sans font-bold text-red-950 block truncate">
+                    krishnaoncreation@gmail.com
+                  </span>
+                  <p className="text-[10px] font-sans text-red-700/80">We reply within 1 business day</p>
+                </div>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-red-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 ml-2" />
+            </a>
+
+            {/* 2. WhatsApp Themed Card */}
+            <a
+              href="https://wa.me/919693821174?text=Hi%20Zenova%20Team,%20I'd%20like%20to%20discuss%20a%20project!"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-emerald-50/80 hover:bg-emerald-100/90 border border-emerald-200/80 rounded-2xl p-4 flex items-center justify-between transition-all group shadow-xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer text-left"
+            >
+              <div className="flex items-center gap-3.5 min-w-0">
+                <div className="w-10 h-10 rounded-full bg-emerald-600 text-soft-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                  <WhatsAppIcon className="w-4.5 h-4.5 text-soft-white" />
+                </div>
+                <div className="space-y-0.5 min-w-0">
+                  <span className="text-xs sm:text-sm font-sans font-bold text-emerald-950 block truncate">
+                    WhatsApp: +91 96938 21174
+                  </span>
+                  <p className="text-[10px] font-sans text-emerald-700/80">Instant chat & fast project estimates</p>
+                </div>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-emerald-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 ml-2" />
+            </a>
+
+            {/* 3. Direct Phone/Call Themed Card */}
+            <a
+              href="tel:+919693821174"
+              className="bg-violet-50/80 hover:bg-violet-100/90 border border-violet-200/80 rounded-2xl p-4 flex items-center justify-between transition-all group shadow-xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer text-left"
+            >
+              <div className="flex items-center gap-3.5 min-w-0">
+                <div className="w-10 h-10 rounded-full bg-deep-violet text-soft-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                  <Phone className="w-4 h-4 text-soft-white" />
+                </div>
+                <div className="space-y-0.5 min-w-0">
+                  <span className="text-xs sm:text-sm font-sans font-bold text-purple-950 block truncate">
+                    +91 96938 21174
+                  </span>
+                  <p className="text-[10px] font-sans text-deep-violet/80">Mon – Fri, 10 AM – 7 PM IST</p>
+                </div>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-deep-violet group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 ml-2" />
+            </a>
           </div>
         </div>
       </Container>
