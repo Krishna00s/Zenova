@@ -100,8 +100,12 @@ export const WorkPage: React.FC = () => {
                 <h3 className="text-2xl sm:text-3xl font-editorial font-bold text-near-black">
                   Direct collaboration without middle layers.
                 </h3>
-                <p>
-                  You work directly with the engineers, editors, and creators who actually build your project. We don't claim to be corporate grandmasters or a flawless team—we are a dedicated group of builders who know how to get things done. We focus on clean execution, clear communication, and shipping work that helps your business grow.
+                <p className="leading-relaxed">
+                  You work directly with the engineers, editors, and creators who actually build your project.{' '}
+                  <span className="bg-warm-lavender font-semibold px-2.5 py-1 rounded-lg text-near-black border border-muted-lavender/80 inline-block my-1 shadow-2xs">
+                    We don't claim to be corporate grandmasters or a flawless team—we are a dedicated group of builders who know how to get things done.
+                  </span>{' '}
+                  We focus on clean execution, clear communication, and shipping work that helps your business grow.
                 </p>
               </div>
 
