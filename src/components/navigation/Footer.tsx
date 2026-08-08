@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
             </p>
             {/* Social Icons */}
             <div className={`flex items-center gap-4 pt-2 ${isServicePage ? 'text-soft-white' : 'text-deep-violet'}`}>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:opacity-75 transition-opacity">
+              <a href="https://www.instagram.com/zenova_enterprises/" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:opacity-75 transition-opacity">
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:opacity-75 transition-opacity">
@@ -85,8 +85,8 @@ export const Footer: React.FC = () => {
               Let's Connect
             </h4>
             <ul className={`space-y-2 text-sm ${isServicePage ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
-              <li><a href="mailto:hello@zenova.studio" className={isServicePage ? 'hover:text-soft-white transition-colors' : 'hover:text-deep-violet transition-colors'}>hello@zenova.studio</a></li>
-              <li><a href="tel:+919876543210" className={isServicePage ? 'hover:text-soft-white transition-colors' : 'hover:text-deep-violet transition-colors'}>+91 98765 43210</a></li>
+              <li><a href="mailto:krishnaoncreation@gmail.com" className={isServicePage ? 'hover:text-soft-white transition-colors' : 'hover:text-deep-violet transition-colors'}>krishnaoncreation@gmail.com</a></li>
+              <li><a href="tel:+919693821174" className={isServicePage ? 'hover:text-soft-white transition-colors' : 'hover:text-deep-violet transition-colors'}>+91 96938 21174</a></li>
               <li className={`text-xs ${isServicePage ? 'text-soft-white/50' : 'text-neutral-slate/70'}`}>Bangalore, India</li>
             </ul>
           </div>
