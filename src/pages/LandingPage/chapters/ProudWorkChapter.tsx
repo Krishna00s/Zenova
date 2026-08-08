@@ -208,7 +208,7 @@ export const ProudWorkChapter: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative w-full bg-soft-white text-near-black py-32 sm:py-44 md:py-56 space-y-32 sm:space-y-44 md:space-y-56">
+    <section ref={containerRef} className="relative w-full bg-soft-white text-near-black pt-32 sm:pt-44 md:pt-56 pb-16 sm:pb-22 md:pb-28 space-y-32 sm:space-y-44 md:space-y-56">
       {/* 01 WEB ENGINEERING SHOWCASE */}
       <Container>
         <div className="showcase-card bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">

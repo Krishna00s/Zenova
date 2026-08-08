@@ -53,7 +53,7 @@ export const WorkingTogetherChapter: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} id="process" className="relative w-full bg-soft-white text-near-black py-16 sm:py-20 md:py-28">
+    <section ref={containerRef} id="process" className="relative w-full bg-soft-white text-near-black pt-8 sm:pt-10 md:pt-14 pb-16 sm:pb-20 md:pb-28">
       <Container>
         {/* Header Narrative */}
         <div className="max-w-3xl mb-10 sm:mb-12 space-y-2 sm:space-y-3 px-1">
