@@ -1,8 +1,11 @@
 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="48" fill="#3B1F52" />
-  <circle cx="50" cy="50" r="45" stroke="#4C2668" stroke-width="2.5" />
-  <g fill="#FAFAFA">
-    <path d="M 26 26 L 74 26 L 42 58 L 56 58 L 74 40 L 74 26 Z" />
-    <path d="M 74 74 L 26 74 L 58 42 L 44 42 L 26 60 L 26 74 Z" />
+  {/* Rich Deep Violet Circular Background */}
+  <circle cx="50" cy="50" r="48" fill="#4C236E" />
+  <circle cx="50" cy="50" r="46" stroke="#7A3FA8" stroke-width="3" />
+  
+  {/* High-Contrast Pure White Interlocking Z Monogram */}
+  <g fill="#FFFFFF">
+    <path d="M 22 22 L 78 22 L 40 60 L 58 60 L 78 40 L 78 22 Z" />
+    <path d="M 78 78 L 22 78 L 60 40 L 42 40 L 22 60 L 22 78 Z" />
   </g>
 </svg>
