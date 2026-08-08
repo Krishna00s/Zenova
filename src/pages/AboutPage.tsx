@@ -91,8 +91,8 @@ export const AboutPage: React.FC = () => {
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12 space-y-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Image Showcase */}
-            <div className="lg:col-span-5 about-reveal">
-              <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-muted-lavender/70 aspect-[16/10] sm:aspect-[4/3] relative group">
+            <div className="lg:col-span-5 about-reveal flex items-center justify-center h-full">
+              <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-muted-lavender/70 aspect-[4/3] relative group w-full my-auto">
                 <img
                   src="/media/photo_user_real_conversations.jpg"
                   alt="Real Collaborative Work Session"
