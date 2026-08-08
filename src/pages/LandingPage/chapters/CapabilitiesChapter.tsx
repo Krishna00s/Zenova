@@ -85,10 +85,10 @@ export const CapabilitiesChapter: React.FC = () => {
       <Container size="large" className="max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-2.5 px-2">
-          <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
+          <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-extrabold">
             SERVICES THROUGH WORK
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-editorial font-bold text-near-black tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-editorial font-black text-near-black tracking-tight leading-tight">
             What We Do. <span className="italic font-normal text-deep-violet">How We Do It.</span>
           </h2>
           <p className="card-body-text max-w-xl mx-auto text-xs sm:text-sm">
@@ -140,14 +140,14 @@ export const CapabilitiesChapter: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Sub-Category, Editorial Title + Arrow & Description */}
+                  {/* Sub-Category, Extra-Bold Editorial Title + Arrow & Description */}
                   <div className="space-y-1.5 px-0.5 pt-0.5 text-left">
-                    <span className={`text-[11px] font-mono uppercase tracking-wider block ${item.categoryTagStyle}`}>
+                    <span className={`text-[11px] font-mono uppercase tracking-wider block font-extrabold ${item.categoryTagStyle}`}>
                       {item.category}
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors leading-snug flex items-center justify-between">
+                    <h3 className="text-xl sm:text-[22px] font-editorial font-extrabold text-near-black group-hover:text-deep-violet transition-colors leading-snug flex items-center justify-between tracking-tight">
                       <span>{item.title}</span>
-                      <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-deep-violet group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 ml-2" />
+                      <ArrowUpRight className="w-4 h-4 text-slate-500 stroke-[2.5] group-hover:text-deep-violet group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 ml-2" />
                     </h3>
                     <p className="card-body-text text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
                       {item.description}
