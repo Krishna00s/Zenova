@@ -278,7 +278,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row: Featured Solutions 3-Card Collection */}
+          {/* Bottom Row: Featured Solutions Collection */}
           <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
             <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
               <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
@@ -304,30 +304,29 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 2x2 Grid Collection on Mobile (2 rows x 2 columns = 4 cards), 4-column row on Desktop */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-              {[0, 1, 2, 3].map((offset) => {
-                const rotatedIdx = (offset + webIndex) % webCards.length;
+            {/* Desktop 5-Card Grid Row */}
+            <div className="hidden md:grid grid-cols-5 gap-4">
+              {webCards.map((_, idx) => {
+                const rotatedIdx = (idx + webIndex) % webCards.length;
                 const displayCard = webCards[rotatedIdx];
-
                 return (
                   <Link
-                    key={`${displayCard.id}-${offset}`}
+                    key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 sm:p-5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3 sm:space-y-3.5">
+                    <div className="space-y-3">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] sm:text-[9px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
-                      <div className="space-y-1.5">
-                        <h4 className="text-xs sm:text-sm md:text-base font-editorial font-bold text-near-black line-clamp-1">
+                      <div className="space-y-1">
+                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[11px] sm:text-xs leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -337,20 +336,53 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Centered Underneath 3-Card Collection) */}
+            {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
+            <div className="grid md:hidden grid-cols-2 gap-4">
+              {webCards.slice(0, 3).map((_, idx) => {
+                const rotatedIdx = (idx + (webIndex % 3)) % 3;
+                const displayCard = webCards[rotatedIdx];
+
+                return (
+                  <Link
+                    key={`mobile-${displayCard.id}-${idx}`}
+                    to={displayCard.link}
+                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                  >
+                    <div className="space-y-3">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                        <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                          {displayCard.badge}
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                          {displayCard.title}
+                        </h4>
+                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                          {displayCard.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Mobile Navigation Arrows with 01 / 03 Counter Pill */}
             <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
               <button
-                onClick={() => setWebIndex((prev) => (prev - 1 + webCards.length) % webCards.length)}
+                onClick={() => setWebIndex((prev) => (prev - 1 + 3) % 3)}
                 className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
                 aria-label="Previous Web Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <span className="font-mono text-xs font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
-                0{((webIndex) % webCards.length) + 1} / 0{webCards.length}
+                0{((webIndex) % 3) + 1} / 03
               </span>
               <button
-                onClick={() => setWebIndex((prev) => (prev + 1) % webCards.length)}
+                onClick={() => setWebIndex((prev) => (prev + 1) % 3)}
                 className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
                 aria-label="Next Web Card Mobile"
               >
@@ -427,7 +459,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row: Featured Edits 3-Card Collection */}
+          {/* Bottom Row: Featured Edits Collection */}
           <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
             <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
               <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
@@ -453,33 +485,32 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 2x2 Grid Collection on Mobile (2 rows x 2 columns = 4 cards), 4-column row on Desktop */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-              {[0, 1, 2, 3].map((offset) => {
-                const rotatedIdx = (offset + videoIndex) % videoCards.length;
+            {/* Desktop 5-Card Grid Row */}
+            <div className="hidden md:grid grid-cols-5 gap-4">
+              {videoCards.map((_, idx) => {
+                const rotatedIdx = (idx + videoIndex) % videoCards.length;
                 const displayCard = videoCards[rotatedIdx];
-
                 return (
                   <Link
-                    key={`${displayCard.id}-${offset}`}
+                    key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 sm:p-5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3 sm:space-y-3.5">
+                    <div className="space-y-3">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50 group">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] sm:text-[9px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
-                        <div className="absolute bottom-2.5 right-2.5 w-6 h-6 rounded-full bg-soft-white/90 flex items-center justify-center">
+                        <div className="absolute bottom-2 right-2 w-6 h-6 rounded-full bg-soft-white/90 flex items-center justify-center">
                           <Play className="w-3 h-3 fill-near-black stroke-none ml-0.5" />
                         </div>
                       </div>
-                      <div className="space-y-1.5">
-                        <h4 className="text-xs sm:text-sm md:text-base font-editorial font-bold text-near-black line-clamp-1">
+                      <div className="space-y-1">
+                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[11px] sm:text-xs leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -489,20 +520,56 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Centered Underneath 3-Card Collection) */}
+            {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
+            <div className="grid md:hidden grid-cols-2 gap-4">
+              {videoCards.slice(0, 3).map((_, idx) => {
+                const rotatedIdx = (idx + (videoIndex % 3)) % 3;
+                const displayCard = videoCards[rotatedIdx];
+
+                return (
+                  <Link
+                    key={`mobile-${displayCard.id}-${idx}`}
+                    to={displayCard.link}
+                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                  >
+                    <div className="space-y-3">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50 group">
+                        <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                          {displayCard.badge}
+                        </div>
+                        <div className="absolute bottom-2 right-2 w-6 h-6 rounded-full bg-soft-white/90 flex items-center justify-center">
+                          <Play className="w-3 h-3 fill-near-black stroke-none ml-0.5" />
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                          {displayCard.title}
+                        </h4>
+                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                          {displayCard.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Mobile Navigation Arrows with 01 / 03 Counter Pill */}
             <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
               <button
-                onClick={() => setVideoIndex((prev) => (prev - 1 + videoCards.length) % videoCards.length)}
+                onClick={() => setVideoIndex((prev) => (prev - 1 + 3) % 3)}
                 className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
                 aria-label="Previous Video Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
-                0{((videoIndex) % videoCards.length) + 1} / 0{videoCards.length}
+              <span className="font-mono text-xs font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+                0{((videoIndex) % 3) + 1} / 03
               </span>
               <button
-                onClick={() => setVideoIndex((prev) => (prev + 1) % videoCards.length)}
+                onClick={() => setVideoIndex((prev) => (prev + 1) % 3)}
                 className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
                 aria-label="Next Video Card Mobile"
               >
@@ -582,7 +649,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row: Featured Campaigns 3-Card Collection */}
+          {/* Bottom Row: Featured Campaigns Collection */}
           <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
             <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
               <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
@@ -608,30 +675,29 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 2x2 Grid Collection on Mobile (2 rows x 2 columns = 4 cards), 4-column row on Desktop */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-              {[0, 1, 2, 3].map((offset) => {
-                const rotatedIdx = (offset + adIndex) % adCards.length;
+            {/* Desktop 5-Card Grid Row */}
+            <div className="hidden md:grid grid-cols-5 gap-4">
+              {adCards.map((_, idx) => {
+                const rotatedIdx = (idx + adIndex) % adCards.length;
                 const displayCard = adCards[rotatedIdx];
-
                 return (
                   <Link
-                    key={`${displayCard.id}-${offset}`}
+                    key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 sm:p-5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3 sm:space-y-3.5">
+                    <div className="space-y-3">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] sm:text-[9px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
-                      <div className="space-y-1.5">
-                        <h4 className="text-xs sm:text-sm md:text-base font-editorial font-bold text-near-black line-clamp-1">
+                      <div className="space-y-1">
+                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[11px] sm:text-xs leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -641,20 +707,53 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Centered Underneath 3-Card Collection) */}
+            {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
+            <div className="grid md:hidden grid-cols-2 gap-4">
+              {adCards.slice(0, 3).map((_, idx) => {
+                const rotatedIdx = (idx + (adIndex % 3)) % 3;
+                const displayCard = adCards[rotatedIdx];
+
+                return (
+                  <Link
+                    key={`mobile-${displayCard.id}-${idx}`}
+                    to={displayCard.link}
+                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                  >
+                    <div className="space-y-3">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                        <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                          {displayCard.badge}
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                          {displayCard.title}
+                        </h4>
+                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                          {displayCard.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Mobile Navigation Arrows with 01 / 03 Counter Pill */}
             <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
               <button
-                onClick={() => setAdIndex((prev) => (prev - 1 + adCards.length) % adCards.length)}
+                onClick={() => setAdIndex((prev) => (prev - 1 + 3) % 3)}
                 className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
                 aria-label="Previous Ad Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
-                0{((adIndex) % adCards.length) + 1} / 0{adCards.length}
+              <span className="font-mono text-xs font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+                0{((adIndex) % 3) + 1} / 03
               </span>
               <button
-                onClick={() => setAdIndex((prev) => (prev + 1) % adCards.length)}
+                onClick={() => setAdIndex((prev) => (prev + 1) % 3)}
                 className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
                 aria-label="Next Ad Card Mobile"
               >
@@ -725,7 +824,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row: Featured Creator Networks 3-Card Collection */}
+          {/* Bottom Row: Featured Creator Networks Collection */}
           <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
             <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
               <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
@@ -751,30 +850,29 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 2x2 Grid Collection on Mobile (2 rows x 2 columns = 4 cards), 4-column row on Desktop */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-              {[0, 1, 2, 3].map((offset) => {
-                const rotatedIdx = (offset + promoIndex) % promoCards.length;
+            {/* Desktop 5-Card Grid Row */}
+            <div className="hidden md:grid grid-cols-5 gap-4">
+              {promoCards.map((_, idx) => {
+                const rotatedIdx = (idx + promoIndex) % promoCards.length;
                 const displayCard = promoCards[rotatedIdx];
-
                 return (
                   <Link
-                    key={`${displayCard.id}-${offset}`}
+                    key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 sm:p-5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3 sm:space-y-3.5">
+                    <div className="space-y-3">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] sm:text-[9px] font-mono font-bold">
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
-                      <div className="space-y-1.5">
-                        <h4 className="text-xs sm:text-sm md:text-base font-editorial font-bold text-near-black line-clamp-1">
+                      <div className="space-y-1">
+                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[11px] sm:text-xs leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -784,20 +882,53 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Centered Underneath 3-Card Collection) */}
+            {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
+            <div className="grid md:hidden grid-cols-2 gap-4">
+              {promoCards.slice(0, 3).map((_, idx) => {
+                const rotatedIdx = (idx + (promoIndex % 3)) % 3;
+                const displayCard = promoCards[rotatedIdx];
+
+                return (
+                  <Link
+                    key={`mobile-${displayCard.id}-${idx}`}
+                    to={displayCard.link}
+                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                  >
+                    <div className="space-y-3">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                        <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
+                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                          {displayCard.badge}
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                          {displayCard.title}
+                        </h4>
+                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                          {displayCard.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Mobile Navigation Arrows with 01 / 03 Counter Pill */}
             <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
               <button
-                onClick={() => setPromoIndex((prev) => (prev - 1 + promoCards.length) % promoCards.length)}
+                onClick={() => setPromoIndex((prev) => (prev - 1 + 3) % 3)}
                 className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
                 aria-label="Previous Promo Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
-                0{((promoIndex) % promoCards.length) + 1} / 0{promoCards.length}
+              <span className="font-mono text-xs font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+                0{((promoIndex) % 3) + 1} / 03
               </span>
               <button
-                onClick={() => setPromoIndex((prev) => (prev + 1) % promoCards.length)}
+                onClick={() => setPromoIndex((prev) => (prev + 1) % 3)}
                 className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
                 aria-label="Next Promo Card Mobile"
               >
