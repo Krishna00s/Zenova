@@ -77,14 +77,14 @@ export const HumanTrustChapter: React.FC = () => {
                 We sweat <br />
                 <span className="italic font-normal text-purple-200">the small stuff.</span>
               </h3>
-              <p className="text-sm text-[#D6CFE2] font-sans leading-relaxed">
+              <p className="text-xs sm:text-[13px] text-[#D6CFE2]/90 font-sans leading-relaxed">
                 Because details are what separate good from unforgettable.
               </p>
             </div>
 
             <div className="pt-6 border-t border-purple-900/50 space-y-2">
               <h4 className="text-xl sm:text-2xl font-editorial font-bold text-[#F3F1F6]">Honest Scope. <br /><span className="italic font-normal text-purple-200">No Fake Promises.</span></h4>
-              <p className="text-sm text-[#D6CFE2] font-sans leading-relaxed">
+              <p className="text-xs sm:text-[13px] text-[#D6CFE2]/90 font-sans leading-relaxed">
                 We only take on work we know we can execute well. If a project requires something outside our current skillset, we're transparent—we never accept jobs we can't deliver.
               </p>
             </div>
