@@ -76,13 +76,13 @@ export const WorkingTogetherChapter: React.FC = () => {
           {steps.map((item, index) => (
             <div
               key={index}
-              className={`approach-card group bg-soft-white rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 lg:p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1.5 hover:scale-[1.01] transition-all duration-500 flex flex-col justify-between lg:min-h-[410px] ${
+              className={`approach-card group bg-soft-white rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 lg:p-4.5 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1.5 hover:scale-[1.01] transition-all duration-500 flex flex-col justify-between ${
                 index >= 5 ? 'lg:hidden' : ''
               }`}
             >
-              <div className="space-y-2 sm:space-y-3 lg:space-y-5">
-                {/* Photo Container - Taller 4:3 Aspect Ratio for Generous Laptop Height */}
-                <div className="w-full aspect-[4/3] sm:aspect-[4/3] lg:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden relative group bg-warm-lavender/50 border border-slate-200/50">
+              <div className="space-y-2 sm:space-y-3 lg:space-y-3.5">
+                {/* Photo Container - Proportioned 4:3 Aspect Ratio */}
+                <div className="w-full aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden relative group bg-warm-lavender/50 border border-slate-200/50">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -94,12 +94,12 @@ export const WorkingTogetherChapter: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Title & Description - Generous Laptop Scale + Compact Mobile Scale */}
-                <div className="space-y-0.5 sm:space-y-1.5 pt-0.5 text-left">
-                  <h3 className="text-xs sm:text-base lg:text-xl font-editorial font-bold text-near-black tracking-tight group-hover:text-deep-violet transition-colors leading-tight sm:leading-snug">
+                {/* Title & Description */}
+                <div className="space-y-0.5 sm:space-y-1 pt-0.5 text-left">
+                  <h3 className="text-xs sm:text-base lg:text-lg font-editorial font-bold text-near-black tracking-tight group-hover:text-deep-violet transition-colors leading-tight sm:leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-[10px] sm:text-xs lg:text-sm text-slate-600 font-sans leading-snug sm:leading-relaxed">
+                  <p className="text-[10px] sm:text-xs lg:text-xs text-slate-600 font-sans leading-snug sm:leading-relaxed">
                     {item.description}
                   </p>
                 </div>
