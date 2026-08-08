@@ -6,9 +6,9 @@ import { submitContactInquiry } from '../../../api/contact';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
 
-const WhatsappIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
+const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662a11.87 11.87 0 005.707 1.456h.005c6.554 0 11.89-5.335 11.893-11.893 0-3.177-1.238-6.163-3.486-8.411" />
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
   </svg>
 );
 
@@ -34,29 +34,38 @@ export const ContactChapter: React.FC = () => {
 
   const serviceOptions = [
     { value: 'web-development', label: 'Web Development' },
-    { value: 'video-editing', label: 'Video Editing' },
+    { value: 'video-editing', label: 'Video Editing & Production' },
     { value: 'ad-creation', label: 'Ad Creation & Distribution' },
-    { value: 'paid-promotions', label: 'Paid Promotions & Collaborations' },
-    { value: 'all-services', label: 'Multiple / Full Ecosystem Partnership' },
+    { value: 'paid-promotions', label: 'Paid Promotions & Influencers' },
+    { value: 'other', label: 'Other / Full Digital Retainer' },
   ];
 
-  const currentOptionLabel =
-    serviceOptions.find((opt) => opt.value === formData.serviceInterest)?.label || 'Web Development';
+  const currentOptionLabel = serviceOptions.find(opt => opt.value === formData.serviceInterest)?.label || 'Select Service';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const res = await submitContactInquiry(formData);
-    setLoading(false);
-    if (res.success) {
+
+    try {
+      await submitContactInquiry(formData);
       setSubmitted(true);
+      setFormData({
+        fullName: '',
+        email: '',
+        serviceInterest: 'web-development',
+        message: '',
+      });
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <section ref={containerRef} id="contact" className="relative w-full bg-soft-white text-near-black py-16 sm:py-20 md:py-28 overflow-hidden">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Narrative Column */}
           <div className="lg:col-span-5 space-y-6 text-left contact-reveal">
             <div className="space-y-3">
@@ -74,7 +83,7 @@ export const ContactChapter: React.FC = () => {
               </p>
             </div>
 
-            {/* Natural Agency Studio Architecture & Friendly Email/Phone/WhatsApp Cards */}
+            {/* Natural Agency Studio Architecture & Friendly Email/Phone Cards */}
             <div className="space-y-4 pt-1 w-full">
               <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] max-w-full lg:max-w-xs group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img src="/media/contact_studio_natural.jpg" alt="Zenova Agency Studio Architecture" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
@@ -99,24 +108,6 @@ export const ContactChapter: React.FC = () => {
                   </div>
                 </div>
 
-                {/* WhatsApp Direct Card */}
-                <div className="bg-soft-white/90 rounded-2xl p-4 border border-muted-lavender/70 shadow-xs flex items-center gap-3.5 hover:-translate-y-0.5 hover:shadow-md transition-all">
-                  <div className="w-9 h-9 rounded-full bg-[#25D366]/15 text-[#25D366] flex items-center justify-center shrink-0 shadow-xs">
-                    <WhatsappIcon className="w-4 h-4 fill-[#25D366]" />
-                  </div>
-                  <div className="space-y-0.5">
-                    <a
-                      href="https://wa.me/919693821174?text=Hi%20Zenova%20Team,%20I'd%20like%20to%20discuss%20a%20project!"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs sm:text-sm font-sans font-semibold text-near-black hover:text-[#25D366] transition-colors inline-block tracking-tight bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/60"
-                    >
-                      WhatsApp: +91 96938 21174
-                    </a>
-                    <p className="text-[10px] font-sans text-neutral-slate/80 pl-1">Instant chat & fast project estimates</p>
-                  </div>
-                </div>
-
                 {/* Phone Card */}
                 <div className="bg-soft-white/90 rounded-2xl p-4 border border-muted-lavender/70 shadow-xs flex items-center gap-3.5 hover:-translate-y-0.5 hover:shadow-md transition-all">
                   <div className="w-9 h-9 rounded-full bg-warm-lavender text-deep-violet flex items-center justify-center shrink-0 shadow-xs">
@@ -136,8 +127,8 @@ export const ContactChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Glassmorphic Contact Form Column - Shifted Down to Align Symmetrically */}
-          <div className="lg:col-span-7 w-full contact-reveal pt-4 sm:pt-6 lg:pt-14">
+          {/* Right Glassmorphic Contact Form Column */}
+          <div className="lg:col-span-7 w-full contact-reveal">
             <div className="bg-soft-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-muted-lavender/80 shadow-xl space-y-5">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
@@ -236,6 +227,30 @@ export const ContactChapter: React.FC = () => {
                   </Button>
                 </form>
               )}
+
+              {/* Sleek WhatsApp Quick Connect Bar directly under the form in a horizontal row */}
+              <div className="pt-3 border-t border-muted-lavender/60">
+                <a
+                  href="https://wa.me/919693821174?text=Hi%20Zenova%20Team,%20I'd%20like%20to%20discuss%20a%20project!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200/80 rounded-2xl p-3 sm:p-3.5 flex items-center justify-between transition-all group shadow-xs hover:shadow-md cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-emerald-600 text-soft-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                      <WhatsAppIcon className="w-4 h-4 text-soft-white" />
+                    </div>
+                    <div className="text-left space-y-0.5">
+                      <div className="text-xs sm:text-sm font-sans font-bold text-near-black flex items-center gap-1.5">
+                        <span>Prefer WhatsApp? Chat Instantly</span>
+                        <span className="text-[10px] font-mono font-semibold text-emerald-800 bg-emerald-200/70 px-2 py-0.5 rounded-full">Fast Reply</span>
+                      </div>
+                      <p className="text-[11px] font-mono text-emerald-800 font-bold">+91 96938 21174</p>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-emerald-700 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
