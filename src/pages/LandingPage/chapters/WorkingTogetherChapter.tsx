@@ -44,6 +44,12 @@ export const WorkingTogetherChapter: React.FC = () => {
       description: 'We stay with you, improving, optimizing, and helping you grow over time.',
       image: '/media/photo_evolve_natural.jpg',
     },
+    {
+      step: '06',
+      title: 'Scale & Succeed',
+      description: 'We partner with you for continuous growth, expanding your reach and scaling your results.',
+      image: '/media/photo_user_real_conversations_1786039785278.jpg',
+    },
   ];
 
   return (
@@ -65,33 +71,33 @@ export const WorkingTogetherChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* 5 Cards arranged in 3 Columns x 2 Rows on Mobile Devices */}
-        <div className="grid grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 lg:gap-5">
+        {/* 6 Cards arranged in 2 Columns x 3 Rows on Mobile (Noticeably bigger than Features cards) */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
           {steps.map((item, index) => (
             <div
               key={index}
-              className="approach-card group bg-soft-white rounded-xl sm:rounded-2xl lg:rounded-3xl p-2 sm:p-3.5 lg:p-5 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1.5 hover:scale-[1.01] transition-all duration-500 flex flex-col justify-between"
+              className="approach-card group bg-soft-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 lg:p-5 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1.5 hover:scale-[1.01] transition-all duration-500 flex flex-col justify-between"
             >
-              <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-                {/* Photo Container */}
-                <div className="w-full aspect-[4/3] sm:aspect-[4/5] rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden relative group bg-warm-lavender/50">
+              <div className="space-y-2.5 sm:space-y-3 lg:space-y-4">
+                {/* Photo Container - Spacious and Breathable */}
+                <div className="w-full aspect-[16/10] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden relative group bg-warm-lavender/50 border border-slate-200/50">
                   <img
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
-                  <div className="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 w-5 h-5 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-full bg-soft-white/90 backdrop-blur-md shadow-sm flex items-center justify-center font-mono text-[9px] sm:text-xs font-bold text-deep-violet border border-muted-lavender/50">
+                  <div className="absolute top-2 left-2 sm:top-3 sm:left-3 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-soft-white/90 backdrop-blur-md shadow-sm flex items-center justify-center font-mono text-[10px] sm:text-xs font-bold text-deep-violet border border-muted-lavender/50">
                     {item.step}
                   </div>
                 </div>
 
-                {/* Title & Description */}
-                <div className="space-y-0.5 sm:space-y-1 pt-0.5 text-left">
-                  <h3 className="text-xs sm:text-base lg:text-lg font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors leading-tight">
+                {/* Title & Description - Larger, High Contrast & Easy to Read */}
+                <div className="space-y-1 pt-0.5 text-left">
+                  <h3 className="text-sm sm:text-base lg:text-lg font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors leading-snug">
                     {item.title}
                   </h3>
-                  <p className="card-body-text text-[9px] sm:text-xs text-slate-500 font-sans leading-tight line-clamp-4 sm:line-clamp-none">
+                  <p className="card-body-text text-xs sm:text-xs text-slate-500 font-sans leading-relaxed">
                     {item.description}
                   </p>
                 </div>
