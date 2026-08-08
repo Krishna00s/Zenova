@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../constants/routes';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Play, Code, Video, Megaphone, Share2 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
 
@@ -18,36 +18,65 @@ export const CapabilitiesChapter: React.FC = () => {
 
   const capabilities = [
     {
+      id: 'web',
       domainLabel: 'WEB ENGINEERING',
-      category: 'High-Performance Websites & Apps',
+      category: 'React 18 & Next.js Architecture',
       title: 'Web Engineering & Development',
-      description: 'Custom React and Next.js digital platforms built for speed, conversion, sub-second loads, and scalability.',
+      description: 'Custom digital platforms, web apps, and CMS systems engineered for sub-50ms dashboard response speed, SEO authority, and scale.',
       link: ROUTES.SERVICES.WEB_DEV,
       image: '/media/cap_web_natural.jpg',
+      badgeStyle: 'bg-indigo-950/90 text-cyan-300 border-cyan-400/30',
+      categoryTagStyle: 'text-indigo-600 font-bold',
+      taglineOverlay: 'Sub-50ms Speed • Full Stack',
+      hoverBorder: 'hover:border-cyan-500/50 hover:shadow-cyan-950/10 hover:shadow-2xl',
+      accentGlow: 'from-indigo-500/10 to-cyan-500/5',
+      icon: Code,
     },
     {
+      id: 'video',
       domainLabel: 'VIDEO PRODUCTION',
-      category: 'Cinematic Brand Films & Short-Form',
+      category: '4K Cinema Cut & Reels',
       title: 'Video Editing & Production',
-      description: 'High-impact commercial edits, 4K brand documentaries, and high-retention mobile short-form reels.',
+      description: 'Cinematic brand documentaries, commercial ads, and high-retention 9:16 mobile short-form reels cut with custom sound design.',
       link: ROUTES.SERVICES.VIDEO_EDITING,
       image: '/media/cap_video_natural.jpg',
+      badgeStyle: 'bg-purple-950/90 text-pink-300 border-pink-400/30',
+      categoryTagStyle: 'text-purple-700 font-bold',
+      taglineOverlay: '4K Cinema Cut • 60fps Reels',
+      hoverBorder: 'hover:border-pink-500/50 hover:shadow-pink-950/10 hover:shadow-2xl',
+      accentGlow: 'from-purple-500/10 to-pink-500/5',
+      icon: Video,
+      hasPlayOverlay: true,
     },
     {
+      id: 'ads',
       domainLabel: 'AD CREATION',
-      category: 'Meta & TikTok Performance Ads',
+      category: 'Meta, Google & TikTok Direct Response',
       title: 'Ad Creatives & Distribution',
-      description: 'Direct-response visual ad collateral designed, published, and managed across Meta, Google, and TikTok.',
+      description: 'High-converting video ad collateral published, A/B tested, and managed to drive direct revenue and customer acquisition.',
       link: ROUTES.SERVICES.AD_CREATION,
       image: '/media/cap_ad_natural.jpg',
+      badgeStyle: 'bg-emerald-950/90 text-emerald-300 border-emerald-400/30',
+      categoryTagStyle: 'text-emerald-700 font-bold',
+      taglineOverlay: '+420% ROAS • Multi-Channel',
+      hoverBorder: 'hover:border-emerald-500/50 hover:shadow-emerald-950/10 hover:shadow-2xl',
+      accentGlow: 'from-emerald-500/10 to-teal-500/5',
+      icon: Megaphone,
     },
     {
+      id: 'promotions',
       domainLabel: 'CREATOR PROMOTIONS',
-      category: 'Creator Networks & Whitelisting',
+      category: 'Influencer Whitelisting & Networks',
       title: 'Creator Promotions & Campaigns',
-      description: 'Authentic influencer product integrations, handle whitelisting, and targeted creator network campaigns.',
+      description: 'Handpicked lifestyle and tech creators producing authentic unboxing, tutorial integrations, and whitelisted ad campaigns.',
       link: ROUTES.SERVICES.PAID_PROMOTIONS,
       image: '/media/cap_promo_natural.jpg',
+      badgeStyle: 'bg-rose-950/90 text-rose-300 border-rose-400/30',
+      categoryTagStyle: 'text-rose-700 font-bold',
+      taglineOverlay: 'Vetted Creators • Whitelisted Ads',
+      hoverBorder: 'hover:border-rose-500/50 hover:shadow-rose-950/10 hover:shadow-2xl',
+      accentGlow: 'from-rose-500/10 to-orange-500/5',
+      icon: Share2,
     },
   ];
 
@@ -67,44 +96,67 @@ export const CapabilitiesChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* 2 Rows x 2 Columns Grid (4 Cards Total) */}
+        {/* 2 Rows x 2 Columns Grid with Domain-Specific Visual Identities */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch w-full">
-          {capabilities.map((item, index) => (
-            <Link
-              key={index}
-              to={item.link}
-              className="capability-card group bg-soft-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between"
-            >
-              <div className="space-y-4">
-                {/* Photo Container with Top-Left Domain Badge */}
-                <div className="w-full aspect-[16/10] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden relative bg-warm-lavender/40 border border-slate-200/50">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-near-black/90 backdrop-blur-md text-soft-white text-[9px] font-mono font-bold tracking-wider uppercase border border-white/10">
-                    {item.domainLabel}
+          {capabilities.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                key={index}
+                to={item.link}
+                className={`capability-card group bg-soft-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-muted-lavender/60 shadow-xs hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden ${item.hoverBorder}`}
+              >
+                {/* Subtle Ambient Hover Glow Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.accentGlow} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
+
+                <div className="space-y-4 relative z-10">
+                  {/* Photo Container with Top-Left Domain Badge & Bottom-Right Tagline Overlay */}
+                  <div className="w-full aspect-[16/10] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden relative bg-warm-lavender/40 border border-slate-200/50">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    
+                    {/* Top-Left Distinct Domain Badge */}
+                    <div className={`absolute top-3 left-3 px-3 py-1 rounded-full backdrop-blur-md text-[9px] font-mono font-bold tracking-wider uppercase border shadow-md flex items-center gap-1.5 ${item.badgeStyle}`}>
+                      <Icon className="w-3 h-3" />
+                      <span>{item.domainLabel}</span>
+                    </div>
+
+                    {/* Video Center Play Button Overlay */}
+                    {item.hasPlayOverlay && (
+                      <div className="absolute inset-0 bg-near-black/30 backdrop-blur-[1px] flex items-center justify-center opacity-90 group-hover:opacity-100 transition-opacity">
+                        <div className="w-10 h-10 rounded-full bg-soft-white/95 text-near-black shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Play className="w-4 h-4 fill-near-black stroke-none ml-0.5" />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Bottom-Right Performance Tagline Badge */}
+                    <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-near-black/90 backdrop-blur-md text-soft-white text-[9px] font-mono font-bold tracking-wide border border-white/10 shadow-sm">
+                      {item.taglineOverlay}
+                    </div>
+                  </div>
+
+                  {/* Sub-Category, Editorial Title + Arrow & Description */}
+                  <div className="space-y-2 px-1 pt-1 text-left">
+                    <span className={`text-[11px] font-mono uppercase tracking-wider block ${item.categoryTagStyle}`}>
+                      {item.category}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors leading-snug flex items-center justify-between">
+                      <span>{item.title}</span>
+                      <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-deep-violet group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 ml-2" />
+                    </h3>
+                    <p className="card-body-text text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
-
-                {/* Sub-Category, Editorial Title + Arrow & Description */}
-                <div className="space-y-2 px-1 pt-1 text-left">
-                  <span className="text-[11px] font-mono text-deep-violet font-semibold uppercase tracking-wider block">
-                    {item.category}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors leading-snug flex items-center justify-between">
-                    <span>{item.title}</span>
-                    <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-deep-violet group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 ml-2" />
-                  </h3>
-                  <p className="card-body-text text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </Container>
     </section>
