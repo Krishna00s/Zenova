@@ -221,16 +221,16 @@ export const Navbar: React.FC = () => {
               : 'bg-soft-white/95 border-muted-lavender'
           }`}
         >
-          <Link to={ROUTES.HOME} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial text-near-black border-b border-muted-lavender/40">
+          <Link to={ROUTES.HOME} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial font-bold text-near-black border-b border-muted-lavender/40">
             Home
           </Link>
-          <Link to={ROUTES.ABOUT} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial text-near-black border-b border-muted-lavender/40">
+          <Link to={ROUTES.ABOUT} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial font-bold text-near-black border-b border-muted-lavender/40">
             About Us
           </Link>
 
           {/* Services Submenu on Mobile */}
           <div className="space-y-2 py-2 border-b border-muted-lavender/40">
-            <span className={`text-xs font-mono uppercase font-semibold ${isServicePage ? 'text-near-black' : 'text-deep-violet'}`}>
+            <span className={`text-xs font-mono uppercase font-extrabold ${isServicePage ? 'text-near-black' : 'text-deep-violet'}`}>
               Services
             </span>
             <div className="pl-3 space-y-2 pt-1">
@@ -239,7 +239,7 @@ export const Navbar: React.FC = () => {
                   key={item.label}
                   to={item.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block text-sm font-sans text-near-black hover:text-deep-violet"
+                  className="block text-sm font-sans font-semibold text-near-black hover:text-deep-violet"
                 >
                   {item.label}
                 </Link>
@@ -247,15 +247,15 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
 
-          <Link to={ROUTES.WORK.ROOT} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial text-near-black border-b border-muted-lavender/40">
+          <Link to={ROUTES.WORK.ROOT} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial font-bold text-near-black border-b border-muted-lavender/40">
             Work
           </Link>
-          <Link to={ROUTES.CONTACT} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial text-near-black border-b border-muted-lavender/40">
+          <Link to={ROUTES.CONTACT} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial font-bold text-near-black border-b border-muted-lavender/40">
             Contact
           </Link>
 
           <Link to={ROUTES.CONTACT} onClick={() => setMobileMenuOpen(false)} className="pt-2">
-            <Button variant="primary" size="md" className="w-full justify-center gap-1.5 py-3 rounded-full text-xs font-semibold">
+            <Button variant="primary" size="md" className="w-full justify-center gap-1.5 py-3 rounded-full text-xs font-bold">
               Let's Talk <ArrowUpRight className="w-4 h-4" />
             </Button>
           </Link>

@@ -228,7 +228,11 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              {/* Mobile Dedicated Hero Image (Centered & Proportioned) */}
+              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
+                We design and develop modern, responsive websites that load fast, rank better, and turn visitors into customers.
+              </p>
+
+              {/* Mobile Dedicated Hero Image (Placed UNDER the paragraph, ABOVE the CTA button) */}
               <div className="block lg:hidden my-3 w-full sm:w-[85%] mx-auto">
                 <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[4/3] relative group">
                   <img
@@ -247,10 +251,6 @@ export const ProudWorkChapter: React.FC = () => {
                   </div>
                 </div>
               </div>
-
-              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
-                We design and develop modern, responsive websites that load fast, rank better, and turn visitors into customers.
-              </p>
 
               {/* Checklist Grid */}
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-near-black pt-2">
@@ -271,7 +271,7 @@ export const ProudWorkChapter: React.FC = () => {
               <div className="pt-3">
                 <Link to={ROUTES.SERVICES.WEB_DEV}>
                   <Button variant="primary" size="md" className="gap-2 px-7 py-3.5 rounded-full shadow-md hover:-translate-y-0.5 transition-all">
-                    View Web Engineering <ArrowUpRight className="w-4 h-4" />
+                    Start your web project <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
@@ -464,7 +464,11 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              {/* Mobile Dedicated Hero Image (Centered & Proportioned) */}
+              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
+                From brand films to short-form content, we craft visuals that connect, inspire, and convert viewers into loyal advocates.
+              </p>
+
+              {/* Mobile Dedicated Hero Image (Placed UNDER the paragraph, ABOVE the CTA button) */}
               <div className="block lg:hidden my-3 w-full sm:w-[85%] mx-auto">
                 <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[4/3] relative group">
                   <img
@@ -484,10 +488,6 @@ export const ProudWorkChapter: React.FC = () => {
                 </div>
               </div>
 
-              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
-                From brand films to short-form content, we craft visuals that connect, inspire, and convert viewers into loyal advocates.
-              </p>
-
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-near-black pt-2">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-deep-violet stroke-[2.5]" /> Cinematic Storytelling
@@ -506,7 +506,7 @@ export const ProudWorkChapter: React.FC = () => {
               <div className="pt-3">
                 <Link to={ROUTES.SERVICES.VIDEO_EDITING}>
                   <Button variant="primary" size="md" className="gap-2 px-7 py-3.5 rounded-full shadow-md hover:-translate-y-0.5 transition-all">
-                    Explore Video Work <ArrowUpRight className="w-4 h-4" />
+                    Start your video project <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
@@ -664,7 +664,11 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              {/* Mobile Dedicated Hero Image (Centered & Proportioned) */}
+              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
+                We create high-performing ad videos and collateral, then publish and manage them across Meta, Google, and TikTok to maximize ROI.
+              </p>
+
+              {/* Mobile Dedicated Hero Image (Placed UNDER the paragraph, ABOVE the CTA button) */}
               <div className="block lg:hidden my-3 w-full sm:w-[85%] mx-auto">
                 <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[4/3] relative group">
                   <img
@@ -684,10 +688,6 @@ export const ProudWorkChapter: React.FC = () => {
                 </div>
               </div>
 
-              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
-                We create high-performing ad videos and collateral, then publish and manage them across Meta, Google, and TikTok to maximize ROI.
-              </p>
-
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-near-black pt-2">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-deep-violet stroke-[2.5]" /> Ad Video Creation
@@ -706,7 +706,7 @@ export const ProudWorkChapter: React.FC = () => {
               <div className="pt-3 flex items-center gap-4">
                 <Link to={ROUTES.SERVICES.AD_CREATION}>
                   <Button variant="primary" size="md" className="gap-2 px-7 py-3.5 rounded-full shadow-md hover:-translate-y-0.5 transition-all">
-                    Explore Ad Solutions <ArrowUpRight className="w-4 h-4" />
+                    Launch your ad campaign <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <div className="flex items-center gap-2 text-deep-violet">
@@ -897,7 +897,11 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              {/* Mobile Dedicated Hero Image (Centered & Proportioned) */}
+              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
+                We connect your brand with authentic influencers and content creators to promote your products and deliver meaningful growth.
+              </p>
+
+              {/* Mobile Dedicated Hero Image (Placed UNDER the paragraph, ABOVE the CTA button) */}
               <div className="block lg:hidden my-3 w-full sm:w-[85%] mx-auto">
                 <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[4/3] relative group">
                   <img
@@ -911,10 +915,6 @@ export const ProudWorkChapter: React.FC = () => {
                   </div>
                 </div>
               </div>
-
-              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
-                We connect your brand with authentic influencers and content creators to promote your products and deliver meaningful growth.
-              </p>
 
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-near-black pt-2">
                 <li className="flex items-center gap-2">
@@ -934,7 +934,7 @@ export const ProudWorkChapter: React.FC = () => {
               <div className="pt-3">
                 <Link to={ROUTES.SERVICES.PAID_PROMOTIONS}>
                   <Button variant="primary" size="md" className="gap-2 px-7 py-3.5 rounded-full shadow-md hover:-translate-y-0.5 transition-all">
-                    Explore Creator Networks <ArrowUpRight className="w-4 h-4" />
+                    Launch creator campaign <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
