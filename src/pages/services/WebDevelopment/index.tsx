@@ -257,7 +257,7 @@ export const WebDevelopmentPage: React.FC = () => {
             </div>
 
             {/* Mobile Only Buttons (Placed BELOW the Image on Mobile Screens) */}
-            <div className="block lg:hidden w-full space-y-3 pt-8 mt-4 z-30 relative">
+            <div className="block lg:hidden w-full space-y-3 pt-3 mt-1 z-30 relative">
               <a href="#web-start-form" className="w-full block">
                 <button className="w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-near-black text-soft-white font-medium text-sm shadow-md hover:bg-slate-800 transition-all cursor-pointer">
                   Start Your Web Project <ArrowRight className="w-4 h-4" />
