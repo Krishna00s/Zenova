@@ -245,18 +245,18 @@ export const AboutPage: React.FC = () => {
             />
 
             <div className="relative z-20 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-xs font-mono font-semibold text-white border border-white/15">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 text-xs font-mono font-semibold text-[#E2D7ED] border border-white/10">
                 <Sparkles className="w-3.5 h-3.5 text-purple-300" /> Ready to Build?
               </div>
-              <h3 className="text-2xl sm:text-4xl font-editorial font-bold text-white tracking-tight">
+              <h3 className="text-2xl sm:text-4xl font-editorial font-bold text-[#F3F1F6] tracking-tight">
                 Let's talk about your next project.
               </h3>
-              <p className="max-w-lg mx-auto text-sm sm:text-base text-neutral-200 font-sans leading-relaxed">
+              <p className="max-w-lg mx-auto text-sm sm:text-base text-[#D6CFE2] font-sans leading-relaxed">
                 No sales pitches or pressure. Let's discuss what you need built and how we can help.
               </p>
               <div className="pt-2 flex items-center justify-center gap-4">
                 <Link to={ROUTES.CONTACT}>
-                  <Button variant="primary" size="lg" className="gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-neutral-200 transition-colors shadow-lg">
+                  <Button variant="primary" size="lg" className="gap-2 px-8 py-3.5 rounded-full bg-[#F3EEF8] text-[#121113] font-semibold hover:bg-white transition-colors shadow-lg">
                     Get in Touch <ArrowUpRight className="w-4 h-4" />
                   </Button>
                 </Link>
