@@ -80,7 +80,7 @@ export const WebDevelopmentPage: React.FC = () => {
       category: 'Fintech Web App',
       title: 'Lumina Financial Platform',
       subtitle: 'Real-Time Financial Analytics Dashboard',
-      story: 'Engineered for a high-growth fintech startup. Senior software architects transformed complex real-time market data into a clean web application with dark-mode UI and sub-50ms render latency.',
+      story: 'Engineered for a high-growth fintech startup. Our engineering team transformed complex real-time market data into a clean web application with dark-mode UI and sub-50ms render latency.',
       highlights: ['Real-Time Data Streaming', 'Dark & Light Mode Toggle', 'Sub-50ms Render Latency'],
       image: '/media/photo_understand_dev.jpg',
       url: 'luminaapp.io',
@@ -116,7 +116,7 @@ export const WebDevelopmentPage: React.FC = () => {
       category: 'Creative Design Tokens',
       title: 'Aethel Design Token System',
       subtitle: 'Design System & Component Library',
-      story: 'Created for a fast-scaling product design team. Includes 50+ reusable React tokens, accessible WCAG contrast compliance, and automated Storybook docs built by senior UI developers.',
+      story: 'Created for a fast-scaling product design team. Includes 50+ reusable React tokens, accessible WCAG contrast compliance, and automated Storybook docs built by our web developers.',
       highlights: ['50+ Reusable Tokens', 'WCAG AAA Accessibility', 'Automated Storybook Hub'],
       image: '/media/cap_web_engineering.jpg',
       url: 'aethel.design',
@@ -197,7 +197,7 @@ export const WebDevelopmentPage: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-near-black/80 via-transparent to-transparent flex items-end justify-between p-4">
                     <div className="text-soft-white space-y-0.5">
-                      <span className="text-[10px] font-mono font-bold text-near-black bg-soft-white px-2 py-0.5 rounded">Senior Engineer</span>
+                      <span className="text-[10px] font-mono font-bold text-near-black bg-soft-white px-2 py-0.5 rounded">Web Developer</span>
                       <p className="text-xs font-semibold">Sub-Second Load Time Architecture</p>
                     </div>
                   </div>

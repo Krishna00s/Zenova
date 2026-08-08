@@ -101,7 +101,7 @@ export const WorkPage: React.FC = () => {
                   Direct collaboration without middle layers.
                 </h3>
                 <p>
-                  You work directly with senior engineers, film directors, and growth strategists. There are no account managers filtering your ideas or delaying progress. Every conversation is direct, transparent, and focused on delivering work that is fast, beautiful, and effortless to scale.
+                  You work directly with the engineers, editors, and creators who actually build your project. We don't claim to be corporate grandmasters or a flawless team—we are a dedicated group of builders who know how to get things done. We focus on clean execution, clear communication, and shipping work that helps your business grow.
                 </p>
               </div>
 
