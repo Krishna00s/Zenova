@@ -120,22 +120,23 @@ export const PaidPromotionsPage: React.FC = () => {
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-slate-200/40 rounded-full blur-3xl pointer-events-none -z-10" />
 
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-6 space-y-5 sm:space-y-6 promo-reveal">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6 promo-reveal w-full">
               <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs bg-near-black text-soft-white border-transparent">
-                PAID PROMOTIONS & CREATOR NETWORKS
+                CREATOR PROMOTIONS & INFLUENCER NETWORKS
               </Badge>
 
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-editorial font-bold text-near-black tracking-tight leading-[1.08]">
-                People trust people, <br />
-                <span className="italic font-normal text-slate-700">not corporate logos.</span>
+                Real creator voices. <br />
+                <span className="italic font-normal text-slate-700">Measurable brand growth.</span>
               </h1>
 
               <p className="card-body-text max-w-xl text-xs sm:text-sm md:text-base leading-relaxed">
-                Influencer marketing works best when it feels genuine. We handpick creators who align with your brand, coordinate authentic product promotions, and amplify top-performing creator posts to drive real impact.
+                Connect your brand with handpicked lifestyle and tech creators. We handle influencer research, outreach, content approvals, and whitelisted ad campaigns that build genuine trust.
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center gap-3">
+              {/* Desktop Only Buttons */}
+              <div className="hidden lg:flex flex-wrap items-center gap-3 pt-2">
                 <a href="#promo-start-form" className="w-full sm:w-auto">
                   <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-near-black text-soft-white font-medium text-sm shadow-md hover:bg-slate-800 hover:-translate-y-0.5 transition-all cursor-pointer">
                     Start Creator Campaign <ArrowRight className="w-4 h-4" />
@@ -149,7 +150,7 @@ export const PaidPromotionsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* 3D MULTI-LAYERED CREATOR COLLABORATION SHOWCASE MOCKUP */}
+            {/* 3D MULTI-LAYERED CREATOR COLLABORATION SHOWCASE MOCKUP (IMAGE) */}
             <div className="lg:col-span-6 w-full relative">
               <div className="bg-near-black/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl border border-slate-800 space-y-3 relative">
                 <div className="flex items-center justify-between px-2 pb-2 border-b border-soft-white/10">
@@ -195,6 +196,20 @@ export const PaidPromotionsPage: React.FC = () => {
                   <span className="text-[8px] font-mono text-neutral-slate block text-center">Tracked Sales Conversion</span>
                 </div>
               </div>
+            </div>
+
+            {/* Mobile Only Buttons (Placed BELOW the Image on Mobile Screens) */}
+            <div className="block lg:hidden w-full space-y-3 pt-2">
+              <a href="#promo-start-form" className="w-full block">
+                <button className="w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-near-black text-soft-white font-medium text-sm shadow-md hover:bg-slate-800 transition-all cursor-pointer">
+                  Start Creator Campaign <ArrowRight className="w-4 h-4" />
+                </button>
+              </a>
+              <RouterLink to={ROUTES.WORK.ROOT} className="w-full block">
+                <button className="w-full inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-slate-200 bg-slate-100 text-near-black font-medium text-sm hover:bg-slate-200 transition-all cursor-pointer">
+                  Explore Collaborations <ArrowUpRight className="w-4 h-4" />
+                </button>
+              </RouterLink>
             </div>
           </div>
         </Container>

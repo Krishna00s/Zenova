@@ -144,8 +144,8 @@ export const WebDevelopmentPage: React.FC = () => {
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-slate-200/40 rounded-full blur-3xl pointer-events-none -z-10" />
 
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-6 space-y-5 sm:space-y-6 web-reveal">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6 web-reveal w-full">
               <Badge variant="violet" className="px-3.5 py-1 text-xs shadow-xs bg-near-black text-soft-white border-transparent">
                 WEB ENGINEERING & DIGITAL ARCHITECTURE
               </Badge>
@@ -159,7 +159,8 @@ export const WebDevelopmentPage: React.FC = () => {
                 Your website is often the first conversation someone has with your brand. We build websites and web applications that are clean, fast, easy to navigate, and designed to turn visitors into long-term customers.
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center gap-3">
+              {/* Desktop Only Buttons */}
+              <div className="hidden lg:flex flex-wrap items-center gap-3 pt-2">
                 <a href="#web-start-form" className="w-full sm:w-auto">
                   <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-near-black text-soft-white font-medium text-sm shadow-md hover:bg-slate-800 hover:-translate-y-0.5 transition-all cursor-pointer">
                     Start Your Web Project <ArrowRight className="w-4 h-4" />
@@ -173,7 +174,7 @@ export const WebDevelopmentPage: React.FC = () => {
               </div>
             </div>
 
-            {/* 3D MULTI-LAYERED PRODUCT SHOWCASE MOCKUP */}
+            {/* 3D MULTI-LAYERED PRODUCT SHOWCASE MOCKUP (IMAGE) */}
             <div className="lg:col-span-6 w-full relative">
               <div className="bg-soft-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-2xl border border-slate-200 relative space-y-3">
                 <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-100 border border-slate-200">
@@ -253,6 +254,20 @@ export const WebDevelopmentPage: React.FC = () => {
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Mobile Only Buttons (Placed BELOW the Image on Mobile Screens) */}
+            <div className="block lg:hidden w-full space-y-3 pt-8 mt-4 z-30 relative">
+              <a href="#web-start-form" className="w-full block">
+                <button className="w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-near-black text-soft-white font-medium text-sm shadow-md hover:bg-slate-800 transition-all cursor-pointer">
+                  Start Your Web Project <ArrowRight className="w-4 h-4" />
+                </button>
+              </a>
+              <RouterLink to={ROUTES.WORK.ROOT} className="w-full block">
+                <button className="w-full inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-slate-200 bg-slate-100 text-near-black font-medium text-sm hover:bg-slate-200 transition-all cursor-pointer">
+                  Explore Recent Builds <ArrowUpRight className="w-4 h-4" />
+                </button>
+              </RouterLink>
             </div>
           </div>
         </Container>
