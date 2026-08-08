@@ -106,7 +106,7 @@ export const WorkPage: React.FC = () => {
                 </p>
 
                 {/* PROMINENT HIGH-VISIBILITY CALLOUT BOX */}
-                <div className="my-4 p-5 sm:p-6 bg-warm-lavender/90 border-l-4 border-deep-violet rounded-r-2xl sm:rounded-r-3xl shadow-md space-y-2">
+                <div className="my-4 p-5 sm:p-6 bg-warm-lavender/90 border-l-4 border-deep-violet rounded-2xl sm:rounded-3xl shadow-md space-y-2">
                   <div className="flex items-center gap-2 text-deep-violet font-mono text-xs font-bold uppercase tracking-wider">
                     <Sparkles className="w-4 h-4 text-deep-violet" />
                     <span>OUR REALITY & PROMISE</span>
