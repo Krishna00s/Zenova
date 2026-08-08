@@ -69,22 +69,22 @@ export const HumanTrustChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 3 (Middle YouTube Matte Black Craftsmanship Column - Premium High Contrast) */}
-          <div className="lg:col-span-4 bg-gradient-to-b from-[#181818] via-[#121212] to-[#0A0A0A] text-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[380px] sm:min-h-[440px] border border-neutral-800">
+          {/* Card 3 (Middle Deep Purple Luxury Gradient Craftsmanship Column) */}
+          <div className="lg:col-span-4 bg-gradient-to-br from-[#230F3B] via-[#140826] to-[#0B0416] text-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl hover:shadow-purple-950/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[380px] sm:min-h-[440px] border border-purple-900/60 hover:border-purple-500/50 relative overflow-hidden group">
             <div className="space-y-3 sm:space-y-4">
               <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-purple-300 font-semibold">Craftsmanship</span>
-              <h3 className="text-2xl sm:text-3xl font-editorial font-bold leading-tight text-white">
+              <h3 className="text-2xl sm:text-3xl font-editorial font-bold leading-tight text-[#F3F1F6]">
                 We sweat <br />
                 <span className="italic font-normal text-purple-200">the small stuff.</span>
               </h3>
-              <p className="text-sm text-neutral-200 font-sans leading-relaxed">
+              <p className="text-sm text-[#D6CFE2] font-sans leading-relaxed">
                 Because details are what separate good from unforgettable.
               </p>
             </div>
 
-            <div className="pt-6 border-t border-neutral-800 space-y-2">
-              <h4 className="text-xl sm:text-2xl font-editorial font-bold text-white">Honest Scope. <br /><span className="italic font-normal text-purple-200">No Fake Promises.</span></h4>
-              <p className="text-sm text-neutral-200 font-sans leading-relaxed">
+            <div className="pt-6 border-t border-purple-900/50 space-y-2">
+              <h4 className="text-xl sm:text-2xl font-editorial font-bold text-[#F3F1F6]">Honest Scope. <br /><span className="italic font-normal text-purple-200">No Fake Promises.</span></h4>
+              <p className="text-sm text-[#D6CFE2] font-sans leading-relaxed">
                 We only take on work we know we can execute well. If a project requires something outside our current skillset, we're transparent—we never accept jobs we can't deliver.
               </p>
             </div>
