@@ -163,15 +163,21 @@ export const WorkPage: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => setWebIdx((prev) => (prev - 1 + webProjects.length) % webProjects.length)}
-                  className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={webIdx === 0}
+                  onClick={() => setWebIdx((prev) => Math.max(prev - 1, 0))}
+                  className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    webIdx === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Previous Web Project"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
-                  onClick={() => setWebIdx((prev) => (prev + 1) % webProjects.length)}
-                  className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={webIdx === webProjects.length - 1}
+                  onClick={() => setWebIdx((prev) => Math.min(prev + 1, webProjects.length - 1))}
+                  className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    webIdx === webProjects.length - 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Next Web Project"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -224,15 +230,21 @@ export const WorkPage: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => setVideoIdx((prev) => (prev - 1 + videoProjects.length) % videoProjects.length)}
-                  className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={videoIdx === 0}
+                  onClick={() => setVideoIdx((prev) => Math.max(prev - 1, 0))}
+                  className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    videoIdx === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Previous Video Project"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
-                  onClick={() => setVideoIdx((prev) => (prev + 1) % videoProjects.length)}
-                  className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={videoIdx === videoProjects.length - 1}
+                  onClick={() => setVideoIdx((prev) => Math.min(prev + 1, videoProjects.length - 1))}
+                  className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    videoIdx === videoProjects.length - 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Next Video Project"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -288,15 +300,21 @@ export const WorkPage: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => setAdIdx((prev) => (prev - 1 + adProjects.length) % adProjects.length)}
-                  className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={adIdx === 0}
+                  onClick={() => setAdIdx((prev) => Math.max(prev - 1, 0))}
+                  className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    adIdx === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Previous Ad Project"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
-                  onClick={() => setAdIdx((prev) => (prev + 1) % adProjects.length)}
-                  className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={adIdx === adProjects.length - 1}
+                  onClick={() => setAdIdx((prev) => Math.min(prev + 1, adProjects.length - 1))}
+                  className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    adIdx === adProjects.length - 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Next Ad Project"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -349,15 +367,21 @@ export const WorkPage: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => setPromoIdx((prev) => (prev - 1 + promoProjects.length) % promoProjects.length)}
-                  className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={promoIdx === 0}
+                  onClick={() => setPromoIdx((prev) => Math.max(prev - 1, 0))}
+                  className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    promoIdx === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Previous Promo Project"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
-                  onClick={() => setPromoIdx((prev) => (prev + 1) % promoProjects.length)}
-                  className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={promoIdx === promoProjects.length - 1}
+                  onClick={() => setPromoIdx((prev) => Math.min(prev + 1, promoProjects.length - 1))}
+                  className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    promoIdx === promoProjects.length - 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Next Promo Project"
                 >
                   <ChevronRight className="w-5 h-5" />

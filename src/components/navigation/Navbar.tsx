@@ -47,6 +47,9 @@ export const Navbar: React.FC = () => {
         {/* Brand Logo */}
         <Link
           to={ROUTES.HOME}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
           className={`group flex items-center gap-2.5 text-2xl font-editorial font-bold tracking-tight transition-colors ${
             isServicePage
               ? 'text-near-black hover:text-slate-700'

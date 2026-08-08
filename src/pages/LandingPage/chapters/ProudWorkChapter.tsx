@@ -18,11 +18,11 @@ import { scrollRevealCards } from '../../../animations/reveal';
 export const ProudWorkChapter: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Carousel active indices set to middle card (index 2 of 5) by default!
-  const [webIndex, setWebIndex] = useState(2);
-  const [videoIndex, setVideoIndex] = useState(2);
-  const [adIndex, setAdIndex] = useState(2);
-  const [promoIndex, setPromoIndex] = useState(2);
+  // Carousel active indices start at index 0 (1 of 3) by default!
+  const [webIndex, setWebIndex] = useState(0);
+  const [videoIndex, setVideoIndex] = useState(0);
+  const [adIndex, setAdIndex] = useState(0);
+  const [promoIndex, setPromoIndex] = useState(0);
 
   useGSAP(() => {
     const cards = containerRef.current?.querySelectorAll('.showcase-card');
@@ -288,15 +288,21 @@ export const ProudWorkChapter: React.FC = () => {
               {/* Desktop Navigation Arrows (Positioned at right edge) */}
               <div className="hidden md:flex items-center gap-2 absolute right-0">
                 <button
-                  onClick={() => setWebIndex((prev) => (prev - 1 + webCards.length) % webCards.length)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={webIndex === 0}
+                  onClick={() => setWebIndex((prev) => Math.max(prev - 1, 0))}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    webIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Previous Web Card"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
-                  onClick={() => setWebIndex((prev) => (prev + 1) % webCards.length)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={webIndex === webCards.length - 1}
+                  onClick={() => setWebIndex((prev) => Math.min(prev + 1, webCards.length - 1))}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    webIndex === webCards.length - 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Next Web Card"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -339,7 +345,7 @@ export const ProudWorkChapter: React.FC = () => {
             {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
             <div className="grid md:hidden grid-cols-2 gap-4">
               {webCards.slice(0, 3).map((_, idx) => {
-                const rotatedIdx = (idx + (webIndex % 3)) % 3;
+                const rotatedIdx = (idx + webIndex) % 3;
                 const displayCard = webCards[rotatedIdx];
 
                 return (
@@ -369,21 +375,27 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows with 01 / 03 Counter Pill */}
-            <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
+            {/* Mobile Navigation Arrows (Far Left & Far Right with 01 / 03 Counter Pill Centered) */}
+            <div className="flex md:hidden items-center justify-between w-full px-2 sm:px-4 pt-4 border-t border-muted-lavender/30">
               <button
-                onClick={() => setWebIndex((prev) => (prev - 1 + 3) % 3)}
-                className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                disabled={webIndex === 0}
+                onClick={() => setWebIndex((prev) => Math.max(prev - 1, 0))}
+                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                  webIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                }`}
                 aria-label="Previous Web Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
-                0{((webIndex) % 3) + 1} / 03
+              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+                0{webIndex + 1} / 03
               </span>
               <button
-                onClick={() => setWebIndex((prev) => (prev + 1) % 3)}
-                className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                disabled={webIndex === 2}
+                onClick={() => setWebIndex((prev) => Math.min(prev + 1, 2))}
+                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                  webIndex === 2 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                }`}
                 aria-label="Next Web Card Mobile"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -469,15 +481,21 @@ export const ProudWorkChapter: React.FC = () => {
               {/* Desktop Navigation Arrows (Positioned at right edge) */}
               <div className="hidden md:flex items-center gap-2 absolute right-0">
                 <button
-                  onClick={() => setVideoIndex((prev) => (prev - 1 + videoCards.length) % videoCards.length)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={videoIndex === 0}
+                  onClick={() => setVideoIndex((prev) => Math.max(prev - 1, 0))}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    videoIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Previous Video Card"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
-                  onClick={() => setVideoIndex((prev) => (prev + 1) % videoCards.length)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={videoIndex === videoCards.length - 1}
+                  onClick={() => setVideoIndex((prev) => Math.min(prev + 1, videoCards.length - 1))}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    videoIndex === videoCards.length - 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Next Video Card"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -523,7 +541,7 @@ export const ProudWorkChapter: React.FC = () => {
             {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
             <div className="grid md:hidden grid-cols-2 gap-4">
               {videoCards.slice(0, 3).map((_, idx) => {
-                const rotatedIdx = (idx + (videoIndex % 3)) % 3;
+                const rotatedIdx = (idx + videoIndex) % 3;
                 const displayCard = videoCards[rotatedIdx];
 
                 return (
@@ -556,21 +574,27 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows with 01 / 03 Counter Pill */}
-            <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
+            {/* Mobile Navigation Arrows (Far Left & Far Right with 01 / 03 Counter Pill Centered) */}
+            <div className="flex md:hidden items-center justify-between w-full px-2 sm:px-4 pt-4 border-t border-muted-lavender/30">
               <button
-                onClick={() => setVideoIndex((prev) => (prev - 1 + 3) % 3)}
-                className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                disabled={videoIndex === 0}
+                onClick={() => setVideoIndex((prev) => Math.max(prev - 1, 0))}
+                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                  videoIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                }`}
                 aria-label="Previous Video Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
-                0{((videoIndex) % 3) + 1} / 03
+              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+                0{videoIndex + 1} / 03
               </span>
               <button
-                onClick={() => setVideoIndex((prev) => (prev + 1) % 3)}
-                className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                disabled={videoIndex === 2}
+                onClick={() => setVideoIndex((prev) => Math.min(prev + 1, 2))}
+                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                  videoIndex === 2 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                }`}
                 aria-label="Next Video Card Mobile"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -659,15 +683,21 @@ export const ProudWorkChapter: React.FC = () => {
               {/* Desktop Navigation Arrows (Positioned at right edge) */}
               <div className="hidden md:flex items-center gap-2 absolute right-0">
                 <button
-                  onClick={() => setAdIndex((prev) => (prev - 1 + adCards.length) % adCards.length)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={adIndex === 0}
+                  onClick={() => setAdIndex((prev) => Math.max(prev - 1, 0))}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    adIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Previous Ad Card"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
-                  onClick={() => setAdIndex((prev) => (prev + 1) % adCards.length)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={adIndex === adCards.length - 1}
+                  onClick={() => setAdIndex((prev) => Math.min(prev + 1, adCards.length - 1))}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    adIndex === adCards.length - 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Next Ad Card"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -710,7 +740,7 @@ export const ProudWorkChapter: React.FC = () => {
             {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
             <div className="grid md:hidden grid-cols-2 gap-4">
               {adCards.slice(0, 3).map((_, idx) => {
-                const rotatedIdx = (idx + (adIndex % 3)) % 3;
+                const rotatedIdx = (idx + adIndex) % 3;
                 const displayCard = adCards[rotatedIdx];
 
                 return (
@@ -740,21 +770,27 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows with 01 / 03 Counter Pill */}
-            <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
+            {/* Mobile Navigation Arrows (Far Left & Far Right with 01 / 03 Counter Pill Centered) */}
+            <div className="flex md:hidden items-center justify-between w-full px-2 sm:px-4 pt-4 border-t border-muted-lavender/30">
               <button
-                onClick={() => setAdIndex((prev) => (prev - 1 + 3) % 3)}
-                className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                disabled={adIndex === 0}
+                onClick={() => setAdIndex((prev) => Math.max(prev - 1, 0))}
+                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                  adIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                }`}
                 aria-label="Previous Ad Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
-                0{((adIndex) % 3) + 1} / 03
+              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+                0{adIndex + 1} / 03
               </span>
               <button
-                onClick={() => setAdIndex((prev) => (prev + 1) % 3)}
-                className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                disabled={adIndex === 2}
+                onClick={() => setAdIndex((prev) => Math.min(prev + 1, 2))}
+                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                  adIndex === 2 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                }`}
                 aria-label="Next Ad Card Mobile"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -834,15 +870,21 @@ export const ProudWorkChapter: React.FC = () => {
               {/* Desktop Navigation Arrows (Positioned at right edge) */}
               <div className="hidden md:flex items-center gap-2 absolute right-0">
                 <button
-                  onClick={() => setPromoIndex((prev) => (prev - 1 + promoCards.length) % promoCards.length)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={promoIndex === 0}
+                  onClick={() => setPromoIndex((prev) => Math.max(prev - 1, 0))}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    promoIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Previous Promo Card"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
-                  onClick={() => setPromoIndex((prev) => (prev + 1) % promoCards.length)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                  disabled={promoIndex === promoCards.length - 1}
+                  onClick={() => setPromoIndex((prev) => Math.min(prev + 1, promoCards.length - 1))}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                    promoIndex === promoCards.length - 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                  }`}
                   aria-label="Next Promo Card"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -885,7 +927,7 @@ export const ProudWorkChapter: React.FC = () => {
             {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
             <div className="grid md:hidden grid-cols-2 gap-4">
               {promoCards.slice(0, 3).map((_, idx) => {
-                const rotatedIdx = (idx + (promoIndex % 3)) % 3;
+                const rotatedIdx = (idx + promoIndex) % 3;
                 const displayCard = promoCards[rotatedIdx];
 
                 return (
@@ -915,21 +957,27 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows with 01 / 03 Counter Pill */}
-            <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
+            {/* Mobile Navigation Arrows (Far Left & Far Right with 01 / 03 Counter Pill Centered) */}
+            <div className="flex md:hidden items-center justify-between w-full px-2 sm:px-4 pt-4 border-t border-muted-lavender/30">
               <button
-                onClick={() => setPromoIndex((prev) => (prev - 1 + 3) % 3)}
-                className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                disabled={promoIndex === 0}
+                onClick={() => setPromoIndex((prev) => Math.max(prev - 1, 0))}
+                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                  promoIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                }`}
                 aria-label="Previous Promo Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
-                0{((promoIndex) % 3) + 1} / 03
+              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+                0{promoIndex + 1} / 03
               </span>
               <button
-                onClick={() => setPromoIndex((prev) => (prev + 1) % 3)}
-                className="w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
+                disabled={promoIndex === 2}
+                onClick={() => setPromoIndex((prev) => Math.min(prev + 1, 2))}
+                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                  promoIndex === 2 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
+                }`}
                 aria-label="Next Promo Card Mobile"
               >
                 <ChevronRight className="w-4 h-4" />
