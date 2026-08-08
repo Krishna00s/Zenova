@@ -65,32 +65,32 @@ export const CapabilitiesChapter: React.FC = () => {
         </div>
 
         {/* Balanced Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 items-stretch w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-stretch w-full">
           {capabilities.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="capability-card group bg-soft-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 lg:p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 flex flex-col justify-between h-full w-full min-w-0"
+                className="capability-card group bg-soft-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 flex flex-col justify-between h-full w-full min-w-0"
               >
-                <div className="space-y-2.5 sm:space-y-4">
+                <div className="space-y-4">
                   {/* Icon Badge */}
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-warm-lavender flex items-center justify-center text-deep-violet group-hover:bg-deep-violet group-hover:text-soft-white transition-all duration-300">
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <div className="w-11 h-11 rounded-2xl bg-warm-lavender flex items-center justify-center text-deep-violet group-hover:bg-deep-violet group-hover:text-soft-white transition-all duration-300">
+                    <Icon className="w-5 h-5" />
                   </div>
 
                   {/* Title & Description */}
-                  <div className="space-y-1 sm:space-y-1.5 min-h-[64px] sm:min-h-[84px] flex flex-col justify-start">
-                    <h3 className="text-base sm:text-xl lg:text-2xl font-editorial font-bold text-near-black tracking-tight group-hover:text-deep-violet transition-colors leading-tight sm:leading-snug">
+                  <div className="space-y-1.5 min-h-[84px] flex flex-col justify-start">
+                    <h3 className="text-xl sm:text-2xl font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors leading-snug">
                       {item.title}
                     </h3>
-                    <p className="text-[11px] sm:text-xs md:text-sm text-slate-600 font-sans leading-snug sm:leading-relaxed">
+                    <p className="card-body-text text-xs sm:text-sm leading-relaxed">
                       {item.description}
                     </p>
                   </div>
 
-                  {/* Widescreen / 4:3 Photo Frame */}
-                  <div className="pt-0.5 rounded-xl sm:rounded-2xl overflow-hidden w-full aspect-[4/3] sm:aspect-[16/10] bg-warm-lavender/50 border border-muted-lavender/40 relative">
+                  {/* Widescreen Photo Frame */}
+                  <div className="pt-1 rounded-xl sm:rounded-2xl overflow-hidden w-full aspect-[16/10] bg-warm-lavender/50 border border-muted-lavender/40 relative">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -101,16 +101,16 @@ export const CapabilitiesChapter: React.FC = () => {
                 </div>
 
                 {/* Pill Button CTA */}
-                <div className="pt-3 sm:pt-5">
+                <div className="pt-5">
                   <Link to={item.link}>
                     <Button
                       variant="primary"
                       size="sm"
-                      className="w-full justify-between py-2.5 sm:py-3 rounded-full text-[11px] sm:text-xs font-semibold group-hover:bg-near-black transition-all"
+                      className="w-full justify-between py-3 rounded-full text-xs font-semibold group-hover:bg-near-black transition-all"
                     >
                       <span>View Projects</span>
-                      <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-soft-white/20 flex items-center justify-center">
-                        <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                      <div className="w-5 h-5 rounded-full bg-soft-white/20 flex items-center justify-center">
+                        <ArrowRight className="w-3 h-3" />
                       </div>
                     </Button>
                   </Link>
