@@ -47,15 +47,17 @@ export const Navbar: React.FC = () => {
         {/* Brand Logo */}
         <Link
           to={ROUTES.HOME}
-          className={`group flex items-center gap-2 text-2xl font-editorial font-bold tracking-tight transition-colors ${
+          className={`group flex items-center gap-2.5 text-2xl font-editorial font-bold tracking-tight transition-colors ${
             isServicePage
               ? 'text-near-black hover:text-slate-700'
               : 'text-near-black hover:text-deep-violet'
           }`}
         >
-          <svg className={`w-6 h-6 fill-current ${isServicePage ? 'text-near-black' : 'text-deep-violet'}`} viewBox="0 0 24 24">
-            <path d="M12 2C13.5 6 18 10.5 22 12C18 13.5 13.5 18 12 22C10.5 18 6 13.5 2 12C6 10.5 10.5 6 12 2Z" />
-          </svg>
+          <img
+            src="/media/v2_logo_option_5.jpg"
+            alt="Zenova Quantum Emblem Logo Icon"
+            className="w-7 h-7 rounded-lg object-cover shadow-xs border border-muted-lavender/60 group-hover:scale-105 transition-transform"
+          />
           <span className="font-sans font-bold tracking-widest text-lg">ZENOVA</span>
         </Link>
 
