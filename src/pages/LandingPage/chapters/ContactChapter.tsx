@@ -90,8 +90,8 @@ export const ContactChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Glassmorphic Contact Form Column */}
-          <div className="lg:col-span-7 w-full contact-reveal flex flex-col">
+          {/* Right Glassmorphic Contact Form Column (Shifted further right) */}
+          <div className="lg:col-span-6 lg:col-start-7 w-full contact-reveal flex flex-col">
             <div className="bg-soft-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-muted-lavender/80 shadow-xl space-y-5 h-full flex flex-col justify-between">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
