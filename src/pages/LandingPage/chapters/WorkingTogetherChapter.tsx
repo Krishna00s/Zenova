@@ -76,30 +76,30 @@ export const WorkingTogetherChapter: React.FC = () => {
           {steps.map((item, index) => (
             <div
               key={index}
-              className={`approach-card group bg-soft-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 lg:p-5 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1.5 hover:scale-[1.01] transition-all duration-500 flex flex-col justify-between ${
+              className={`approach-card group bg-soft-white rounded-2xl sm:rounded-3xl p-2 sm:p-4 lg:p-5 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1.5 hover:scale-[1.01] transition-all duration-500 flex flex-col justify-between ${
                 index >= 5 ? 'lg:hidden' : ''
               }`}
             >
-              <div className="space-y-2.5 sm:space-y-3 lg:space-y-4">
-                {/* Photo Container - Spacious and Breathable */}
-                <div className="w-full aspect-[16/10] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden relative group bg-warm-lavender/50 border border-slate-200/50">
+              <div className="space-y-1.5 sm:space-y-3 lg:space-y-4">
+                {/* Photo Container - Matched 4:3 Aspect Ratio */}
+                <div className="w-full aspect-[4/3] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden relative group bg-warm-lavender/50 border border-slate-200/50">
                   <img
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
-                  <div className="absolute top-2 left-2 sm:top-3 sm:left-3 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-soft-white/90 backdrop-blur-md shadow-sm flex items-center justify-center font-mono text-[10px] sm:text-xs font-bold text-deep-violet border border-muted-lavender/50">
+                  <div className="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 w-5 h-5 sm:w-8 sm:h-8 rounded-full bg-soft-white/95 backdrop-blur-md shadow-xs flex items-center justify-center font-mono text-[9px] sm:text-xs font-bold text-deep-violet border border-muted-lavender/60">
                     {item.step}
                   </div>
                 </div>
 
-                {/* Title & Description - Larger, High Contrast & Easy to Read */}
-                <div className="space-y-1 pt-0.5 text-left">
-                  <h3 className="text-sm sm:text-base lg:text-lg font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors leading-snug">
+                {/* Title & Description - Matched Feature Card Typography */}
+                <div className="space-y-0.5 sm:space-y-1 pt-0.5 text-left">
+                  <h3 className="text-xs sm:text-base lg:text-lg font-editorial font-bold text-near-black tracking-tight group-hover:text-deep-violet transition-colors leading-tight sm:leading-snug">
                     {item.title}
                   </h3>
-                  <p className="card-body-text text-xs sm:text-xs text-slate-500 font-sans leading-relaxed">
+                  <p className="text-[10px] sm:text-xs text-slate-500 font-sans leading-snug sm:leading-relaxed">
                     {item.description}
                   </p>
                 </div>
