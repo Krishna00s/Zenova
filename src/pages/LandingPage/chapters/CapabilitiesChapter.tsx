@@ -100,8 +100,8 @@ export const CapabilitiesChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* 2 Rows x 2 Columns Grid with Generous Mobile Card Spacing & Margins */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-6 items-stretch w-full">
+        {/* 2 Rows x 2 Columns Grid with Double Mobile Card Spacing */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 sm:gap-6 items-stretch w-full">
           {capabilities.map((item, index) => {
             const Icon = item.icon;
             return (
