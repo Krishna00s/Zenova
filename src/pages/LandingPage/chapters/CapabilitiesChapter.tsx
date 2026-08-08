@@ -100,22 +100,22 @@ export const CapabilitiesChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* Compact 2 Rows x 2 Columns Grid with Sleek Proportions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-stretch w-full">
+        {/* Compact 2 Rows x 2 Columns Grid with Responsive Mobile Scaling */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-6 items-stretch w-full">
           {capabilities.map((item, index) => {
             const Icon = item.icon;
             return (
               <Link
                 key={index}
                 to={item.link}
-                className={`capability-card group bg-soft-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-muted-lavender/60 shadow-xs hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden ${item.hoverBorder}`}
+                className={`capability-card group bg-soft-white rounded-xl sm:rounded-3xl p-3 sm:p-5 border border-muted-lavender/60 shadow-xs hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden ${item.hoverBorder}`}
               >
                 {/* Subtle Ambient Hover Glow Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.accentGlow} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
 
-                <div className="space-y-3 relative z-10">
+                <div className="space-y-2.5 sm:space-y-3 relative z-10">
                   {/* Photo Container with Top-Left Domain Badge & Bottom-Right Tagline Overlay */}
-                  <div className="w-full aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden relative bg-warm-lavender/40 border border-slate-200/50">
+                  <div className="w-full aspect-[16/10] rounded-lg sm:rounded-2xl overflow-hidden relative bg-warm-lavender/40 border border-slate-200/50">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -123,37 +123,37 @@ export const CapabilitiesChapter: React.FC = () => {
                       loading="lazy"
                     />
                     
-                    {/* Top-Left Distinct Domain Badge (Solid Black Pill, Medium Text Size with Blinking Icon) */}
-                    <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-near-black/95 text-white text-[10px] sm:text-[10.5px] font-mono font-extrabold tracking-wider uppercase border border-white/25 shadow-xl flex items-center gap-1.5 z-20">
-                      <Icon className={`w-3 h-3 animate-pulse ${item.iconColor}`} />
+                    {/* Top-Left Distinct Domain Badge */}
+                    <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-near-black/95 text-white text-[8px] sm:text-[10.5px] font-mono font-extrabold tracking-wider uppercase border border-white/25 shadow-xl flex items-center gap-1 sm:gap-1.5 z-20">
+                      <Icon className={`w-2.5 h-2.5 sm:w-3 sm:h-3 animate-pulse ${item.iconColor}`} />
                       <span className="text-white font-bold">{item.domainLabel}</span>
                     </div>
 
                     {/* Video Center Play Button Overlay */}
                     {item.hasPlayOverlay && (
                       <div className="absolute inset-0 bg-near-black/30 flex items-center justify-center opacity-90 group-hover:opacity-100 transition-opacity">
-                        <div className="w-9 h-9 rounded-full bg-soft-white text-near-black shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                          <Play className="w-3.5 h-3.5 fill-near-black stroke-none ml-0.5" />
+                        <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-soft-white text-near-black shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Play className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-near-black stroke-none ml-0.5" />
                         </div>
                       </div>
                     )}
 
                     {/* Bottom-Right Performance Tagline Badge - Compact & Subtle */}
-                    <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-near-black/90 text-white/90 text-[8px] sm:text-[8.5px] font-mono font-semibold tracking-wide border border-white/15 shadow-sm z-20">
+                    <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded-full bg-near-black/90 text-white/90 text-[7.5px] sm:text-[8.5px] font-mono font-semibold tracking-wide border border-white/15 shadow-sm z-20">
                       {item.taglineOverlay}
                     </div>
                   </div>
 
                   {/* Sub-Category, High-Impact Bold Title + Arrow & Description */}
-                  <div className="space-y-2 px-0.5 pt-0.5 text-left">
-                    <span className={`text-[12px] font-mono uppercase tracking-widest block font-black ${item.categoryTagStyle}`}>
+                  <div className="space-y-1 sm:space-y-2 px-0.5 pt-0.5 text-left">
+                    <span className={`text-[10px] sm:text-[12px] font-mono uppercase tracking-widest block font-black ${item.categoryTagStyle}`}>
                       {item.category}
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-editorial font-black text-near-black group-hover:text-deep-violet transition-colors leading-tight flex items-center justify-between tracking-tight">
+                    <h3 className="text-lg sm:text-3xl font-editorial font-black text-near-black group-hover:text-deep-violet transition-colors leading-tight flex items-center justify-between tracking-tight">
                       <span>{item.title}</span>
-                      <ArrowUpRight className="w-5 h-5 text-slate-500 stroke-[2.5] group-hover:text-deep-violet group-hover:translate-x-1 group-hover:-translate-y-1 transition-all flex-shrink-0 ml-3" />
+                      <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500 stroke-[2.5] group-hover:text-deep-violet group-hover:translate-x-1 group-hover:-translate-y-1 transition-all flex-shrink-0 ml-2 sm:ml-3" />
                     </h3>
-                    <p className="card-body-text text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed pt-0.5">
+                    <p className="card-body-text text-[11px] sm:text-sm text-slate-600 line-clamp-2 leading-snug sm:leading-relaxed pt-0.5">
                       {item.description}
                     </p>
                   </div>
