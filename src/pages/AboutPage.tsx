@@ -227,13 +227,13 @@ export const AboutPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom CTA Box — YouTube Matte Black Style with Mouse-Following Spotlight Radial Glow */}
+          {/* Bottom CTA Box — Deep Purple Luxury Gradient Style with Mouse-Following Spotlight Radial Glow */}
           <div
             ref={ctaCardRef}
             onMouseMove={handleSpotlightMouseMove}
             onMouseEnter={() => setIsSpotlightHovered(true)}
             onMouseLeave={() => setIsSpotlightHovered(false)}
-            className="about-reveal bg-[#0F0F0F] text-white rounded-3xl p-8 sm:p-12 text-center space-y-5 shadow-2xl border border-neutral-800 max-w-4xl mx-auto mt-8 relative overflow-hidden group transition-colors duration-300 hover:border-neutral-700"
+            className="about-reveal bg-gradient-to-br from-[#230F3B] via-[#140826] to-[#0B0416] text-white rounded-3xl p-8 sm:p-12 text-center space-y-5 shadow-2xl border border-purple-900/60 max-w-4xl mx-auto mt-8 relative overflow-hidden group transition-colors duration-300 hover:border-purple-500/50"
           >
             {/* Mouse-following cursor-centered dim white spotlight overlay */}
             <div
