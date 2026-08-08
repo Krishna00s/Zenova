@@ -120,7 +120,7 @@ export const ContactChapter: React.FC = () => {
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-editorial font-bold text-near-black">Thank You!</h3>
                   <p className="card-body-text max-w-md mx-auto text-xs sm:text-sm">
-                    We received your message. A senior member of our team will review your project and get back to you shortly.
+                    We received your message. A member of our team will review your project and get back to you shortly.
                   </p>
                   <Button variant="outline" onClick={() => setSubmitted(false)}>
                     Send Another Message
