@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Container } from '../ui/Container';
 import { ROUTES } from '../../constants/routes';
 import { Instagram, Linkedin, Twitter, Dribbble } from 'lucide-react';
+import { ZenovaLogoIcon } from '../ui/ZenovaLogoIcon';
 
 export const Footer: React.FC = () => {
   const location = useLocation();
@@ -26,11 +27,7 @@ export const Footer: React.FC = () => {
                 isServicePage ? 'text-soft-white' : 'text-deep-violet'
               }`}
             >
-              <img
-                src="/media/zenova_circular_icon.jpg"
-                alt="Zenova Circular Emblem Logo Icon"
-                className="w-7 h-7 rounded-full object-cover shadow-xs border border-deep-violet/30"
-              />
+              <ZenovaLogoIcon className="w-7 h-7" />
               <span className="font-sans font-bold tracking-widest text-lg">ZENOVA</span>
             </Link>
             <p className={`text-sm max-w-sm leading-relaxed ${isServicePage ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
