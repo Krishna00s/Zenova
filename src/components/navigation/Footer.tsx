@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Container } from '../ui/Container';
 import { ROUTES } from '../../constants/routes';
-import { Instagram, Linkedin, Twitter, Dribbble } from 'lucide-react';
+import { Instagram, Linkedin, Twitter } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const location = useLocation();
@@ -41,14 +41,11 @@ export const Footer: React.FC = () => {
               <a href="https://www.instagram.com/zenova_enterprises/" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:opacity-75 transition-opacity">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:opacity-75 transition-opacity">
+              <a href="https://www.linkedin.com/in/zenova-enterprises-997824428/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:opacity-75 transition-opacity">
                 <Linkedin className="w-5 h-5" />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter" className="hover:opacity-75 transition-opacity">
                 <Twitter className="w-5 h-5" />
-              </a>
-              <a href="https://dribbble.com" target="_blank" rel="noreferrer" aria-label="Dribbble" className="hover:opacity-75 transition-opacity">
-                <Dribbble className="w-5 h-5" />
               </a>
             </div>
           </div>
