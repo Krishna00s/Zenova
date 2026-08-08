@@ -311,7 +311,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
 
             {/* Desktop 5-Card Grid Row */}
-            <div className="hidden md:grid grid-cols-5 gap-4">
+            <div className="hidden md:grid grid-cols-5 gap-3 lg:gap-4">
               {webCards.map((_, idx) => {
                 const rotatedIdx = (idx + webIndex) % webCards.length;
                 const displayCard = webCards[rotatedIdx];
@@ -319,20 +319,20 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-3.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] text-slate-500 font-sans leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -342,30 +342,30 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
-            <div className="grid md:hidden grid-cols-2 gap-4">
-              {webCards.slice(0, 3).map((_, idx) => {
-                const rotatedIdx = (idx + webIndex) % 3;
+            {/* Mobile 2x2 Grid Collection (4 Cards Total: 2 Rows x 2 Columns) */}
+            <div className="grid md:hidden grid-cols-2 gap-2.5 sm:gap-3">
+              {[0, 1, 2, 3].map((offset) => {
+                const rotatedIdx = (offset + webIndex) % webCards.length;
                 const displayCard = webCards[rotatedIdx];
 
                 return (
                   <Link
-                    key={`mobile-${displayCard.id}-${idx}`}
+                    key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-3 sm:p-3.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] text-slate-500 font-sans leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -504,7 +504,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
 
             {/* Desktop 5-Card Grid Row */}
-            <div className="hidden md:grid grid-cols-5 gap-4">
+            <div className="hidden md:grid grid-cols-5 gap-3 lg:gap-4">
               {videoCards.map((_, idx) => {
                 const rotatedIdx = (idx + videoIndex) % videoCards.length;
                 const displayCard = videoCards[rotatedIdx];
@@ -512,10 +512,10 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-3.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50 group">
+                    <div className="space-y-2.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50 group">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
@@ -525,10 +525,10 @@ export const ProudWorkChapter: React.FC = () => {
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] text-slate-500 font-sans leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -538,20 +538,20 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
-            <div className="grid md:hidden grid-cols-2 gap-4">
-              {videoCards.slice(0, 3).map((_, idx) => {
-                const rotatedIdx = (idx + videoIndex) % 3;
+            {/* Mobile 2x2 Grid Collection (4 Cards Total: 2 Rows x 2 Columns) */}
+            <div className="grid md:hidden grid-cols-2 gap-2.5 sm:gap-3">
+              {[0, 1, 2, 3].map((offset) => {
+                const rotatedIdx = (offset + videoIndex) % videoCards.length;
                 const displayCard = videoCards[rotatedIdx];
 
                 return (
                   <Link
-                    key={`mobile-${displayCard.id}-${idx}`}
+                    key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-3 sm:p-3.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50 group">
+                    <div className="space-y-2.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50 group">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
@@ -561,10 +561,10 @@ export const ProudWorkChapter: React.FC = () => {
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] text-slate-500 font-sans leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -706,7 +706,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
 
             {/* Desktop 5-Card Grid Row */}
-            <div className="hidden md:grid grid-cols-5 gap-4">
+            <div className="hidden md:grid grid-cols-5 gap-3 lg:gap-4">
               {adCards.map((_, idx) => {
                 const rotatedIdx = (idx + adIndex) % adCards.length;
                 const displayCard = adCards[rotatedIdx];
@@ -714,20 +714,20 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-3.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] text-slate-500 font-sans leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -737,30 +737,30 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
-            <div className="grid md:hidden grid-cols-2 gap-4">
-              {adCards.slice(0, 3).map((_, idx) => {
-                const rotatedIdx = (idx + adIndex) % 3;
+            {/* Mobile 2x2 Grid Collection (4 Cards Total: 2 Rows x 2 Columns) */}
+            <div className="grid md:hidden grid-cols-2 gap-2.5 sm:gap-3">
+              {[0, 1, 2, 3].map((offset) => {
+                const rotatedIdx = (offset + adIndex) % adCards.length;
                 const displayCard = adCards[rotatedIdx];
 
                 return (
                   <Link
-                    key={`mobile-${displayCard.id}-${idx}`}
+                    key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-3 sm:p-3.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] text-slate-500 font-sans leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -893,7 +893,7 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
 
             {/* Desktop 5-Card Grid Row */}
-            <div className="hidden md:grid grid-cols-5 gap-4">
+            <div className="hidden md:grid grid-cols-5 gap-3 lg:gap-4">
               {promoCards.map((_, idx) => {
                 const rotatedIdx = (idx + promoIndex) % promoCards.length;
                 const displayCard = promoCards[rotatedIdx];
@@ -901,20 +901,20 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-3.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] text-slate-500 font-sans leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -924,30 +924,30 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile 2x2 Grid Collection (Limited to 3 Cards Total) */}
-            <div className="grid md:hidden grid-cols-2 gap-4">
-              {promoCards.slice(0, 3).map((_, idx) => {
-                const rotatedIdx = (idx + promoIndex) % 3;
+            {/* Mobile 2x2 Grid Collection (4 Cards Total: 2 Rows x 2 Columns) */}
+            <div className="grid md:hidden grid-cols-2 gap-2.5 sm:gap-3">
+              {[0, 1, 2, 3].map((offset) => {
+                const rotatedIdx = (offset + promoIndex) % promoCards.length;
                 const displayCard = promoCards[rotatedIdx];
 
                 return (
                   <Link
-                    key={`mobile-${displayCard.id}-${idx}`}
+                    key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-3 sm:p-3.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-[10px] sm:text-[11px] text-slate-500 font-sans leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
