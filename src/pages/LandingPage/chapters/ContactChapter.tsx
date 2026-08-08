@@ -66,9 +66,9 @@ export const ContactChapter: React.FC = () => {
     <section ref={containerRef} id="contact" className="relative w-full bg-soft-white text-near-black py-16 sm:py-20 md:py-28 overflow-hidden">
       <Container>
         {/* Top Split Layout: Narrative & Studio Photo (Left) + Contact Form (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* Left Narrative Column */}
-          <div className="lg:col-span-5 space-y-6 text-left contact-reveal">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6 text-left contact-reveal">
             <div className="space-y-3">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
                 GET IN TOUCH
@@ -84,15 +84,15 @@ export const ContactChapter: React.FC = () => {
               </p>
             </div>
 
-            {/* Studio Architecture Image */}
-            <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
+            {/* Studio Architecture Image (Stretches so bottom edge aligns perfectly with bottom of form) */}
+            <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full flex-1 min-h-[220px] sm:min-h-[260px] group hover:scale-[1.01] transition-transform duration-500 relative">
               <img src="/media/contact_studio_natural.jpg" alt="Zenova Agency Studio Architecture" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             </div>
           </div>
 
           {/* Right Glassmorphic Contact Form Column */}
-          <div className="lg:col-span-7 w-full contact-reveal">
-            <div className="bg-soft-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-muted-lavender/80 shadow-xl space-y-5">
+          <div className="lg:col-span-7 w-full contact-reveal flex flex-col">
+            <div className="bg-soft-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-muted-lavender/80 shadow-xl space-y-5 h-full flex flex-col justify-between">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
                   <div className="w-16 h-16 rounded-full bg-warm-lavender text-deep-violet mx-auto flex items-center justify-center">
