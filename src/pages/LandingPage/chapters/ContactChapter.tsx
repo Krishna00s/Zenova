@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Container } from '../../../components/ui/Container';
 import { Button } from '../../../components/ui/Button';
-import { Mail, Phone, ArrowUpRight, CheckCircle2, ChevronDown, Check } from 'lucide-react';
+import { Mail, Phone, MessageCircle, ArrowUpRight, CheckCircle2, ChevronDown, Check } from 'lucide-react';
 import { submitContactInquiry } from '../../../api/contact';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../../../animations/reveal';
@@ -48,14 +48,14 @@ export const ContactChapter: React.FC = () => {
   };
 
   return (
-    <section ref={containerRef} className="relative w-full bg-warm-lavender/40 text-near-black py-16 sm:py-20 md:py-28 border-t border-muted-lavender/50">
+    <section ref={containerRef} id="contact" className="relative w-full bg-soft-white text-near-black py-16 sm:py-20 md:py-28 overflow-hidden">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Narrative Column */}
-          <div className="lg:col-span-5 space-y-5 contact-reveal">
-            <div className="space-y-2.5">
+          <div className="lg:col-span-5 space-y-6 text-left contact-reveal">
+            <div className="space-y-3">
               <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-                LET'S MAKE IT REAL
+                GET IN TOUCH
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-near-black tracking-tight leading-[1.08]">
                 Tell us what you're building.{' '}
@@ -68,14 +68,14 @@ export const ContactChapter: React.FC = () => {
               </p>
             </div>
 
-            {/* Natural Agency Studio Architecture & Friendly Email/Phone Cards */}
+            {/* Natural Agency Studio Architecture & Friendly Email/Phone/WhatsApp Cards */}
             <div className="space-y-4 pt-1 w-full">
               <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-muted-lavender/60 w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] max-w-full lg:max-w-xs group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img src="/media/contact_studio_natural.jpg" alt="Zenova Agency Studio Architecture" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
-                {/* Email Card with Aesthetic Friendly Typography */}
+                {/* Email Card */}
                 <div className="bg-soft-white/90 rounded-2xl p-4 border border-muted-lavender/70 shadow-xs flex items-center gap-3.5 hover:-translate-y-0.5 hover:shadow-md transition-all">
                   <div className="w-9 h-9 rounded-full bg-warm-lavender text-deep-violet flex items-center justify-center shrink-0 shadow-xs">
                     <Mail className="w-4 h-4" />
@@ -93,7 +93,25 @@ export const ContactChapter: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Phone Card with Aesthetic Friendly Typography */}
+                {/* WhatsApp Direct Card */}
+                <div className="bg-soft-white/90 rounded-2xl p-4 border border-muted-lavender/70 shadow-xs flex items-center gap-3.5 hover:-translate-y-0.5 hover:shadow-md transition-all">
+                  <div className="w-9 h-9 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 shadow-xs">
+                    <MessageCircle className="w-4 h-4 fill-emerald-600/20" />
+                  </div>
+                  <div className="space-y-0.5">
+                    <a
+                      href="https://wa.me/919693821174?text=Hi%20Zenova%20Team,%20I'd%20like%20to%20discuss%20a%20project!"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs sm:text-sm font-sans font-semibold text-near-black hover:text-emerald-700 transition-colors inline-block tracking-tight bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/60"
+                    >
+                      WhatsApp: +91 96938 21174
+                    </a>
+                    <p className="text-[10px] font-sans text-neutral-slate/80 pl-1">Instant chat & fast project estimates</p>
+                  </div>
+                </div>
+
+                {/* Phone Card */}
                 <div className="bg-soft-white/90 rounded-2xl p-4 border border-muted-lavender/70 shadow-xs flex items-center gap-3.5 hover:-translate-y-0.5 hover:shadow-md transition-all">
                   <div className="w-9 h-9 rounded-full bg-warm-lavender text-deep-violet flex items-center justify-center shrink-0 shadow-xs">
                     <Phone className="w-4 h-4" />
