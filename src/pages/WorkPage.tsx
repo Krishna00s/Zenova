@@ -11,6 +11,7 @@ import {
   Film,
   Megaphone,
   Share2,
+  Sparkles,
 } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../animations/reveal';
@@ -93,7 +94,7 @@ export const WorkPage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="space-y-3 pt-4 border-t border-muted-lavender/40">
+              <div className="space-y-4 pt-4 border-t border-muted-lavender/40">
                 <span className="text-xs font-mono text-deep-violet font-bold uppercase tracking-wider block">
                   CHAPTER 02 / CRAFTSMANSHIP & CLARITY
                 </span>
@@ -101,10 +102,21 @@ export const WorkPage: React.FC = () => {
                   Direct collaboration without middle layers.
                 </h3>
                 <p className="leading-relaxed">
-                  You work directly with the engineers, editors, and creators who actually build your project.{' '}
-                  <span className="bg-warm-lavender font-semibold px-2.5 py-1 rounded-lg text-near-black border border-muted-lavender/80 inline-block my-1 shadow-2xs">
-                    We don't claim to be corporate grandmasters or a flawless team—we are a dedicated group of builders who know how to get things done.
-                  </span>{' '}
+                  You work directly with the engineers, editors, and creators who actually build your project.
+                </p>
+
+                {/* PROMINENT HIGH-VISIBILITY CALLOUT BOX */}
+                <div className="my-4 p-5 sm:p-6 bg-warm-lavender/90 border-l-4 border-deep-violet rounded-r-2xl sm:rounded-r-3xl shadow-md space-y-2">
+                  <div className="flex items-center gap-2 text-deep-violet font-mono text-xs font-bold uppercase tracking-wider">
+                    <Sparkles className="w-4 h-4 text-deep-violet" />
+                    <span>OUR REALITY & PROMISE</span>
+                  </div>
+                  <p className="text-base sm:text-lg font-editorial font-bold text-near-black leading-snug">
+                    "We don't claim to be corporate grandmasters or a flawless team—we are a dedicated group of builders who know how to get things done."
+                  </p>
+                </div>
+
+                <p className="leading-relaxed">
                   We focus on clean execution, clear communication, and shipping work that helps your business grow.
                 </p>
               </div>
