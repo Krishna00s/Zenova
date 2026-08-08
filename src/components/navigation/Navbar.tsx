@@ -4,8 +4,6 @@ import { ROUTES } from '../../constants/routes';
 import { Button } from '../ui/Button';
 import { ArrowUpRight, Menu, X, ChevronDown, Code, Video, Megaphone, Share2 } from 'lucide-react';
 
-import { ZenovaLogoIcon } from '../ui/ZenovaLogoIcon';
-
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -55,7 +53,11 @@ export const Navbar: React.FC = () => {
               : 'text-near-black hover:text-deep-violet'
           }`}
         >
-          <ZenovaLogoIcon className="w-7 h-7 group-hover:scale-105 transition-transform" />
+          <img
+            src="/media/zenova_logo_transparent.png"
+            alt="Zenova Brand Emblem Logo Icon"
+            className="w-7 h-7 object-contain group-hover:scale-105 transition-transform"
+          />
           <span className="font-sans font-bold tracking-widest text-lg">ZENOVA</span>
         </Link>
 
