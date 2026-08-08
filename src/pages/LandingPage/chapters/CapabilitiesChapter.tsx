@@ -31,6 +31,7 @@ export const CapabilitiesChapter: React.FC = () => {
       hoverBorder: 'hover:border-cyan-500/50 hover:shadow-cyan-950/10 hover:shadow-2xl',
       accentGlow: 'from-indigo-500/10 to-cyan-500/5',
       icon: Code,
+      iconColor: 'text-cyan-400',
     },
     {
       id: 'video',
@@ -46,6 +47,7 @@ export const CapabilitiesChapter: React.FC = () => {
       hoverBorder: 'hover:border-pink-500/50 hover:shadow-pink-950/10 hover:shadow-2xl',
       accentGlow: 'from-purple-500/10 to-pink-500/5',
       icon: Video,
+      iconColor: 'text-pink-400',
       hasPlayOverlay: true,
     },
     {
@@ -62,6 +64,7 @@ export const CapabilitiesChapter: React.FC = () => {
       hoverBorder: 'hover:border-emerald-500/50 hover:shadow-emerald-950/10 hover:shadow-2xl',
       accentGlow: 'from-emerald-500/10 to-teal-500/5',
       icon: Megaphone,
+      iconColor: 'text-emerald-400',
     },
     {
       id: 'promotions',
@@ -77,6 +80,7 @@ export const CapabilitiesChapter: React.FC = () => {
       hoverBorder: 'hover:border-rose-500/50 hover:shadow-rose-950/10 hover:shadow-2xl',
       accentGlow: 'from-rose-500/10 to-orange-500/5',
       icon: Share2,
+      iconColor: 'text-rose-400',
     },
   ];
 
@@ -119,23 +123,23 @@ export const CapabilitiesChapter: React.FC = () => {
                       loading="lazy"
                     />
                     
-                    {/* Top-Left Distinct Domain Badge (Sharp High-Contrast Solid Background) */}
-                    <div className={`absolute top-2.5 left-2.5 px-3 py-1 rounded-full text-[9.5px] sm:text-[10px] font-mono font-extrabold tracking-widest uppercase border shadow-lg flex items-center gap-1.5 ${item.badgeStyle}`}>
-                      <Icon className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
-                      <span>{item.domainLabel}</span>
+                    {/* Top-Left Distinct Domain Badge (Solid Black Pill, Bright White 12px Text for 100% Maximum Visibility) */}
+                    <div className="absolute top-3 left-3 px-3.5 py-1.5 rounded-full bg-near-black text-white text-xs font-mono font-extrabold tracking-wider uppercase border border-white/25 shadow-2xl flex items-center gap-2 z-20">
+                      <Icon className={`w-3.5 h-3.5 ${item.iconColor}`} />
+                      <span className="text-white font-bold">{item.domainLabel}</span>
                     </div>
 
                     {/* Video Center Play Button Overlay */}
                     {item.hasPlayOverlay && (
-                      <div className="absolute inset-0 bg-near-black/30 backdrop-blur-[1px] flex items-center justify-center opacity-90 group-hover:opacity-100 transition-opacity">
-                        <div className="w-9 h-9 rounded-full bg-soft-white/95 text-near-black shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                          <Play className="w-3.5 h-3.5 fill-near-black stroke-none ml-0.5" />
+                      <div className="absolute inset-0 bg-near-black/30 flex items-center justify-center opacity-90 group-hover:opacity-100 transition-opacity">
+                        <div className="w-10 h-10 rounded-full bg-soft-white text-near-black shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Play className="w-4 h-4 fill-near-black stroke-none ml-0.5" />
                         </div>
                       </div>
                     )}
 
                     {/* Bottom-Right Performance Tagline Badge */}
-                    <div className="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-[#0F0F12] text-white text-[9px] sm:text-[9.5px] font-mono font-bold tracking-wide border border-white/20 shadow-md">
+                    <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-near-black text-white text-xs font-mono font-bold tracking-wide border border-white/20 shadow-xl z-20">
                       {item.taglineOverlay}
                     </div>
                   </div>
