@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li><a href="tel:+919693821174" className={isServicePage ? 'hover:text-soft-white transition-colors' : 'hover:text-deep-violet transition-colors'}>+91 96938 21174</a></li>
-              <li className={`text-xs ${isServicePage ? 'text-soft-white/50' : 'text-neutral-slate/70'}`}>Bangalore, India</li>
+              <li className={`text-xs ${isServicePage ? 'text-soft-white/50' : 'text-neutral-slate/70'}`}>Ranchi, India</li>
             </ul>
           </div>
         </div>
