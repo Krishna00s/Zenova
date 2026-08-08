@@ -186,7 +186,7 @@ export const WorkPage: React.FC = () => {
             </div>
 
             {/* Horizontal Project Card Carousel */}
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-2.5 lg:gap-3">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3 lg:gap-4">
               {webProjects.map((_, idx) => {
                 const rotatedIdx = (idx + webIdx) % webProjects.length;
                 const displayP = webProjects[rotatedIdx];
@@ -196,20 +196,22 @@ export const WorkPage: React.FC = () => {
                   <Link
                     key={`${displayP.id}-${idx}`}
                     to={displayP.link}
-                    className={`group rounded-2xl p-2 sm:p-2.5 overflow-hidden border border-muted-lavender/60 hover:border-deep-violet hover:ring-2 hover:ring-deep-violet/30 transition-all duration-300 flex flex-col justify-between h-full bg-soft-white shadow-xs hover:shadow-xl hover:-translate-y-1 ${
+                    className={`group rounded-2xl p-2.5 sm:p-3 overflow-hidden border border-muted-lavender/60 hover:border-deep-violet hover:ring-2 hover:ring-deep-violet/30 transition-all duration-300 flex flex-col justify-between h-full bg-soft-white shadow-xs hover:shadow-xl hover:-translate-y-1 ${
                       isFifthCardOnMobile ? 'hidden lg:flex' : 'flex'
                     }`}
                   >
-                    <div className="aspect-[1/1] w-full rounded-xl overflow-hidden relative">
-                      <img src={displayP.image} alt={displayP.title} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
-                      <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
-                        {displayP.category}
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] w-full rounded-xl overflow-hidden relative">
+                        <img src={displayP.image} alt={displayP.title} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+                        <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                          {displayP.category}
+                        </div>
                       </div>
-                    </div>
-                    <div className="pt-2 pb-0.5 px-0.5 space-y-0.5">
-                      <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors line-clamp-1">
-                        {displayP.title}
-                      </h4>
+                      <div className="px-0.5 pb-0.5 space-y-0.5">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors line-clamp-1">
+                          {displayP.title}
+                        </h4>
+                      </div>
                     </div>
                   </Link>
                 );
@@ -253,7 +255,7 @@ export const WorkPage: React.FC = () => {
             </div>
 
             {/* Horizontal Project Card Carousel */}
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-2.5 lg:gap-3">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3 lg:gap-4">
               {videoProjects.map((_, idx) => {
                 const rotatedIdx = (idx + videoIdx) % videoProjects.length;
                 const displayP = videoProjects[rotatedIdx];
@@ -263,23 +265,25 @@ export const WorkPage: React.FC = () => {
                   <Link
                     key={`${displayP.id}-${idx}`}
                     to={displayP.link}
-                    className={`group rounded-2xl p-2 sm:p-2.5 overflow-hidden border border-muted-lavender/60 hover:border-deep-violet hover:ring-2 hover:ring-deep-violet/30 transition-all duration-300 flex flex-col justify-between h-full bg-soft-white shadow-xs hover:shadow-xl hover:-translate-y-1 ${
+                    className={`group rounded-2xl p-2.5 sm:p-3 overflow-hidden border border-muted-lavender/60 hover:border-deep-violet hover:ring-2 hover:ring-deep-violet/30 transition-all duration-300 flex flex-col justify-between h-full bg-soft-white shadow-xs hover:shadow-xl hover:-translate-y-1 ${
                       isFifthCardOnMobile ? 'hidden lg:flex' : 'flex'
                     }`}
                   >
-                    <div className="aspect-[1/1] w-full rounded-xl overflow-hidden relative">
-                      <img src={displayP.image} alt={displayP.title} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
-                      <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
-                        {displayP.category}
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] w-full rounded-xl overflow-hidden relative">
+                        <img src={displayP.image} alt={displayP.title} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+                        <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                          {displayP.category}
+                        </div>
+                        <div className="absolute bottom-1.5 right-1.5 w-5 h-5 rounded-full bg-soft-white/90 flex items-center justify-center">
+                          <Play className="w-2.5 h-2.5 fill-near-black stroke-none ml-0.5" />
+                        </div>
                       </div>
-                      <div className="absolute bottom-1.5 right-1.5 w-5 h-5 rounded-full bg-soft-white/90 flex items-center justify-center">
-                        <Play className="w-2.5 h-2.5 fill-near-black stroke-none ml-0.5" />
+                      <div className="px-0.5 pb-0.5 space-y-0.5">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors line-clamp-1">
+                          {displayP.title}
+                        </h4>
                       </div>
-                    </div>
-                    <div className="pt-2 pb-0.5 px-0.5 space-y-0.5">
-                      <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors line-clamp-1">
-                        {displayP.title}
-                      </h4>
                     </div>
                   </Link>
                 );
@@ -323,7 +327,7 @@ export const WorkPage: React.FC = () => {
             </div>
 
             {/* Horizontal Project Card Carousel */}
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-2.5 lg:gap-3">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3 lg:gap-4">
               {adProjects.map((_, idx) => {
                 const rotatedIdx = (idx + adIdx) % adProjects.length;
                 const displayP = adProjects[rotatedIdx];
@@ -333,20 +337,22 @@ export const WorkPage: React.FC = () => {
                   <Link
                     key={`${displayP.id}-${idx}`}
                     to={displayP.link}
-                    className={`group rounded-2xl p-2 sm:p-2.5 overflow-hidden border border-muted-lavender/60 hover:border-deep-violet hover:ring-2 hover:ring-deep-violet/30 transition-all duration-300 flex flex-col justify-between h-full bg-soft-white shadow-xs hover:shadow-xl hover:-translate-y-1 ${
+                    className={`group rounded-2xl p-2.5 sm:p-3 overflow-hidden border border-muted-lavender/60 hover:border-deep-violet hover:ring-2 hover:ring-deep-violet/30 transition-all duration-300 flex flex-col justify-between h-full bg-soft-white shadow-xs hover:shadow-xl hover:-translate-y-1 ${
                       isFifthCardOnMobile ? 'hidden lg:flex' : 'flex'
                     }`}
                   >
-                    <div className="aspect-[1/1] w-full rounded-xl overflow-hidden relative">
-                      <img src={displayP.image} alt={displayP.title} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
-                      <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
-                        {displayP.category}
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] w-full rounded-xl overflow-hidden relative">
+                        <img src={displayP.image} alt={displayP.title} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+                        <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                          {displayP.category}
+                        </div>
                       </div>
-                    </div>
-                    <div className="pt-2 pb-0.5 px-0.5 space-y-0.5">
-                      <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors line-clamp-1">
-                        {displayP.title}
-                      </h4>
+                      <div className="px-0.5 pb-0.5 space-y-0.5">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors line-clamp-1">
+                          {displayP.title}
+                        </h4>
+                      </div>
                     </div>
                   </Link>
                 );
@@ -390,7 +396,7 @@ export const WorkPage: React.FC = () => {
             </div>
 
             {/* Horizontal Project Card Carousel */}
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-2.5 lg:gap-3">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3 lg:gap-4">
               {promoProjects.map((_, idx) => {
                 const rotatedIdx = (idx + promoIdx) % promoProjects.length;
                 const displayP = promoProjects[rotatedIdx];
@@ -400,20 +406,22 @@ export const WorkPage: React.FC = () => {
                   <Link
                     key={`${displayP.id}-${idx}`}
                     to={displayP.link}
-                    className={`group rounded-2xl p-2 sm:p-2.5 overflow-hidden border border-muted-lavender/60 hover:border-deep-violet hover:ring-2 hover:ring-deep-violet/30 transition-all duration-300 flex flex-col justify-between h-full bg-soft-white shadow-xs hover:shadow-xl hover:-translate-y-1 ${
+                    className={`group rounded-2xl p-2.5 sm:p-3 overflow-hidden border border-muted-lavender/60 hover:border-deep-violet hover:ring-2 hover:ring-deep-violet/30 transition-all duration-300 flex flex-col justify-between h-full bg-soft-white shadow-xs hover:shadow-xl hover:-translate-y-1 ${
                       isFifthCardOnMobile ? 'hidden lg:flex' : 'flex'
                     }`}
                   >
-                    <div className="aspect-[1/1] w-full rounded-xl overflow-hidden relative">
-                      <img src={displayP.image} alt={displayP.title} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
-                      <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
-                        {displayP.category}
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] w-full rounded-xl overflow-hidden relative">
+                        <img src={displayP.image} alt={displayP.title} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+                        <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                          {displayP.category}
+                        </div>
                       </div>
-                    </div>
-                    <div className="pt-2 pb-0.5 px-0.5 space-y-0.5">
-                      <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors line-clamp-1">
-                        {displayP.title}
-                      </h4>
+                      <div className="px-0.5 pb-0.5 space-y-0.5">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black group-hover:text-deep-violet transition-colors line-clamp-1">
+                          {displayP.title}
+                        </h4>
+                      </div>
                     </div>
                   </Link>
                 );

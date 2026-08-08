@@ -279,8 +279,8 @@ export const ProudWorkChapter: React.FC = () => {
           </div>
 
           {/* Bottom Row: Featured Solutions Collection */}
-          <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
+          <div className="pt-10 sm:pt-14 mt-4 sm:mt-6 border-t border-muted-lavender/50 space-y-3.5">
+            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-2">
               <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
                 FEATURED SOLUTIONS
               </h4>
@@ -319,17 +319,17 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2 sm:p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2.5 sm:p-3 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-1.5">
-                      <div className="aspect-[1/1] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
                         <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
@@ -352,17 +352,17 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2 sm:p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-1.5">
-                      <div className="aspect-[1/1] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
                         <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
@@ -375,25 +375,25 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Far Left & Far Right with 01 / 03 Counter Pill Centered) */}
-            <div className="flex md:hidden items-center justify-between w-full px-2 sm:px-4 pt-4 border-t border-muted-lavender/30">
+            {/* Mobile Navigation Arrows (Tight Distance to Images with 01 / 03 Counter Pill Centered) */}
+            <div className="flex md:hidden items-center justify-between w-full px-1 sm:px-2 pt-1.5 sm:pt-2 border-t border-muted-lavender/30">
               <button
                 disabled={webIndex === 0}
                 onClick={() => setWebIndex((prev) => Math.max(prev - 1, 0))}
-                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                className={`w-9 h-9 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
                   webIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
                 }`}
                 aria-label="Previous Web Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+              <span className="font-mono text-[11px] sm:text-xs font-bold text-deep-violet px-3 py-0.5 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
                 0{webIndex + 1} / 03
               </span>
               <button
                 disabled={webIndex === 2}
                 onClick={() => setWebIndex((prev) => Math.min(prev + 1, 2))}
-                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                className={`w-9 h-9 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
                   webIndex === 2 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
                 }`}
                 aria-label="Next Web Card Mobile"
@@ -472,8 +472,8 @@ export const ProudWorkChapter: React.FC = () => {
           </div>
 
           {/* Bottom Row: Featured Edits Collection */}
-          <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
+          <div className="pt-10 sm:pt-14 mt-4 sm:mt-6 border-t border-muted-lavender/50 space-y-3.5">
+            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-2">
               <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
                 FEATURED EDITS
               </h4>
@@ -512,10 +512,10 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2 sm:p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2.5 sm:p-3 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-1.5">
-                      <div className="aspect-[1/1] rounded-xl overflow-hidden relative border border-slate-200/50 group">
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50 group">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
@@ -525,7 +525,7 @@ export const ProudWorkChapter: React.FC = () => {
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
                         <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
@@ -548,10 +548,10 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2 sm:p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-1.5">
-                      <div className="aspect-[1/1] rounded-xl overflow-hidden relative border border-slate-200/50 group">
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50 group">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
@@ -561,7 +561,7 @@ export const ProudWorkChapter: React.FC = () => {
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
                         <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
@@ -574,25 +574,25 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Far Left & Far Right with 01 / 03 Counter Pill Centered) */}
-            <div className="flex md:hidden items-center justify-between w-full px-2 sm:px-4 pt-4 border-t border-muted-lavender/30">
+            {/* Mobile Navigation Arrows (Tight Distance to Images with 01 / 03 Counter Pill Centered) */}
+            <div className="flex md:hidden items-center justify-between w-full px-1 sm:px-2 pt-1.5 sm:pt-2 border-t border-muted-lavender/30">
               <button
                 disabled={videoIndex === 0}
                 onClick={() => setVideoIndex((prev) => Math.max(prev - 1, 0))}
-                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                className={`w-9 h-9 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
                   videoIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
                 }`}
                 aria-label="Previous Video Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+              <span className="font-mono text-[11px] sm:text-xs font-bold text-deep-violet px-3 py-0.5 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
                 0{videoIndex + 1} / 03
               </span>
               <button
                 disabled={videoIndex === 2}
                 onClick={() => setVideoIndex((prev) => Math.min(prev + 1, 2))}
-                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                className={`w-9 h-9 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
                   videoIndex === 2 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
                 }`}
                 aria-label="Next Video Card Mobile"
@@ -674,8 +674,8 @@ export const ProudWorkChapter: React.FC = () => {
           </div>
 
           {/* Bottom Row: Featured Campaigns Collection */}
-          <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
+          <div className="pt-10 sm:pt-14 mt-4 sm:mt-6 border-t border-muted-lavender/50 space-y-3.5">
+            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-2">
               <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
                 FEATURED CAMPAIGNS
               </h4>
@@ -714,17 +714,17 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2 sm:p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2.5 sm:p-3 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-1.5">
-                      <div className="aspect-[1/1] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
                         <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
@@ -747,17 +747,17 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2 sm:p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-1.5">
-                      <div className="aspect-[1/1] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
                         <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
@@ -770,25 +770,25 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Far Left & Far Right with 01 / 03 Counter Pill Centered) */}
-            <div className="flex md:hidden items-center justify-between w-full px-2 sm:px-4 pt-4 border-t border-muted-lavender/30">
+            {/* Mobile Navigation Arrows (Tight Distance to Images with 01 / 03 Counter Pill Centered) */}
+            <div className="flex md:hidden items-center justify-between w-full px-1 sm:px-2 pt-1.5 sm:pt-2 border-t border-muted-lavender/30">
               <button
                 disabled={adIndex === 0}
                 onClick={() => setAdIndex((prev) => Math.max(prev - 1, 0))}
-                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                className={`w-9 h-9 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
                   adIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
                 }`}
                 aria-label="Previous Ad Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+              <span className="font-mono text-[11px] sm:text-xs font-bold text-deep-violet px-3 py-0.5 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
                 0{adIndex + 1} / 03
               </span>
               <button
                 disabled={adIndex === 2}
                 onClick={() => setAdIndex((prev) => Math.min(prev + 1, 2))}
-                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                className={`w-9 h-9 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
                   adIndex === 2 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
                 }`}
                 aria-label="Next Ad Card Mobile"
@@ -861,10 +861,10 @@ export const ProudWorkChapter: React.FC = () => {
           </div>
 
           {/* Bottom Row: Featured Creator Networks Collection */}
-          <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
+          <div className="pt-10 sm:pt-14 mt-4 sm:mt-6 border-t border-muted-lavender/50 space-y-3.5">
+            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-2">
               <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
-                FEATURED CREATOR NETWORKS
+                FEATURED COLLABORATIONS
               </h4>
 
               {/* Desktop Navigation Arrows (Positioned at right edge) */}
@@ -901,17 +901,17 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`${displayCard.id}-${idx}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2 sm:p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2.5 sm:p-3 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-1.5">
-                      <div className="aspect-[1/1] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
                         <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
@@ -934,17 +934,17 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2 sm:p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-1.5">
-                      <div className="aspect-[1/1] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-2">
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
                         <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
                           {displayCard.title}
                         </h4>
                         <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
@@ -957,25 +957,25 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Far Left & Far Right with 01 / 03 Counter Pill Centered) */}
-            <div className="flex md:hidden items-center justify-between w-full px-2 sm:px-4 pt-4 border-t border-muted-lavender/30">
+            {/* Mobile Navigation Arrows (Tight Distance to Images with 01 / 03 Counter Pill Centered) */}
+            <div className="flex md:hidden items-center justify-between w-full px-1 sm:px-2 pt-1.5 sm:pt-2 border-t border-muted-lavender/30">
               <button
                 disabled={promoIndex === 0}
                 onClick={() => setPromoIndex((prev) => Math.max(prev - 1, 0))}
-                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                className={`w-9 h-9 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
                   promoIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
                 }`}
                 aria-label="Previous Promo Card Mobile"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+              <span className="font-mono text-[11px] sm:text-xs font-bold text-deep-violet px-3 py-0.5 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
                 0{promoIndex + 1} / 03
               </span>
               <button
                 disabled={promoIndex === 2}
                 onClick={() => setPromoIndex((prev) => Math.min(prev + 1, 2))}
-                className={`w-10 h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
+                className={`w-9 h-9 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black transition-all shadow-xs active:scale-95 cursor-pointer ${
                   promoIndex === 2 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-deep-violet hover:text-soft-white'
                 }`}
                 aria-label="Next Promo Card Mobile"
