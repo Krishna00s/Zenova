@@ -140,16 +140,16 @@ export const CapabilitiesChapter: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Sub-Category, Extra-Bold Editorial Title + Arrow & Description */}
-                  <div className="space-y-1.5 px-0.5 pt-0.5 text-left">
-                    <span className={`text-[11px] font-mono uppercase tracking-wider block font-extrabold ${item.categoryTagStyle}`}>
+                  {/* Sub-Category, High-Impact Bold Title + Arrow & Description */}
+                  <div className="space-y-2 px-0.5 pt-0.5 text-left">
+                    <span className={`text-[12px] font-mono uppercase tracking-widest block font-black ${item.categoryTagStyle}`}>
                       {item.category}
                     </span>
-                    <h3 className="text-xl sm:text-[22px] font-editorial font-extrabold text-near-black group-hover:text-deep-violet transition-colors leading-snug flex items-center justify-between tracking-tight">
+                    <h3 className="text-2xl sm:text-3xl font-editorial font-black text-near-black group-hover:text-deep-violet transition-colors leading-tight flex items-center justify-between tracking-tight">
                       <span>{item.title}</span>
-                      <ArrowUpRight className="w-4 h-4 text-slate-500 stroke-[2.5] group-hover:text-deep-violet group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 ml-2" />
+                      <ArrowUpRight className="w-5 h-5 text-slate-500 stroke-[2.5] group-hover:text-deep-violet group-hover:translate-x-1 group-hover:-translate-y-1 transition-all flex-shrink-0 ml-3" />
                     </h3>
-                    <p className="card-body-text text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                    <p className="card-body-text text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed pt-0.5">
                       {item.description}
                     </p>
                   </div>
