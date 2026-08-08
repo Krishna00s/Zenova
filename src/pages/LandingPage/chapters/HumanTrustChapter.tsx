@@ -83,9 +83,9 @@ export const HumanTrustChapter: React.FC = () => {
             </div>
 
             <div className="pt-6 border-t border-white/20 space-y-2">
-              <h4 className="text-xl sm:text-2xl font-editorial font-bold text-white">Clear process. <br /><span className="italic font-normal text-[#E2D7ED]">Peace of mind.</span></h4>
+              <h4 className="text-xl sm:text-2xl font-editorial font-bold text-white">Honest Scope. <br /><span className="italic font-normal text-[#E2D7ED]">No Fake Promises.</span></h4>
               <p className="text-xs sm:text-sm text-[#FAFAFA] font-sans leading-relaxed opacity-95">
-                You'll always know what's happening, what's next, and who's working on it.
+                We only take on work we know we can execute well. If a project requires something outside our current skillset, we're transparent—we never accept jobs we can't deliver.
               </p>
             </div>
           </div>

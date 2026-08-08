@@ -117,7 +117,7 @@ export const WorkPage: React.FC = () => {
                 </div>
 
                 <p className="leading-relaxed">
-                  We focus on clean execution, clear communication, and shipping work that helps your business grow.
+                  We focus on clean execution, clear communication, and taking on work we know how to do well. If a project requires a skill outside our current domain, we are transparent—we never accept jobs we can't deliver.
                 </p>
               </div>
 
