@@ -71,12 +71,14 @@ export const WorkingTogetherChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* 6 Cards arranged in 2 Columns x 3 Rows on Mobile (Noticeably bigger than Features cards) */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
+        {/* 5 Cards on Large Screens (lg:grid-cols-5), 6 Cards on Mobile/Tablet (2 Cols x 3 Rows) */}
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
           {steps.map((item, index) => (
             <div
               key={index}
-              className="approach-card group bg-soft-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 lg:p-5 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1.5 hover:scale-[1.01] transition-all duration-500 flex flex-col justify-between"
+              className={`approach-card group bg-soft-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 lg:p-5 border border-muted-lavender/60 shadow-xs hover:shadow-2xl hover:border-deep-violet/40 hover:-translate-y-1.5 hover:scale-[1.01] transition-all duration-500 flex flex-col justify-between ${
+                index >= 5 ? 'lg:hidden' : ''
+              }`}
             >
               <div className="space-y-2.5 sm:space-y-3 lg:space-y-4">
                 {/* Photo Container - Spacious and Breathable */}
