@@ -206,7 +206,7 @@ export const AdCreationPage: React.FC = () => {
             </div>
 
             {/* Mobile Only Buttons (Placed BELOW the Image on Mobile Screens) */}
-            <div className="block lg:hidden w-full space-y-3 pt-2">
+            <div className="block lg:hidden w-full space-y-3 pt-3 mt-1 z-30 relative">
               <a href="#ad-start-form" className="w-full block">
                 <button className="w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-near-black text-soft-white font-medium text-sm shadow-md hover:bg-slate-800 transition-all cursor-pointer">
                   Launch Your Ad Campaign <ArrowRight className="w-4 h-4" />
