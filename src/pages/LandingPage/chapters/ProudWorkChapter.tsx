@@ -232,8 +232,8 @@ export const ProudWorkChapter: React.FC = () => {
               <div className="block lg:hidden my-4 w-[85%] sm:w-[80%] ml-auto">
                 <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] relative group">
                   <img
-                    src="/media/photo_understand_dev.jpg"
-                    alt="Young Male Web Developer Workstation"
+                    src="/media/cap_web_user_dev.jpg"
+                    alt="Web Development & Engineering Workstation"
                     className="w-full h-full object-cover object-center"
                     loading="lazy"
                   />
@@ -281,8 +281,8 @@ export const ProudWorkChapter: React.FC = () => {
             <div className="hidden lg:block lg:col-span-6 w-full">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img
-                  src="/media/photo_understand_dev.jpg"
-                  alt="Young Male Web Developer Workstation"
+                  src="/media/cap_web_user_dev.jpg"
+                  alt="Web Development & Engineering Workstation"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
