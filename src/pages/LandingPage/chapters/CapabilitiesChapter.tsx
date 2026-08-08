@@ -138,8 +138,8 @@ export const CapabilitiesChapter: React.FC = () => {
                       </div>
                     )}
 
-                    {/* Bottom-Right Performance Tagline Badge */}
-                    <div className="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-near-black/95 text-white text-[9.5px] sm:text-[10px] font-mono font-bold tracking-wide border border-white/20 shadow-md z-20">
+                    {/* Bottom-Right Performance Tagline Badge - Compact & Subtle */}
+                    <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-near-black/90 text-white/90 text-[8px] sm:text-[8.5px] font-mono font-semibold tracking-wide border border-white/15 shadow-sm z-20">
                       {item.taglineOverlay}
                     </div>
                   </div>
