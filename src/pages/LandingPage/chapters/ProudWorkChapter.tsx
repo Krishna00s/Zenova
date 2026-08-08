@@ -228,9 +228,9 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              {/* Mobile Dedicated Hero Image (Middle Right Alignment) */}
-              <div className="block lg:hidden my-4 w-[85%] sm:w-[80%] ml-auto">
-                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] relative group">
+              {/* Mobile Dedicated Hero Image (Centered & Proportioned) */}
+              <div className="block lg:hidden my-3 w-full sm:w-[85%] mx-auto">
+                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[4/3] relative group">
                   <img
                     src="/media/cap_web_user_dev.jpg"
                     alt="Web Development & Engineering Workstation"
@@ -248,7 +248,7 @@ export const ProudWorkChapter: React.FC = () => {
                 </div>
               </div>
 
-              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
                 We design and develop modern, responsive websites that load fast, rank better, and turn visitors into customers.
               </p>
 
@@ -372,20 +372,20 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:shadow-md shadow-xs"
                   >
-                    <div className="space-y-2">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-1.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-deep-violet text-soft-white text-[7px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-xs sm:text-base font-editorial font-bold text-near-black tracking-tight leading-tight line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
+                        <p className="text-[10px] sm:text-xs text-slate-500 font-sans leading-snug line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -464,9 +464,9 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              {/* Mobile Dedicated Hero Image (Middle Left Alignment) */}
-              <div className="block lg:hidden my-4 w-[85%] sm:w-[80%] mr-auto">
-                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] relative group">
+              {/* Mobile Dedicated Hero Image (Centered & Proportioned) */}
+              <div className="block lg:hidden my-3 w-full sm:w-[85%] mx-auto">
+                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[4/3] relative group">
                   <img
                     src="/media/cap_video_editing.jpg"
                     alt="DaVinci Resolve Video Editor Suite"
@@ -484,7 +484,7 @@ export const ProudWorkChapter: React.FC = () => {
                 </div>
               </div>
 
-              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
                 From brand films to short-form content, we craft visuals that connect, inspire, and convert viewers into loyal advocates.
               </p>
 
@@ -590,23 +590,23 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:shadow-md shadow-xs"
                   >
-                    <div className="space-y-2">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50 group">
+                    <div className="space-y-1.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50 group">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-deep-violet text-soft-white text-[7px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
-                        <div className="absolute bottom-1.5 right-1.5 w-5 h-5 rounded-full bg-soft-white/90 flex items-center justify-center">
-                          <Play className="w-2.5 h-2.5 fill-near-black stroke-none ml-0.5" />
+                        <div className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-soft-white/90 flex items-center justify-center">
+                          <Play className="w-2 h-2 fill-near-black stroke-none ml-0.5" />
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-xs sm:text-base font-editorial font-bold text-near-black tracking-tight leading-tight line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
+                        <p className="text-[10px] sm:text-xs text-slate-500 font-sans leading-snug line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -664,9 +664,9 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              {/* Mobile Dedicated Hero Image (Middle Right Alignment) */}
-              <div className="block lg:hidden my-4 w-[85%] sm:w-[80%] ml-auto">
-                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] relative group">
+              {/* Mobile Dedicated Hero Image (Centered & Proportioned) */}
+              <div className="block lg:hidden my-3 w-full sm:w-[85%] mx-auto">
+                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[4/3] relative group">
                   <img
                     src="/media/cap_ad_creation.jpg"
                     alt="Ad Growth Strategist Monitoring Performance Analytics"
@@ -684,7 +684,7 @@ export const ProudWorkChapter: React.FC = () => {
                 </div>
               </div>
 
-              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
                 We create high-performing ad videos and collateral, then publish and manage them across Meta, Google, and TikTok to maximize ROI.
               </p>
 
@@ -811,20 +811,20 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:shadow-md shadow-xs"
                   >
-                    <div className="space-y-2">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-1.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-deep-violet text-soft-white text-[7px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-xs sm:text-base font-editorial font-bold text-near-black tracking-tight leading-tight line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
+                        <p className="text-[10px] sm:text-xs text-slate-500 font-sans leading-snug line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -897,9 +897,9 @@ export const ProudWorkChapter: React.FC = () => {
                 </h3>
               </div>
 
-              {/* Mobile Dedicated Hero Image (Middle Left Alignment) */}
-              <div className="block lg:hidden my-4 w-[85%] sm:w-[80%] mr-auto">
-                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] relative group">
+              {/* Mobile Dedicated Hero Image (Centered & Proportioned) */}
+              <div className="block lg:hidden my-3 w-full sm:w-[85%] mx-auto">
+                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[4/3] relative group">
                   <img
                     src="/media/cap_paid_promotions.jpg"
                     alt="Content Creator Team Filming Campaign"
@@ -912,7 +912,7 @@ export const ProudWorkChapter: React.FC = () => {
                 </div>
               </div>
 
-              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+              <p className="card-body-text text-[11px] sm:text-sm md:text-base text-slate-600 font-sans leading-snug sm:leading-relaxed">
                 We connect your brand with authentic influencers and content creators to promote your products and deliver meaningful growth.
               </p>
 
@@ -1015,20 +1015,20 @@ export const ProudWorkChapter: React.FC = () => {
                   <Link
                     key={`mobile-${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className="rounded-2xl p-2.5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
+                    className="rounded-2xl p-2 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:shadow-md shadow-xs"
                   >
-                    <div className="space-y-2">
-                      <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
+                    <div className="space-y-1.5">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-deep-violet text-soft-white text-[7px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
                       <div className="space-y-0.5 px-0.5">
-                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black leading-snug line-clamp-1">
+                        <h4 className="text-xs sm:text-base font-editorial font-bold text-near-black tracking-tight leading-tight line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[9px] sm:text-[10px] text-slate-500 font-sans leading-tight line-clamp-2">
+                        <p className="text-[10px] sm:text-xs text-slate-500 font-sans leading-snug line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
