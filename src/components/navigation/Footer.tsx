@@ -27,9 +27,9 @@ export const Footer: React.FC = () => {
               }`}
             >
               <img
-                src="/media/v2_logo_option_5.jpg"
-                alt="Zenova Quantum Emblem Logo Icon"
-                className="w-7 h-7 rounded-lg object-cover shadow-xs border border-muted-lavender/40"
+                src="/media/zenova_circular_icon.jpg"
+                alt="Zenova Circular Emblem Logo Icon"
+                className="w-7 h-7 rounded-full object-cover shadow-xs border border-deep-violet/30"
               />
               <span className="font-sans font-bold tracking-widest text-lg">ZENOVA</span>
             </Link>
