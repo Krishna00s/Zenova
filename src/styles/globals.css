@@ -68,8 +68,8 @@ body {
 
 /* Typography Rules for Readability */
 .card-body-text {
-  font-size: 0.8125rem; /* 13px */
-  line-height: 1.6;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.65;
   letter-spacing: -0.005em;
-  color: #5C5862;
+  color: #2D2A32; /* Deep rich charcoal for high contrast & perfect readability */
 }
