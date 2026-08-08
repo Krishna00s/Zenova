@@ -85,10 +85,10 @@ export const CapabilitiesChapter: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative w-full bg-warm-lavender/30 text-near-black py-14 sm:py-20 md:py-24 border-y border-muted-lavender/40">
-      <Container size="large" className="max-w-5xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-2.5 px-2">
+    <section ref={containerRef} className="relative w-full bg-warm-lavender/30 text-near-black py-20 sm:py-24 md:py-28 border-y border-muted-lavender/40">
+      <Container size="large" className="max-w-5xl px-5 sm:px-6 lg:px-8">
+        {/* Section Header with Generous Top & Bottom Margin */}
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 mt-2 sm:mt-4 space-y-3.5 px-2">
           <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-extrabold">
             SERVICES THROUGH WORK
           </span>
@@ -100,21 +100,21 @@ export const CapabilitiesChapter: React.FC = () => {
           </p>
         </div>
 
-        {/* Compact 2 Rows x 2 Columns Grid with Responsive Mobile Scaling */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-6 items-stretch w-full">
+        {/* Compact 2 Rows x 2 Columns Grid with Generous Spacing */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-stretch w-full">
           {capabilities.map((item, index) => {
             const Icon = item.icon;
             return (
               <Link
                 key={index}
                 to={item.link}
-                className={`capability-card group bg-soft-white rounded-xl sm:rounded-3xl p-3 sm:p-5 border border-muted-lavender/60 shadow-xs hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden ${item.hoverBorder}`}
+                className={`capability-card group bg-soft-white rounded-xl sm:rounded-3xl p-3.5 sm:p-5 border border-muted-lavender/60 shadow-xs hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden ${item.hoverBorder}`}
               >
                 {/* Subtle Ambient Hover Glow Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.accentGlow} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
 
-                <div className="space-y-2.5 sm:space-y-3 relative z-10">
-                  {/* Photo Container with Top-Left Domain Badge & Bottom-Right Tagline Overlay */}
+                <div className="space-y-3 sm:space-y-3.5 relative z-10">
+                  {/* Photo Container */}
                   <div className="w-full aspect-[16/10] rounded-lg sm:rounded-2xl overflow-hidden relative bg-warm-lavender/40 border border-slate-200/50">
                     <img
                       src={item.image}
@@ -124,7 +124,7 @@ export const CapabilitiesChapter: React.FC = () => {
                     />
                     
                     {/* Top-Left Distinct Domain Badge */}
-                    <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-near-black/95 text-white text-[8px] sm:text-[10.5px] font-mono font-extrabold tracking-wider uppercase border border-white/25 shadow-xl flex items-center gap-1 sm:gap-1.5 z-20">
+                    <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 px-2.5 py-1 rounded-full bg-near-black/95 text-white text-[8.5px] sm:text-[10.5px] font-mono font-extrabold tracking-wider uppercase border border-white/25 shadow-xl flex items-center gap-1 sm:gap-1.5 z-20">
                       <Icon className={`w-2.5 h-2.5 sm:w-3 sm:h-3 animate-pulse ${item.iconColor}`} />
                       <span className="text-white font-bold">{item.domainLabel}</span>
                     </div>
@@ -138,14 +138,14 @@ export const CapabilitiesChapter: React.FC = () => {
                       </div>
                     )}
 
-                    {/* Bottom-Right Performance Tagline Badge - Compact & Subtle */}
-                    <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded-full bg-near-black/90 text-white/90 text-[7.5px] sm:text-[8.5px] font-mono font-semibold tracking-wide border border-white/15 shadow-sm z-20">
+                    {/* Bottom-Right Performance Tagline Badge */}
+                    <div className="absolute bottom-2 right-2 sm:bottom-2.5 sm:right-2.5 px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full bg-near-black/90 text-white/90 text-[7.5px] sm:text-[8.5px] font-mono font-semibold tracking-wide border border-white/15 shadow-sm z-20">
                       {item.taglineOverlay}
                     </div>
                   </div>
 
-                  {/* Sub-Category, High-Impact Bold Title + Arrow & Description */}
-                  <div className="space-y-1 sm:space-y-2 px-0.5 pt-0.5 text-left">
+                  {/* Sub-Category, High-Impact Bold Title + Arrow & Description with Generous Top Padding */}
+                  <div className="space-y-1.5 sm:space-y-2 px-0.5 pt-1 sm:pt-1.5 text-left">
                     <span className={`text-[10px] sm:text-[12px] font-mono uppercase tracking-widest block font-black ${item.categoryTagStyle}`}>
                       {item.category}
                     </span>
