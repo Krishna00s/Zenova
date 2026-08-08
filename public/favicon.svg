@@ -1,8 +1,7 @@
 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="50" fill="#3B1F52" />
-  <circle cx="50" cy="50" r="46" stroke="#522C70" stroke-width="2.5" />
-  <g fill="#FFFFFF">
-    <path d="M 24 24 L 76 24 L 42 58 L 58 58 L 76 40 L 76 24 Z" />
-    <path d="M 76 76 L 24 76 L 58 42 L 42 42 L 24 60 L 24 76 Z" />
+  <circle cx="50" cy="50" r="50" fill="#FFFFFF" />
+  <g fill="#1A1028">
+    <path d="M 18 18 L 82 18 L 38 62 L 60 62 L 82 40 L 82 18 Z" />
+    <path d="M 82 82 L 18 82 L 62 38 L 40 38 L 18 60 L 18 82 Z" />
   </g>
 </svg>
