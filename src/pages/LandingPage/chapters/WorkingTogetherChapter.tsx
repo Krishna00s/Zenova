@@ -81,8 +81,8 @@ export const WorkingTogetherChapter: React.FC = () => {
               }`}
             >
               <div className="space-y-1.5 sm:space-y-3 lg:space-y-4">
-                {/* Photo Container - Matched 4:3 Aspect Ratio */}
-                <div className="w-full aspect-[4/3] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden relative group bg-warm-lavender/50 border border-slate-200/50">
+                {/* Photo Container - 4:3 on Mobile/Tablet, Widescreen 16:10 on Desktop */}
+                <div className="w-full aspect-[4/3] sm:aspect-[4/3] lg:aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden relative group bg-warm-lavender/50 border border-slate-200/50">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -94,12 +94,12 @@ export const WorkingTogetherChapter: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Title & Description - Matched Feature Card Typography */}
+                {/* Title & Description - Strictly Scoped Mobile vs Desktop */}
                 <div className="space-y-0.5 sm:space-y-1 pt-0.5 text-left">
                   <h3 className="text-xs sm:text-base lg:text-lg font-editorial font-bold text-near-black tracking-tight group-hover:text-deep-violet transition-colors leading-tight sm:leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-[10px] sm:text-xs text-slate-500 font-sans leading-snug sm:leading-relaxed">
+                  <p className="card-body-text text-[10px] sm:text-xs text-slate-500 font-sans leading-snug lg:leading-relaxed">
                     {item.description}
                   </p>
                 </div>
