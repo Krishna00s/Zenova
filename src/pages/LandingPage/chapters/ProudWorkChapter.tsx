@@ -278,15 +278,15 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row: Featured Solutions 4-Card Collection on Mobile, 5-Card Row on Desktop */}
-          <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
+          {/* Bottom Row: Featured Solutions 3-Card Collection */}
+          <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
+              <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
                 FEATURED SOLUTIONS
-              </span>
+              </h4>
 
-              {/* Desktop Navigation Arrows (Hidden on Mobile) */}
-              <div className="hidden md:flex items-center gap-2">
+              {/* Desktop Navigation Arrows (Positioned at right edge) */}
+              <div className="hidden md:flex items-center gap-2 absolute right-0">
                 <button
                   onClick={() => setWebIndex((prev) => (prev - 1 + webCards.length) % webCards.length)}
                   className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
@@ -304,33 +304,30 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 4-Card Grid Collection (2x2 Grid) on Mobile, 5-Card Row on Desktop */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
-              {webCards.map((_, idx) => {
-                const rotatedIdx = (idx + webIndex) % webCards.length;
+            {/* 3-Card Collection Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+              {[0, 1, 2].map((offset) => {
+                const rotatedIdx = (offset + webIndex) % webCards.length;
                 const displayCard = webCards[rotatedIdx];
-                const isFifthCardOnMobile = idx === 4;
 
                 return (
                   <Link
-                    key={`${displayCard.id}-${idx}`}
+                    key={`${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className={`rounded-2xl p-3.5 sm:p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs ${
-                      isFifthCardOnMobile ? 'hidden md:flex' : 'flex'
-                    }`}
+                    className="rounded-2xl p-4 sm:p-5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
+                    <div className="space-y-3.5">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
-                      <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                      <div className="space-y-1.5">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-xs leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -340,7 +337,7 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Centered Underneath 4-Card Collection) */}
+            {/* Mobile Navigation Arrows (Centered Underneath 3-Card Collection) */}
             <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
               <button
                 onClick={() => setWebIndex((prev) => (prev - 1 + webCards.length) % webCards.length)}
@@ -349,7 +346,7 @@ export const ProudWorkChapter: React.FC = () => {
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-[11px] font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+              <span className="font-mono text-xs font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
                 0{((webIndex) % webCards.length) + 1} / 0{webCards.length}
               </span>
               <button
@@ -430,15 +427,15 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row: 4-Card Collection on Mobile, 5-Card Row on Desktop */}
-          <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
+          {/* Bottom Row: Featured Edits 3-Card Collection */}
+          <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
+              <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
                 FEATURED EDITS
-              </span>
+              </h4>
 
-              {/* Desktop Navigation Arrows (Hidden on Mobile) */}
-              <div className="hidden md:flex items-center gap-2">
+              {/* Desktop Navigation Arrows (Positioned at right edge) */}
+              <div className="hidden md:flex items-center gap-2 absolute right-0">
                 <button
                   onClick={() => setVideoIndex((prev) => (prev - 1 + videoCards.length) % videoCards.length)}
                   className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
@@ -456,36 +453,33 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 4-Card Grid Collection (2x2 Grid) on Mobile, 5-Card Row on Desktop */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
-              {videoCards.map((_, idx) => {
-                const rotatedIdx = (idx + videoIndex) % videoCards.length;
+            {/* 3-Card Collection Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+              {[0, 1, 2].map((offset) => {
+                const rotatedIdx = (offset + videoIndex) % videoCards.length;
                 const displayCard = videoCards[rotatedIdx];
-                const isFifthCardOnMobile = idx === 4;
 
                 return (
                   <Link
-                    key={`${displayCard.id}-${idx}`}
+                    key={`${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className={`rounded-2xl p-3.5 sm:p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs ${
-                      isFifthCardOnMobile ? 'hidden md:flex' : 'flex'
-                    }`}
+                    className="rounded-2xl p-4 sm:p-5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
+                    <div className="space-y-3.5">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50 group">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
-                        <div className="absolute bottom-2 right-2 w-6 h-6 rounded-full bg-soft-white/90 flex items-center justify-center">
+                        <div className="absolute bottom-2.5 right-2.5 w-6 h-6 rounded-full bg-soft-white/90 flex items-center justify-center">
                           <Play className="w-3 h-3 fill-near-black stroke-none ml-0.5" />
                         </div>
                       </div>
-                      <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                      <div className="space-y-1.5">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-xs leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -495,7 +489,7 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Centered Underneath 4-Card Collection) */}
+            {/* Mobile Navigation Arrows (Centered Underneath 3-Card Collection) */}
             <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
               <button
                 onClick={() => setVideoIndex((prev) => (prev - 1 + videoCards.length) % videoCards.length)}
@@ -504,7 +498,7 @@ export const ProudWorkChapter: React.FC = () => {
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-[11px] font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
                 0{((videoIndex) % videoCards.length) + 1} / 0{videoCards.length}
               </span>
               <button
@@ -588,15 +582,15 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row: 4-Card Collection on Mobile, 5-Card Row on Desktop */}
-          <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
+          {/* Bottom Row: Featured Campaigns 3-Card Collection */}
+          <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
+              <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
                 FEATURED CAMPAIGNS
-              </span>
+              </h4>
 
-              {/* Desktop Navigation Arrows (Hidden on Mobile) */}
-              <div className="hidden md:flex items-center gap-2">
+              {/* Desktop Navigation Arrows (Positioned at right edge) */}
+              <div className="hidden md:flex items-center gap-2 absolute right-0">
                 <button
                   onClick={() => setAdIndex((prev) => (prev - 1 + adCards.length) % adCards.length)}
                   className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
@@ -614,33 +608,30 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 4-Card Grid Collection (2x2 Grid) on Mobile, 5-Card Row on Desktop */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
-              {adCards.map((_, idx) => {
-                const rotatedIdx = (idx + adIndex) % adCards.length;
+            {/* 3-Card Collection Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+              {[0, 1, 2].map((offset) => {
+                const rotatedIdx = (offset + adIndex) % adCards.length;
                 const displayCard = adCards[rotatedIdx];
-                const isFifthCardOnMobile = idx === 4;
 
                 return (
                   <Link
-                    key={`${displayCard.id}-${idx}`}
+                    key={`${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className={`rounded-2xl p-3.5 sm:p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs ${
-                      isFifthCardOnMobile ? 'hidden md:flex' : 'flex'
-                    }`}
+                    className="rounded-2xl p-4 sm:p-5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
+                    <div className="space-y-3.5">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
-                      <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                      <div className="space-y-1.5">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-xs leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -650,7 +641,7 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Centered Underneath 4-Card Collection) */}
+            {/* Mobile Navigation Arrows (Centered Underneath 3-Card Collection) */}
             <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
               <button
                 onClick={() => setAdIndex((prev) => (prev - 1 + adCards.length) % adCards.length)}
@@ -659,7 +650,7 @@ export const ProudWorkChapter: React.FC = () => {
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-[11px] font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
                 0{((adIndex) % adCards.length) + 1} / 0{adCards.length}
               </span>
               <button
@@ -734,15 +725,15 @@ export const ProudWorkChapter: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom Row: 4-Card Collection on Mobile, 5-Card Row on Desktop */}
-          <div className="pt-8 sm:pt-10 border-t border-muted-lavender/50 space-y-6">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet font-semibold tracking-wider">
+          {/* Bottom Row: Featured Creator Networks 3-Card Collection */}
+          <div className="pt-14 sm:pt-20 mt-6 sm:mt-10 border-t border-muted-lavender/50 space-y-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center relative w-full gap-4">
+              <h4 className="text-sm sm:text-base md:text-lg font-editorial font-bold uppercase text-near-black tracking-wider text-center">
                 FEATURED CREATOR NETWORKS
-              </span>
+              </h4>
 
-              {/* Desktop Navigation Arrows (Hidden on Mobile) */}
-              <div className="hidden md:flex items-center gap-2">
+              {/* Desktop Navigation Arrows (Positioned at right edge) */}
+              <div className="hidden md:flex items-center gap-2 absolute right-0">
                 <button
                   onClick={() => setPromoIndex((prev) => (prev - 1 + promoCards.length) % promoCards.length)}
                   className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-muted-lavender bg-soft-white flex items-center justify-center text-near-black hover:bg-deep-violet hover:text-soft-white transition-all shadow-xs active:scale-95 cursor-pointer"
@@ -760,33 +751,30 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* 4-Card Grid Collection (2x2 Grid) on Mobile, 5-Card Row on Desktop */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
-              {promoCards.map((_, idx) => {
-                const rotatedIdx = (idx + promoIndex) % promoCards.length;
+            {/* 3-Card Collection Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+              {[0, 1, 2].map((offset) => {
+                const rotatedIdx = (offset + promoIndex) % promoCards.length;
                 const displayCard = promoCards[rotatedIdx];
-                const isFifthCardOnMobile = idx === 4;
 
                 return (
                   <Link
-                    key={`${displayCard.id}-${idx}`}
+                    key={`${displayCard.id}-${offset}`}
                     to={displayCard.link}
-                    className={`rounded-2xl p-3.5 sm:p-4 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs ${
-                      isFifthCardOnMobile ? 'hidden md:flex' : 'flex'
-                    }`}
+                    className="rounded-2xl p-4 sm:p-5 transition-all duration-300 flex flex-col justify-between h-full text-left cursor-pointer bg-soft-white text-near-black border border-muted-lavender/70 hover:border-deep-violet/60 hover:bg-warm-lavender/40 hover:ring-2 hover:ring-deep-violet/30 hover:shadow-md hover:-translate-y-0.5 shadow-xs"
                   >
-                    <div className="space-y-3">
+                    <div className="space-y-3.5">
                       <div className="aspect-[16/10] rounded-xl overflow-hidden relative border border-slate-200/50">
                         <img src={displayCard.image} alt={displayCard.title} className="w-full h-full object-cover object-center" />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
+                        <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-deep-violet text-soft-white text-[8px] font-mono font-bold">
                           {displayCard.badge}
                         </div>
                       </div>
-                      <div className="space-y-1">
-                        <h4 className="text-xs sm:text-sm font-editorial font-bold text-near-black line-clamp-1">
+                      <div className="space-y-1.5">
+                        <h4 className="text-sm sm:text-base font-editorial font-bold text-near-black line-clamp-1">
                           {displayCard.title}
                         </h4>
-                        <p className="card-body-text text-[10px] sm:text-[11px] leading-relaxed line-clamp-2">
+                        <p className="card-body-text text-xs leading-relaxed line-clamp-2">
                           {displayCard.desc}
                         </p>
                       </div>
@@ -796,7 +784,7 @@ export const ProudWorkChapter: React.FC = () => {
               })}
             </div>
 
-            {/* Mobile Navigation Arrows (Centered Underneath 4-Card Collection) */}
+            {/* Mobile Navigation Arrows (Centered Underneath 3-Card Collection) */}
             <div className="flex md:hidden items-center justify-center gap-3 pt-4 border-t border-muted-lavender/30">
               <button
                 onClick={() => setPromoIndex((prev) => (prev - 1 + promoCards.length) % promoCards.length)}
@@ -805,7 +793,7 @@ export const ProudWorkChapter: React.FC = () => {
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-mono text-[11px] font-bold text-deep-violet px-3 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
+              <span className="font-mono text-xs font-bold text-deep-violet px-3.5 py-1 rounded-full bg-warm-lavender/50 border border-muted-lavender/50">
                 0{((promoIndex) % promoCards.length) + 1} / 0{promoCards.length}
               </span>
               <button
