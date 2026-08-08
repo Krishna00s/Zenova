@@ -25,7 +25,7 @@ export const CapabilitiesChapter: React.FC = () => {
       description: 'Custom digital platforms, web apps, and CMS systems engineered for sub-50ms dashboard response speed, SEO authority, and scale.',
       link: ROUTES.SERVICES.WEB_DEV,
       image: '/media/cap_web_natural.jpg',
-      badgeStyle: 'bg-indigo-950/90 text-cyan-300 border-cyan-400/30',
+      badgeStyle: 'bg-[#09152A] text-[#00F0FF] border-[#00F0FF]/40',
       categoryTagStyle: 'text-indigo-600 font-bold',
       taglineOverlay: 'Sub-50ms Speed • Full Stack',
       hoverBorder: 'hover:border-cyan-500/50 hover:shadow-cyan-950/10 hover:shadow-2xl',
@@ -40,7 +40,7 @@ export const CapabilitiesChapter: React.FC = () => {
       description: 'Cinematic brand documentaries, commercial ads, and high-retention 9:16 mobile short-form reels cut with custom sound design.',
       link: ROUTES.SERVICES.VIDEO_EDITING,
       image: '/media/cap_video_natural.jpg',
-      badgeStyle: 'bg-purple-950/90 text-pink-300 border-pink-400/30',
+      badgeStyle: 'bg-[#18082A] text-[#FF66CC] border-[#FF66CC]/40',
       categoryTagStyle: 'text-purple-700 font-bold',
       taglineOverlay: '4K Cinema Cut • 60fps Reels',
       hoverBorder: 'hover:border-pink-500/50 hover:shadow-pink-950/10 hover:shadow-2xl',
@@ -56,7 +56,7 @@ export const CapabilitiesChapter: React.FC = () => {
       description: 'High-converting video ad collateral published, A/B tested, and managed to drive direct revenue and customer acquisition.',
       link: ROUTES.SERVICES.AD_CREATION,
       image: '/media/cap_ad_natural.jpg',
-      badgeStyle: 'bg-emerald-950/90 text-emerald-300 border-emerald-400/30',
+      badgeStyle: 'bg-[#041A12] text-[#00FFA3] border-[#00FFA3]/40',
       categoryTagStyle: 'text-emerald-700 font-bold',
       taglineOverlay: '+420% ROAS • Multi-Channel',
       hoverBorder: 'hover:border-emerald-500/50 hover:shadow-emerald-950/10 hover:shadow-2xl',
@@ -71,7 +71,7 @@ export const CapabilitiesChapter: React.FC = () => {
       description: 'Handpicked lifestyle and tech creators producing authentic unboxing, tutorial integrations, and whitelisted ad campaigns.',
       link: ROUTES.SERVICES.PAID_PROMOTIONS,
       image: '/media/cap_promo_natural.jpg',
-      badgeStyle: 'bg-rose-950/90 text-rose-300 border-rose-400/30',
+      badgeStyle: 'bg-[#1E0814] text-[#FF85A2] border-[#FF85A2]/40',
       categoryTagStyle: 'text-rose-700 font-bold',
       taglineOverlay: 'Vetted Creators • Whitelisted Ads',
       hoverBorder: 'hover:border-rose-500/50 hover:shadow-rose-950/10 hover:shadow-2xl',
@@ -119,9 +119,9 @@ export const CapabilitiesChapter: React.FC = () => {
                       loading="lazy"
                     />
                     
-                    {/* Top-Left Distinct Domain Badge */}
-                    <div className={`absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full backdrop-blur-md text-[8.5px] sm:text-[9px] font-mono font-bold tracking-wider uppercase border shadow-md flex items-center gap-1.5 ${item.badgeStyle}`}>
-                      <Icon className="w-3 h-3" />
+                    {/* Top-Left Distinct Domain Badge (Sharp High-Contrast Solid Background) */}
+                    <div className={`absolute top-2.5 left-2.5 px-3 py-1 rounded-full text-[9.5px] sm:text-[10px] font-mono font-extrabold tracking-widest uppercase border shadow-lg flex items-center gap-1.5 ${item.badgeStyle}`}>
+                      <Icon className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
                       <span>{item.domainLabel}</span>
                     </div>
 
@@ -135,7 +135,7 @@ export const CapabilitiesChapter: React.FC = () => {
                     )}
 
                     {/* Bottom-Right Performance Tagline Badge */}
-                    <div className="absolute bottom-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-near-black/90 backdrop-blur-md text-soft-white text-[8.5px] sm:text-[9px] font-mono font-bold tracking-wide border border-white/10 shadow-sm">
+                    <div className="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-[#0F0F12] text-white text-[9px] sm:text-[9.5px] font-mono font-bold tracking-wide border border-white/20 shadow-md">
                       {item.taglineOverlay}
                     </div>
                   </div>
