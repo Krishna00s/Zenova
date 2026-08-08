@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
               <img
                 src="/media/zenova_logo_transparent.png"
                 alt="Zenova Brand Emblem Logo Icon"
-                className="w-10 h-10 sm:w-11 sm:h-11 object-contain shrink-0"
+                className="w-7 h-7 object-contain"
               />
               <span className="font-sans font-bold tracking-widest text-lg">ZENOVA</span>
             </Link>
