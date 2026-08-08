@@ -22,12 +22,16 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-2 space-y-4">
             <Link
               to={ROUTES.HOME}
-              className={`flex items-center gap-2 text-2xl font-editorial font-bold ${
+              className={`flex items-center gap-2.5 text-2xl font-editorial font-bold ${
                 isServicePage ? 'text-soft-white' : 'text-deep-violet'
               }`}
             >
-              <span className={`w-3 h-3 rounded-full ${isServicePage ? 'bg-soft-white' : 'bg-deep-violet'}`} />
-              ZENOVA
+              <img
+                src="/media/v2_logo_option_5.jpg"
+                alt="Zenova Quantum Emblem Logo Icon"
+                className="w-7 h-7 rounded-lg object-cover shadow-xs border border-muted-lavender/40"
+              />
+              <span className="font-sans font-bold tracking-widest text-lg">ZENOVA</span>
             </Link>
             <p className={`text-sm max-w-sm leading-relaxed ${isServicePage ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
               We build digital experiences that help brands connect, grow, and make a real impact.
