@@ -82,7 +82,9 @@ export const ContactChapter: React.FC = () => {
                   </div>
                   <div className="space-y-0.5">
                     <a
-                      href="mailto:krishnaoncreation@gmail.com"
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=krishnaoncreation@gmail.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-xs sm:text-sm font-sans font-semibold text-near-black hover:text-deep-violet transition-colors inline-block tracking-tight bg-warm-lavender/60 px-2.5 py-0.5 rounded-full border border-muted-lavender/50"
                     >
                       krishnaoncreation@gmail.com

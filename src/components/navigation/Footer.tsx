@@ -85,7 +85,16 @@ export const Footer: React.FC = () => {
               Let's Connect
             </h4>
             <ul className={`space-y-2 text-sm ${isServicePage ? 'text-soft-white/70' : 'text-neutral-slate'}`}>
-              <li><a href="mailto:krishnaoncreation@gmail.com" className={isServicePage ? 'hover:text-soft-white transition-colors' : 'hover:text-deep-violet transition-colors'}>krishnaoncreation@gmail.com</a></li>
+              <li>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=krishnaoncreation@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={isServicePage ? 'hover:text-soft-white transition-colors' : 'hover:text-deep-violet transition-colors'}
+                >
+                  krishnaoncreation@gmail.com
+                </a>
+              </li>
               <li><a href="tel:+919693821174" className={isServicePage ? 'hover:text-soft-white transition-colors' : 'hover:text-deep-violet transition-colors'}>+91 96938 21174</a></li>
               <li className={`text-xs ${isServicePage ? 'text-soft-white/50' : 'text-neutral-slate/70'}`}>Bangalore, India</li>
             </ul>
