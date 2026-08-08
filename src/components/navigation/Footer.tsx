@@ -10,14 +10,14 @@ export const Footer: React.FC = () => {
 
   return (
     <footer
-      className={`transition-colors duration-500 py-16 md:py-24 border-t ${
+      className={`transition-colors duration-500 pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8 md:pb-10 border-t ${
         isServicePage
           ? 'bg-near-black text-soft-white border-slate-800'
           : 'bg-warm-lavender text-near-black border-muted-lavender/50'
       }`}
     >
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 lg:gap-12 mb-10 sm:mb-12">
           {/* Brand Vision Column */}
           <div className="md:col-span-2 space-y-4">
             <Link
