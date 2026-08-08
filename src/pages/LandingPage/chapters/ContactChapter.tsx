@@ -197,25 +197,25 @@ export const ContactChapter: React.FC = () => {
         {/* Bottom Unified Horizontal Row: All 3 Contact Cards (Gmail, WhatsApp, Phone) */}
         <div className="mt-10 sm:mt-12 pt-8 border-t border-muted-lavender/60 contact-reveal">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-            {/* 1. Gmail Themed Card */}
+            {/* 1. Email Card (Sleek Tech Blue Theme) */}
             <a
               href="https://mail.google.com/mail/?view=cm&fs=1&to=krishnaoncreation@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-red-50/80 hover:bg-red-100/90 border border-red-200/80 rounded-2xl p-4 flex items-center justify-between transition-all group shadow-xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer text-left"
+              className="bg-blue-50/80 hover:bg-blue-100/90 border border-blue-200/80 rounded-2xl p-4 flex items-center justify-between transition-all group shadow-xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer text-left"
             >
               <div className="flex items-center gap-3.5 min-w-0">
-                <div className="w-10 h-10 rounded-full bg-red-600 text-soft-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-full bg-blue-600 text-soft-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                   <Mail className="w-4 h-4 text-soft-white" />
                 </div>
                 <div className="space-y-0.5 min-w-0">
-                  <span className="text-xs sm:text-sm font-sans font-bold text-red-950 block truncate">
+                  <span className="text-xs sm:text-sm font-sans font-bold text-blue-950 block truncate">
                     krishnaoncreation@gmail.com
                   </span>
-                  <p className="text-[10px] font-sans text-red-700/80">We reply within 1 business day</p>
+                  <p className="text-[10px] font-sans text-blue-700/80">We reply within 1 business day</p>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-red-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 ml-2" />
+              <ArrowUpRight className="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 ml-2" />
             </a>
 
             {/* 2. WhatsApp Themed Card */}
