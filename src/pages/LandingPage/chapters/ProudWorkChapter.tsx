@@ -212,9 +212,9 @@ export const ProudWorkChapter: React.FC = () => {
       {/* 01 WEB ENGINEERING SHOWCASE */}
       <Container>
         <div className="showcase-card bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
-          {/* Top Row: Left Narrative (With Top Padding & Spacious Layout) + Right Image */}
+          {/* Top Row: Left Narrative + Right Image */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
-            {/* Left Narrative Column */}
+            {/* Narrative Column */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -226,6 +226,26 @@ export const ProudWorkChapter: React.FC = () => {
                     Experiences That Convert.
                   </span>
                 </h3>
+              </div>
+
+              {/* Mobile Dedicated Hero Image (Middle Right Alignment) */}
+              <div className="block lg:hidden my-4 w-[85%] sm:w-[80%] ml-auto">
+                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] relative group">
+                  <img
+                    src="/media/photo_understand_dev.jpg"
+                    alt="Young Male Web Developer Workstation"
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/70 via-transparent to-transparent flex items-end justify-between p-3 text-soft-white">
+                    <span className="text-[9px] font-mono font-bold bg-deep-violet px-2 py-0.5 rounded-full border border-soft-white/20">
+                      React 18 & Next.js Engine
+                    </span>
+                    <span className="text-[10px] font-mono font-semibold text-green-400">
+                      Sub-Second Speed
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
@@ -257,12 +277,12 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Main Dedicated Image */}
-            <div className="lg:col-span-6 w-full">
+            {/* Desktop Dedicated Image (Visible on lg: screens) */}
+            <div className="hidden lg:block lg:col-span-6 w-full">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img
                   src="/media/photo_understand_dev.jpg"
-                  alt="Senior Web Developer Workstation"
+                  alt="Young Male Web Developer Workstation"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
@@ -410,7 +430,8 @@ export const ProudWorkChapter: React.FC = () => {
         <div className="showcase-card bg-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
           {/* Top Row: Left Main Image + Right Narrative */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
-            <div className="lg:col-span-6 w-full order-2 lg:order-1">
+            {/* Desktop Image Column (Visible on lg: screens) */}
+            <div className="hidden lg:block lg:col-span-6 w-full order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img
                   src="/media/cap_video_editing.jpg"
@@ -429,6 +450,7 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
+            {/* Narrative Column */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6 order-1 lg:order-2">
               <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -440,6 +462,26 @@ export const ProudWorkChapter: React.FC = () => {
                     Edits That Inspire.
                   </span>
                 </h3>
+              </div>
+
+              {/* Mobile Dedicated Hero Image (Middle Left Alignment) */}
+              <div className="block lg:hidden my-4 w-[85%] sm:w-[80%] mr-auto">
+                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] relative group">
+                  <img
+                    src="/media/cap_video_editing.jpg"
+                    alt="DaVinci Resolve Video Editor Suite"
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-near-black/40 backdrop-blur-[1px] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-soft-white/90 shadow-2xl flex items-center justify-center text-near-black">
+                      <Play className="w-4 h-4 fill-near-black stroke-none ml-0.5" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-near-black/90 backdrop-blur-md text-[9px] font-mono font-bold text-soft-white border border-soft-white/20">
+                    4K DCI Cinema Grading
+                  </div>
+                </div>
               </div>
 
               <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
@@ -608,6 +650,7 @@ export const ProudWorkChapter: React.FC = () => {
       <Container>
         <div className="showcase-card bg-warm-lavender/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
+            {/* Narrative Column */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -619,6 +662,26 @@ export const ProudWorkChapter: React.FC = () => {
                     All in One Place.
                   </span>
                 </h3>
+              </div>
+
+              {/* Mobile Dedicated Hero Image (Middle Right Alignment) */}
+              <div className="block lg:hidden my-4 w-[85%] sm:w-[80%] ml-auto">
+                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] relative group">
+                  <img
+                    src="/media/cap_ad_creation.jpg"
+                    alt="Ad Growth Strategist Monitoring Performance Analytics"
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/70 via-transparent to-transparent flex items-end justify-between p-3 text-soft-white">
+                    <span className="text-[9px] font-mono font-bold bg-deep-violet px-2 py-0.5 rounded-full border border-soft-white/20">
+                      Sponsored Ad Creative
+                    </span>
+                    <span className="text-[10px] font-mono font-semibold text-green-400">
+                      +420% ROAS
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
@@ -653,7 +716,8 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-6 w-full">
+            {/* Desktop Dedicated Image (Visible on lg: screens) */}
+            <div className="hidden lg:block lg:col-span-6 w-full">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img
                   src="/media/cap_ad_creation.jpg"
@@ -804,7 +868,8 @@ export const ProudWorkChapter: React.FC = () => {
       <Container>
         <div className="showcase-card bg-soft-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-muted-lavender/60 space-y-8 sm:space-y-10 shadow-xs hover:shadow-2xl hover:border-deep-violet/30 transition-all duration-500">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2 sm:pt-4">
-            <div className="lg:col-span-6 w-full order-2 lg:order-1">
+            {/* Desktop Image Column (Visible on lg: screens) */}
+            <div className="hidden lg:block lg:col-span-6 w-full order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] group hover:scale-[1.01] transition-transform duration-500 relative">
                 <img
                   src="/media/cap_paid_promotions.jpg"
@@ -818,6 +883,7 @@ export const ProudWorkChapter: React.FC = () => {
               </div>
             </div>
 
+            {/* Narrative Column */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6 order-1 lg:order-2">
               <div className="space-y-2">
                 <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
@@ -829,6 +895,21 @@ export const ProudWorkChapter: React.FC = () => {
                     Real Impact.
                   </span>
                 </h3>
+              </div>
+
+              {/* Mobile Dedicated Hero Image (Middle Left Alignment) */}
+              <div className="block lg:hidden my-4 w-[85%] sm:w-[80%] mr-auto">
+                <div className="rounded-2xl overflow-hidden shadow-xl border border-muted-lavender/80 w-full aspect-[16/10] relative group">
+                  <img
+                    src="/media/cap_paid_promotions.jpg"
+                    alt="Content Creator Team Filming Campaign"
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-soft-white/90 backdrop-blur-md text-near-black font-mono text-[9px] font-bold shadow-md">
+                    Vetted Creator Network
+                  </div>
+                </div>
               </div>
 
               <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
