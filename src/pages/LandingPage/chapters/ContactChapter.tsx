@@ -82,10 +82,10 @@ export const ContactChapter: React.FC = () => {
                   </div>
                   <div className="space-y-0.5">
                     <a
-                      href="mailto:hello@zenova.studio"
+                      href="mailto:krishnaoncreation@gmail.com"
                       className="text-xs sm:text-sm font-sans font-semibold text-near-black hover:text-deep-violet transition-colors inline-block tracking-tight bg-warm-lavender/60 px-2.5 py-0.5 rounded-full border border-muted-lavender/50"
                     >
-                      hello@zenova.studio
+                      krishnaoncreation@gmail.com
                     </a>
                     <p className="text-[10px] font-sans text-neutral-slate/80 pl-1">We usually reply within 1 business day</p>
                   </div>
@@ -98,10 +98,10 @@ export const ContactChapter: React.FC = () => {
                   </div>
                   <div className="space-y-0.5">
                     <a
-                      href="tel:+919876543210"
+                      href="tel:+919693821174"
                       className="text-xs sm:text-sm font-sans font-semibold text-near-black hover:text-deep-violet transition-colors inline-block tracking-tight bg-warm-lavender/60 px-2.5 py-0.5 rounded-full border border-muted-lavender/50"
                     >
-                      +91 98765 43210
+                      +91 96938 21174
                     </a>
                     <p className="text-[10px] font-sans text-neutral-slate/80 pl-1">Mon – Fri, 10 AM – 7 PM IST</p>
                   </div>
