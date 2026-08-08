@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
                 : 'text-near-black/70 hover:text-deep-violet'
             }`}
           >
-            About
+            About Us
           </Link>
 
           {/* Services Hover Dropdown */}
@@ -225,7 +225,7 @@ export const Navbar: React.FC = () => {
             Home
           </Link>
           <Link to={ROUTES.ABOUT} onClick={() => setMobileMenuOpen(false)} className="py-2 text-base font-editorial text-near-black border-b border-muted-lavender/40">
-            About
+            About Us
           </Link>
 
           {/* Services Submenu on Mobile */}

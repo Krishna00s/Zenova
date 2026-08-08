@@ -4,7 +4,7 @@ import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
-import { ArrowUpRight, ShieldCheck, Target, Users } from 'lucide-react';
+import { ArrowUpRight, ShieldCheck, Target, Users, Code, Video, Megaphone, Share2, Sparkles } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { scrollRevealCards } from '../animations/reveal';
 
@@ -26,7 +26,7 @@ export const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             <div className="lg:col-span-7 space-y-6 about-reveal">
               <Badge variant="lavender" className="px-3.5 py-1 text-xs">
-                ABOUT ZENOVA ENTERPRISES
+                ABOUT US — ZENOVA ENTERPRISES
               </Badge>
 
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-editorial font-bold text-near-black tracking-tight leading-[1.05]">
@@ -35,10 +35,10 @@ export const AboutPage: React.FC = () => {
               </h1>
 
               <p className="card-body-text max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed">
-                We don't make fake promises or claim to be corporate grandmasters. We are a dedicated team of builders who have completed a solid body of work. We know our craft, we work hard, and we only take on projects we know we can execute well.
+                We don't make fake promises or claim to be corporate grandmasters. We are a dedicated team of digital builders who have completed a solid body of real-world projects. We know our craft, we work hard, and we only take on work we know we can execute with genuine competence.
               </p>
 
-              <div className="pt-2 flex items-center gap-4">
+              <div className="pt-2 flex flex-wrap items-center gap-4">
                 <Link to={ROUTES.WORK.ROOT}>
                   <Button variant="primary" size="lg" className="gap-2 px-7 py-3.5 rounded-full shadow-md">
                     Explore Our Work <ArrowUpRight className="w-4 h-4" />
@@ -73,16 +73,57 @@ export const AboutPage: React.FC = () => {
         </Container>
       </section>
 
-      {/* 2. CORE VALUES GRID */}
-      <section className="py-16 sm:py-24 bg-warm-lavender/30 border-y border-muted-lavender/50">
+      {/* 2. OUR STORY & PHILOSOPHY CHAPTER */}
+      <section className="py-16 sm:py-24 bg-warm-lavender/20 border-y border-muted-lavender/50">
+        <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12 space-y-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Left Image Showcase */}
+            <div className="lg:col-span-5 about-reveal">
+              <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-muted-lavender/70 aspect-[16/10] sm:aspect-[4/3] relative group">
+                <img
+                  src="/media/photo_user_real_conversations.jpg"
+                  alt="Real Collaborative Work Session"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-near-black/90 text-soft-white font-mono text-[10px] font-bold">
+                  Direct Creator-to-Client Access
+                </div>
+              </div>
+            </div>
+
+            {/* Right Narrative */}
+            <div className="lg:col-span-7 space-y-5 about-reveal">
+              <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
+                OUR JOURNEY & PHILOSOPHY
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-bold text-near-black tracking-tight leading-[1.1]">
+                How We Operate & <br />
+                <span className="italic font-normal text-deep-violet">Why Clients Value Us.</span>
+              </h2>
+              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+                Zenova Enterprises was founded on a straightforward principle: digital agencies shouldn't rely on buzzwords or inflated claims to build client relationships. Instead of selling empty promises, we focus on building real digital products—responsive React applications, rhythmic video edits, data-driven ad campaigns, and targeted creator promotions.
+              </p>
+              <p className="card-body-text text-xs sm:text-sm md:text-base leading-relaxed">
+                Over time, we've refined our internal workflows and built a proven track record. We are explicit about our capabilities: when a project fits our core skillset, we execute it with precision. If a project requires a skill we haven't mastered yet, we communicate transparently—we never accept jobs we aren't properly prepared to deliver.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 3. CORE GUIDING PRINCIPLES */}
+      <section className="py-16 sm:py-24 bg-soft-white">
         <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3 about-reveal">
             <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
-              OUR GUIDING PRINCIPLES
+              WHAT WE STAND FOR
             </span>
             <h2 className="text-3xl sm:text-5xl font-editorial font-bold text-near-black">
-              What We Stand For
+              Our Core Principles
             </h2>
+            <p className="card-body-text text-xs sm:text-sm">
+              Practical guidelines that keep our team grounded, honest, and focused on quality.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -92,7 +133,7 @@ export const AboutPage: React.FC = () => {
               </div>
               <h3 className="text-2xl font-editorial font-bold text-near-black">Honest Scope & Competence</h3>
               <p className="card-body-text text-xs sm:text-sm leading-relaxed">
-                No fake promises. We only take on jobs we know we can execute with quality. If a project requires a technology we haven't mastered yet, we're transparent and won't accept it until we're properly prepared.
+                No fake promises. We only take on jobs we know we can execute with quality. If a project requires a technology outside our skillset, we're transparent and won't accept it until we've mastered it.
               </p>
             </div>
 
@@ -102,7 +143,7 @@ export const AboutPage: React.FC = () => {
               </div>
               <h3 className="text-2xl font-editorial font-bold text-near-black">Practical Execution</h3>
               <p className="card-body-text text-xs sm:text-sm leading-relaxed">
-                We focus on dependable execution—clean code, thoughtful video editing, and structured ad strategy that deliver genuine value for your business.
+                We focus on dependable execution—clean code, thoughtful video editing, and structured ad strategy that deliver genuine, practical value for your business.
               </p>
             </div>
 
@@ -112,8 +153,84 @@ export const AboutPage: React.FC = () => {
               </div>
               <h3 className="text-2xl font-editorial font-bold text-near-black">Direct Collaboration</h3>
               <p className="card-body-text text-xs sm:text-sm leading-relaxed">
-                You work directly with the developers, editors, and creators building your project. No sales fluff, no middle layers, just straightforward communication.
+                You work directly with the developers, editors, and creators building your project. No sales fluff, no middle management, just straightforward communication.
               </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 4. OUR CAPABILITY STACK */}
+      <section className="py-16 sm:py-24 bg-warm-lavender/30 border-t border-muted-lavender/50">
+        <Container size="large" className="max-w-7xl px-6 sm:px-10 lg:px-12 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3 about-reveal">
+            <span className="text-[11px] sm:text-xs font-mono uppercase text-deep-violet tracking-widest font-semibold">
+              OUR CAPABILITIES
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-editorial font-bold text-near-black">
+              What We Do Well
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="about-reveal bg-soft-white p-6 rounded-2xl border border-muted-lavender/60 space-y-3 shadow-xs hover:shadow-md transition-all">
+              <div className="w-10 h-10 rounded-xl bg-deep-violet text-soft-white flex items-center justify-center">
+                <Code className="w-5 h-5" />
+              </div>
+              <h4 className="text-lg font-editorial font-bold text-near-black">Web Engineering</h4>
+              <p className="text-xs text-neutral-slate leading-relaxed">
+                Fast, responsive React & TypeScript web applications, landing pages, and editorial digital platforms.
+              </p>
+            </div>
+
+            <div className="about-reveal bg-soft-white p-6 rounded-2xl border border-muted-lavender/60 space-y-3 shadow-xs hover:shadow-md transition-all">
+              <div className="w-10 h-10 rounded-xl bg-deep-violet text-soft-white flex items-center justify-center">
+                <Video className="w-5 h-5" />
+              </div>
+              <h4 className="text-lg font-editorial font-bold text-near-black">Video Production</h4>
+              <p className="text-xs text-neutral-slate leading-relaxed">
+                Post-production editing, rhythm-driven commercial films, and high-retention short-form reels.
+              </p>
+            </div>
+
+            <div className="about-reveal bg-soft-white p-6 rounded-2xl border border-muted-lavender/60 space-y-3 shadow-xs hover:shadow-md transition-all">
+              <div className="w-10 h-10 rounded-xl bg-deep-violet text-soft-white flex items-center justify-center">
+                <Megaphone className="w-5 h-5" />
+              </div>
+              <h4 className="text-lg font-editorial font-bold text-near-black">Ad Creation & Distribution</h4>
+              <p className="text-xs text-neutral-slate leading-relaxed">
+                Direct-response video & static ad creatives structured for Meta, TikTok, and Google Performance Max.
+              </p>
+            </div>
+
+            <div className="about-reveal bg-soft-white p-6 rounded-2xl border border-muted-lavender/60 space-y-3 shadow-xs hover:shadow-md transition-all">
+              <div className="w-10 h-10 rounded-xl bg-deep-violet text-soft-white flex items-center justify-center">
+                <Share2 className="w-5 h-5" />
+              </div>
+              <h4 className="text-lg font-editorial font-bold text-near-black">Creator Promotions</h4>
+              <p className="text-xs text-neutral-slate leading-relaxed">
+                Influencer research, handle whitelisting, and creator collaboration management for genuine reach.
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom CTA Box */}
+          <div className="about-reveal bg-near-black text-soft-white rounded-3xl p-8 sm:p-12 text-center space-y-5 shadow-2xl border border-slate-800 max-w-4xl mx-auto mt-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-mono font-semibold text-soft-white">
+              <Sparkles className="w-3.5 h-3.5 text-warm-lavender" /> Ready to Build?
+            </div>
+            <h3 className="text-2xl sm:text-4xl font-editorial font-bold">
+              Let's talk about your next project.
+            </h3>
+            <p className="card-body-text max-w-lg mx-auto text-xs sm:text-sm text-soft-white/80">
+              No sales pitches or pressure. Let's discuss what you need built and how we can help.
+            </p>
+            <div className="pt-2 flex items-center justify-center gap-4">
+              <Link to={ROUTES.CONTACT}>
+                <Button variant="primary" size="lg" className="gap-2 px-8 py-3.5 rounded-full bg-soft-white text-near-black hover:bg-slate-200">
+                  Get in Touch <ArrowUpRight className="w-4 h-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </Container>
