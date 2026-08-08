@@ -48,7 +48,7 @@ export const WorkingTogetherChapter: React.FC = () => {
       step: '06',
       title: 'Scale & Succeed',
       description: 'We partner with you for continuous growth, expanding your reach and scaling your results.',
-      image: '/media/photo_user_real_conversations_1786039785278.jpg',
+      image: '/media/photo_user_real_conversations.jpg',
     },
   ];
 
