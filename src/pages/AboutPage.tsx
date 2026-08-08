@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Container } from '../components/ui/Container';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
@@ -10,6 +10,19 @@ import { scrollRevealCards } from '../animations/reveal';
 
 export const AboutPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const ctaCardRef = useRef<HTMLDivElement>(null);
+
+  const [spotlightPos, setSpotlightPos] = useState({ x: 0, y: 0 });
+  const [isSpotlightHovered, setIsSpotlightHovered] = useState(false);
+
+  const handleSpotlightMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ctaCardRef.current) return;
+    const rect = ctaCardRef.current.getBoundingClientRect();
+    setSpotlightPos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
 
   useGSAP(() => {
     const revealEls = containerRef.current?.querySelectorAll('.about-reveal');
@@ -214,23 +227,40 @@ export const AboutPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom CTA Box — YouTube Matte Black Style with Crisp High Contrast */}
-          <div className="about-reveal bg-[#0F0F0F] text-white rounded-3xl p-8 sm:p-12 text-center space-y-5 shadow-2xl border border-neutral-800 max-w-4xl mx-auto mt-8">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-xs font-mono font-semibold text-white border border-white/15">
-              <Sparkles className="w-3.5 h-3.5 text-purple-300" /> Ready to Build?
-            </div>
-            <h3 className="text-2xl sm:text-4xl font-editorial font-bold text-white tracking-tight">
-              Let's talk about your next project.
-            </h3>
-            <p className="max-w-lg mx-auto text-sm sm:text-base text-neutral-200 font-sans leading-relaxed">
-              No sales pitches or pressure. Let's discuss what you need built and how we can help.
-            </p>
-            <div className="pt-2 flex items-center justify-center gap-4">
-              <Link to={ROUTES.CONTACT}>
-                <Button variant="primary" size="lg" className="gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-neutral-200 transition-colors shadow-lg">
-                  Get in Touch <ArrowUpRight className="w-4 h-4" />
-                </Button>
-              </Link>
+          {/* Bottom CTA Box — YouTube Matte Black Style with Mouse-Following Spotlight Radial Glow */}
+          <div
+            ref={ctaCardRef}
+            onMouseMove={handleSpotlightMouseMove}
+            onMouseEnter={() => setIsSpotlightHovered(true)}
+            onMouseLeave={() => setIsSpotlightHovered(false)}
+            className="about-reveal bg-[#0F0F0F] text-white rounded-3xl p-8 sm:p-12 text-center space-y-5 shadow-2xl border border-neutral-800 max-w-4xl mx-auto mt-8 relative overflow-hidden group transition-colors duration-300 hover:border-neutral-700"
+          >
+            {/* Mouse-following cursor-centered dim white spotlight overlay */}
+            <div
+              className="pointer-events-none absolute -inset-px transition-opacity duration-300 z-10"
+              style={{
+                opacity: isSpotlightHovered ? 1 : 0,
+                background: `radial-gradient(450px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03) 45%, transparent 80%)`,
+              }}
+            />
+
+            <div className="relative z-20 space-y-5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-xs font-mono font-semibold text-white border border-white/15">
+                <Sparkles className="w-3.5 h-3.5 text-purple-300" /> Ready to Build?
+              </div>
+              <h3 className="text-2xl sm:text-4xl font-editorial font-bold text-white tracking-tight">
+                Let's talk about your next project.
+              </h3>
+              <p className="max-w-lg mx-auto text-sm sm:text-base text-neutral-200 font-sans leading-relaxed">
+                No sales pitches or pressure. Let's discuss what you need built and how we can help.
+              </p>
+              <div className="pt-2 flex items-center justify-center gap-4">
+                <Link to={ROUTES.CONTACT}>
+                  <Button variant="primary" size="lg" className="gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-neutral-200 transition-colors shadow-lg">
+                    Get in Touch <ArrowUpRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </Container>
